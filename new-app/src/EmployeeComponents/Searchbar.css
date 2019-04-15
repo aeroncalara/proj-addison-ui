@@ -1,0 +1,17 @@
+.searchBar{
+    /* border: 1px solid #000000; */
+    text-align: right;
+    width: 20%;
+    height: 10%;
+    margin: 0 auto;
+    margin-left: 71.5%;
+    margin-top: 0.5%;
+}
+.EmployeePagination{
+    /* border: 1px solid #000000; */
+    /* text-align: right; */
+    width: 10%;
+    height: 10%;
+    margin: 0 auto;
+    margin-left: 80%;
+}
