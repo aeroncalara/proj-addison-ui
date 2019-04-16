@@ -31,7 +31,7 @@ class Header extends Component {
                     <Button circular icon='home' />
                   </div> */}
                   
-            <ul class="navigation">
+            <ul className="navigation">
               <li ><a href="#">Home</a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">Employees</a></li>

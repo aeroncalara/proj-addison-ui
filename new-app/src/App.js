@@ -4,6 +4,7 @@ import Footer from './EmployeeComponents/Footer';
 import Searchbar from './EmployeeComponents/Searchbar';
 import EmployeeHeader from './EmployeeComponents/EmployeeHeader';
 import EmployeeTable from './EmployeeComponents/EmployeeTable';
+import EmployeeTableNew from './EmployeeComponents/EmployeeTableNew';
 import AddEmployeeButton from './EmployeeComponents/AddEmployeeButton';
 
 class App extends Component {
@@ -15,7 +16,8 @@ class App extends Component {
           <EmployeeHeader />
           <AddEmployeeButton />
           <EmployeeTable />
-         
+          {/* <EmployeeTableNew /> */}
+          
 
       </div>        
     );

@@ -1,39 +1,50 @@
 import React, { Component } from 'react'
 import './AddEmployeeButton.css';
 import { Button, Header, Image, Modal, Form, Input } from 'semantic-ui-react'
+import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 
 export default class AddEmployeeButton extends Component {
+
+  state = { modalOpen: false }
+
+  handleOpen = () => this.setState({ modalOpen: true })
+
+  handleClose = () => this.setState({ modalOpen: false })
+
   render() {
     return (
         <div className="AddButton" >
            
-            <Modal trigger={<Button className="ui labeled icon button positive ">
+            <Modal trigger={<Button className="ui labeled icon button positive " onClick={this.handleOpen}>
             <i className="plus icon"></i>
             Add New Employee
-            </Button>}>
+            </Button>}
+            open={this.state.modalOpen}
+            onClose={this.handleClose}
+            // basic size='small'
+            >
+            
   
-                  <Modal.Header>Add New Employee</Modal.Header>
+                <Modal.Header>Add New Employee</Modal.Header>
                   <Modal.Content>
-                  
-                  <Form>
-                  <Form.Group widths='equal'>
-                    <Form.Field>
-                      <label>First name</label>
-                      <Input fluid placeholder='First name' />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Middle name</label>
-                      <Input fluid placeholder='Middle name' />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Last name</label>
-                      <Input fluid placeholder='Last name' />
-                    </Form.Field>
-                  </Form.Group>
-                  </Form>
-                 
+                      <AddEmployeeForm />
                   </Modal.Content>
-                </Modal>
+
+
+          
+              <Modal.Actions>
+              <div className="AddEmpModalButton">
+                  <Button color='red' onClick={this.handleClose} inverted>
+                  No
+                  </Button>
+
+                  <Button color='green' onClick={this.handleClose} inverted>
+                  Add New Employee 
+                  </Button>
+                </div>      
+              </Modal.Actions>
+          
+              </Modal>
         </div>
         
     )

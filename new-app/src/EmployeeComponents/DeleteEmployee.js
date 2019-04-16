@@ -17,7 +17,7 @@ export default class ModalExampleControlled extends Component {
         basic
         size='small'
       >
-        <Header icon='browser' content='Delete Employee' />
+        <Header icon='frown outline' content='Delete Employee' />
         <Modal.Content>
           <h3>Are you sure you want to Delete?</h3>
         </Modal.Content>
@@ -25,7 +25,7 @@ export default class ModalExampleControlled extends Component {
         <Modal.Actions>
 
             <Button color='red' onClick={this.handleClose} inverted>
-                <Icon name='x icon' /> No
+                <Icon name='x' /> No
             </Button>
 
           <Button color='green' onClick={this.handleClose} inverted>

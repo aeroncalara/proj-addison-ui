@@ -1,66 +1,53 @@
 import React, { Component } from 'react'
 import './AddEmployeeForm.css';
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Image, Modal,Form , Label} from 'semantic-ui-react'
 
 export default class AddEmployeeButton extends Component {
   render() {
     return (
-        <div className="AddButton" >
-                    
-        <div className="ui horizontal divider">or</div>
-        <form className="ui form segment">
-          <p>Tell Us About Yourself</p>
-          <div className="two fields">
-            <div className="field">
-              <label>Name</label>
-              <input placeholder="First Name" name="name" type="text">
-            </div>
+        
+          
+          <Form>
+              <span>Account Details</span>
+              <Form.Group unstackable widths={2}>
+                <Form.Input label='First name' placeholder='First name' />
+                <Form.Input label='Middle name' placeholder='Middle Name' />
+                <Form.Input label='Last Name' placeholder='Last Name' />
+              </Form.Group>
+              <hr></hr>
 
-            <div className="field">
-              <label>Gender</label>
-              <select className="ui dropdown" name="gender">
-                <option value="">Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-          </div>
-          </ div>
-          </form>
-          {/* <div className="two fields">
-            <div className="field">
-              <label>Username</label>
-              <input placeholder="Username" name="username" type="text">
-            </div>
-            <div className="field">
-              <label>Password</label>
-              <input type="password" name="password">
-            </div>
-          </div>
-          <div className="field">
-            <label>Skills</label>
-            <select name="skills" multiple="" className="ui dropdown">
-              <option value="">Select Skills</option>
-              <option value="css">CSS</option>
-              <option value="html">HTML</option>
-              <option value="javascript">Javascript</option>
-              <option value="design">Graphic Design</option>
-              <option value="plumbing">Plumbing</option>
-              <option value="mech">Mechanical Engineering</option>
-              <option value="repair">Kitchen Repair</option>
-            </select>
-          </div>
-              <div className="inline field">
-                <div className="ui checkbox">
-                  <input type="checkbox" name="terms">
-                  <label>I agree to the terms and conditions</label>
-                </div>
-              </div>
-              <div className="ui primary submit button">Submit</div>
-              <div className="ui error message"></div>
-            </form>          */}
-           
-        </div> 
+              <span>Contact Information</span>
+               <Form.Group widths={2}>
+
+                 <Form.Input label='Birthdate (mm-dd-yyyy)' placeholder='Birthdate (01-22-1998)' />
+                 <Form.Field label='Type' control='select'>
+                  <option value='male'>Mobile</option>
+                  <option value='female'>Landline</option>
+                 </Form.Field>
+
+
+                 <Form.Input label='Number' placeholder='Number' />
+              </Form.Group>
+              <hr></hr>
+
+              <span>Position</span>
+              <Form.Group widths={3}>
+                 <Form.Input label='Title' placeholder='Title' />
+                 <Form.Input label='Description' placeholder='Description' />
+                 <Form.Input label='Salary' placeholder='Salary' />
+               </Form.Group>
+               <hr></hr>
+
+               <span>Account Details</span>
+              <Form.Group widths={3}>
+                  <Form.Input label='TIN#' placeholder='TIN#' />
+                    <Form.Input label='SSS#' placeholder='SSS#' />
+                    <Form.Input label='PHILHEALTH#' placeholder='PHILHEALTH' />
+                  <Form.Input label='HDMF#' placeholder='HDMF#' />
+                  </Form.Group>  
+          </Form>     
+      
+   
     )
   }
 }
