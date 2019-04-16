@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Image, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import ViewEmployeeForm from '../EmployeeComponents/ViewEmployeeForm';
 
 export default class extends Component {

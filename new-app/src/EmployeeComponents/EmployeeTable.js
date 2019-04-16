@@ -1,11 +1,31 @@
 import React, {Component} from 'react'
-import {Button} from 'semantic-ui-react'
+// import {Button} from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import './EmployeeTable.css';
 
+import axios from 'axios';          //Use axios here: import axios from 'axios';
+//add componentDidMount()
+//Create get all employees function
+//Get all employees : this.setState({employees: chenes})
+
+
 export default class EmployeeTable extends Component {
+
+  componentDidMount(){
+    //Add get employees
+  }
+  
   render() {
+
+    //let sample_array = this.state.employees;
+    //let employee_rows = sample_array.map(employee => {
+    //   return {
+    //   }
+    // })
+
+
+
     return (
       <div className="EmployeeTable" >
         <table className="ui celled table">
@@ -18,7 +38,7 @@ export default class EmployeeTable extends Component {
         </thead>
         <tbody>
             <tr>
-            <td data-label="Name">James</td>
+            <td data-label="Name"></td>
             <td data-label="Age">24</td>
             <td data-label="Job">Engineer</td>
             <td data-label="Job">

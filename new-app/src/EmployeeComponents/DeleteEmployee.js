@@ -3,8 +3,6 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 
 
-
-
 export default class extends Component {
 
   state = { modalOpen: false }

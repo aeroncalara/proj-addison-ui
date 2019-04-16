@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Table, Header, Image} from 'semantic-ui-react'
+import {Table, Header, Image} from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import './EmployeeTable.css';

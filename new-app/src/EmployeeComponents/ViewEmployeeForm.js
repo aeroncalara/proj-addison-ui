@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal,Form , Label} from 'semantic-ui-react'
+import { Header, Image,Form } from 'semantic-ui-react'
 export default class ViewEmployeeForm extends Component {
   render() {
     return (
