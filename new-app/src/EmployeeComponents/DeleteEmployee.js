@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
-export default class ModalExampleControlled extends Component {
+
+
+
+
+export default class extends Component {
+
   state = { modalOpen: false }
 
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })
+
 
   render() {
     return (
@@ -14,8 +20,7 @@ export default class ModalExampleControlled extends Component {
         trigger={<Button className="ui button negative " onClick={this.handleOpen}>Delete</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic
-        size='small'
+        basic size='small'
       >
         <Header icon='frown outline' content='Delete Employee' />
         <Modal.Content>
@@ -23,15 +28,13 @@ export default class ModalExampleControlled extends Component {
         </Modal.Content>
         
         <Modal.Actions>
-
             <Button color='red' onClick={this.handleClose} inverted>
                 <Icon name='x' /> No
             </Button>
 
-          <Button color='green' onClick={this.handleClose} inverted>
-            <Icon name='checkmark' /> Yes
-          </Button>
-
+            <Button color='green' onClick={this.handleClose} inverted>
+              <Icon name='checkmark' /> Yes
+            </Button>
         </Modal.Actions>
       </Modal>
     )
