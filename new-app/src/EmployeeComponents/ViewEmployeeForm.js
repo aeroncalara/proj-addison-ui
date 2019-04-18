@@ -21,8 +21,8 @@ export default class ViewEmployeeForm extends Component {
                <Form.Group widths={2}>
                  <Form.Input label='Birthdate (mm-dd-yyyy)' placeholder='Birthdate (01-22-1998)' readOnly/>
                     <Form.Field label='Type' control='select' disabled>
-                        <option value='male'>Mobile</option>
-                        <option value='female'>Landline</option>
+                        <option value='mobile'>Mobile</option>
+                        <option value='landline'>Landline</option>
                     </Form.Field>
                  <Form.Input label='Number' placeholder='Number' readOnly/>
               </Form.Group>
