@@ -11,30 +11,13 @@ import { Button } from 'semantic-ui-react'
 class Header extends Component {
   render() {
     return (
-      <header className="App-header">
-
-           
-
-
-{/* 
-                <div className= "Nav">
-                  <Menu items = {
-                        items
-                  }>  
-                  </Menu>
-
-                  {
-                  
-                  }
-                </div> */}
-                {/* <div className="Home">
-                    <Button circular icon='home' />
-                  </div> */}
-                  
+      <header className="App-header">               
             <ul className="navigation">
               <li ><a href="#">Home</a></li>
               <li ><a href="#">|</a></li>
-              <li><a href="#">Employees</a></li>
+              <li><a href="#">
+              Employees
+              </a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">Performance Assesment</a></li>
               <li ><a href="#">|</a></li>

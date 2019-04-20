@@ -7,10 +7,8 @@ import EmployeeHeader from './EmployeeComponents/EmployeeHeader';
 import EmployeeTable from './EmployeeComponents/EmployeeTable';
 import AddEmployeeButton from './EmployeeComponents/AddEmployeeButton';
 import ViewEmployee from './EmployeeComponents/ViewEmployee';
-
-
-
-
+import Home from './HomeComponents/Home';
+import ApplicantMain from './ApplicantComponents/ApplicantMain';
 
 class App extends Component {
 
@@ -26,14 +24,14 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Header />
+          {/* <Header />
           <Searchbar />
           <EmployeeHeader />
           <AddEmployeeButton />
-          <EmployeeTable />
+          <EmployeeTable /> */}
           {/* <EmployeeTableNew /> */}
-
-       
+          {/* <Home /> */}
+          <ApplicantMain />
           
 
       </div>        

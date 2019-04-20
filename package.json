@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "react": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "semantic": "0.0.1",
     "ui": "^0.2.4"
   }
