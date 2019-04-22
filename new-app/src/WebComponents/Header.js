@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { Dropdown , Menu} from 'semantic-ui-react'
 
  
@@ -8,24 +9,44 @@ class Header extends Component {
     return (
       <header className="App-header">               
             <ul className="navigation">
-              <li ><a href="#">Home</a></li>
+              {/* <li ><a href="#">Home</a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">
               Employee
-              {/* <Menu secondary horizontal>
-                  <Dropdown className="ui positive" item text='Employee'>
-                    <Dropdown.Menu>
-                    
-                      <Dropdown.Item>Applicants</Dropdown.Item>
-                    
-                    </Dropdown.Menu>
-                  </Dropdown>
-               </Menu> */}
               </a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">Performance Assesment</a></li>
               <li ><a href="#">|</a></li>
-              <li><a href="#">Transcript </a></li>
+              <li><a href="#">Transcript </a></li> */}
+
+                <li>
+                  <NavLink activeClassName="active" to="/Home">
+                    Home
+                  </NavLink>
+                </li>
+
+                <li ><a href="#">|</a></li>
+
+                <li>
+                  <NavLink exact activeClassName="active" to="/App">
+                    Employee
+                  </NavLink>
+                </li>
+
+                <li ><a href="#">|</a></li>
+
+                <li>
+                  <NavLink activeClassName="active" to="/ApplicantMain">
+                    Hiring
+                  </NavLink>
+                </li>
+                
+                <li ><a href="#">|</a></li>
+
+                <li><a href="#">Performance Assesment</a></li>
+              <li ><a href="#">|</a></li>
+              <li><a href="#">Transcript </a></li> 
+
             </ul>
             
       </header>

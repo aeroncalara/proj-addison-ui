@@ -12,7 +12,7 @@ const routing = (
       <div>
       <ul>
 
-        <li>
+        {/* <li>
           <NavLink exact activeClassName="active" to="/App">
             Employee
           </NavLink>
@@ -28,7 +28,7 @@ const routing = (
           <NavLink activeClassName="active" to="/ApplicantMain">
             Applicant
           </NavLink>
-        </li>
+        </li> */}
         
       </ul>
         <Switch>
