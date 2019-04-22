@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 import { Header, Image,Form } from 'semantic-ui-react'
+
+
+
+
+
 export default class ViewEmployeeForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      readOnly: true,
+    }
+  }
   render() {
     return (
       <div>
@@ -11,7 +23,7 @@ export default class ViewEmployeeForm extends Component {
         <Form>
               <span>Account Details</span>
                 <Form.Group unstackable widths={2}>
-                  <Form.Input label='First name' placeholder='First name' readOnly/>
+                  <Form.Input label='First name' placeholder='First name' readOnly={this.state.readOnly}/>
                   <Form.Input label='Middle name' placeholder='Middle Name' readOnly/>
                   <Form.Input label='Last Name' placeholder='Last Name' readOnly/>
                 </Form.Group>
@@ -41,7 +53,7 @@ export default class ViewEmployeeForm extends Component {
                     <Form.Input label='TIN#' placeholder='TIN#' readOnly/>
                       <Form.Input label='SSS#' placeholder='SSS#' readOnly/>
                       <Form.Input label='PHILHEALTH#' placeholder='PHILHEALTH' readOnly/>
-                    <Form.Input label='HDMF#' placeholder='HDMF#' readOnly/>
+                      <Form.Input label='HDMF#' placeholder='HDMF#' readOnly/>
                     </Form.Group>  
                 </Form>
       </div>

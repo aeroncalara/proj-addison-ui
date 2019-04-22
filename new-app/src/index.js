@@ -10,9 +10,9 @@ import Notfound from './WebComponents/Notfound';
 const routing = (
     <Router>
       <div>
-      <ul>
+      {/* <ul>
 
-        {/* <li>
+        <li>
           <NavLink exact activeClassName="active" to="/App">
             Employee
           </NavLink>
@@ -28,9 +28,9 @@ const routing = (
           <NavLink activeClassName="active" to="/ApplicantMain">
             Applicant
           </NavLink>
-        </li> */}
+        </li>
         
-      </ul>
+      </ul> */}
         <Switch>
           <Route exact path="/App" component={App} />
           <Route path="/Home" component={Home} />

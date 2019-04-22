@@ -1,46 +1,41 @@
 // import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
-import ViewApplicant from '../ApplicantComponents/ViewApplicant';
-import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
+import ViewEmployee from '../ApplicantComponents/ViewApplicant';
+import DeleteEmployee from '../ApplicantComponents/DeleteApplicant';
+import HIre from '../ApplicantComponents/HIre';
 import './ApplicantTable.css';
 
-import axios from 'axios';         //import axios from 'axios';
-                           
+import axios from 'axios';   
                                    
 
 
-                                    //add componentDidMount()
-                                    //Create get all Applicants function
-                                    //Get all Applicants : this.setState({Applicants: chenes})
+let my_query = 
+    `query{
+         getAllEmployees{
+              person{
+                   first
+                   middle
+                   last
+                   }
+                         }
+          }`
 
-                                      let my_query = 
-                                       `query{
-                                         getAllApplicants{
-                                           person{
-                                              first
-                                              middle
-                                              last
-                                            }
-                                          }
-                                        }`
-class ApplicantTable extends Component {
+class EmployeeTable extends Component {
 
-  // componentDidMount(){
-  //   //Add get Applicants
-  // }
+ 
   constructor(props){
     super(props);
     this.state = { 
-      Applicants: [],
+      Employees: [],
     }
   }
 
   componentDidMount(){
-    this.getApplicants();
+    this.getEmployees();
   }
 
-  getApplicants = async () => {
-    let Applicant_variable = await axios({
+  getEmployees = async () => {
+    let Employee_variable = await axios({
       url: `http://localhost:4000`,
       method: `post`,
       data: {
@@ -48,30 +43,32 @@ class ApplicantTable extends Component {
       }
     })
 
-    this.setState({ Applicants: Applicant_variable.data.data.getAllApplicants });
+    this.setState({ Employees: Employee_variable.data.data.getAllEmployees });
   }
   render() {
 
-    //let sample_array = this.state.Applicants;
-    //let Applicant_rows = sample_array.map(Applicant => {
-    //   return {
-    //   }
-    // })
-    const Applicants = this.state.Applicants;
-    console.log(Applicants);
+    let sample_array = this.state.Employees;
+    let Employee_rows = sample_array.map(Employee => {
+      return {
+      }
+    })
+    const Employees = this.state.Employees;
+    console.log(Employees);
     
-    let ApplicantTable = Applicants.map(Applicant => {
+    let EmployeeTable = Employees.map(Employee => {
       return (
 
         
-              <tr key={Applicant._id}>
-              <td data-label="Name">{Applicant.person.first}</td>
-              <td data-label="Age">{Applicant.person.middle}</td>
-              <td data-label="Job">{Applicant.person.last}</td>
+              <tr key={Employee._id}>
+              <td data-label="Name">{Employee.person.first}</td>
+              <td data-label="Age">{Employee.person.middle}</td>
+              <td data-label="Job">{Employee.person.last}</td>
               <td data-label="Job">
-            
-                <ViewApplicant />
-                <DeleteApplicant />
+                
+
+                <HIre />
+                <ViewEmployee />
+                <DeleteEmployee />
               </td>
               </tr> 
        
@@ -81,7 +78,7 @@ class ApplicantTable extends Component {
     //here
 
     return (
-      <div className="ApplicantTable">
+      <div className="EmployeeTable">
 
         <table className="ui celled table">
         <thead>
@@ -92,13 +89,13 @@ class ApplicantTable extends Component {
           </tr>
           </thead>
           <tbody>
-           {ApplicantTable}
+           {EmployeeTable}
           
            </tbody>
            <tfoot>
           <tr>
           <th colSpan="5">
-          <div className="ApplicantPagination">
+          <div className="EmployeePagination">
             <div className="ui right floated pagination menu ">
               <a className="icon item">
               <i className="left chevron icon"></i></a>
@@ -119,4 +116,4 @@ class ApplicantTable extends Component {
     );
   }
 }
-export default ApplicantTable;
+export default EmployeeTable;

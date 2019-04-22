@@ -31,7 +31,7 @@ export default class extends Component {
                   Cancel
                   </Button>
 
-                  <Button color='green' onClick={this.handleClose} inverted>
+                  <Button color='green'>
                     Edit 
                   </Button>
                 </div>      

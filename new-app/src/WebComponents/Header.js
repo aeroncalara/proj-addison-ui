@@ -9,15 +9,7 @@ class Header extends Component {
     return (
       <header className="App-header">               
             <ul className="navigation">
-              {/* <li ><a href="#">Home</a></li>
-              <li ><a href="#">|</a></li>
-              <li><a href="#">
-              Employee
-              </a></li>
-              <li ><a href="#">|</a></li>
-              <li><a href="#">Performance Assesment</a></li>
-              <li ><a href="#">|</a></li>
-              <li><a href="#">Transcript </a></li> */}
+              
 
                 <li>
                   <NavLink activeClassName="active" to="/Home">
@@ -48,7 +40,10 @@ class Header extends Component {
               <li><a href="#">Transcript </a></li> 
 
             </ul>
+
+
             
+           
       </header>
     );
   }
