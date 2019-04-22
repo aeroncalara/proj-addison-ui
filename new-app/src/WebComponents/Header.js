@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import '../App.css';
-import { Menu } from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+import './Header.css';
+import { Dropdown , Menu} from 'semantic-ui-react'
 
-// const items = [
-//   { key: 'editorials', active: true, name: 'Employees' },
-//   { key: 'review', name: 'Performance Assesment' },
-//   { key: 'events', name: 'Transcript' },
-// ]
+ 
 class Header extends Component {
   render() {
     return (
@@ -16,7 +11,16 @@ class Header extends Component {
               <li ><a href="#">Home</a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">
-              Employees
+              Employee
+              {/* <Menu secondary horizontal>
+                  <Dropdown className="ui positive" item text='Employee'>
+                    <Dropdown.Menu>
+                    
+                      <Dropdown.Item>Applicants</Dropdown.Item>
+                    
+                    </Dropdown.Menu>
+                  </Dropdown>
+               </Menu> */}
               </a></li>
               <li ><a href="#">|</a></li>
               <li><a href="#">Performance Assesment</a></li>

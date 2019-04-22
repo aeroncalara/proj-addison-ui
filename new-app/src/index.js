@@ -1,17 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import App from './App';    
-import AddEmployeeForm from './EmployeeComponents/AddEmployeeForm';
-
+import Home from './HomeComponents/Home';
+import ApplicantMain from './ApplicantComponents/ApplicantMain'
+import Notfound from './WebComponents/Notfound';
 
 const routing = (
     <Router>
       <div>
-        <Route exact path="/" component={App} />
-        <Route path="/AddEmployeeForm" component={AddEmployeeForm} />
+      <ul>
+
+        <li>
+          <NavLink exact activeClassName="active" to="/App">
+            Employee
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink activeClassName="active" to="/Home">
+            Home
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink activeClassName="active" to="/ApplicantMain">
+            Applicant
+          </NavLink>
+        </li>
         
+      </ul>
+        <Switch>
+          <Route exact path="/App" component={App} />
+          <Route path="/Home" component={Home} />
+          <Route path="/ApplicantMain" component={ApplicantMain} />
+          <Route component={Notfound} />
+        </Switch>  
       </div>
     </Router>
   )

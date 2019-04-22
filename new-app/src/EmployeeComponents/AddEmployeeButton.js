@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './AddEmployeeButton.css';
-import { Button, Header, Image, Modal, Form, Input } from 'semantic-ui-react'
+import { Button, Modal} from 'semantic-ui-react'
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 
 export default class AddEmployeeButton extends Component {

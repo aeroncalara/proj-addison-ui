@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeComponents/HomeHeader';
-import HomeMenu from '../HomeComponents/HomeMenu';
+import Header from '../WebComponents/Header';
 
 
 
@@ -9,8 +9,8 @@ class Home extends Component {
 
     return (
       <div className="App">
-        <HomeMenu />
-          <HomeHeader />
+        <Header />
+        <HomeHeader />
         
       </div>        
     );

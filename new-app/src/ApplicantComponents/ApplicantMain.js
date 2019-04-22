@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../ApplicantComponents/Header';
+import Header from '../WebComponents/Header';
 import Searchbar from '../ApplicantComponents/Searchbar';
 import ApplicantHeader from '../ApplicantComponents/ApplicantHeader';
 import ApplicantTable from '../ApplicantComponents/ApplicantTable';

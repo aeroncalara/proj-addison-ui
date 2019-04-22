@@ -1,30 +1,3 @@
-/* .App-header {
-  background-color: #262626;
-  min-height: 10vh;
-  display: flex;
-  flex-flow: row wrap; 
-  flex-direction: column;
-   align-items: center;
-  justify-content: center; 
-  font-size: calc(5px + 2vmin);
-  color: white;
-
-} 
-
-
-.Nav{  
-    margin-left: 58%;
-    float: left;
-}
-
-.Home{
-  float: left;
-  border: 1px solid #000000;
-  margin-left: 10%;
-
-} */
-
-
 
 .App-header {
   background-color: #262626;
