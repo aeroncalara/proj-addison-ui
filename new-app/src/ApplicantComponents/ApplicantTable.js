@@ -67,7 +67,7 @@ class EmployeeTable extends Component {
                 
 
                 <HIre />
-                <ViewEmployee />
+                <ViewEmployee Employee={Employee}/>
                 <DeleteEmployee />
               </td>
               </tr> 

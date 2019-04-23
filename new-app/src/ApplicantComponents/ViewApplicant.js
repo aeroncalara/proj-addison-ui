@@ -4,16 +4,23 @@ import ViewApplicantForm from '../ApplicantComponents/ViewApplicantForm';
 
 export default class extends Component {
 
-  state = { modalOpen: false }
+  state = { 
+    modalOpen: false, 
+    isEdit: false
+  }
 
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })
-
+  
+  handleEdit = () => {
+    let status = this.state.isEdit;
+    this.setState({ isEdit: !status });
+  }
 
   render() {
+
     return (
-          
       <Modal
       trigger={<Button className="ui button positive " onClick={this.handleOpen}>View</Button>}
       open={this.state.modalOpen}
@@ -23,7 +30,7 @@ export default class extends Component {
         
         <Modal.Header>View Applicant</Modal.Header>
           <Modal.Content>
-              <ViewApplicantForm />
+              <ViewApplicantForm Employee={this.props.Employee} isEdit={this.state.isEdit} />
           </Modal.Content>
           <Modal.Actions>
               <div className="AddEmpModalButton">
@@ -31,8 +38,8 @@ export default class extends Component {
                   Cancel
                   </Button>
 
-                  <Button color='green' onClick={this.handleClose} inverted>
-                    Edit 
+                  <Button color='green' onClick={this.handleEdit} inverted>
+                    {this.state.isEdit != true? "Edit":"Save"} 
                   </Button>
                 </div>      
               </Modal.Actions>

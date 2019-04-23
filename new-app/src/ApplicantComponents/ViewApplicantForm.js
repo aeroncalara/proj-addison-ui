@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Header, Image,Form } from 'semantic-ui-react'
 export default class ViewApplicantForm extends Component {
+  
+
+  
   render() {
     return (
       <div>
@@ -9,9 +12,9 @@ export default class ViewApplicantForm extends Component {
         </Header>
 
         <Form>
-              <span>Account Details</span>
+              <span>Account Details| {this.props.Employee.person.first}</span>
                 <Form.Group unstackable widths={2}>
-                  <Form.Input label='First name' placeholder='First name' readOnly/>
+                  <Form.Input label='First name' placeholder='First name' readOnly={this.props.isEdit!=true?"readonly":""} />
                   <Form.Input label='Middle name' placeholder='Middle Name' readOnly/>
                   <Form.Input label='Last Name' placeholder='Last Name' readOnly/>
                 </Form.Group>
