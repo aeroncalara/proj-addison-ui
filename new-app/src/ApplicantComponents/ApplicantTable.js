@@ -6,6 +6,7 @@ import HIre from '../ApplicantComponents/HIre';
 import './ApplicantTable.css';
 
 import axios from 'axios';   
+import ViewApplicant from '../ApplicantComponents/ViewApplicant';
                                    
 
 
@@ -67,7 +68,7 @@ class EmployeeTable extends Component {
                 
 
                 <HIre />
-                <ViewEmployee Employee={Employee}/>
+                <ViewApplicant Employee={Employee}/>
                 <DeleteEmployee />
               </td>
               </tr> 

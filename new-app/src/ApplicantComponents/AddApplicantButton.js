@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './AddApplicantButton.css';
-import { Button, Header, Image, Modal, Form, Input } from 'semantic-ui-react'
+import { Button, Modal} from 'semantic-ui-react'
 import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
 
 export default class AddApplicantButton extends Component {

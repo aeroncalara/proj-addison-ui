@@ -25,9 +25,7 @@ import axios from 'axios';         //import axios from 'axios';
                                         }`
 class EmployeeTable extends Component {
 
-  // componentDidMount(){
-  //   //Add get employees
-  // }
+  
   constructor(props){
     super(props);
     this.state = { 
@@ -52,11 +50,11 @@ class EmployeeTable extends Component {
   }
   render() {
 
-    //let sample_array = this.state.employees;
-    //let employee_rows = sample_array.map(employee => {
-    //   return {
-    //   }
-    // })
+    let sample_array = this.state.employees;
+    let employee_rows = sample_array.map(employee => {
+      return {
+      }
+    })
     const employees = this.state.employees;
     console.log(employees);
     
@@ -70,7 +68,7 @@ class EmployeeTable extends Component {
               <td data-label="Job">{employee.person.last}</td>
               <td data-label="Job">
             
-                <ViewEmployee />
+              <ViewEmployee Employee={employee}/>
                 <DeleteEmployee />
               </td>
               </tr> 

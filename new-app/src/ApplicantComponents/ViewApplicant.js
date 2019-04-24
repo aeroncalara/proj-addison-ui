@@ -33,6 +33,7 @@ export default class extends Component {
               <ViewApplicantForm Employee={this.props.Employee} isEdit={this.state.isEdit} />
           </Modal.Content>
           <Modal.Actions>
+            
               <div className="AddEmpModalButton">
                   <Button color='red' onClick={this.handleClose} inverted>
                   Cancel

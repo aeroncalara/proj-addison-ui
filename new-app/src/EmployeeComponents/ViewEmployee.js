@@ -6,11 +6,19 @@ import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 export default class extends Component {
 
-  state = { modalOpen: false }
+  state = { 
+    modalOpen: false, 
+    isEdit: false
+  }
 
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })
+
+  handleEdit = () => {
+    let status = this.state.isEdit;
+    this.setState({ isEdit: !status });
+  }
 
 
   render() {
@@ -25,7 +33,7 @@ export default class extends Component {
         
         <Modal.Header>View Employee</Modal.Header>
           <Modal.Content>
-              <ViewEmployeeForm />
+              <ViewEmployeeForm Employee={this.props.Employee} isEdit={this.state.isEdit} />
           </Modal.Content>
           <Modal.Actions>
 
@@ -35,8 +43,8 @@ export default class extends Component {
                   Cancel
                   </Button>
 
-                  <Button color='green'>
-                    Edit 
+                  <Button color='green' onClick={this.handleEdit} inverted>
+                    {this.state.isEdit != true? "Edit":"Save"} 
                   </Button>
 
                   <TimeInOut />
