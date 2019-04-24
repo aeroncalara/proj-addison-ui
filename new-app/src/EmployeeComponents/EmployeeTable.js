@@ -9,9 +9,8 @@ import axios from 'axios';         //import axios from 'axios';
                                    
 
 
-                                    //add componentDidMount()
-                                    //Create get all employees function
-                                    //Get all employees : this.setState({employees: chenes})
+
+
 
                                       let my_query = 
                                        `query{

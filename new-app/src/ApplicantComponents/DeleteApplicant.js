@@ -11,6 +11,10 @@ export default class extends Component {
 
   handleClose = () => this.setState({ modalOpen: false })
 
+  handleArchived = () => {
+    let hire = this.state.isArchived;
+    this.setState({ isArchived: !hire });
+  }
 
   render() {
     return (

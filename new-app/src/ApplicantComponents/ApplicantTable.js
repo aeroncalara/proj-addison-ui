@@ -11,17 +11,36 @@ import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
                                    
 
 
-let my_query = 
-    `query{
-         getAllEmployees{
-              person{
-                   first
-                   middle
-                   last
-                   }
-                         }
-          }`
+// let my_query = 
+//     `query{
+//          getAllEmployees{
+//               person{
+//                    first
+//                    middle
+//                    last
+//                    }
+//                          }
+//           }`
 
+
+let my_query = 
+`
+ 
+  query{
+    getAllEmployees{
+      person{
+        first
+        middle
+        last
+        date_of_birth
+      }
+      position{
+        description
+        salary
+      }
+    }
+  }
+`
 class EmployeeTable extends Component {
 
  
