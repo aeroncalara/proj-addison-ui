@@ -15,14 +15,14 @@ export default class extends Component {
   render() {
     return (
       <Modal
-        trigger={<Button className="ui button negative " onClick={this.handleOpen}>Delete</Button>}
+        trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic size='small'
       >
-        <Header icon='frown outline' content='Delete Applicant' />
+        <Header icon='frown outline' content='Archive Applicant:' />
         <Modal.Content>
-          <h3>Are you sure you want to Delete?</h3>
+        <h3>Are you sure you want to Archive {this.props.Employee.person.first} {this.props.Employee.person.last}?</h3>
         </Modal.Content>
         
         <Modal.Actions>

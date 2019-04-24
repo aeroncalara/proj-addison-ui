@@ -69,7 +69,7 @@ class EmployeeTable extends Component {
               <td data-label="Job">
             
               <ViewEmployee Employee={employee}/>
-                <DeleteEmployee />
+                <DeleteEmployee Employee={employee} />
               </td>
               </tr> 
        

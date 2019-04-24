@@ -7,6 +7,7 @@ import './ApplicantTable.css';
 
 import axios from 'axios';   
 import ViewApplicant from '../ApplicantComponents/ViewApplicant';
+import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
                                    
 
 
@@ -69,7 +70,7 @@ class EmployeeTable extends Component {
 
                 <HIre />
                 <ViewApplicant Employee={Employee}/>
-                <DeleteEmployee />
+                <DeleteApplicant Employee={Employee} />
               </td>
               </tr> 
        
