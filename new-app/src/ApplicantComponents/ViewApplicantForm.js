@@ -8,13 +8,14 @@ export default class ViewApplicantForm extends Component {
     return (
       <div>
         <Header as='h2'>
-        <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> James
+        <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' />  {this.props.Employee.person.first}
         </Header>
 
         <Form>
-              <span>Account Details| {this.props.Employee.person.first}</span>
+              <span>Account Details</span>
                 <Form.Group unstackable widths={2}>
                   <Form.Input label='First name' placeholder='First name' readOnly={this.props.isEdit!=true?"readonly":""} />
+                 
                   <Form.Input label='Middle name' placeholder='Middle Name' readOnly/>
                   <Form.Input label='Last Name' placeholder='Last Name' readOnly/>
                 </Form.Group>

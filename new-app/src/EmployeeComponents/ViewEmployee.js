@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import ViewEmployeeForm from '../EmployeeComponents/ViewEmployeeForm';
+import TimeInOut from '../TimeInOutComponents/TimeInOut';
+
 
 export default class extends Component {
 
@@ -26,6 +28,8 @@ export default class extends Component {
               <ViewEmployeeForm />
           </Modal.Content>
           <Modal.Actions>
+
+          
               <div className="AddEmpModalButton">
                   <Button color='red' onClick={this.handleClose} inverted>
                   Cancel
@@ -34,7 +38,12 @@ export default class extends Component {
                   <Button color='green'>
                     Edit 
                   </Button>
-                </div>      
+
+                  <TimeInOut />
+                </div>     
+
+              
+
               </Modal.Actions>
         </Modal>
     

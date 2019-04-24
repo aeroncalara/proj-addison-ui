@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './WebComponents/Header';
 import Searchbar from './EmployeeComponents/Searchbar';
 import EmployeeHeader from './EmployeeComponents/EmployeeHeader';
@@ -8,9 +8,7 @@ import AddEmployeeButton from './EmployeeComponents/AddEmployeeButton';
 import HeaderTry from './WebComponents/HeaderTry';
 
 
-
-
-class App extends Component {
+class App extends React.Component {
 
  
 
@@ -24,8 +22,7 @@ class App extends Component {
           <EmployeeHeader />
           <AddEmployeeButton />
           <EmployeeTable />
-          */}
-           */}
+      s
 
       </div>        
     );

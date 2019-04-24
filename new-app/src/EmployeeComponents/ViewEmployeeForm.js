@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Header, Image,Form } from 'semantic-ui-react'
 
 
-
-
-
 export default class ViewEmployeeForm extends Component {
 
   constructor(props) {
