@@ -1,7 +1,6 @@
 // import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
-import ViewEmployee from '../ApplicantComponents/ViewApplicant';
-import DeleteEmployee from '../ApplicantComponents/DeleteApplicant';
+
 import HIre from '../ApplicantComponents/HIre';
 import './ApplicantTable.css';
 
@@ -10,17 +9,6 @@ import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
                                    
 
-
-// let my_query = 
-//     `query{
-//          getAllEmployees{
-//               person{
-//                    first
-//                    middle
-//                    last
-//                    }
-//                          }
-//           }`
 
 
 let my_query = 
@@ -33,10 +21,14 @@ let my_query =
         middle
         last
         date_of_birth
-      }
-      position{
-        description
-        salary
+        address{
+          number
+          street
+          city
+          province
+          country
+          
+        }
       }
     }
   }

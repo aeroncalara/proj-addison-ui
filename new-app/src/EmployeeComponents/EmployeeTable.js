@@ -4,24 +4,33 @@ import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import './EmployeeTable.css';
 
-import axios from 'axios';         //import axios from 'axios';
-                           
-                                   
+import axios from 'axios';        
 
 
+let my_query = 
+`
+  query{
+    getAllEmployees{
+      person{
+        first
+        middle
+        last
+        date_of_birth
+        address{
+          number
+          street
+          city
+          province
+          country
+          
+        }
+      }
+    }
+  }
+`
 
 
-
-                                      let my_query = 
-                                       `query{
-                                         getAllEmployees{
-                                           person{
-                                              first
-                                              middle
-                                              last
-                                            }
-                                          }
-                                        }`
+                                 
 class EmployeeTable extends Component {
 
   
@@ -49,11 +58,8 @@ class EmployeeTable extends Component {
   }
   render() {
 
-    let sample_array = this.state.employees;
-    let employee_rows = sample_array.map(employee => {
-      return {
-      }
-    })
+  
+ 
     const employees = this.state.employees;
     console.log(employees);
     
@@ -68,7 +74,7 @@ class EmployeeTable extends Component {
               <td data-label="Job">
             
               <ViewEmployee Employee={employee}/>
-                <DeleteEmployee Employee={employee} />
+              <DeleteEmployee Employee={employee} />
               </td>
               </tr> 
        

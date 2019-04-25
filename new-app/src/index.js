@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import App from './App';    
 import Home from './HomeComponents/Home';
@@ -10,27 +10,7 @@ import Notfound from './WebComponents/Notfound';
 const routing = (
     <Router>
       <div>
-      {/* <ul>
-
-        <li>
-          <NavLink exact activeClassName="active" to="/App">
-            Employee
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink activeClassName="active" to="/Home">
-            Home
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink activeClassName="active" to="/ApplicantMain">
-            Applicant
-          </NavLink>
-        </li>
-        
-      </ul> */}
+      
         <Switch>
           <Route exact path="/App" component={App} />
           <Route path="/Home" component={Home} />

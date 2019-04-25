@@ -40,7 +40,7 @@ export default class extends Component {
                   </Button>
 
                   <Button color='green' onClick={this.handleEdit} inverted>
-                    {this.state.isEdit != true? "Edit":"Save"} 
+                    {this.state.isEdit !== true? "Edit":"Save"} 
                   </Button>
                 </div>      
               </Modal.Actions>
