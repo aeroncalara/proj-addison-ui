@@ -15,7 +15,7 @@ export default class AddEmployeeButton extends Component {
     return (
         <div className="AddButton" >
            
-            <Modal trigger={<Button className="ui labeled icon button positive " onClick={this.handleOpen}>
+            <Modal trigger={<Button className="ui labeled icon button positi.ve " onClick={this.handleOpen}>
             <i className="plus icon"></i>
             Add New Employee
             </Button>}

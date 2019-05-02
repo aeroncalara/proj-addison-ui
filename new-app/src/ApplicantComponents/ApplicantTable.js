@@ -59,12 +59,6 @@ class EmployeeTable extends Component {
     this.setState({ Employees: Employee_variable.data.data.getAllEmployees });
   }
   render() {
-
-    let sample_array = this.state.Employees;
-    let Employee_rows = sample_array.map(Employee => {
-      return {
-      }
-    })
     const Employees = this.state.Employees;
     console.log(Employees);
     
@@ -107,7 +101,7 @@ class EmployeeTable extends Component {
            </tbody>
            <tfoot>
           <tr>
-          <th colSpan="5">
+          {/* <th colSpan="5">
           <div className="EmployeePagination">
             <div className="ui right floated pagination menu ">
               <a className="icon item">
@@ -121,7 +115,7 @@ class EmployeeTable extends Component {
               </a>
             </div>
           </div>
-          </th>
+          </th> */}
         </tr></tfoot>
         </table>
         

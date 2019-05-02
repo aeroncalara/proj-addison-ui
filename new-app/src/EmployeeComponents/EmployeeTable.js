@@ -63,19 +63,18 @@ class EmployeeTable extends Component {
     const employees = this.state.employees;
     console.log(employees);
     
-    let employeeTable = employees.map(employee => {
+    let employeeTable = employees.map((employee, index) => {
       return (
 
         
-              <tr key={employee._id}>
-              <td data-label="Name">{employee.person.first}</td>
-              <td data-label="Age">{employee.person.middle}</td>
-              <td data-label="Job">{employee.person.last}</td>
-              <td data-label="Job">
-            
-              <ViewEmployee Employee={employee}/>
-              <DeleteEmployee Employee={employee} />
-              </td>
+              <tr key={index}>
+                <td data-label="Name">{employee.person.first}</td>
+                <td data-label="Age">{employee.person.middle}</td>
+                <td data-label="Job">{employee.person.last}</td>
+                <td data-label="Job">
+                  <ViewEmployee Employee={employee}/>
+                  <DeleteEmployee Employee={employee} />
+                </td>
               </tr> 
        
          
@@ -99,7 +98,7 @@ class EmployeeTable extends Component {
           
            </tbody>
            <tfoot>
-          <tr>
+          {/* <tr>
           <th colSpan="5">
           <div className="EmployeePagination">
             <div className="ui right floated pagination menu ">
@@ -115,7 +114,8 @@ class EmployeeTable extends Component {
             </div>
           </div>
           </th>
-        </tr></tfoot>
+        </tr> */}
+        </tfoot>
         </table>
         
       </div>        

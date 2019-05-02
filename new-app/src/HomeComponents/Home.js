@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeComponents/HomeHeader';
-import Header from '../WebComponents/Header';
+import HeaderSideBar from '../WebComponents/HeaderSideBar';
 
 
 
@@ -9,7 +9,7 @@ class Home extends Component {
 
     return (
       <div className="App">
-        <Header />
+        <HeaderSideBar />
         <HomeHeader />
         
       </div>        

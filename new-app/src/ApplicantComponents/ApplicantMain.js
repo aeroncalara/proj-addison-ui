@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../WebComponents/Header';
+import HeaderSideBar from '../WebComponents/HeaderSideBar';
 import AddApplicantButton from '../ApplicantComponents/AddApplicantButton';
 import Searchbar from '../ApplicantComponents/Searchbar';
 import ApplicantHeader from '../ApplicantComponents/ApplicantHeader';
@@ -12,7 +12,7 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Header />
+          {/* <HeaderSideBar /> */}
           <Searchbar />
           <ApplicantHeader />
           <AddApplicantButton />

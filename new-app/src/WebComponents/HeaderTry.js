@@ -1,47 +1,36 @@
 import React, { Component } from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
-import './HeaderTry.css';
 
-export default class MenuExampleSecondaryPointing extends Component {
-  state = { activeItem: 'home' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
+export default class HeaderTry extends Component {
   render() {
-    const { activeItem } = this.state
-
     return (
-      <div className = "App-header">
-        <Menu pointing secondary>
-        <Menu.Menu position='right'>
-          <Menu.Item
-            name='home'
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
-            onClick={this.handleItemClick}
-          />
-          
-          <Menu.Item
-            name='friends'
-            active={activeItem === 'friends'}
-            onClick={this.handleItemClick}
-          />
-         
-            <Menu.Item
-              name='logout'
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu>
+      <div>
+        <body>
+  <div class="ui sidebar inverted vertical menu">
+    <a class="item">
+      1
+    </a>
+    <a class="item">
+      2
+    </a>
+    <a class="item">
+      3
+    </a>
+  </div>
+  <div class="pusher">
+        {/* sitecontent */}
 
-        {/* <Segment>
-          <img src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-        </Segment> */}
+
+  </div>
+</body>
+
+
+
+
+<script>
+    $('.ui.sidebar')
+      .sidebar('toggle')
+    ;
+  </script>
       </div>
     )
   }

@@ -1,32 +1,36 @@
 
-import React from 'react';
-import Header from './WebComponents/Header';
-import Searchbar from './EmployeeComponents/Searchbar';
-import EmployeeHeader from './EmployeeComponents/EmployeeHeader';
-import EmployeeTable from './EmployeeComponents/EmployeeTable';
-import AddEmployeeButton from './EmployeeComponents/AddEmployeeButton';
-import HeaderTry from './WebComponents/HeaderTry';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import './index.css';
+import EmployeeMain from './EmployeeComponents/EmployeeMain';    
+import Home from './HomeComponents/Home';
+import ApplicantMain from './ApplicantComponents/ApplicantMain'
+import Notfound from './WebComponents/Notfound';
+import HomeLandingPage from './HomeComponents/HomeLandingPage'
+import HeaderSideBar from './WebComponents/HeaderSideBar'
+import { NavLink } from 'react-router-dom'
 
 
-class App extends React.Component {
-
- 
+export default class App extends Component {
 
   render() {
 
     return (
-      <div className="App">
-       <Header />
-        
-          <Searchbar />
-          <EmployeeHeader />
-          <AddEmployeeButton />
-          <EmployeeTable />
-      s
-
-      </div>        
+      <Router>
+      <HomeLandingPage>
+        <HeaderSideBar />
+       
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/EmployeeMain" component={EmployeeMain} />
+            <Route path="/ApplicantMain" component={ApplicantMain} />
+            <Route component={Notfound} />
+        </Switch>  
+      </HomeLandingPage>
+    </Router>
     );
   }
 }
 
-export default App;
+
