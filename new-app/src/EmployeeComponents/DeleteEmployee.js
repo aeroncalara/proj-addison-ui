@@ -18,8 +18,9 @@ export default class extends Component {
         trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic size='small'
-      >
+        basic size='small'>
+
+        
         <Header icon='frown outline' content='Archive Employee:' />
         <Modal.Content>
           <h3>Are you sure you want to Archive {this.props.Employee.person.first} {this.props.Employee.person.last}?</h3>

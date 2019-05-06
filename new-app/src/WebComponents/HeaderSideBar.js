@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import './Header.css';
-import EmployeeTable from '../EmployeeComponents/EmployeeTable';
-import { NavLink} from 'react-router-dom'
+// import EmployeeTable from '../EmployeeComponents/EmployeeTable';
+import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
+import ApplicantMain from '../ApplicantComponents/ApplicantMain';
+import NotFound from '../WebComponents/Notfound';
 import {
 
-  Dropdown,
+  
   Image,
   Header,
-  Button,
-  Input,
   Icon,
   Menu,
   Segment,
@@ -25,28 +25,42 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
     direction={direction}
     icon='labeled'
     inverted
+    
     vertical
     visible={visible}
-    width='thin'
-  >
-    <Menu.Item as='a'>
-      
-    <NavLink activeClassName="active" to="/">
-                         Home
-                   </NavLink>
-    </Menu.Item>
     
-    <Menu.Item as='a'>
+    width='thin'
+    // onClick={this.handleAnimationChange('true')}
+  >
+
+ 
+   
+<NavLink activeClassName="active" to="/">
+    <Menu.Item>
+     
+          Home
+   
+
+    </Menu.Item>
+    </NavLink>
+
+
     <NavLink exact activeClassName="active" to="/EmployeeMain">
+    <Menu.Item>
+    
                           Employee
-                   </NavLink>
+                  
     </Menu.Item>
-    <Menu.Item as='a'>
-      
+    </NavLink>
+
     <NavLink activeClassName="active" to="/ApplicantMain">
+    <Menu.Item>
+      
+    
                          Hiring
-                  </NavLink>
+                
     </Menu.Item>
+    </NavLink>
   </Sidebar>
 )
 
@@ -70,16 +84,21 @@ export default class HeaderSideBar extends Component {
 
   handleDirectionChange = direction => () => this.setState({ direction, visible: false })
 
+ 
+
+
   render() {
     const { animation, dimmed, direction, visible } = this.state
     const vertical = direction === 'bottom' || direction === 'top'
 
     return (
       <div>
-       
+
+
         <Menu inverted style={{height:50}}>
 
-        <Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')} >
+        <Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')}
+         >
         <Icon name='bars' />
           RP INNOTECH
         </Menu.Item>
@@ -89,10 +108,10 @@ export default class HeaderSideBar extends Component {
                            <div className="ui fluid category search">
                                <div className="ui icon input">
                                    <input className="prompt" type="text" placeholder="Search..."></input>
-                                   <i class="search icon"></i>
+                                   <i className="search icon"></i>
                                  </div>
                          </div>
-                             <div class="results"></div>
+                             <div className="results"></div>
                          </div>
           </Menu.Item>
 
@@ -121,22 +140,31 @@ export default class HeaderSideBar extends Component {
 
 
      
-  
 
+
+        
         <Sidebar.Pushable as={Segment} style={{height: 1000 , bottom:18}}>
+
           {vertical ? null : (
             <VerticalSidebar animation={animation} direction={direction} visible={visible} />
           )}
 
-          <Sidebar.Pusher dimmed={visible}>
-            <Segment basic>
-               
-             <EmployeeMain />
-            
 
+          <Sidebar.Pusher dimmed={visible} >
+            <Segment basic>
+
+            <Switch>
+              <Route exact path="/" component={EmployeeMain} />
+              <Route path="/EmployeeMain" component={EmployeeMain} />
+              <Route path="/ApplicantMain" component={ApplicantMain} />
+              <Route component={NotFound} />
+            </Switch>
+            
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
+
+          
       </div>
     )
   }

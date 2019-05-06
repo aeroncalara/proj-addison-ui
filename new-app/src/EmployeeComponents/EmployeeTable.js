@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import './EmployeeTable.css';
+// import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
 
 import axios from 'axios';        
 
@@ -83,7 +84,31 @@ class EmployeeTable extends Component {
     //here
 
     return (
-      <div className="EmployeeTable">
+      
+      
+
+      <div className="EmployeeTables">
+
+      {/* <div className='head'>
+          
+          <div className ='Title'>
+              <Header icon='users' content='Employee' />
+          </div>
+
+          <div className="find">
+              <div className="ui right aligned category search">
+                   <div className="ui icon input">
+                   <input className="prompt" type="text" placeholder="Search..." />
+                   <i classn="search icon"></i>
+                   </div>
+                   <div classn="results"></div>
+              </div>
+          </div>
+
+
+      </div> */}
+
+
 
         <table className="ui celled table">
         <thead>
@@ -97,8 +122,8 @@ class EmployeeTable extends Component {
            {employeeTable}
           
            </tbody>
-           <tfoot>
-          {/* <tr>
+           {/* <tfoot>
+          <tr>
           <th colSpan="5">
           <div className="EmployeePagination">
             <div className="ui right floated pagination menu ">
@@ -114,8 +139,8 @@ class EmployeeTable extends Component {
             </div>
           </div>
           </th>
-        </tr> */}
-        </tfoot>
+        </tr>
+        </tfoot> */}
         </table>
         
       </div>        
