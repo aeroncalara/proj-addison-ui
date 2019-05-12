@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import './Header.css';
-// import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import ApplicantMain from '../ApplicantComponents/ApplicantMain';
 import NotFound from '../WebComponents/Notfound';
+import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
+import { Dropdown, List } from 'semantic-ui-react'
+
 import {
 
   
@@ -17,6 +19,24 @@ import {
   Sidebar,
 } from 'semantic-ui-react'
 
+const trigger = (
+  <span>
+    {/* <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' circular /> */}
+    <Header as='h4' image>
+                  <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' circular />
+                  <Header.Content>
+                    Lena
+                    <Header.Subheader>Human Resources</Header.Subheader>
+                  </Header.Content>
+                </Header>
+  </span>
+)
+
+const options = [
+  { key: 'user', text: 'Account', icon: 'user' },
+  { key: 'settings', text: 'Settings', icon: 'settings' },
+  { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+]
 
 const VerticalSidebar = ({ animation, direction, visible }) => (
   <Sidebar
@@ -24,43 +44,59 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
     animation={animation}
     direction={direction}
     icon='labeled'
-    inverted
-    
+    inverted    
     vertical
+
     visible={visible}
-    
     width='thin'
-    // onClick={this.handleAnimationChange('true')}
   >
 
  
    
-<NavLink activeClassName="active" to="/">
-    <Menu.Item>
-     
-          Home
+
    
 
-    </Menu.Item>
-    </NavLink>
 
 
-    <NavLink exact activeClassName="active" to="/EmployeeMain">
-    <Menu.Item>
-    
-                          Employee
-                  
-    </Menu.Item>
-    </NavLink>
 
-    <NavLink activeClassName="active" to="/ApplicantMain">
+    <List animated verticalAlign='middle' selection verticalAlign='middle'>
+                  <List.Item>
+                      
+                    <NavLink activeClassName="active" to="/">
+                      <Menu.Item>
+                      
+                            Home
+                            
+                      </Menu.Item>
+                    </NavLink>
+
+                  </List.Item>
+                               
+                  <List.Item>
+                    <NavLink exact activeClassName="active" to="/EmployeeMain">
+                    <Menu.Item>
+                    
+                                          Employee
+                                  
+                    </Menu.Item>
+                    </NavLink>
+                  </List.Item>
+
+                  <List.Item>
+                      <NavLink activeClassName="active" to="/ApplicantMain">
     <Menu.Item>
       
     
                          Hiring
                 
     </Menu.Item>
-    </NavLink>
+                  </NavLink>
+                  </List.Item>
+                   
+    
+                </List>
+  
+               
   </Sidebar>
 )
 
@@ -75,6 +111,7 @@ export default class HeaderSideBar extends Component {
     direction: 'left',
     dimmed: false,
     visible: false,
+   
   }
   
   handleAnimationChange = animation => () =>
@@ -84,11 +121,11 @@ export default class HeaderSideBar extends Component {
 
   handleDirectionChange = direction => () => this.setState({ direction, visible: false })
 
- 
+  handleDirectionHide = direction => () => this.setState({ direction, visible: false })
 
 
   render() {
-    const { animation, dimmed, direction, visible } = this.state
+    const { animation, direction, visible } = this.state
     const vertical = direction === 'bottom' || direction === 'top'
 
     return (
@@ -123,16 +160,10 @@ export default class HeaderSideBar extends Component {
           </Menu.Item>
 
 
-          <Menu.Item  position='right' style={{right:100 }}>
+          <Menu.Item  position='right' style={{right:60 }}>
          
-          <Header as='h4' image>
-                  <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-                  <Header.Content>
-                    Lena
-                    <Header.Subheader>Human Resources</Header.Subheader>
-                  </Header.Content>
-                </Header>
-               
+        
+              <Dropdown trigger={trigger} options={options} pointing='top left' icon={null} /> 
           </Menu.Item>
        
 
@@ -143,7 +174,7 @@ export default class HeaderSideBar extends Component {
 
 
         
-        <Sidebar.Pushable as={Segment} style={{height: 1000 , bottom:18}}>
+        <Sidebar.Pushable as={Segment} style={{height: 620 , bottom:18}}  >
 
           {vertical ? null : (
             <VerticalSidebar animation={animation} direction={direction} visible={visible} />
@@ -157,6 +188,7 @@ export default class HeaderSideBar extends Component {
               <Route exact path="/" component={EmployeeMain} />
               <Route path="/EmployeeMain" component={EmployeeMain} />
               <Route path="/ApplicantMain" component={ApplicantMain} />
+              <Route path="/EmployeeDetails" component={EmployeeDetails}/>
               <Route component={NotFound} />
             </Switch>
             

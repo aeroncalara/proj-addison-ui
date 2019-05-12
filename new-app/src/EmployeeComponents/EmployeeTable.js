@@ -2,10 +2,12 @@
 import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
+import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './EmployeeTable.css';
 // import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
 
 import axios from 'axios';        
+import { Button } from 'semantic-ui-react';
 
 
 let my_query = 
@@ -73,14 +75,17 @@ class EmployeeTable extends Component {
                 <td data-label="Age">{employee.person.middle}</td>
                 <td data-label="Job">{employee.person.last}</td>
                 <td data-label="Job">
+                
                   <ViewEmployee Employee={employee}/>
+               
                   <DeleteEmployee Employee={employee} />
                 </td>
               </tr> 
        
          
       )
-    })
+    }
+    )
     //here
 
     return (

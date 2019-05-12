@@ -15,10 +15,10 @@ export default class AddApplicantButton extends Component {
     return (
         <div className="AddButton" >
            
-            <Modal trigger={<Button className="ui labeled icon button positive " onClick={this.handleOpen}>
+           <Modal trigger={<a onClick={this.handleOpen}>
             <i className="plus icon"></i>
             Add New Applicant
-            </Button>}
+            </a>}
             open={this.state.modalOpen}
             onClose={this.handleClose}
             // basic size='small'

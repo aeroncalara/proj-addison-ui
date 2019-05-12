@@ -21,6 +21,7 @@ export default class ViewEmployeeForm extends Component {
                   <Form.Input label='Middle name' placeholder='Middle Name' readOnly={this.props.isEdit!==true?"readonly":""} value = {this.props.Employee.person.middle}/>
                   <Form.Input label='Last Name' placeholder='Last Name' readOnly={this.props.isEdit!==true?"readonly":""} value = {this.props.Employee.person.last}/>
                 </Form.Group>
+              
               <hr></hr>
 
               <span>Contact Information</span>
