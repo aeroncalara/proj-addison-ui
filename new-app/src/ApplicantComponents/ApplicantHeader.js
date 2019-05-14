@@ -1,7 +1,67 @@
+
+
 import React, { Component } from 'react'
 import './ApplicantHeader.css';
-import { Menu ,Header } from 'semantic-ui-react'
+import { Menu ,Header,Tab, Form,List, Grid,Image,Button  } from 'semantic-ui-react'
 import AddApplicantButton from '../ApplicantComponents/AddApplicantButton';
+import ApplicantTable from '../ApplicantComponents/ApplicantTable';
+import ApplicantGrid from '../ApplicantComponents/ApplicantGrid';
+import { NavLink, Route} from 'react-router-dom'
+
+// import ViewApplicant from '../ApplicantComponents/ViewApplicant';
+
+
+
+
+const panes = [
+    { 
+      menuItem: { key: 'users', icon: 'list', content: 'List' },
+    render: () => <Tab.Pane> 
+
+    <Form>
+    {/* <div className='EmpDetails'>
+          
+              <div className ='desc'>
+              <i className="user icon"/>
+                      List View
+              </div>
+    </div>
+
+    <div>
+      <hr className="hrtable" />
+    </div>   */}
+      <ApplicantTable/>
+    </Form>
+    </Tab.Pane> },
+
+
+  {menuItem: { key: 'users', icon: 'th large', content: 'Grid' },
+  render: () => <Tab.Pane>
+
+    <Form>
+        {/* <div className='EmpDetails'>
+              
+                  <div className ='desc'>
+                  <i className="phone square icon"/>
+                          Grid View
+                  </div>
+        </div> */}
+
+        {/* <div>
+          <hr className="hrtable" />
+        </div>   */}
+      <ApplicantGrid/>
+        </Form>
+      </Tab.Pane> },
+
+
+ 
+
+
+
+]
+
+
 
 export default class ApplicantHeader extends Component {
   state = { activeItem: 'home' }
@@ -19,32 +79,23 @@ export default class ApplicantHeader extends Component {
     const { activeItem } = this.state
     return (
       <div>
-        <div className = "ApplicantHeader">
+        {/* <div className = "ApplicantHeader">
           <Menu pointing secondary > 
 
           <Menu.Item name='Applicant' active={activeItem === 'Applicant'} onClick={this.handleItemClick} />
 
           <Menu.Item
-            name='Departments'
-            active={activeItem === 'Departments'}
+            name='Documents'
+            active={activeItem === 'Documents'}
             onClick={this.handleItemClick}
           />
-          <Menu.Item
-            name='Flag Applicant'
-            active={activeItem === 'Flag Applicant'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Menu position='right'>
-            <Menu.Item
-              name='More' 
-              active={activeItem === 'More'}
-              onClick={this.handleItemClick}
-              icon='caret down'
-            />
-          </Menu.Menu>
+          
         </Menu>
-        </div>
+        </div> */}
 
+
+
+{/* Grid */}
           <div className='head'>
           
               <div className ='Title'>
@@ -52,7 +103,13 @@ export default class ApplicantHeader extends Component {
               </div>
 
               <div className="find">
-                 <AddApplicantButton/>
+              <NavLink exact activeClassName="active" to="/AddEmployeeForm">
+                 <Button color='blue'>
+               <i className="plus icon"></i>
+             Add New Applicant
+            
+                  </Button>
+</NavLink>
               </div>
 
 
@@ -63,14 +120,15 @@ export default class ApplicantHeader extends Component {
           </div>
 
             <div className='tableHeader'>
-            
+
+
                 <div className ='TableTitle'>
                     <p>
                     Applicant Table
                     </p>
                  
                 </div>
-                <div className='View'> 
+                {/* <div className='View'> 
                       <div className="ui basic icon buttons">
                         <button className="ui button">
                           <i className="list icon"></i>
@@ -81,10 +139,8 @@ export default class ApplicantHeader extends Component {
                         </button>
                       
                       </div>
-                    </div>
+                    </div> */}
                 <div className="Button">
-                 
-
                   <div className="ui category search">
                   <div className="ui icon input">
                     <input className="prompt" type="text" placeholder="Search..." />
@@ -94,11 +150,17 @@ export default class ApplicantHeader extends Component {
                     </div>
 
 
+
+                
+
                 </div>
 
              </div>
           
-           
+             <div className='TableTabs'>    
+                <Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
+            </div>
+
 
 
       </div>

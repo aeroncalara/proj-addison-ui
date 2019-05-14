@@ -1,11 +1,14 @@
 .ApplicantHeader {
    
-  min-height: 5vh;
-  font-size: calc(20px + 2vmin);
+ 
   color: #00cca3;
-  margin-right: 52%;
   margin-top: -10px;
-  /* margin-bottom: 11px; */
+   justify-content: center;
+     flex-direction: column;
+     display: flex;
+     width: 85%;
+     align-items: left;
+     margin-left: 8%;
 }
 
 
@@ -46,7 +49,7 @@
 
 hr { 
   
-  width: 83%;
+  width: 85%;
   margin-top: -1px;
   margin-bottom: 3%;
   border-width: 1px;

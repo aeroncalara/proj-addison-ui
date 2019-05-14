@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 // import ViewEmployeeForm from './ViewEmployeeForm';
 // import TimeInOut from '../TimeInOutComponents/TimeInOut';
 // import { NavLink} from 'react-router-dom'
-import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup } from 'semantic-ui-react'
-import './EmployeeDetails.css';
+import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label } from 'semantic-ui-react'
+import './ApplicantDetails.css';
 
 
 // Country Dropdown
@@ -184,12 +184,12 @@ const panes = [
 </Tab.Pane> },
 
 
-  { menuItem: 'Position', render: () => <Tab.Pane>
+  { menuItem: 'Documents', render: () => <Tab.Pane>
       <Form>
         <div className='EmpDetails'>    
           <div className ='desc'>
           <i className="users icon"/>
-                  Position
+                  Applicant's Documents
           </div>
         </div>
 
@@ -214,72 +214,18 @@ const panes = [
           </Form.Group></List.Item>
       </List></Form>
       </Tab.Pane> },
-
-  { menuItem: 'Benefits', render: () => <Tab.Pane>
-      <Form>
-    <div className='EmpDetails'>
-          
-              <div className ='desc'>
-              <i className="user icon"/>
-                      Personal
-              </div>
-    </div>
-
-    <div>
-      <hr className="hrName" />
-    </div>  
-    
-     <List>
-    <List.Item>
-    <Form.Group unstackable widths={1}>
-                  <Form.Input label='TIN #' placeholder='TIN #'/>
-    </Form.Group>
-    </List.Item>
-    
-    <List.Item>
-    <Form.Group unstackable widths={1}>
-                  <Form.Input label='SSS #' placeholder='SSS#'/>
-    </Form.Group>
-    </List.Item>
-
-    <List.Item>
-    <Form.Group unstackable widths={1}>
-                  <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #'/>
-    </Form.Group>
-    </List.Item>
-
-    <List.Item>
-    <Form.Group unstackable widths={1}>
-                  <Form.Input label='HDMF #' placeholder='HDMF #'/>
-    </Form.Group>
-    </List.Item>
-
-</List></Form>
-      </Tab.Pane> },
 ]
 
 
 export default class EmployeeDetails extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      visible: true
-    }
-  }
-  // state = { activeItem: 'home' }
+  state = { activeItem: 'home' }
 
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 
-  // state = { activeItem: 'bio'}
+  state = { activeItem: 'bio' }
 
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  // Button switch
-  // state = { visible: false }
-
-  // show = () => this.setState({ visible: true })
-  // hide = () => this.setState({ visible: false })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   
 
@@ -297,57 +243,43 @@ export default class EmployeeDetails extends Component {
           </div>
 
           {/* eMPLoYEEname */}
-          <div className='EmpName'>
+          <div className='AppName'>
          
             <Header as='h2'>
               <Header.Content>
-                        Dave the Barbados
-                          <Header.Subheader>
-                              Human Resources
-                          </Header.Subheader>
+             David Smith
               </Header.Content>
             </Header> 
           </div>
 
           {/* EmployeeOptions */}
-             <div className="Edit">
+            <div className="Edit">
                 <List horizontal>
                 <List.Item>
-                {this.state.visible &&(
                 <div className="Options">
                   <List divided horizontal>
                     <List.Item>
-                  
-                      <Popup
-                            trigger={
-                              <Dropdown className="mobile icon" text="Request a Change" />
-                            }
-                            content={<Button color='green'icon="edit" content='Edit'onClick={() => this.setState({visible: !this.state.visible})} />}
-                            on='click'
-                            position='bottom center'
-                          />
+                      <Dropdown floating text="Request a Change" pointing='top'>
+                        <Dropdown.Menu>
+                          <Dropdown.Item icon="edit" text="Edit" />
+                        </Dropdown.Menu>
+                      </Dropdown>
+
                     </List.Item>
 
                     <List.Item>
-                  
-                      <Popup
-                            trigger={
-                              <Dropdown icon="cog icon" />
-                            }
-                            content={<Button color='red'icon="close" content='Terminate' />}
-                            on='click'
-                            position='bottom right'
-                          />
+                    <Dropdown icon="cog"  pointing='top right'>
+                        <Dropdown.Menu >
+                          <Dropdown.Item text="Terminate" />
+                        </Dropdown.Menu>
+                      </Dropdown>
+
                     </List.Item>
                   </List>
                 </div>
-                )}
                 </List.Item>
-
-
                 <List.Item>
-           
-                {this.state.visible &&(
+                  {/* Previous and next employee button */}
                   <div className="PrevNxt">
                   <List horizontal>
 
@@ -363,49 +295,65 @@ export default class EmployeeDetails extends Component {
                       Prev
                       </Label>
                       </List.Item>
+
                       <List.Item>
-                          <Label as='a'>
-                          Next
-                          <Icon name='arrow right icon' />
-                            
-                          </Label>
-                          </List.Item>
-                   
+                      <Label as='a'>
+                      Next
+                      <Icon name='arrow right icon' />
+                        
+                      </Label>
+                      </List.Item>
                     </List>
-                  </div> 
-                )}
+                  </div>
+
+              {/* <List divided horizontal>
+
+                   <List.Item>
+                    <i className="users icon"/>
+                            -3 of 100
+                  </List.Item>
+
                   <List.Item>
-                  {!this.state.visible &&
-                      <div className='Save'>
-            <Button.Group>
-            <Button content='Cancel'onClick={() => this.setState({visible: !this.state.visible})} />
-                <Button.Or />
-              <Button positive>Save</Button>
-            </Button.Group>
-          </div>
-                  }
-</List.Item>
+                    <i className="arrow left icon"/>
+                            Prev
+                  </List.Item>
+
+                  <List.Item>
+                  Next
+                    <i className="arrow right icon"/>
+                            
+                  </List.Item>
+                </List> */}
+
+
+                {/* <List divided horizontal>
+                  <List.Item>
+                    <Button animated>
+                        <Button.Content visible>
+                            Previous
+                        </Button.Content>
+
+                        <Button.Content hidden>
+                            <Icon name='arrow left' />
+                        </Button.Content>
+                    </Button>
+                  </List.Item>
+
+                  <List.Item>
+                  <Button animated>
+                  <Button.Content visible>Next</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='arrow right' />
+                    </Button.Content>
+                  </Button>
+                  </List.Item>
+                  </List> */}
+
 </List.Item>
 
                   </List>
             </div>
-               {/* {
-                        this.state.foo && (
-                          <List.Item>
-                           <Label as='a'>
-                          Next
-                          <Icon name='arrow right icon' />
-                            
-                          </Label>
-                          </List.Item>
-                        )
-                      } */}
-{/* 
-            
 
-                        </List.Item> */}
-         
-         
         </div>
 
 
@@ -434,6 +382,10 @@ export default class EmployeeDetails extends Component {
                               Dave@semantic-ui.com
                         </a>}
                       />
+                      <List.Item>
+                        <i className="map marker alternate icon"/>
+                            Sydney Australia
+                      </List.Item>
                   </List>
 
                   {/* Line */}
@@ -442,13 +394,11 @@ export default class EmployeeDetails extends Component {
                     {/* Address in the left */}
                     <List animated verticalAlign='middle' selection verticalAlign='middle'>
                       <List.Item>
-                        <i className="group icon"/>
-                          HR
+                        <b>
+                         Applying For:
+                         </b>
                       </List.Item>
-                      <List.Item>
-                        <i className="map marker alternate icon"/>
-                            Sydney Australia
-                      </List.Item>
+                      
                       <List.Item>
                       <i className="address card icon"/>
                           HR manager

@@ -4,10 +4,10 @@ import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './EmployeeTable.css';
+import { Dropdown, List } from 'semantic-ui-react'
 // import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
 
 import axios from 'axios';        
-import { Button } from 'semantic-ui-react';
 
 
 let my_query = 
@@ -75,10 +75,23 @@ class EmployeeTable extends Component {
                 <td data-label="Age">{employee.person.middle}</td>
                 <td data-label="Job">{employee.person.last}</td>
                 <td data-label="Job">
-                
+                <List divided horizontal>
+                <List.Item>
+                  
+                  <List.Content>
                   <ViewEmployee Employee={employee}/>
-               
-                  <DeleteEmployee Employee={employee} />
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                 
+                  <List.Content>
+                <DeleteEmployee Employee={employee} />
+                  </List.Content>
+                </List.Item>
+                
+          </List>
+                  
+                 
                 </td>
               </tr> 
        

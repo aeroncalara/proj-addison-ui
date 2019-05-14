@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import { Menu ,Header,Tab, Form,List, Grid,Image,Button  } from 'semantic-ui-react'
+import { Menu ,Header,Tab, Form ,Button, Popup,Input  } from 'semantic-ui-react'
 import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
+import { NavLink, Route} from 'react-router-dom'
 
 // import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 
@@ -112,7 +113,17 @@ export default class EmployeeHeader extends Component {
               </div>
 
               <div className="find">
-                 <AddEmployeeButton/>
+                 {/* <AddEmployeeButton/> */}
+
+                 <NavLink exact activeClassName="active" to="/AddEmployeeForm">
+                 <Button color='blue'>
+               <i className="plus icon"></i>
+             Add New Employee
+            
+                  </Button>
+</NavLink>
+  {/* <Route path="/EmployeeDetails" component={EmployeeDetails } /> */}
+
               </div>
 
 
@@ -144,13 +155,25 @@ export default class EmployeeHeader extends Component {
                       </div>
                     </div> */}
                 <div className="Button">
-                  <div className="ui category search">
+                  {/* <div className="ui category search">
                   <div className="ui icon input">
                     <input className="prompt" type="text" placeholder="Search..." />
                     <i className="search icon"></i>
                      </div>
                       <div className="results"></div>
-                    </div>
+                    </div> */}
+                     <Popup
+        trigger={<div className="ui category search">
+        <div className="ui icon input">
+          <input className="prompt" type="text" placeholder="Search..." />
+          <i className="search icon"></i>
+           </div>
+            <div className="results"></div>
+          </div>}
+        header='Employee Search'
+        content='You may search by Name, Position and Department'
+        on='focus'
+      />
 
 
 

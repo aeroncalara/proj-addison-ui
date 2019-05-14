@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 
 import HIre from '../ApplicantComponents/HIre';
 import './ApplicantTable.css';
-
+import { Dropdown, List } from 'semantic-ui-react'
 import axios from 'axios';   
 import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
@@ -72,10 +72,29 @@ class EmployeeTable extends Component {
               <td data-label="Job">{Employee.person.last}</td>
               <td data-label="Job">
                 
-
-                <HIre />
-                <ViewApplicant Employee={Employee}/>
-                <DeleteApplicant Employee={Employee} />
+              <List divided horizontal>
+                <List.Item>
+                  
+                  <List.Content>
+                  <HIre />
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                 
+                  <List.Content>
+                  <ViewApplicant Employee={Employee}/>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+    
+                  <List.Content>
+                      <DeleteApplicant Employee={Employee} />
+                  </List.Content>
+                </List.Item>
+          </List>
+               
+                
+               
               </td>
               </tr> 
        
@@ -101,7 +120,7 @@ class EmployeeTable extends Component {
            </tbody>
            <tfoot>
           <tr>
-          {/* <th colSpan="5">
+          <th colSpan="5">
           <div className="EmployeePagination">
             <div className="ui right floated pagination menu ">
               <a className="icon item">
@@ -115,7 +134,7 @@ class EmployeeTable extends Component {
               </a>
             </div>
           </div>
-          </th> */}
+          </th>
         </tr></tfoot>
         </table>
         

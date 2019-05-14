@@ -19,7 +19,9 @@ export default class extends Component {
   render() {
     return (
       <Modal
-        trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
+      
+        trigger={<Button icon className="ui button negative " onClick={this.handleOpen}> <Icon name='archive' /></Button>}
+      
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic size='small'

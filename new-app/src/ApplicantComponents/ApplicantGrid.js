@@ -1,5 +1,5 @@
- import React, { Component } from 'react'
-import './EmployeeHeader.css';
+import React, { Component } from 'react'
+import './ApplicantHeader.css';
 import { Menu ,Header,Tab, Form,List, Grid,Image,Button  } from 'semantic-ui-react'
 import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';

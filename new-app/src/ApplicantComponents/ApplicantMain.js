@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
          
           <ApplicantHeader />
-          <ApplicantTable />          
+          {/* <ApplicantTable />           */}
       </div>        
     );
   }

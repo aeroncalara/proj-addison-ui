@@ -4,7 +4,7 @@ import ViewEmployeeForm from '../EmployeeComponents/ViewEmployeeForm';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import { NavLink, Route} from 'react-router-dom'
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
-
+import { Popup } from 'semantic-ui-react'
 
 export default class extends Component {
 
@@ -28,13 +28,18 @@ export default class extends Component {
       <div>
 
 {/* <Button className="ui button positive " onClick={this.handleOpen}>View</Button> */}
-
+   
 <NavLink exact activeClassName="active" to="/EmployeeDetails">
-             
-                            View
-                                  
-             </NavLink>
-  <Route path="/EmployeeDetails" component={EmployeeDetails} />
+<Popup
+          trigger={<button color='teal' positive class="ui circular icon button">
+          <i aria-hidden="true" class="eye icon"></i>
+        </button>}
+          content='View Employee Details'
+          position='top center'
+        />
+      
+</NavLink>
+  <Route path="/EmployeeDetails" component={EmployeeDetails } />
 
       </div>    
       

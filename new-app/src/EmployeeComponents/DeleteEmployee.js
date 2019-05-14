@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal,Popup } from 'semantic-ui-react'
 
 
 
@@ -15,7 +15,11 @@ export default class extends Component {
   render() {
     return (
       <Modal
-        trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
+        trigger={ <Popup
+          trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
+          content='Archive Employee'
+          position='top center'
+        />}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic size='small'>

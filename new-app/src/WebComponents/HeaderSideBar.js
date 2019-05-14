@@ -4,8 +4,11 @@ import './Header.css';
 import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import ApplicantMain from '../ApplicantComponents/ApplicantMain';
+import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
 import NotFound from '../WebComponents/Notfound';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
+import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
+import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
 import { Dropdown, List } from 'semantic-ui-react'
 
 import {
@@ -187,8 +190,12 @@ export default class HeaderSideBar extends Component {
             <Switch>
               <Route exact path="/" component={EmployeeMain} />
               <Route path="/EmployeeMain" component={EmployeeMain} />
-              <Route path="/ApplicantMain" component={ApplicantMain} />
               <Route path="/EmployeeDetails" component={EmployeeDetails}/>
+              <Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
+
+              <Route path="/ApplicantMain" component={ApplicantMain} />
+              <Route path="/AddApplicantForm" component={AddApplicantForm}/>
+              <Route path="/ApplicantDetails" component={ApplicantDetails}/>
               <Route component={NotFound} />
             </Switch>
             
