@@ -103,7 +103,7 @@ export default class ApplicantHeader extends Component {
               </div>
 
               <div className="find">
-              <NavLink exact activeClassName="active" to="/AddEmployeeForm">
+              <NavLink exact activeClassName="active" to="/AddApplicantForm">
                  <Button color='blue'>
                <i className="plus icon"></i>
              Add New Applicant

@@ -16,18 +16,20 @@ export default class extends Component {
     return (
       <Modal
         trigger={ <Popup
-          trigger={<Button className="ui button negative " onClick={this.handleOpen}>Archive</Button>}
+          trigger={<Button className="ui button negative " onClick={this.handleOpen}>Terminate</Button>}
           content='Archive Employee'
           position='top center'
         />}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic size='small'>
+        >
 
         
         <Header icon='frown outline' content='Archive Employee:' />
         <Modal.Content>
-          <h3>Are you sure you want to Archive {this.props.Employee.person.first} {this.props.Employee.person.last}?</h3>
+          <h3>Are you sure you want to Archive ?</h3>
+
+          {/* {this.props.Employee.person.first} {this.props.Employee.person.last} */}
         </Modal.Content>
         
         <Modal.Actions>

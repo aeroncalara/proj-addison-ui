@@ -118,10 +118,10 @@ export default class EmployeeHeader extends Component {
                  <NavLink exact activeClassName="active" to="/AddEmployeeForm">
                  <Button color='blue'>
                <i className="plus icon"></i>
-             Add New Employee
+                  Add New Employee
             
                   </Button>
-</NavLink>
+                  </NavLink>
   {/* <Route path="/EmployeeDetails" component={EmployeeDetails } /> */}
 
               </div>

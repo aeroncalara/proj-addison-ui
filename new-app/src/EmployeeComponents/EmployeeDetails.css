@@ -61,14 +61,13 @@
     font-size: 10%;
     text-align: center;
   } 
-  .Save {
-    
-    margin-top: 2%;
-    margin-right: 1%; 
-    width: 20%;
-    height: 1%;
-    float: left;
-  
+  .deSave {
+    z-index: 1;
+    border-block-end-color: black;
+    margin-top: 4%;
+    margin-right: 500px; 
+    width: 5%;
+    height: 40%;
   } 
 
  

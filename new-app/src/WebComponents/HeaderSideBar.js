@@ -27,11 +27,18 @@ const trigger = (
     {/* <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' circular /> */}
     <Header as='h4' image>
                   <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' circular />
+             
                   <Header.Content>
-                    Lena
-                    <Header.Subheader>Human Resources</Header.Subheader>
-                  </Header.Content>
-                </Header>
+                  	<List>
+							        <List.Item>
+                        Lena
+                      </List.Item>
+                      <List.Item>
+							          Human Resources
+							        </List.Item>
+                		</List>
+                    </Header.Content>
+        </Header>
   </span>
 )
 
@@ -53,14 +60,6 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
     visible={visible}
     width='thin'
   >
-
- 
-   
-
-   
-
-
-
 
     <List animated verticalAlign='middle' selection verticalAlign='middle'>
                   <List.Item>
@@ -163,7 +162,7 @@ export default class HeaderSideBar extends Component {
           </Menu.Item>
 
 
-          <Menu.Item  position='right' style={{right:60 }}>
+          <Menu.Item  position='right' style={{right:95 }}>
          
         
               <Dropdown trigger={trigger} options={options} pointing='top left' icon={null} /> 
