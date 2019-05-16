@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import { Menu ,Header,Tab, Form ,Button, Popup,Input  } from 'semantic-ui-react'
+import { List,Tab, Form ,Button, Popup,Input  } from 'semantic-ui-react'
 import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
@@ -77,7 +77,7 @@ export default class EmployeeHeader extends Component {
     const { activeItem } = this.state
     return (
       <div>
-        <div className = "EmployeeHeader">
+        {/* <div className = "EmployeeHeader">
           <Menu pointing secondary > 
 
           <Menu.Item name='Employee' active={activeItem === 'Employee'} onClick={this.handleItemClick} />
@@ -101,18 +101,28 @@ export default class EmployeeHeader extends Component {
             />
           </Menu.Menu>
         </Menu>
-        </div>
+        </div> */}
 
 
 
 {/* Grid */}
-          <div className='head'>
+          <div className='emphead'>
           
-              <div className ='Title'>
-                  <Header icon='users' content='Employee' />
+              <div className ='empTitle'>
+                  {/* <Header icon='users' content='Employee'  /> */}
+
+              <List horizontal size='massive'>
+							<List.Item>
+								<i className="user icon"/>
+								Employee
+							</List.Item>
+							<List.Item>
+								(54)
+							</List.Item>
+						</List>
               </div>
 
-              <div className="find">
+              <div className="findemp">
                  {/* <AddEmployeeButton/> */}
 
                  <NavLink exact activeClassName="active" to="/AddEmployeeForm">

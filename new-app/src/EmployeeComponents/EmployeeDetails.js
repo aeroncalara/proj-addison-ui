@@ -412,7 +412,7 @@ export default class EmployeeDetails extends Component {
                 			<div className="Options">
 								<List divided horizontal>
                     				<List.Item>
-										<Popup
+														<Popup
 											trigger={<Dropdown text="Request a Change" />}
                             				content={<Button color='green'icon="edit" content='Edit'onClick={this.handleEdit} />}
                             				on='click'
@@ -484,8 +484,8 @@ export default class EmployeeDetails extends Component {
                       </Button.Content>
                       </Button>      
                   <Button.Or />
-                      <Button animated positive fluid>
-                        <Button.Content visible onClick={this.handleEdit}>
+                      <Button animated positive fluid onClick={this.handleEdit}>
+                        <Button.Content visible>
                           <Icon name='save' />
                         </Button.Content>
                         <Button.Content hidden>
@@ -493,8 +493,6 @@ export default class EmployeeDetails extends Component {
                         </Button.Content>     
                       </Button>
                   </Button.Group>    
-
-									
          						</div>
 							}
 									<Modal

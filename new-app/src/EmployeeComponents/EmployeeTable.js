@@ -4,7 +4,7 @@ import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './EmployeeTable.css';
-import { Dropdown, List } from 'semantic-ui-react'
+import { Dropdown, List, Image } from 'semantic-ui-react'
 // import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
 
 import axios from 'axios';        
@@ -71,7 +71,16 @@ class EmployeeTable extends Component {
 
         
               <tr key={index}>
-                <td data-label="Name">{employee.person.first}</td>
+                <td data-label="Name"><h4 class="ui image header">
+         <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
+          <div class="content">
+          {employee.person.first}
+            <div class="sub header">
+            Human Resources
+          </div>
+        </div>
+      </h4>
+      </td>
                 <td data-label="Age">{employee.person.middle}</td>
                 <td data-label="Job">{employee.person.last}</td>
                 <td data-label="Job">
@@ -128,11 +137,13 @@ class EmployeeTable extends Component {
 
 
 
-        <table className="ui celled table">
+        <table className="ui teal table celled">
+        
         <thead>
               <tr><th>Name</th>
               <th>Age</th>
               <th>Email Address</th>
+               <th>Email Address</th>
               <th>Actions</th>
           </tr>
           </thead>
@@ -140,7 +151,7 @@ class EmployeeTable extends Component {
            {employeeTable}
           
            </tbody>
-           {/* <tfoot>
+           <tfoot>
           <tr>
           <th colSpan="5">
           <div className="EmployeePagination">
@@ -158,7 +169,7 @@ class EmployeeTable extends Component {
           </div>
           </th>
         </tr>
-        </tfoot> */}
+        </tfoot>
         </table>
         
       </div>        

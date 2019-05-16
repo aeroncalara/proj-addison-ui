@@ -10,7 +10,7 @@
   
   
   
-  .head{
+  .emphead{
       /* background-color: #00cca3; */
       min-height: 10vh;
       display: flex;
@@ -18,26 +18,24 @@
       align-items: center;
       /* justify-content: center; */
  
-      color: #00cca3;
+      /* color: #00cca3; */
      
     }
 
   
-  .Title {
-   
+  .empTitle {
     min-height: 5vh;
     font-size: calc(20px);
-    color: #00cca3;
-    margin-left: 9%;
+    /* color: #00cca3; */
+    margin-left: 8%;
     margin-top: 30px;
     margin-bottom: 1px;
     float: left;
-  
   }
 
-  .find {
-    margin-top: 10px;
-    margin-left: 57%; 
+  .findemp {
+    margin-top: 2%;
+    margin-left: 56%; 
     width: 15%;
     height: 10%;
     float: right;
