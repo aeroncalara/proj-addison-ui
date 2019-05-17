@@ -9,6 +9,7 @@ import NotFound from '../WebComponents/Notfound';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
+import PayRoll from '../PayRoll/PayRoll';
 import { Dropdown, List } from 'semantic-ui-react'
 
 import {
@@ -62,12 +63,24 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
   >
 
     <List animated verticalAlign='middle' selection verticalAlign='middle'>
+                    <List.Item>
+                      
+                      <NavLink activeClassName="active" to="/">
+                        <Menu.Item>
+                        
+                              Home
+                              
+                        </Menu.Item>
+                      </NavLink>
+  
+                    </List.Item>
+
                   <List.Item>
                       
-                    <NavLink activeClassName="active" to="/">
+                    <NavLink activeClassName="active" to="/PayRoll">
                       <Menu.Item>
                       
-                            Home
+                            Payroll
                             
                       </Menu.Item>
                     </NavLink>
@@ -195,6 +208,8 @@ export default class HeaderSideBar extends Component {
               <Route path="/ApplicantMain" component={ApplicantMain} />
               <Route path="/AddApplicantForm" component={AddApplicantForm}/>
               <Route path="/ApplicantDetails" component={ApplicantDetails}/>
+
+              <Route path="/PayRoll" component={PayRoll}/>
               <Route component={NotFound} />
             </Switch>
             

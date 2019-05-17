@@ -472,7 +472,7 @@ export default class EmployeeDetails extends Component {
           									<Button content='Cancel'onClick={this.closeConfigShow(true, false)} />
              							 <Button.Or />
            									<Button positive content='save'onClick={this.handleEdit} />
-          								</Button.Group>
+          							</Button.Group>
 
        
 

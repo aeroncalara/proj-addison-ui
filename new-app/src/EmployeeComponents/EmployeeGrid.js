@@ -13,24 +13,37 @@ import axios from 'axios';
 
 let my_query =  
 `
-  query{
-    getAllEmployees{
-      person{
-        first
-        middle
-        last
-        date_of_birth
-        address{
+query
+{
+  getAllEmployees
+  {
+    person
+    {
+      first
+      middle
+      last
+      date_of_birth
+      contact
+      {
+          type
           number
-          street
-          city
-          province
-          country
-          
         }
+      address
+      {
+        number
+        street
+        city
+        province
+        country
+        
       }
     }
+    position
+    {
+      title
+    }
   }
+}
 `
 
 
@@ -68,21 +81,8 @@ let my_query =
     console.log(employees);
     
     let employeeTable = employees.map((employee, index) => {
+      
       return (
-
-        
-            //   <tr key={index}>
-            //     <td data-label="Name">{employee.person.first}</td>
-            //     <td data-label="Age">{employee.person.middle}</td>
-            //     <td data-label="Job">{employee.person.last}</td>
-            //     <td data-label="Job">
-            //       <ViewEmployee Employee={employee}/>
-            //       <DeleteEmployee Employee={employee} />
-            //     </td>
-            //   </tr> 
-       
-         
-            
      
 <Grid columns={5}  key={index} columns={2} padded>
     
@@ -96,7 +96,7 @@ let my_query =
        <List.Item>
        <div className='gridImg'>
              <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='small' circular />
-           </div>
+      </div>
            </List.Item>
            {employee.person.first}
            <List.Item>
@@ -106,12 +106,8 @@ let my_query =
      
        <List verticalAlign='left'>
                        <List.Item>
-                         <i className="mobile icon"/>
-                           +639167105579
-                       </List.Item>
-                       <List.Item>
-                         <i className="text telephone icon"/>
-                             +639167105579
+                         <i className="user icon"/>
+                         {employee.position.title}
                        </List.Item>
                        <List.Item
                          icon='mail' 
@@ -119,7 +115,12 @@ let my_query =
                                Dave@semantic-ui.com
                          </a>}
                        />
-        </List>
+                       <List.Item>
+                       <i className="mobile icon"/>
+                         {employee.person.contact[0].number}
+                       </List.Item>
+                      
+                       </List>
   
             </Button>
             </NavLink>

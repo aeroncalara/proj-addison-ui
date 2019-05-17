@@ -6,7 +6,8 @@ import React, { Component } from 'react'
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal } from 'semantic-ui-react'
 import './EmployeeDetails.css';
-
+import TimeInOut from '../TimeInOutComponents/TimeInOut';
+import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
 // Country Dropdown
 const countryOptions = [
@@ -86,8 +87,8 @@ export default class EmployeeDetails extends Component {
 	   tin:'',
 	   sss:'',
 	   philhealth:'',
-	   hdmf: ''
-
+		 hdmf: ''
+		 
     }
   }
   componentDidUpdate() {
@@ -340,7 +341,7 @@ export default class EmployeeDetails extends Component {
 				<i className="user icon"/>
 				Personal
 			</div>
-			</div>
+					</div>
 
 			<div>
 			<hr className="hrName" />
@@ -373,6 +374,27 @@ export default class EmployeeDetails extends Component {
 		</List>
 		</Form>
 		</Tab.Pane> 
+        },
+        
+        {menuItem: this.newMethod(), render: () => 
+		<Tab.Pane>
+		<Form>
+			<div className='EmpDetails'>
+				<div className ='desc'>
+					<i className="clock outline icon"/>
+					Time Logs
+				</div>
+			</div>
+
+			<div>
+			<hr className="hrName" />
+			
+				<TimeLogs/>
+		
+			</div>  
+		
+		</Form>
+		</Tab.Pane> 
 		}
 	  
 ]
@@ -389,7 +411,7 @@ export default class EmployeeDetails extends Component {
         	<div className='EmpName'>
 				<Header as='h2'>
 					<Header.Content>
-						Dave the Barbados
+			Dave Smith Wayne
 						<Header.Subheader>Human Resources</Header.Subheader>
 					</Header.Content>
 				</Header> 
@@ -592,6 +614,10 @@ export default class EmployeeDetails extends Component {
                       			<i className="address card icon"/>
                         		HR manager
                       		</List.Item>
+
+													{/* <List.Item>
+                      		<TimeInOut/>
+                      		</List.Item> */}
                     	</List>
             		</div>
           		</div>
@@ -605,6 +631,10 @@ export default class EmployeeDetails extends Component {
 	</div>
     )
   }
+
+	newMethod() {
+		return 'Time Logs';
+	}
 }
 
 

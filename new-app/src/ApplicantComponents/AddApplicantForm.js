@@ -267,42 +267,7 @@ export default class EmployeeDetails extends Component {
       </Tab.Pane> 
       },
   
-      {menuItem: 'Position', render: () => 
-      <Tab.Pane>
-      <Form>
-        <div className='EmpDetails'>    
-        <div className ='desc'>
-          <i className="users icon"/>
-          Position
-        </div>
-        </div>
-  
-        <div>
-        <hr className="hrName" />
-        </div>  
-        
-      <List>
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'empposition')} value={this.state.empposition}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={2}>
-          <Form.Input label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
-        </Form.Group>
-        </List.Item>
-      </List>
-      </Form>
-      </Tab.Pane>
-      },
+    
   
       {menuItem: 'Documents', render: () => 
       <Tab.Pane>

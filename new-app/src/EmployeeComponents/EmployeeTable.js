@@ -5,21 +5,30 @@ import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './EmployeeTable.css';
 import { Dropdown, List, Image } from 'semantic-ui-react'
-// import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
+import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 import axios from 'axios';        
 
 
 let my_query = 
 `
-  query{
-    getAllEmployees{
-      person{
+  query
+  {
+    getAllEmployees
+    {
+      person
+      {
         first
         middle
         last
         date_of_birth
-        address{
+        contact
+        {
+            type
+            number
+          }
+        address
+        {
           number
           street
           city
@@ -27,6 +36,10 @@ let my_query =
           country
           
         }
+      }
+      position
+      {
+        title
       }
     }
   }
@@ -61,44 +74,68 @@ class EmployeeTable extends Component {
   }
   render() {
 
-  
- 
     const employees = this.state.employees;
     console.log(employees);
+
+
     
     let employeeTable = employees.map((employee, index) => {
+
+        let contactTable = employee.person.contact.map((contactInformation)=>{
+            return(
+                <div class="content">
+                    {contactInformation.type}
+                    <div class="sub header">
+                        {contactInformation.number}
+                    </div>
+                </div>
+            )
+        })
       return (
 
         
-              <tr key={index}>
-                <td data-label="Name"><h4 class="ui image header">
+              <tr key={employee.id}>
+                <td data-label="Name">
+                <h4 class="ui image header">
          <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
           <div class="content">
           {employee.person.first}
             <div class="sub header">
-            Human Resources
+            {employee.position.title}
           </div>
         </div>
       </h4>
       </td>
-                <td data-label="Age">{employee.person.middle}</td>
-                <td data-label="Job">{employee.person.last}</td>
+                <td data-label="Address">{employee.person.address[0].city}</td>
+                <td data-label="Contact Info">  
+                    <h4 class="ui image header">
+                    {contactTable}
+                </h4>
+            </td>
                 <td data-label="Job">
+
                 <List divided horizontal>
-                <List.Item>
-                  
-                  <List.Content>
-                  <ViewEmployee Employee={employee}/>
-                  </List.Content>
+
+                <List.Item >
+					<List.Content>
+						<ViewEmployee Employee={employee}/>
+					</List.Content>
                 </List.Item>
+
+                
+
                 <List.Item>
-                 
-                  <List.Content>
-                <DeleteEmployee Employee={employee} />
-                  </List.Content>
+					<List.Content>
+						<TimeInOut Employee={employee} />
+					</List.Content>
                 </List.Item>
                 
-          </List>
+				{/* <List.Item> 
+					<List.Content>
+						<DeleteEmployee Employee={employee} />
+					</List.Content>
+                </List.Item> */}
+                </List>
                   
                  
                 </td>
@@ -140,11 +177,27 @@ class EmployeeTable extends Component {
         <table className="ui teal table celled">
         
         <thead>
-              <tr><th>Name</th>
-              <th>Age</th>
-              <th>Email Address</th>
-               <th>Email Address</th>
-              <th>Actions</th>
+              <tr><th>Employee</th>
+              <th>Address</th>
+              <th>Contact Info.</th>
+              <th> 
+				  <List divided horizontal>
+
+					<List.Item>
+						<List.Content>
+							Actions
+						</List.Content>
+					</List.Item>
+
+					<List.Item>
+						<List.Content>
+							Status
+						</List.Content>
+					</List.Item>
+
+
+					</List>
+</th>
           </tr>
           </thead>
           <tbody>

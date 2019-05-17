@@ -177,3 +177,9 @@ float: left;
     /* color: #00cca3; */
    
   }
+  .TimeLogs
+  {
+    margin-right: 100px;
+    border: 1px solid #e3f1ef;
+    margin: 0 auto;
+  }

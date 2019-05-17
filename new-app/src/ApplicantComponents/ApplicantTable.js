@@ -3,10 +3,11 @@ import React, {Component} from 'react'
 
 import HIre from '../ApplicantComponents/HIre';
 import './ApplicantTable.css';
-import { Dropdown, List } from 'semantic-ui-react'
+import { Dropdown, List,Image } from 'semantic-ui-react'
 import axios from 'axios';   
 import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
+
                                    
 
 
@@ -67,7 +68,14 @@ class EmployeeTable extends Component {
 
         
               <tr key={Employee._id}>
-              <td data-label="Name">{Employee.person.first}</td>
+                   <td data-label="Name"><h4 class="ui image header">
+         <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
+          <div class="content">
+          {Employee.person.first}
+           
+        </div>
+      </h4>
+      </td>
               <td data-label="Age">{Employee.person.middle}</td>
               <td data-label="Job">{Employee.person.last}</td>
               <td data-label="Job">
@@ -76,20 +84,22 @@ class EmployeeTable extends Component {
                 <List.Item>
                   
                   <List.Content>
-                  <HIre />
+                   <ViewApplicant Employee={Employee}/>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                  
                   <List.Content>
-                  <ViewApplicant Employee={Employee}/>
+                 
+                  <HIre />
                   </List.Content>
                 </List.Item>
                 <List.Item>
     
-                  <List.Content>
+                  {/* <List.Content>
                       <DeleteApplicant Employee={Employee} />
-                  </List.Content>
+                  </List.Content> */}
+
                 </List.Item>
           </List>
                
@@ -106,9 +116,9 @@ class EmployeeTable extends Component {
     return (
       <div className="EmployeeTable">
 
-        <table className="ui celled table">
+        <table className="ui teal table celled">
         <thead>
-              <tr><th>Name</th>
+              <tr><th>Applicant</th>
               <th>Age</th>
               <th>Email Address</th>
               <th>Actions</th>
