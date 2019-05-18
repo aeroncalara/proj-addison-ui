@@ -12,13 +12,21 @@ import HeaderSideBar from './WebComponents/HeaderSideBar'
 // import { NavLink } from 'react-router-dom'
 // import { Header } from 'semantic-ui-react';
 
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
+
+
+const client = new ApolloClient({
+  uri:"http://localhost:4000/graphql",
+});
+
 
 export default class App extends Component {
 
   render() {
 
     return (
-
+      <ApolloProvider client={client}>
       <div>
         
       
@@ -28,7 +36,9 @@ export default class App extends Component {
             
         </HeaderSideBar>
       </Router>
+
     </div>
+    </ApolloProvider>
     );
   }
 }

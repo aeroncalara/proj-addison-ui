@@ -5,7 +5,10 @@ import React, { Component } from 'react'
 // import { NavLink} from 'react-router-dom'
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Input, Modal } from 'semantic-ui-react'
 import './AddEmployeeForm.css';
-import { NavLink, Route} from 'react-router-dom'
+import { NavLink, Route} from 'react-router-dom';
+
+import { graphql, compose, Mutation } from 'react-apollo';
+const { ADD_EMPLOYEE } = require('../Queries/Queries')
 
 // Country Dropdown
 const countryOptions = [
@@ -53,7 +56,7 @@ const countryOptions = [
 // TABS
 
 
-export default class EmployeeDetails extends Component {
+class AddEmployeeForm extends Component {
 
 
   	state = { open: false };
@@ -67,24 +70,24 @@ export default class EmployeeDetails extends Component {
     super(props)
     this.state = {
       visible: true,
-	  isEdit : false,
-	  firstName: '',
-	  middleName: '',
-	  lastName: '',
-	  birthDate: '',
+      isEdit : false,
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      birthDate: '',
 
-	  mobile: '',
-	  telephone: '',
-	  email: '',
+      mobile: '',
+      telephone: '',
+      email: '',
 
-	  street: '',
-	  town: '',
-	  city: '',
-	  country: '',
+      street: '',
+      town: '',
+      city: '',
+      country: '',
 
-	  empposition:'',
-	  title:'',
-	  salary:'',
+      xposition:'',
+      title:'',
+      salary:'',
 
 	   tin:'',
 	   sss:'',
@@ -101,30 +104,33 @@ export default class EmployeeDetails extends Component {
    }
 
    handleCancel = () => { ;
-	this.setState({ 
-	firstName: '',
-	middleName: '',
-	lastName: '',
-	birthDate: '',
+    this.setState({ 
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    birthDate: '',
+    
+    type:'',
+    mobile: '',
+    telephone: '',
+    email: '',
 
-	mobile: '',
-	telephone: '',
-	email: '',
+    number:'',
+    street: '',
+    town: '',
+    city: '',
+    province:'',
+    country: '',
 
-	street: '',
-	town: '',
-	city: '',
-	country: '',
+    sss:'',
+    tin:'',
+    philhealth:'',
+    hdmf: '',
 
-	position:'',
-	title:'',
-	salary:'',
+    position:'',
+    title:'',
+    salary:'',
 
-	 tin:'',
-	 sss:'',
-	 philhealth:'',
-	 hdmf: '',
-	
 	open: !this.state.open
 	 });
   }
@@ -133,13 +139,42 @@ export default class EmployeeDetails extends Component {
 	   this.setState({[type]: e.target.value})
    }
 
+  //  saveNewEmployee = () => {
+  //   this.props.addEmployee({
+  //     variables:{
+  //       first: this.state.firstName,
+  //       middle: this.state.middleName,
+  //       last: this.state.lastName,
+  //       date_of_birth: this.state.birthDate,
+  //       type: this.state.type,
+  //       mobile: this.state.mobile,
+  //       telephone: this.state.telephone,
+
+  //       street: this.state.street,
+  //       city: this.state.city,
+  //       province: this.state.province,
+  //       country: this.state.country,
+
+  //       sss: this.state.sss,
+  //       tin: this.state.tin,
+  //       philhealth: this.state.philhealth,
+  //       hdmf: this.state.hdmf,
+
+  //       title: this.state.title,
+  //       description: this.state.description,
+  //       salary: this.state.salary,
+  //     },
+  //     // refetchQueries:[{ query: getBooksQuery}]
+  // });
+  //  }
+
   render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     const panes = [
 
       {menuItem: 'Personal', render: () =>
       <Tab.Pane> 
-      <Form>
+      <Form >
         <div className='EmpDetails'>
         <div className ='desc'>
           <i className="user icon"/>
@@ -233,6 +268,11 @@ export default class EmployeeDetails extends Component {
       </div>  
         
       <List>
+      <List.Item>
+        <Form.Group unstackable widths={2}>
+          <Form.Input label='Number' placeholder='Number' onChange={(e) => this.handleChange(e, 'Number')} value={this.state.street}/>
+        </Form.Group>
+        </List.Item>
         <List.Item>
         <Form.Group unstackable widths={2}>
           <Form.Input label='Street' placeholder='Street' onChange={(e) => this.handleChange(e, 'street')} value={this.state.street}/>
@@ -241,13 +281,13 @@ export default class EmployeeDetails extends Component {
         
         <List.Item>
         <Form.Group unstackable widths={1}>
-          <Form.Input label='Town' placeholder='Town'  onChange={(e) => this.handleChange(e, 'town')} value={this.state.town}/>
+          <Form.Input label='City' placeholder=''  onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
         </Form.Group>
         </List.Item>
   
         <List.Item>
         <Form.Group unstackable widths={2}>
-          <Form.Input label='City' placeholder='City' onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
+          <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.city}/>
         </Form.Group>
         </List.Item>
   
@@ -391,9 +431,25 @@ export default class EmployeeDetails extends Component {
                       </Button.Content>
                      
                       </Button>    
-                    
-                  <Button.Or />
-                      <Button animated positive fluid>
+                      <Button.Or />
+                  <Mutation mutation={ADD_EMPLOYEE}>
+                    {addEmployee => (
+                      <Button animated positive fluid onClick={() => {
+                        addEmployee({ variables: {
+                          first: this.state.firstName,
+                          middle: "B.",
+                          last: "Ocampo",
+                          date_of_birth: "10-20-98",
+                          contact: [{type: "Ice Age", number: "####"}],
+                          address: [{number: "1", street: "Dyan lang", city: "Gapan", province: "nueva ecija", country: "phils"}],
+                          title: "Student",
+                          sss: "103809",
+                          tin: "39274389",
+                          philhealth: "28682373",
+                          hdmf: "3964296389"
+                        }})
+                        this.setState({firstName: ''})
+                      }}>
                         <Button.Content visible>
                           <Icon name='save' />
                         </Button.Content>
@@ -401,8 +457,9 @@ export default class EmployeeDetails extends Component {
                           Save
                         </Button.Content>     
                       </Button>
+                    )}
+                  </Mutation>
                   </Button.Group>    
-
                   <Modal
 										open={open}
 										closeOnEscape={closeOnEscape}
@@ -428,15 +485,7 @@ export default class EmployeeDetails extends Component {
                         </NavLink>
 											</Modal.Actions>
 									</Modal>
-
-
-
-
                   </div>
-                  
-
-
-
             </div>
 
         </div>
@@ -480,6 +529,8 @@ export default class EmployeeDetails extends Component {
 }
 
 
+// export default compose(graphql(addNewEmployee, {name:"addNewEmployee"})(AddEmployeeForm))
+export default (AddEmployeeForm)
 
 // import React, { Component } from 'react'
 // import './AddEmployeeForm.css';
