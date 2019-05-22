@@ -59,7 +59,7 @@ const countryOptions = [
 class AddEmployeeForm extends Component {
 
 
-  	state = { open: false };
+  state = { open: false };
 
 	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
 	  this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
@@ -80,12 +80,13 @@ class AddEmployeeForm extends Component {
       telephone: '',
       email: '',
 
+      number:'',
       street: '',
       town: '',
       city: '',
       country: '',
 
-      xposition:'',
+      position:'',
       title:'',
       salary:'',
 
@@ -108,7 +109,7 @@ class AddEmployeeForm extends Component {
     firstName: '',
     middleName: '',
     lastName: '',
-    birthDate: '',
+    date_of_birth: '',
     
     type:'',
     mobile: '',
@@ -132,6 +133,37 @@ class AddEmployeeForm extends Component {
     salary:'',
 
 	open: !this.state.open
+	 });
+  }
+
+  
+  handlesave = () => { ;
+    this.setState({ 
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    date_of_birth: '',
+    
+    type:'',
+    mobile: '',
+    telephone: '',
+    email: '',
+
+    number:'',
+    street: '',
+    town: '',
+    city: '',
+    province:'',
+    country: '',
+
+    sss:'',
+    tin:'',
+    philhealth:'',
+    hdmf: '',
+
+    position:'',
+    title:'',
+    salary:'',
 	 });
   }
 
@@ -207,7 +239,7 @@ class AddEmployeeForm extends Component {
   
         <List.Item>
           <Form.Group unstackable widths={1}>
-          <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'birthDate')} value={this.state.birthdate}/>
+          <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
           </Form.Group>
         </List.Item>
         </List>
@@ -270,7 +302,7 @@ class AddEmployeeForm extends Component {
       <List>
       <List.Item>
         <Form.Group unstackable widths={2}>
-          <Form.Input label='Number' placeholder='Number' onChange={(e) => this.handleChange(e, 'Number')} value={this.state.street}/>
+          <Form.Input label='House number' placeholder='House Number' onChange={(e) => this.handleChange(e, 'number')} value={this.state.number}/>
         </Form.Group>
         </List.Item>
         <List.Item>
@@ -287,7 +319,7 @@ class AddEmployeeForm extends Component {
   
         <List.Item>
         <Form.Group unstackable widths={2}>
-          <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.city}/>
+          <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.province}/>
         </Form.Group>
         </List.Item>
   
@@ -324,7 +356,7 @@ class AddEmployeeForm extends Component {
       <List>
         <List.Item>
         <Form.Group unstackable widths={1}>
-          <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'empposition')} value={this.state.empposition}/>
+          <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'position')} value={this.state.position}/>
         </Form.Group>
         </List.Item>
   
@@ -437,18 +469,19 @@ class AddEmployeeForm extends Component {
                       <Button animated positive fluid onClick={() => {
                         addEmployee({ variables: {
                           first: this.state.firstName,
-                          middle: "B.",
-                          last: "Ocampo",
-                          date_of_birth: "10-20-98",
-                          contact: [{type: "Ice Age", number: "####"}],
-                          address: [{number: "1", street: "Dyan lang", city: "Gapan", province: "nueva ecija", country: "phils"}],
-                          title: "Student",
-                          sss: "103809",
-                          tin: "39274389",
-                          philhealth: "28682373",
-                          hdmf: "3964296389"
+                          middle: this.state.middleName,
+                          last: this.state.lastName,
+                          date_of_birth: this.state.date_of_birth,
+                          contact: [{type: this.state.type, number: this.state.number,}],
+                          address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
+                          province: this.state.province, country: this.state.country,}],
+                          title: this.state.title,
+                          sss: this.state.sss,
+                          tin: this.state.tin,
+                          philhealth: this.state.philhealth,
+                          hdmf: this.state.hdmf
                         }})
-                        this.setState({firstName: ''})
+                        this.setState({firstName:""})
                       }}>
                         <Button.Content visible>
                           <Icon name='save' />
