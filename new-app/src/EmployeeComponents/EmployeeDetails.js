@@ -10,6 +10,13 @@ import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
 // Country Dropdown
+
+import axios from 'axios';        
+
+
+
+
+
 const countryOptions = [
   { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
   { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
@@ -64,31 +71,68 @@ export default class EmployeeDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
+			item: this.props.item,
       visible: true,
 	  isEdit : false,
 	  firstName: '',
 	  middleName: '',
 	  lastName: '',
-	  birthDate: '',
+	  date_of_birth: '',
 
 	  mobile: '',
 	  telephone: '',
 	  email: '',
 
+		number:'',
 	  street: '',
 	  town: '',
 	  city: '',
 	  country: '',
 
-	  empposition:'',
-	  title:'',
+		title:'',
+	  position:'',
 	  salary:'',
 
 	   tin:'',
 	   sss:'',
 	   philhealth:'',
-		 hdmf: ''
-		 
+		 hdmf: '',
+		 employee: {
+			person:
+      {
+        first:'',
+        middle:'',
+        last:'',
+				date_of_birth:'',
+				
+        contact:
+        {
+            type:'',
+            number:'',
+					},
+
+				address:
+				{
+				number:'',
+				street:'',
+				town:'',
+        city:'',
+        province:'',
+        country:'',
+				}		
+      },
+			position:{
+				title:'',
+				description:'',
+				salary:'',
+			},
+
+			tin:'',
+			sss:'',
+			philhealth:'',
+			hdmf: '',
+		 },
+		 id: ""
     }
   }
   componentDidUpdate() {
@@ -114,8 +158,8 @@ export default class EmployeeDetails extends Component {
 	city: '',
 	country: '',
 
-	position:'',
 	title:'',
+	position:'',
 	salary:'',
 
 	 tin:'',
@@ -158,8 +202,69 @@ export default class EmployeeDetails extends Component {
 
   
 
+
+  
+  componentDidMount(){
+    this.getEmployee();
+  }
+
+  getEmployee = async () => {
+
+		console.log(this.props.match.params.id);
+
+		let my_query = 
+		`
+			query
+			{
+				getEmployee(employee_id: "${this.props.match.params.id}")
+				{
+					_id
+					person
+					{
+						first
+						middle
+						last
+						date_of_birth
+						contact
+						{
+								type
+								number
+							}
+						address
+						{
+							number
+							street
+							city
+							province
+							country
+							
+						}
+					}
+					position
+					{
+						title
+						description
+						salary
+					}
+				}
+			}
+		`
+
+    let employee_variable = await axios({
+      url: `http://localhost:4000`,
+      method: `post`,
+      data: {
+        query: my_query
+      }
+		})
+    this.setState({ employee: employee_variable.data.data.getEmployee });
+  }
+
   render() {
-	const { open, closeOnEscape, closeOnDimmerClick } = this.state;
+
+	const { open, closeOnEscape, closeOnDimmerClick, employee } = this.state;
+
+	console.log(employee);
 
 	const {isEdit} = this.state;
 	
@@ -180,28 +285,28 @@ export default class EmployeeDetails extends Component {
 			<hr className="hrName" />
 			</div>  
 
-			<List>
+			<List key={employee}>
 			<List.Item>
 				<Form.Group unstackable widths={2}>
-				<Form.Input label='First name' placeholder='First name' readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={this.state.firstName} />
+				<Form.Input label='First name' placeholder='First name' readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={employee.person.first} />
 				</Form.Group>
 			</List.Item>
 			
 			<List.Item>
 				<Form.Group unstackable widths={1}>
-				<Form.Input label='Middle name' placeholder='Middle name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={this.state.middleName}/>
+				<Form.Input label='Middle name' placeholder='Middle name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={employee.person.middle}/>
 				</Form.Group>
 			</List.Item>
 
 			<List.Item>
 				<Form.Group unstackable widths={2}>
-				<Form.Input label='Last name' placeholder='Last name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={this.state.lastName}/>
+				<Form.Input label='Last name' placeholder='Last name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={employee.person.last}/>
 				</Form.Group>
 			</List.Item>
 
 			<List.Item>
 				<Form.Group unstackable widths={1}>
-				<Form.Input label='Birthdate' placeholder='Birthdate' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={this.state.birthdate}/>
+				<Form.Input label='Birthdate' placeholder='Birthdate' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={employee.person.date_of_birth}/>
 				</Form.Group>
 			</List.Item>
 			</List>
@@ -227,13 +332,13 @@ export default class EmployeeDetails extends Component {
 			<List>
 			<List.Item>
 				<Form.Group unstackable widths={1}>																	  
-				<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={this.state.mobile}/>
+				<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
 				</Form.Group>
 			</List.Item>
 			
 			<List.Item>
 				<Form.Group unstackable widths={1}>
-				<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} value={this.state.telephone}/>
+				<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
 				</Form.Group>
 			</List.Item>
 
@@ -264,31 +369,32 @@ export default class EmployeeDetails extends Component {
 		<List>
 			<List.Item>
 			<Form.Group unstackable widths={2}>
-				<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={this.state.street}/>
+				<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].street}/>
 			</Form.Group>
 			</List.Item>
 			
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={this.state.town}/>
+				<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={employee.person.address[0].town}/>
 			</Form.Group>
 			</List.Item>
 
 			<List.Item>
 			<Form.Group unstackable widths={2}>
-				<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
+				<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={employee.person.address[0].city}/>
 			</Form.Group>
 			</List.Item>
 
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Dropdown label='country'
+				{/* <Dropdown label='country'
 				placeholder='Select Country'
 				search
 				selection
 				options={countryOptions}
 				
-				/>
+				/> */}
+					<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={employee.person.address[0].country}/>
 			</Form.Group>
 			</List.Item>
 		</List>
@@ -313,19 +419,19 @@ export default class EmployeeDetails extends Component {
 		<List>
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='Possition' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'empposition')} value={this.state.empposition}/>
+				<Form.Input label='Possition' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'position')} value={employee.position.title}/>
 			</Form.Group>
 			</List.Item>
 
 			<List.Item>
 			<Form.Group unstackable widths={2}>
-				<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
+				<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.description}/>
 			</Form.Group>
 			</List.Item>
 
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
+				<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={employee.position.salary}/>
 			</Form.Group>
 			</List.Item>
 		</List>
@@ -350,19 +456,19 @@ export default class EmployeeDetails extends Component {
 		<List>
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
+				<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={employee.tin}/>
 			</Form.Group>
 			</List.Item>
 			
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
+				<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
 			</Form.Group>
 			</List.Item>
 
 			<List.Item>
 			<Form.Group unstackable widths={1}>
-				<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
+				<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={employee.philhealth}/>
 			</Form.Group>
 			</List.Item>
 
@@ -411,8 +517,8 @@ export default class EmployeeDetails extends Component {
         	<div className='EmpName'>
 				<Header as='h2'>
 					<Header.Content>
-			Dave Smith Wayne
-						<Header.Subheader>Human Resources</Header.Subheader>
+					{employee.person.first} {employee.person.middle} {employee.person.last}
+						<Header.Subheader>  {employee.position.title}</Header.Subheader>
 					</Header.Content>
 				</Header> 
         	</div>

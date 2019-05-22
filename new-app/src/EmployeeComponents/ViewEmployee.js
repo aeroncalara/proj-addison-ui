@@ -2,43 +2,41 @@ import React, { Component } from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import ViewEmployeeForm from '../EmployeeComponents/ViewEmployeeForm';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
-import { NavLink, Route} from 'react-router-dom'
+import { NavLink, Link, Route} from 'react-router-dom'
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import { Popup } from 'semantic-ui-react'
 
 export default class extends Component {
 
-  // state = { 
-  //   modalOpen: false, 
-  //   isEdit: false
-  // }
-
-  // handleOpen = () => this.setState({ modalOpen: true })
-
-  // handleClose = () => this.setState({ modalOpen: false })
-
-  // handleEdit = () => {
-  //   let status = this.state.isEdit;
-  //   this.setState({ isEdit: !status });
-  // }
+  constructor(props){
+    super(props);
+    this.state = {
+      item: props.item
+    }
+  }
 
 
   render() {
+
+    const {item} = this.state;
+
     return (
       <div>
 
-{/* <Button className="ui button positive " onClick={this.handleOpen}>View</Button> */}
+
    
-<NavLink exact activeClassName="active" to="/EmployeeDetails">
+{/* <NavLink exact activeClassName="active" to="/EmployeeDetails/"> */}
+ <Link className="ui button green" to={"/EmployeeDetails/" +item._id}>
 <Popup
           trigger={<button color='teal' positive class="ui circular icon button">
           <i aria-hidden="true" class="eye icon"></i>
         </button>}
           content='View Employee Details'
+
           position='top center'
         />
-      
-</NavLink>
+      </Link>
+
   <Route path="/EmployeeDetails" component={EmployeeDetails } />
 
       </div>    

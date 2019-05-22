@@ -16,6 +16,7 @@ let my_query =
   {
     getAllEmployees
     {
+      _id
       person
       {
         first
@@ -75,10 +76,6 @@ class EmployeeTable extends Component {
   render() {
 
     const employees = this.state.employees;
-    console.log(employees);
-
-
-    
     let employeeTable = employees.map((employee, index) => {
 
         let contactTable = employee.person.contact.map((contactInformation)=>{
@@ -118,7 +115,7 @@ class EmployeeTable extends Component {
 
                 <List.Item >
 					<List.Content>
-						<ViewEmployee Employee={employee}/>
+						<ViewEmployee item={employee}/>
 					</List.Content>
                 </List.Item>
 

@@ -23,6 +23,8 @@ import {
   Sidebar,
 } from 'semantic-ui-react'
 
+
+
 const trigger = (
   <span>
     {/* <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' circular /> */}
@@ -202,7 +204,8 @@ export default class HeaderSideBar extends Component {
             <Switch>
               <Route exact path="/" component={EmployeeMain} />
               <Route path="/EmployeeMain" component={EmployeeMain} />
-              <Route path="/EmployeeDetails" component={EmployeeDetails}/>
+              <Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+              
               <Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
 
               <Route path="/ApplicantMain" component={ApplicantMain} />
@@ -210,7 +213,7 @@ export default class HeaderSideBar extends Component {
               <Route path="/ApplicantDetails" component={ApplicantDetails}/>
 
               <Route path="/PayRoll" component={PayRoll}/>
-              <Route component={NotFound} />
+              {/* <Route component={NotFound} /> */}
             </Switch>
             
             </Segment>
