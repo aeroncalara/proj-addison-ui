@@ -13,8 +13,6 @@ import PayRoll from '../PayRoll/PayRoll';
 import { Dropdown, List } from 'semantic-ui-react'
 
 import {
-
-  
   Image,
   Header,
   Icon,
@@ -23,6 +21,8 @@ import {
   Sidebar,
 } from 'semantic-ui-react'
 
+
+   
 
 
 const trigger = (
@@ -50,7 +50,8 @@ const options = [
   { key: 'settings', text: 'Settings', icon: 'settings' },
   { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
 ]
-
+   
+    
 const VerticalSidebar = ({ animation, direction, visible }) => (
   <Sidebar
     as={Menu}
@@ -139,6 +140,27 @@ export default class HeaderSideBar extends Component {
   handleDirectionChange = direction => () => this.setState({ direction, visible: false })
 
   handleDirectionHide = direction => () => this.setState({ direction, visible: false })
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: new Date().toLocaleString()
+    };
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    });
+  }
 
 
   render() {
@@ -172,7 +194,9 @@ export default class HeaderSideBar extends Component {
 
           <Menu.Item  position='right' style={{right:10 }}>
           <div className="App-header">
-              <p>3:08 pm</p>
+          <p className="App-clock">
+        {this.state.time}
+      </p>
               </div>
           </Menu.Item>
 

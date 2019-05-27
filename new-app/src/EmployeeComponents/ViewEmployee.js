@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
-import ViewEmployeeForm from '../EmployeeComponents/ViewEmployeeForm';
-import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import { NavLink, Link, Route} from 'react-router-dom'
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import { Popup } from 'semantic-ui-react'
@@ -26,9 +23,9 @@ export default class extends Component {
 
    
 {/* <NavLink exact activeClassName="active" to="/EmployeeDetails/"> */}
- <Link className="ui button green" to={"/EmployeeDetails/" +item._id}>
+ <Link to={"/EmployeeDetails/" +item._id}>
 <Popup
-          trigger={<button color='teal' positive class="ui circular icon button">
+          trigger={<button class="ui circular icon button">
           <i aria-hidden="true" class="eye icon"></i>
         </button>}
           content='View Employee Details'

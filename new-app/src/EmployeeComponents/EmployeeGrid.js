@@ -1,11 +1,10 @@
- import React, { Component } from 'react'
+import React, { Component } from 'react'
 import './EmployeeHeader.css';
 import { Menu ,Header,Tab, Form,List, Grid,Image,Button  } from 'semantic-ui-react'
 import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-import { NavLink, Route} from 'react-router-dom'
-
+import { Link, Route} from 'react-router-dom'
 
 
 import axios from 'axios';        
@@ -14,145 +13,151 @@ import axios from 'axios';
 let my_query =  
 `
 query
-{
-  getAllEmployees
-  {
-    person
-    {
-      first
-      middle
-      last
-      date_of_birth
-      contact
-      {
-          type
-          number
+{   
+    getAllEmployees
+        {
+        person
+            {
+            first
+            middle
+            last
+            date_of_birth
+                contact
+                {
+                    type
+                    number
+                    }
+                address
+                {
+                    number
+                    street
+                    city
+                    province
+                    country
+                    
+                }
         }
-      address
-      {
-        number
-        street
-        city
-        province
-        country
-        
-      }
-    }
     position
     {
-      title
+    title
     }
-  }
+}
 }
 `
 
 
 
- class EmployeeGrid extends Component 
- {
+class EmployeeGrid extends Component 
+{
 
     constructor(props){
         super(props);
         this.state = { 
-          employees: [],
+        employees: [],  item: props.item
         }
-      }
+    }
     
-      componentDidMount(){
+    componentDidMount(){
         this.getEmployees();
-      }
+    }
     
-      getEmployees = async () => {
+    getEmployees = async () => {
         let employee_variable = await axios({
-          url: `http://localhost:4000`,
-          method: `post`,
-          data: {
+        url: `http://localhost:4000`,
+        method: `post`,
+        data: {
             query: my_query
-          }
+        }
         })
     
         this.setState({ employees: employee_variable.data.data.getAllEmployees });
-      }
+    }
 
 
-   render() {
+render() {
     
+    
+    const {item} = this.state;
+
     const employees = this.state.employees;
+
     console.log(employees);
     
     let employeeTable = employees.map((employee, index) => {
-      
-      return (
-     
-<Grid columns={5}  key={index} columns={2} padded>
     
-    <Grid.Row stretched>
-      <Grid.Column >
-      <div className='Grid'>
-      <NavLink exact activeClassName="active" to="/EmployeeDetails">
-      <Button >
-      
-           <List verticalAlign='middle'>
-       <List.Item>
-       <div className='gridImg'>
-             <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='small' circular />
-      </div>
-           </List.Item>
-           {employee.person.first}
-           <List.Item>
-         
-           </List.Item>
-       </List>
-     
-       <List verticalAlign='left'>
-                       <List.Item>
-                         <i className="user icon"/>
-                         {employee.position.title}
-                       </List.Item>
-                       <List.Item
-                         icon='mail' 
-                           content={<a href='mailto:jack@semantic-ui.com'>
-                               Dave@semantic-ui.com
-                         </a>}
-                       />
-                       <List.Item>
-                       <i className="mobile icon"/>
-                         {employee.person.contact[0].number}
-                       </List.Item>
-                      
-                       </List>
-  
-            </Button>
-            </NavLink>
-      </div>
+    return (
     
-      </Grid.Column>
-    </Grid.Row>
-    </Grid>
-       
-      )
+        <Grid columns={5}  key={index} columns={2} padded>
+            
+            <Grid.Row stretched>
+                <Grid.Column >
+                    <div className='Grid'>
+                    <Link className="ui button green" to={"/EmployeeDetails/" +item._id}>
+                            <Button >
+                            
+                                <List verticalAlign='middle'>
+                                    <List.Item>
+
+                                        <div className='gridImg'>
+                                                <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='small' circular />
+                                        </div>
+                                    </List.Item>
+                                        {employee.person.first}
+                                    <List.Item>
+                                        
+                                    </List.Item>
+                                </List>
+                            
+                                <List verticalAlign='left'>
+                                            <List.Item>
+                                                <i className="user icon"/>
+                                                {employee.position.title}
+                                            </List.Item>
+                                            <List.Item
+                                                icon='mail' 
+                                                content={<a href='mailto:jack@semantic-ui.com'>
+                                                    Dave@semantic-ui.com
+                                                </a>}
+                                            />
+                                            <List.Item>
+                                            <i className="mobile icon"/>
+                                                {employee.person.contact[0].number}
+                                            </List.Item>
+                                            
+                                </List>
+
+                                    </Button>
+                                </Link>
+                    </div>
+                    
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+    
+    )
     }
     )
     //here
 
     return (
-      
+    
         <div>
         
-        <Grid columns={5}>
-    
-    <Grid.Row stretched>
-     
-      {employeeTable}
-     
-    </Grid.Row>
-    </Grid>
+            <Grid columns={5}>
         
-           </div>
- 
+                <Grid.Row stretched> 
 
- 
-       
+                    {employeeTable}
+
+                </Grid.Row>
+
+            </Grid>
+            
+        </div>
+
+
+
+    
     //   <div className="EmployeeTables">
 
 
@@ -165,8 +170,8 @@ query
     //       </tr>
     //       </thead>
     //       <tbody>
-       
-          
+    
+        
     //        </tbody>
     //        <tfoot>
     //       <tr>
@@ -196,10 +201,10 @@ query
 
 
 
-      
+    
 //      return (
 //        <div>
-         
+        
             
 //     <Grid columns={5}>
 
@@ -246,7 +251,7 @@ query
 
 
 
- 
+
 
 // </Grid>
 
@@ -256,7 +261,7 @@ query
 //      );
 
 
-   }
+}
 }
 // ╔┓┏╦━━╦┓╔┓╔━━╗
 // ║┗┛║┗━╣┃║┃║00║

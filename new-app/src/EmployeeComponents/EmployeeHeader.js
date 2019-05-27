@@ -6,8 +6,6 @@ import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
 import { NavLink, Route} from 'react-router-dom'
 
-// import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-
 
 
 
@@ -17,17 +15,6 @@ const panes = [
     render: () => <Tab.Pane> 
 
     <Form>
-    {/* <div className='EmpDetails'>
-          
-              <div className ='desc'>
-              <i className="user icon"/>
-                      List View
-              </div>
-    </div>
-
-    <div>
-      <hr className="hrtable" />
-    </div>   */}
       <EmployeeTable/>
     </Form>
     </Tab.Pane> },
@@ -37,17 +24,7 @@ const panes = [
   render: () => <Tab.Pane>
 
     <Form>
-        {/* <div className='EmpDetails'>
-              
-                  <div className ='desc'>
-                  <i className="phone square icon"/>
-                          Grid View
-                  </div>
-        </div> */}
-
-        {/* <div>
-          <hr className="hrtable" />
-        </div>   */}
+     
       <EmployeeGrid/>
         </Form>
       </Tab.Pane> },
