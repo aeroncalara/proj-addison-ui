@@ -74,15 +74,22 @@ class EmployeeTable extends Component {
 
         
               <tr key={employee.id}>
-                <td data-label="Name">
-         
+                <td data-label="Date">
+{/*          
           {employee.person.first}
-            
+             */}
+             05/10/19
 
       </td>
-                <td data-label="Age">{employee.person.middle}</td>
-                <td data-label="Job">{employee.person.last}</td>
-                             </tr> 
+                <td data-label="TimeIn">
+					{/* {employee.person.middle} */}
+					8:00 am
+				</td>
+				<td data-label="TimeOut">
+					{/* {employee.person.last} */}
+					5:01 pm
+				</td>
+                </tr> 
        
          
       )
@@ -107,25 +114,7 @@ class EmployeeTable extends Component {
            {employeeTable}
           
            </tbody>
-           {/* <tfoot>
-          <tr>
-          <th colSpan="5">
-          <div className="EmployeePagination">
-            <div className="ui right floated pagination menu ">
-              <a className="icon item">
-              <i className="left chevron icon"></i></a>
-                <a className="item">1</a>
-                <a className="item">2</a>
-                <a className="item">3</a>
-                <a className="item">4</a>
-                <a className="icon item">
-              <i className="right chevron icon"></i>
-              </a>
-            </div>
-          </div>
-          </th>
-        </tr>
-        </tfoot> */}
+  
         </table>
         
       </div>        

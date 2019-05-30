@@ -200,6 +200,8 @@ export default class HeaderSideBar extends Component {
 								<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/>
 
 								<Route path="/PayRoll" component={PayRoll}/>
+								
+								<Route path="/PayRoll" component={PayRoll}/>
 								{/* <Route component={NotFound} /> */}
 							</Switch>
 							

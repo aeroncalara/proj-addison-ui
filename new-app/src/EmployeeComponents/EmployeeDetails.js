@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
-import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal } from 'semantic-ui-react'
+import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './EmployeeDetails.css';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import TimeLogs from '../TimeInOutComponents/TimeLogs';
@@ -194,58 +194,22 @@ const { open, closeOnEscape, closeOnDimmerClick, employee } = this.state;
 
 console.log(employee);
 
-const {isEdit} = this.state;
+const {isEdit} = this.state
 
-// TABS
-const panes = [
+// deduction/ incentives TAB 
 
-	{menuItem: 'Personal', render: () =>
+const Otherpanes = [
+
+	{menuItem: 'Add Incentives', render: () =>
 	<Tab.Pane> 
-	<Form>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="user icon"/>
-				Personal Information
-		</div>
-		</div>
-
-		<div>
-		<hr className="hrName" />
-		</div>  
-
-		<List key={employee}>
-		<List.Item>
-			<Form.Group unstackable widths={2}>
-			<Form.Input label='First name' placeholder='First name' readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={employee.person.first} />
-			</Form.Group>
-		</List.Item>
-		
-		<List.Item>
-			<Form.Group unstackable widths={1}>
-			<Form.Input label='Middle name' placeholder='Middle name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={employee.person.middle}/>
-			</Form.Group>
-		</List.Item>
-
-		<List.Item>
-			<Form.Group unstackable widths={2}>
-			<Form.Input label='Last name' placeholder='Last name' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={employee.person.last}/>
-			</Form.Group>
-		</List.Item>
-
-		<List.Item>
-			<Form.Group unstackable widths={1}>
-			<Form.Input label='Birthdate' placeholder='Birthdate' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={employee.person.date_of_birth}/>
-			</Form.Group>
-		</List.Item>
-		</List>
-
-	</Form>
+			
+	
 	</Tab.Pane> 
 	},
 
-	{menuItem: 'Contact', render: () => 
+	{menuItem: 'Incentives table', render: () => 
 	<Tab.Pane>
-	<Form>
+		<Form key={employee} liquid>
 		<div className='EmpDetails'>
 		<div className ='desc'>
 			<i className="phone square icon"/>
@@ -256,33 +220,128 @@ const panes = [
 		<div>
 		<hr className="hrName" />
 		</div>  
-		
-		<List>
-		<List.Item>
-			<Form.Group unstackable widths={1}>																	  
-			<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
-			</Form.Group>
-		</List.Item>
-		
-		<List.Item>
-			<Form.Group unstackable widths={1}>
-			<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
-			</Form.Group>
-		</List.Item>
 
-		<List.Item>
-			<Form.Group unstackable widths={.05}>
-			<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
-			</Form.Group>
-		</List.Item>
-		</List>
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+	
+		<Form.Group>
+		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
+		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+	
+		</Form.Group>
+		
+	</Segment>
+	</Grid.Column>
+	</Grid>
+	
+	</Form>
+	</Tab.Pane>
+	},
+]
+
+
+// MAINTAB
+
+const panes = [
+
+	{menuItem: 'Personal', render: () =>
+	<Tab.Pane> 
+			<div className='EmpDetails'>
+			<div className ='desc'>
+				<i className="user icon"/>
+					Personal Information
+			</div>
+		</div>
+
+		<div>
+			<hr className="hrName" />
+		</div>  
+	<Form key={employee} liquid>
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+		<Label as='a' color='teal' ribbon>
+         	 Basic Information
+        </Label>
+		<Form.Group>
+			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={employee.person.first} />
+			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={employee.person.middle} />
+			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={employee.person.last}/>
+		</Form.Group>
+
+		<Form.Group>
+				<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={employee.person.date_of_birth}/>
+		</Form.Group>
+		
+	</Segment>
+	</Grid.Column>
+	</Grid>
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+		<Label as='a' color='teal' ribbon>
+         	 Benefits
+        </Label>
+		<Form.Group>
+			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={employee.tin}/>
+		
+			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
+	
+			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={employee.philhealth}/>
+			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
+
+
+		</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>
+	
+	</Form>
+	
+	</Tab.Pane> 
+	},
+
+	{menuItem: 'Contact', render: () => 
+	<Tab.Pane>
+		<Form key={employee} liquid>
+		<div className='EmpDetails'>
+		<div className ='desc'>
+			<i className="phone square icon"/>
+				Contact Information
+		</div>
+		</div>
+
+		<div>
+		<hr className="hrName" />
+		</div>  
+
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+	
+		<Form.Group>
+		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
+		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+	
+		</Form.Group>
+		
+	</Segment>
+	</Grid.Column>
+	</Grid>
+	
 	</Form>
 	</Tab.Pane>
 	},
 
 	{menuItem: 'Address', render: () => 
 	<Tab.Pane>
-	<Form>
+	<Form key={employee} liquid>
 	<div className='EmpDetails'>  
 		<div className ='desc'>
 		<i className="map marker alternate icon"/>
@@ -293,39 +352,26 @@ const panes = [
 	<div>
 		<hr className="hrName" />
 	</div>  
-		
-	<List>
-		<List.Item>
-		<Form.Group unstackable widths={2}>
-			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].street}/>
-		</Form.Group>
-		</List.Item>
-		
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={employee.person.address[0].town}/>
-		</Form.Group>
-		</List.Item>
-
-		<List.Item>
-		<Form.Group unstackable widths={2}>
-			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={employee.person.address[0].city}/>
-		</Form.Group>
-		</List.Item>
-
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			{/* <Dropdown label='country'
-			placeholder='Select Country'
-			search
-			selection
-			options={countryOptions}
+	
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
 			
-			/> */}
-				<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={employee.person.address[0].country}/>
-		</Form.Group>
-		</List.Item>
-	</List>
+	<Form.Group>
+			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].street}/>
+		
+			<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={employee.person.address[0].town}/>
+		
+			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={employee.person.address[0].city}/>
+		
+			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={employee.person.address[0].country}/>
+
+			</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>		
+		
+
 	</Form>
 	</Tab.Pane> 
 	},
@@ -344,36 +390,41 @@ const panes = [
 		<hr className="hrName" />
 		</div>  
 		
-	<List>
-		<List.Item>
-		<Form.Group unstackable widths={1}>
+
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+			
+	<Form.Group>
+	
+	
 			<Form.Input label='Possition' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'position')} value={employee.position.position}/>
-		</Form.Group>
-		</List.Item>
+	
 
-		<List.Item>
-		<Form.Group unstackable widths={2}>
+	
 			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.title}/>
-		</Form.Group>
-		</List.Item>
+	
 
-		<List.Item>
-		<Form.Group unstackable widths={1}>
+		
 			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={employee.position.salary}/>
-		</Form.Group>
-		</List.Item>
-	</List>
+	
+
+			</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>		
 	</Form>
 	</Tab.Pane>
 	},
 
-	{menuItem: 'Benefits', render: () => 
+	{menuItem: 'Insentives', render: () => 
 	<Tab.Pane>
-	<Form>
+	<Form inverted>
 		<div className='EmpDetails'>
 		<div className ='desc'>
 			<i className="user icon"/>
-			Personal
+			Insentives
 		</div>
 				</div>
 
@@ -381,35 +432,62 @@ const panes = [
 		<hr className="hrName" />
 		</div>  
 		
-	<List>
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={employee.tin}/>
-		</Form.Group>
-		</List.Item>
+		<Grid>
+	<Grid.Column width={11}>
+	<Segment raised inverted>
+			
+	
+	<Form.Group widths="equal">
+          <Form.Input fluid label="Amount" placeholder="Amount" />
+          <Form.Input fluid label="Is Used" placeholder="Is Used" />
+          <Form.Input fluid label="Date Given" placeholder="Date Given" />
+        </Form.Group>
+        <Form.TextArea label="Description" placeholder="Description" />
+        <Form.Button>Submit</Form.Button>
+	</Segment>
+	</Grid.Column>
+	</Grid>		
+	
+	</Form>
+
+	</Tab.Pane> 
+	},
+
+	
+	{menuItem: 'Deduction', render: () => 
+	<Tab.Pane>
+	<Form inverted>
+		<div className='EmpDetails'>
+		<div className ='desc'>
+			<i className="user icon"/>
+			Deduction
+		</div>
+				</div>
+
+		<div>
+		<hr className="hrName" />
+		</div>  
 		
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
-		</Form.Group>
-		</List.Item>
-
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={employee.philhealth}/>
-		</Form.Group>
-		</List.Item>
-
-		<List.Item>
-		<Form.Group unstackable widths={1}>
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
-		</Form.Group>
-		</List.Item>
-	</List>
+		<Grid>
+	<Grid.Column width={11}>
+	<Segment raised inverted>
+			
+	
+	<Form.Group widths="equal">
+          <Form.Input fluid label="Amount" placeholder="Amount" />
+          <Form.Input fluid label="Is Used" placeholder="Is Used" />
+          <Form.Input fluid label="Date Given" placeholder="Date Given" />
+        </Form.Group>
+        <Form.TextArea label="Description" placeholder="Description" />
+        <Form.Button>Submit</Form.Button>
+	</Segment>
+	</Grid.Column>
+	</Grid>		
+	
 	</Form>
 	</Tab.Pane> 
 	},
-	
+
 	{menuItem: this.newMethod(), render: () => 
 	<Tab.Pane>
 	<Form>
@@ -627,7 +705,8 @@ return (
 		{/* Tabs */}
 		<div className='Tabs'>
 			
-			<Tab style={{width:1500 ,height:10000 }} panes={panes}/>
+			<Tab style={{width:1500 ,height:10000 }}menu={{ secondary: true, pointing: true }} panes={panes}/>
+		
 		</div>
 	</div>
 </div>
