@@ -35,7 +35,7 @@
     /* width: 100%; */
     margin-top: 2%;
     margin-bottom: 3%;
-    margin-right:4%;
+    margin-left:100%;
     border-width: 1px;
   } 
 
@@ -46,3 +46,26 @@
   width: 85%; 
 }
 
+.PayrollTabs{
+  /* margin-top: 1%; */
+  margin-left: 8%;
+  width: 85%;
+}
+
+.EmpDetails{
+
+  margin-top: -30px;
+  min-height: 10vh;
+  display: flex; 
+}
+
+.Button {
+  /* background-color: #ffffff; */
+  
+  margin-left: 60%; 
+  margin-bottom: 60px;
+  width: 15%;
+  height: 10%;
+  float: right;
+  
+} 

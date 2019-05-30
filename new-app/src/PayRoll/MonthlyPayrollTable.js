@@ -4,7 +4,7 @@ import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './PayRollTable.css';
-import { Dropdown, List, Image, Popup } from 'semantic-ui-react'
+import { Dropdown, List, Image } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 
@@ -20,6 +20,7 @@ let my_query =
       person{
         first
         middle
+        
         last
         date_of_birth
         address{
@@ -71,22 +72,15 @@ class PayRollTable extends Component {
     
     let employeeTable = employees.map((employee, index) => {
       return (
-
         
               <tr key={employee.id}>
                 <td data-label="Name"> 
                  {employee.person.first}
               </td>
                 <td data-label="Age">{employee.person.middle}</td>
-                <td data-label="Job">{employee.person.last}
-                </td>
-                <td data-label="Job">{employee.person.last}
-                </td>
-                <td data-label="Job">{employee.person.last}
-                </td>
+                
                 </tr> 
        
-         
       )
     }
     )
@@ -97,26 +91,39 @@ class PayRollTable extends Component {
       
 
       <div className="PayrollTables">
-        
         <table className="ui teal table celled">
         
         <thead>
-                        
-              <tr><th>Employee</th>
-              <th>Base Salary</th>
-            <th>Deduction</th>
-            <th>Incentive</th>
-            <th>Total</th>
+              <tr><th>DATE</th>
+              <th>Total</th>
+            
           </tr>
           </thead>
           <tbody>
            {employeeTable}
           
            </tbody>
-          
+           {/* <tfoot>
+          <tr>
+          <th colSpan="5">
+          <div className="EmployeePagination">
+            <div className="ui right floated pagination menu ">
+              <a className="icon item">
+              <i className="left chevron icon"></i></a>
+                <a className="item">1</a>
+                <a className="item">2</a>
+                <a className="item">3</a>
+                <a className="item">4</a>
+                <a className="icon item">
+              <i className="right chevron icon"></i>
+              </a>
+            </div>
+          </div>
+          </th>
+        </tr>
+        </tfoot> */}
         </table>
         
-    
       </div>        
     );
   }

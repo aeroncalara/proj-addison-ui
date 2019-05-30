@@ -103,3 +103,37 @@ float: right;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 } 
+
+.Grid{
+  
+  height: 90%;
+  width: 90%;
+  background-color: #00cca3;
+  
+}
+.gridImg{
+      
+  z-index: -100;
+  overflow: auto;
+  background: url(https://react.semantic-ui.com/images/avatar/large/patrick.png);
+  background-repeat:no-repeat;  
+  border-radius: 50%;
+  width:100px;
+  height: 100px;
+  float:left;
+  margin-top: 30px;
+  margin-left: 25%;
+ 
+}
+.action{
+      
+ 
+  margin-left: 1%;
+ 
+}
+.name{
+      
+ 
+  margin-left: 40%;
+ 
+}

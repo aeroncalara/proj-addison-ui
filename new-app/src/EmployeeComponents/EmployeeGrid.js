@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import { Menu ,Header,Tab, Form,List, Grid,Image,Segment  } from 'semantic-ui-react'
-import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
-import EmployeeTable from '../EmployeeComponents/EmployeeTable';
+import {List, Grid,Image,Segment,Transition  } from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-import { NavLink, Route} from 'react-router-dom'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 import axios from 'axios';        
 
-
 let my_query = 
 `
-  query
+query
   {
     getAllEmployees
     {
@@ -71,7 +67,10 @@ class EmployeeGrid extends Component
         })
     
         this.setState({ employees: employee_variable.data.data.getAllEmployees });
-      }
+	  }
+	  
+	  state = { visible: true }
+ 		toggleVisibility = () => this.setState(prevState => ({ visible: !prevState.visible }))
 
 render() {
     
@@ -115,6 +114,10 @@ render() {
                                     <List.Item>
                                         <i className="mobile icon"/>
                                         {employee.person.contact[0].number}
+                                    </List.Item>
+
+									<List.Item>
+                                        <hr/>
                                     </List.Item>
 
                                    
