@@ -60,25 +60,15 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 	vertical
 
 	visible={visible}
-	width='wide'
+	width='thin'
 	>
 
 		<List animated verticalAlign='middle' selection verticalAlign='middle'>
 			<List.Item>			
 				<NavLink activeClassName="active" to="/">
 					<Menu.Item>	
-						<List horizontal>
-							<List.Item>
-								<List.Content>
-									<i className="home icon"/>
-								</List.Content>
-							</List.Item>
-							<List.Item>
-								<List.Content>
-									HOME
-								</List.Content>
-							</List.Item>
-						</List>
+						<i className="home icon"/>
+						Home
 					</Menu.Item>
 				</NavLink>
 			</List.Item>
@@ -86,7 +76,8 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			<List.Item>
 				<NavLink activeClassName="active" to="/PayRoll">
 					<Menu.Item>
-						Payroll	
+					<i className="money bill alternate outline icon"/>
+					Payroll	
 					</Menu.Item>
 				</NavLink>
 			</List.Item>
@@ -94,6 +85,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			<List.Item>
 				<NavLink exact activeClassName="active" to="/EmployeeMain">
 					<Menu.Item>
+					<i className="users icon"/>
 						Employee			
 					</Menu.Item>
 				</NavLink>
@@ -102,6 +94,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			<List.Item>
 				<NavLink activeClassName="active" to="/ApplicantMain">
 					<Menu.Item>
+						<i className="add user icon" />
 						Hiring
 				
 					</Menu.Item>
@@ -213,6 +206,7 @@ export default class HeaderSideBar extends Component {
 						</Segment>
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
+
 					
 			</div>
 )
