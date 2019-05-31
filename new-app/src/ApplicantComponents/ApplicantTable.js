@@ -185,7 +185,7 @@ class ApplicantTable extends Component {
            {ApplicantTable}
           
            </tbody>
-           <tfoot>
+           {/* <tfoot>
           <tr>
           <th colSpan="5">
           <div className="ApplicantPagination">
@@ -203,7 +203,7 @@ class ApplicantTable extends Component {
           </div>
           </th>
         </tr>
-        </tfoot>
+        </tfoot> */}
         </table>
         
       </div>        

@@ -123,9 +123,9 @@ export default class ApplicantHeader extends Component {
 
 
                 <div className ='TableTitle'>
-                    <p>
+                    {/* <p>
                     Applicant Table
-                    </p>
+                    </p> */}
                  
                 </div>
                 {/* <div className='View'> 

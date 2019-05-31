@@ -201,7 +201,7 @@ class EmployeeTable extends Component {
            {employeeTable}
           
            </tbody>
-           <tfoot>
+           {/* <tfoot>
           <tr>
           <th colSpan="5">
           <div className="EmployeePagination">
@@ -219,7 +219,7 @@ class EmployeeTable extends Component {
           </div>
           </th>
         </tr>
-        </tfoot>
+        </tfoot> */}
         </table>
         
       </div>        

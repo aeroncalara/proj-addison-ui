@@ -13,7 +13,9 @@ const panes = [
 		<div className='EmpDetails'>
 		<div className ='desc'>
 			<i className="money bill alternate outline icon"/>
+			
 				Payroll
+			
 		</div>
 		</div>
     
@@ -22,7 +24,7 @@ const panes = [
 		<PayRollTable/>
 		</div>  
 
-    <div className="searchpayroll">
+    {/* <div className="searchpayroll">
                 <Popup
                     trigger={<div className="ui category search">
                     <div className="ui icon input">
@@ -35,7 +37,7 @@ const panes = [
                     content='You may search by Name'
                     on='focus'/>
               </div>
-
+ */}
 
 	</Form>
 	</Tab.Pane> 
@@ -93,7 +95,7 @@ export default class PayRoll extends Component {
           
             
           <div className='PayrollTabs'>    
-								<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
+								<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
 					</div>
 
 

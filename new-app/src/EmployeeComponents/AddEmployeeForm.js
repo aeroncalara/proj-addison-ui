@@ -1,63 +1,14 @@
 import React, { Component } from 'react'
-// import { } from 'semantic-ui-react'
-// import ViewEmployeeForm from './ViewEmployeeForm';
-// import TimeInOut from '../TimeInOutComponents/TimeInOut';
-// import { NavLink} from 'react-router-dom'
-import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Input, Modal } from 'semantic-ui-react'
+import {Button ,Header, Image, Tab, List, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
 import './AddEmployeeForm.css';
-import { NavLink, Route} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 import { graphql, compose, Mutation } from 'react-apollo';
 const { ADD_EMPLOYEE } = require('../Queries/Queries')
 
-// Country Dropdown
-// const countryOptions = [
-//   { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-//   { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
-//   { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
-//   { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
-//   { key: 'as', value: 'as', flag: 'as', text: 'American Samoa' },
-//   { key: 'ad', value: 'ad', flag: 'ad', text: 'Andorra' },
-//   { key: 'ao', value: 'ao', flag: 'ao', text: 'Angola' },
-//   { key: 'ai', value: 'ai', flag: 'ai', text: 'Anguilla' },
-//   { key: 'ag', value: 'ag', flag: 'ag', text: 'Antigua' },
-//   { key: 'ar', value: 'ar', flag: 'ar', text: 'Argentina' },
-//   { key: 'am', value: 'am', flag: 'am', text: 'Armenia' },
-//   { key: 'aw', value: 'aw', flag: 'aw', text: 'Aruba' },
-//   { key: 'au', value: 'au', flag: 'au', text: 'Australia' },
-//   { key: 'at', value: 'at', flag: 'at', text: 'Austria' },
-//   { key: 'az', value: 'az', flag: 'az', text: 'Azerbaijan' },
-//   { key: 'bs', value: 'bs', flag: 'bs', text: 'Bahamas' },
-//   { key: 'bh', value: 'bh', flag: 'bh', text: 'Bahrain' },
-//   { key: 'bd', value: 'bd', flag: 'bd', text: 'Bangladesh' },
-//   { key: 'bb', value: 'bb', flag: 'bb', text: 'Barbados' },
-//   { key: 'by', value: 'by', flag: 'by', text: 'Belarus' },
-//   { key: 'be', value: 'be', flag: 'be', text: 'Belgium' },
-//   { key: 'bz', value: 'bz', flag: 'bz', text: 'Belize' },
-//   { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
-//   { key: 'bm', value: 'bm', flag: 'bm', text: 'Bermuda' },
-//   { key: 'bt', value: 'bt', flag: 'bt', text: 'Bhutan' },
-//   { key: 'bo', value: 'bo', flag: 'bo', text: 'Bolivia' },
-//   { key: 'ba', value: 'ba', flag: 'ba', text: 'Bosnia' },
-//   { key: 'bw', value: 'bw', flag: 'bw', text: 'Botswana' },
-//   { key: 'bv', value: 'bv', flag: 'bv', text: 'Bouvet Island' },
-//   { key: 'br', value: 'br', flag: 'br', text: 'Brazil' },
-//   { key: 'vg', value: 'vg', flag: 'vg', text: 'British Virgin Islands' },
-//   { key: 'bn', value: 'bn', flag: 'bn', text: 'Brunei' },
-//   { key: 'bg', value: 'bg', flag: 'bg', text: 'Bulgaria' },
-//   { key: 'bf', value: 'bf', flag: 'bf', text: 'Burkina Faso' },
-//   { key: 'bi', value: 'bi', flag: 'bi', text: 'Burundi' },
-//   { key: 'tc', value: 'tc', flag: 'tc', text: 'Caicos Islands' },
-//   { key: 'kh', value: 'kh', flag: 'kh', text: 'Cambodia' },
-//   { key: 'cm', value: 'cm', flag: 'cm', text: 'Cameroon' },
-//   { key: 'ca', value: 'ca', flag: 'ca', text: 'Canada' },
-// ]
-
 // TABS
 
-
 class AddEmployeeForm extends Component {
-
 
   state = { open: false };
 
@@ -171,83 +122,102 @@ class AddEmployeeForm extends Component {
 	   this.setState({[type]: e.target.value})
    }
 
-  //  saveNewEmployee = () => {
-  //   this.props.addEmployee({
-  //     variables:{
-  //       first: this.state.firstName,
-  //       middle: this.state.middleName,
-  //       last: this.state.lastName,
-  //       date_of_birth: this.state.birthDate,
-  //       type: this.state.type,
-  //       mobile: this.state.mobile,
-  //       telephone: this.state.telephone,
-
-  //       street: this.state.street,
-  //       city: this.state.city,
-  //       province: this.state.province,
-  //       country: this.state.country,
-
-  //       sss: this.state.sss,
-  //       tin: this.state.tin,
-  //       philhealth: this.state.philhealth,
-  //       hdmf: this.state.hdmf,
-
-  //       title: this.state.title,
-  //       description: this.state.description,
-  //       salary: this.state.salary,
-  //     },
-  //     // refetchQueries:[{ query: getBooksQuery}]
-  // });
-  //  }
 
   render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     const panes = [
 
-      {menuItem: 'Personal', render: () =>
+  {menuItem: 'Personal', render: () =>
       <Tab.Pane> 
-      <Form >
+     
         <div className='EmpDetails'>
         <div className ='desc'>
           <i className="user icon"/>
             Personal Information
         </div>
         </div>
-  
+
         <div>
         <hr className="hrName" />
         </div>  
   
-        <List>
-        <List.Item>
-          <Form.Group unstackable widths={2}>
+        <Form>
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+		<Label as='a' color='teal' ribbon>
+         	 Basic Information
+        </Label>
+		<Form.Group>
+
+
+
           <Form.Input label='First name' placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} value={this.state.firstName} />
-          </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-          <Form.Group unstackable widths={1}>
+
           <Form.Input label='Middle name' placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} value={this.state.middleName}/>
-          </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-          <Form.Group unstackable widths={2}>
+
           <Form.Input label='Last name' placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')} value={this.state.lastName}/>
-          </Form.Group>
-        </List.Item>
+
+    </Form.Group>
+
+    <Form.Group>
+    
   
-        <List.Item>
-          <Form.Group unstackable widths={1}>
+     
+
           <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
-          </Form.Group>
-        </List.Item>
-        </List>
+      </Form.Group>
+
+      </Segment>
+	</Grid.Column>
+	</Grid>
+   
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+
+
+		<Label as='a' color='teal' ribbon>
+         	 Benefits
+        </Label>
+
+		<Form.Group>
+			
+	
+          <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
+        
+        
+
+          <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
+    
   
-      </Form>
+      
+          <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
+      
+  
+        
+          <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
+      
+   
+
+		</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>
+	
+	</Form>
+
       </Tab.Pane> 
       },
   
+
+
+
+
+
+
+
       {menuItem: 'Contact', render: () => 
       <Tab.Pane>
       <Form>
@@ -376,49 +346,6 @@ class AddEmployeeForm extends Component {
       </Form>
       </Tab.Pane>
       },
-  
-      {menuItem: 'Documents', render: () => 
-      <Tab.Pane>
-      <Form>
-        <div className='EmpDetails'>
-        <div className ='desc'>
-          <i className="user icon"/>
-          Personal
-        </div>
-        </div>
-  
-        <div>
-        <hr className="hrName" />
-        </div>  
-        
-      <List>
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
-        </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
-        </Form.Group>
-        </List.Item>
-      </List>
-      </Form>
-      </Tab.Pane> 
-      }
       
   ]
     return (
@@ -537,7 +464,7 @@ class AddEmployeeForm extends Component {
           
                     {/* Contact Details */}
                  
-                    <List verticalAlign='middle' selection verticalAlign='middle'>
+                    {/* <List verticalAlign='middle' selection verticalAlign='middle'>
                       <List.Item>
                                               <Input fluid 
                               action={{ color: 'teal', icon: 'upload' }}
@@ -545,7 +472,7 @@ class AddEmployeeForm extends Component {
                             />
                                                </List.Item>
                       
-                  </List>
+                  </List> */}
                   
               </div>
           </div>
@@ -564,59 +491,6 @@ class AddEmployeeForm extends Component {
 }
 
 
-// export default compose(graphql(addNewEmployee, {name:"addNewEmployee"})(AddEmployeeForm))
+
 export default (AddEmployeeForm)
 
-// import React, { Component } from 'react'
-// import './AddEmployeeForm.css';
-// import {Form} from 'semantic-ui-react'
-
-// export default class AddEmployeeButton extends Component {
-//   render() {
-//     return (
-        
-          
-//           <Form>
-//               <span>Account Details</span>
-//               <Form.Group unstackable widths={2}>
-//                 <Form.Input label='First name' placeholder='First name' />
-//                 <Form.Input label='Middle name' placeholder='Middle Name' />
-//                 <Form.Input label='Last Name' placeholder='Last Name' />
-//               </Form.Group>
-//               <hr></hr>
-
-//               <span>Contact Information</span>
-//                <Form.Group widths={2}>
-
-//                  <Form.Input label='Birthdate (mm-dd-yyyy)' placeholder='Birthdate (01-22-1998)' />
-//                  <Form.Field label='Type' control='select'>
-//                   <option value='male'>Mobile</option>
-//                   <option value='female'>Landline</option>
-//                  </Form.Field>
-
-
-//                  <Form.Input label='Number' placeholder='Number' />
-//               </Form.Group>
-//               <hr></hr>
-
-//               <span>Position</span>
-//               <Form.Group widths={3}>
-//                  <Form.Input label='Title' placeholder='Title' />
-//                  <Form.Input label='Description' placeholder='Description' />
-//                  <Form.Input label='Salary' placeholder='Salary' />
-//                </Form.Group>
-//                <hr></hr>
-
-//                <span>Account Details</span>
-//               <Form.Group widths={3}>
-//                   <Form.Input label='TIN#' placeholder='TIN#' />
-//                     <Form.Input label='SSS#' placeholder='SSS#' />
-//                     <Form.Input label='PHILHEALTH#' placeholder='PHILHEALTH' />
-//                   <Form.Input label='HDMF#' placeholder='HDMF#' />
-//                   </Form.Group>  
-//           </Form>     
-      
-   
-//     )
-//   }
-// }

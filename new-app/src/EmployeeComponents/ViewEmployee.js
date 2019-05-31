@@ -3,9 +3,6 @@ import {Link, Route} from 'react-router-dom'
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import { Popup } from 'semantic-ui-react'
 
-
-
-
 export default class extends Component {
 
 constructor(props){
@@ -14,7 +11,6 @@ constructor(props){
     item: props.item
     }
 }
-
 
 render() {
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
 import { List,Tab, Form ,Button, Popup,Input  } from 'semantic-ui-react'
-import AddEmployeeButton from '../EmployeeComponents/AddEmployeeButton';
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
-import { NavLink, Route} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 
 
 
@@ -28,11 +27,6 @@ const panes = [
 			<EmployeeGrid/>
 				</Form>
 			</Tab.Pane> },
-
-
- 
-
-
 
 ]
 
@@ -121,9 +115,9 @@ export default class EmployeeHeader extends Component {
 
 
 								<div className ='TableTitle'>
-										<p>
+										{/* <p>
 										Employee Table
-										</p>
+										</p> */}
 								 
 								</div>
 								{/* <div className='View'> 

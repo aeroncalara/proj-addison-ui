@@ -198,49 +198,49 @@ const {isEdit} = this.state
 
 // deduction/ incentives TAB 
 
-const Otherpanes = [
+// const Otherpanes = [
 
-	{menuItem: 'Add Incentives', render: () =>
-	<Tab.Pane> 
+// 	{menuItem: 'Add Incentives', render: () =>
+// 	<Tab.Pane> 
 			
 	
-	</Tab.Pane> 
-	},
+// 	</Tab.Pane> 
+// 	},
 
-	{menuItem: 'Incentives table', render: () => 
-	<Tab.Pane>
-		<Form key={employee} liquid>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="phone square icon"/>
-				Contact Information
-		</div>
-		</div>
+// 	{menuItem: 'Incentives table', render: () => 
+// 	<Tab.Pane>
+// 		<Form key={employee} liquid>
+// 		<div className='EmpDetails'>
+// 		<div className ='desc'>
+// 			<i className="phone square icon"/>
+// 				Contact Information
+// 		</div>
+// 		</div>
 
-		<div>
-		<hr className="hrName" />
-		</div>  
+// 		<div>
+// 		<hr className="hrName" />
+// 		</div>  
 
 
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
+// 	<Grid>
+// 	<Grid.Column width={11}>
+// 	<Segment raised>
 	
-		<Form.Group>
-		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
-		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
-		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+// 		<Form.Group>
+// 		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
+// 		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+// 		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
 	
-		</Form.Group>
+// 		</Form.Group>
 		
-	</Segment>
-	</Grid.Column>
-	</Grid>
+// 	</Segment>
+// 	</Grid.Column>
+// 	</Grid>
 	
-	</Form>
-	</Tab.Pane>
-	},
-]
+// 	</Form>
+// 	</Tab.Pane>
+// 	},
+// ]
 
 
 // MAINTAB
@@ -267,26 +267,40 @@ const panes = [
          	 Basic Information
         </Label>
 		<Form.Group>
+
+
 			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={employee.person.first} />
+			
+
 			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={employee.person.middle} />
+
+
 			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={employee.person.last}/>
+
+
 		</Form.Group>
 
 		<Form.Group>
 				<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={employee.person.date_of_birth}/>
 		</Form.Group>
 		
+
 	</Segment>
 	</Grid.Column>
 	</Grid>
 
+
 	<Grid>
 	<Grid.Column width={11}>
 	<Segment raised>
+
+
 		<Label as='a' color='teal' ribbon>
          	 Benefits
         </Label>
+
 		<Form.Group>
+			
 			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={employee.tin}/>
 		
 			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
@@ -439,7 +453,6 @@ const panes = [
 	
 	<Form.Group widths="equal">
           <Form.Input fluid label="Amount" placeholder="Amount" />
-          <Form.Input fluid label="Is Used" placeholder="Is Used" />
           <Form.Input fluid label="Date Given" placeholder="Date Given" />
         </Form.Group>
         <Form.TextArea label="Description" placeholder="Description" />
@@ -475,7 +488,7 @@ const panes = [
 	
 	<Form.Group widths="equal">
           <Form.Input fluid label="Amount" placeholder="Amount" />
-          <Form.Input fluid label="Is Used" placeholder="Is Used" />
+         
           <Form.Input fluid label="Date Given" placeholder="Date Given" />
         </Form.Group>
         <Form.TextArea label="Description" placeholder="Description" />
@@ -563,7 +576,7 @@ return (
 					)}
 				</List.Item>
 
-				<List.Item>
+				{/* <List.Item>
 					{!this.state.isEdit &&(
 						<div className="PrevNxt">
 							<List horizontal>
@@ -586,7 +599,7 @@ return (
 								</List.Item> 
 							</List>
 						</div> 
-					)}
+					)} */}
 					
 					<List.Item>
 						{this.state.isEdit &&
@@ -642,7 +655,7 @@ return (
 								</Modal>
 
 					</List.Item>
-				</List.Item>
+				{/* </List.Item> */}
 			</List>
 
 		</div>

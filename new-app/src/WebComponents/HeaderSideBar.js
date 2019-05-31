@@ -29,12 +29,12 @@ const trigger = (
 			<Header.Content>
 				<List>
 					<List.Item>
-						Lena
+						Admin
 					</List.Item>
 
-					<List.Item>
+					{/* <List.Item>
 						Human Resources
-					</List.Item>
+					</List.Item> */}
 				</List>
 			</Header.Content>
 		</Header>

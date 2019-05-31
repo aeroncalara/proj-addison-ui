@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Input, Modal } from 'semantic-ui-react'
+import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Grid,Segment,Label,Input, Modal } from 'semantic-ui-react'
 import './AddApplicantForm.css';
 import { NavLink, Route} from 'react-router-dom';
 
@@ -127,45 +127,85 @@ class AddApplicantForm extends Component {
 
       {menuItem: 'Personal', render: () =>
       <Tab.Pane> 
-      <Form >
+     
         <div className='EmpDetails'>
         <div className ='desc'>
           <i className="user icon"/>
             Personal Information
         </div>
         </div>
-  
+
         <div>
         <hr className="hrName" />
         </div>  
   
-        <List>
-        <List.Item>
-          <Form.Group unstackable widths={2}>
+        <Form>
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+		<Label as='a' color='teal' ribbon>
+         	 Basic Information
+        </Label>
+		<Form.Group>
+
+
+
           <Form.Input label='First name' placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} value={this.state.firstName} />
-          </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-          <Form.Group unstackable widths={1}>
+
           <Form.Input label='Middle name' placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} value={this.state.middleName}/>
-          </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-          <Form.Group unstackable widths={2}>
+
           <Form.Input label='Last name' placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')} value={this.state.lastName}/>
-          </Form.Group>
-        </List.Item>
+
+    </Form.Group>
+
+    <Form.Group>
+    
   
-        <List.Item>
-          <Form.Group unstackable widths={1}>
+     
+
           <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
-          </Form.Group>
-        </List.Item>
-        </List>
+      </Form.Group>
+
+      </Segment>
+	</Grid.Column>
+	</Grid>
+   
+
+	<Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+
+
+		<Label as='a' color='teal' ribbon>
+         	 Benefits
+        </Label>
+
+		<Form.Group>
+			
+	
+          <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
+        
+        
+
+          <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
+    
   
-      </Form>
+      
+          <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
+      
+  
+        
+          <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
+      
+   
+
+		</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>
+	
+	</Form>
+
       </Tab.Pane> 
       },
   
@@ -292,48 +332,6 @@ class AddApplicantForm extends Component {
       </Tab.Pane>
       },
   
-      {menuItem: 'Documents', render: () => 
-      <Tab.Pane>
-      <Form>
-        <div className='EmpDetails'>
-        <div className ='desc'>
-          <i className="user icon"/>
-          Personal
-        </div>
-        </div>
-  
-        <div>
-        <hr className="hrName" />
-        </div>  
-        
-      <List>
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
-        </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
-        </Form.Group>
-        </List.Item>
-      </List>
-      </Form>
-      </Tab.Pane> 
-      }
       
   ]
     return (
@@ -446,13 +444,13 @@ class AddApplicantForm extends Component {
 
           {/* Details in the left */}
           <div className ='DetailsBg'>
-s
+
               {/*contact Details in the left */}
               <div className ='Up'>
           
                     {/* Contact Details */}
                  
-                    <List verticalAlign='middle' selection verticalAlign='middle'>
+                    {/* <List verticalAlign='middle' selection verticalAlign='middle'>
                       <List.Item>
                                               <Input fluid 
                               action={{ color: 'teal', icon: 'upload' }}
@@ -460,7 +458,7 @@ s
                             />
                                                </List.Item>
                       
-                  </List>
+                  </List> */}
                   
               </div>
           </div>
