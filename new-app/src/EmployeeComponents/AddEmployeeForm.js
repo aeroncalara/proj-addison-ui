@@ -212,12 +212,6 @@ class AddEmployeeForm extends Component {
       },
   
 
-
-
-
-
-
-
       {menuItem: 'Contact', render: () => 
       <Tab.Pane>
       <Form>
@@ -232,25 +226,26 @@ class AddEmployeeForm extends Component {
         <hr className="hrName" />
         </div>  
         
-        <List>
-        <List.Item>
-          <Form.Group unstackable widths={1}>																	  
-          <Form.Input label='Mobile Number' placeholder='Mobile Number'  onChange={(e) => this.handleChange(e, 'mobile')} value={this.state.mobile}/>
-          </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-          <Form.Group unstackable widths={1}>
-          <Form.Input label='Telephone Number' placeholder='Telephone Number' onChange={(e) => this.handleChange(e, 'telephone')} value={this.state.telephone}/>
-          </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-          <Form.Group unstackable widths={.05}>
-          <Form.Input label='Email' placeholder='Email'  onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
-          </Form.Group>
-        </List.Item>
-        </List>
+		<Grid>
+	<Grid.Column width={11}>
+		<Segment raised>
+		
+			<Form.Group>													
+
+				<Form.Input label='Mobile Number' placeholder='Mobile Number'  onChange={(e) => this.handleChange(e, 'mobile')} value={this.state.mobile}/>
+
+				<Form.Input label='Telephone Number' 
+				placeholder='Telephone Number' onChange={(e) => this.handleChange(e, 'telephone')} value={this.state.telephone}/>
+
+				<Form.Input label='Email' placeholder='Email'  onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+
+			</Form.Group>
+			
+		</Segment>
+		</Grid.Column>
+		</Grid>
+
+
       </Form>
       </Tab.Pane>
       },
@@ -269,47 +264,55 @@ class AddEmployeeForm extends Component {
         <hr className="hrName" />
       </div>  
         
-      <List>
-      <List.Item>
-        <Form.Group unstackable widths={1}>
+
+
+
+	  <Grid>
+	<Grid.Column width={11}>
+	<Segment raised>
+			
+	<Form.Group>
           <Form.Input label='House number' placeholder='House Number' onChange={(e) => this.handleChange(e, 'number')} value={this.state.number}/>
-        </Form.Group>
-        </List.Item>
-        <List.Item>
-        <Form.Group unstackable widths={2}>
+
+
+
+
+
+
           <Form.Input label='Street' placeholder='Street' onChange={(e) => this.handleChange(e, 'street')} value={this.state.street}/>
-        </Form.Group>
-        </List.Item>
-        
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          <Form.Input label='City' placeholder=''  onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={2}>
-          <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.province}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
-          {/* <Dropdown label='country'
-          placeholder='Select Country'
-          search
-          selection
-          options={countryOptions}
-          
-          /> */}
-        <Form.Input label='Country' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} value={this.state.country}/>
-        </Form.Group>
-        </List.Item>
-      </List>
-      </Form>
-      </Tab.Pane> 
-      },
-  
+
+
+
+
+
+      	<Form.Input label='City' placeholder='city' onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
+		
+
+
+     
+
+
+		<Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.province}/>
+		
+
+
+
+		<Form.Input label='Country' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} value={this.state.country}/>
+		
+
+		</Form.Group>
+	</Segment>
+	</Grid.Column>
+	</Grid>		
+
+
+	</Form>
+	</Tab.Pane> 
+	},
+
+
+
+
       {menuItem: 'Position', render: () => 
       <Tab.Pane>
       <Form>
@@ -324,25 +327,26 @@ class AddEmployeeForm extends Component {
         <hr className="hrName" />
         </div>  
         
-      <List>
-        <List.Item>
-        <Form.Group unstackable widths={1}>
+
+		<Grid>
+	<Grid.Column width={11}>
+	<Segment raised >
+			
+	
+	<Form.Group widths="equal">
           <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'position')} value={this.state.position}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={2}>
-          <Form.Input label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
-        </Form.Group>
-        </List.Item>
-  
-        <List.Item>
-        <Form.Group unstackable widths={1}>
+
+
           <Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
-        </Form.Group>
-        </List.Item>
-      </List>
+
+
+		  </Form.Group>
+		  <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
+
+		  </Segment>
+	</Grid.Column>
+	</Grid>		
+	
       </Form>
       </Tab.Pane>
       },

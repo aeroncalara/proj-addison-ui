@@ -196,54 +196,6 @@ console.log(employee);
 
 const {isEdit} = this.state
 
-// deduction/ incentives TAB 
-
-// const Otherpanes = [
-
-// 	{menuItem: 'Add Incentives', render: () =>
-// 	<Tab.Pane> 
-			
-	
-// 	</Tab.Pane> 
-// 	},
-
-// 	{menuItem: 'Incentives table', render: () => 
-// 	<Tab.Pane>
-// 		<Form key={employee} liquid>
-// 		<div className='EmpDetails'>
-// 		<div className ='desc'>
-// 			<i className="phone square icon"/>
-// 				Contact Information
-// 		</div>
-// 		</div>
-
-// 		<div>
-// 		<hr className="hrName" />
-// 		</div>  
-
-
-// 	<Grid>
-// 	<Grid.Column width={11}>
-// 	<Segment raised>
-	
-// 		<Form.Group>
-// 		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
-// 		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
-// 		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
-	
-// 		</Form.Group>
-		
-// 	</Segment>
-// 	</Grid.Column>
-// 	</Grid>
-	
-// 	</Form>
-// 	</Tab.Pane>
-// 	},
-// ]
-
-
-// MAINTAB
 
 const panes = [
 
@@ -319,6 +271,8 @@ const panes = [
 	</Tab.Pane> 
 	},
 
+
+
 	{menuItem: 'Contact', render: () => 
 	<Tab.Pane>
 		<Form key={employee} liquid>
@@ -339,6 +293,7 @@ const panes = [
 	<Segment raised>
 	
 		<Form.Group>
+            
 		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
 		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
 		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
