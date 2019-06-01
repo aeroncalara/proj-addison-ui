@@ -410,7 +410,7 @@ const panes = [
 			<div className ='desc'>
 				<i className="clock outline icon"/>
 				Time Logs
-			</div>
+			</div>a
 		</div>
 
 		<div>

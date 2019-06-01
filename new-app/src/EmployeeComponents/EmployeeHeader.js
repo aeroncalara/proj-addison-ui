@@ -10,7 +10,7 @@ import { NavLink} from 'react-router-dom'
 
 const panes = [
 		{ 
-			menuItem: { key: 'users', icon: 'list', content: 'List' },
+			menuItem: { icon: 'list', content: 'List' },
 		render: () => <Tab.Pane> 
 
 		<Form>

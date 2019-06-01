@@ -43,11 +43,11 @@ const trigger = (
 )
 
 // ADMINOPTIONS
-const options = [
-	{ key: 'user', text: 'Account', icon: 'user' },
-	{ key: 'settings', text: 'Settings', icon: 'settings' },
-	{ key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
-]
+// const options = [
+// 	{ key: 'user', text: 'Account', icon: 'user' },
+// 	{ key: 'settings', text: 'Settings', icon: 'settings' },
+// 	{ key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+// ]
 
 // SIDEBAR
 const VerticalSidebar = ({ animation, direction, visible }) => (
@@ -131,7 +131,7 @@ export default class HeaderSideBar extends Component {
 
 	handleDirectionHide = direction => () => this.setState({ direction, visible: false })
 
-	// TIME
+	TIME
 	constructor(props) {
 	super(props);
 	this.state = {
@@ -177,9 +177,9 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 
 					{/* ADMINTOP */}
-					<Menu.Item  position='right' style={{right:95 }}>
+					{/* <Menu.Item  position='right' style={{right:95 }}>
 						<Dropdown trigger={trigger} options={options} pointing='top left' icon={null} /> 
-					</Menu.Item>
+					</Menu.Item> */}
 				</Menu>
 
 				<Sidebar.Pushable as={Segment} style={{height: 620 , bottom:18 }} >

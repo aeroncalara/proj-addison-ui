@@ -3,7 +3,7 @@ import {Button ,Header, Image, Tab, List, Form, Icon, Grid, Segment,Label, Modal
 import './AddApplicantForm.css';
 import { NavLink} from 'react-router-dom';
 
-import { graphql, compose, Mutation } from 'react-apollo';
+import {Mutation } from 'react-apollo';
 const { ADD_APPLICANT } = require('../Queries/Queries')
 
 // TABS
@@ -122,7 +122,6 @@ handleChange = (e, type) => {
     this.setState({[type]: e.target.value})
 }
 
-
 render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     const panes = [
@@ -150,8 +149,6 @@ render() {
         </Label>
         <Form.Group>
 
-
-
         <Form.Input label='First name' placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} value={this.state.firstName} />
 
         <Form.Input label='Middle name' placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} value={this.state.middleName}/>
@@ -162,16 +159,12 @@ render() {
 
     <Form.Group>
     
-
-    
-
         <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
     </Form.Group>
 
     </Segment>
     </Grid.Column>
     </Grid>
-
 
     <Grid>
     <Grid.Column width={11}>
@@ -184,19 +177,12 @@ render() {
 
         <Form.Group>
             
-    
-        <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
-        
-        
+        <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>    
 
         <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
     
-
-    
         <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
-    
 
-        
         <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
     
 
@@ -274,29 +260,12 @@ render() {
     <Form.Group>
         <Form.Input label='House number' placeholder='House Number' onChange={(e) => this.handleChange(e, 'number')} value={this.state.number}/>
 
-
-
-
-
-
         <Form.Input label='Street' placeholder='Street' onChange={(e) => this.handleChange(e, 'street')} value={this.state.street}/>
-
-
-
-
 
         <Form.Input label='City' placeholder='city' onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
         
-
-
-    
-
-
         <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.province}/>
-        
-
-
-
+    
         <Form.Input label='Country' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} value={this.state.country}/>
         
 
@@ -357,13 +326,6 @@ render() {
 
     {/* EmployeeHeader */}
     <div className = "EmployeeTop">
-
-        {/* ViewEmployeeimage */}
-        {/* <div className='Img'>
-            <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
-        </div> */}
-
-        {/* eMPLoYEEname */}
         <div className='AppName'>
         
             <Header as='h2'>
