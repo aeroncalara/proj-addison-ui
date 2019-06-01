@@ -35,7 +35,7 @@
 
 
 	export const ADD_EMPLOYEE = gql`
-	mutation addEmployee($first: String!, $middle: String, $last: String!, $date_of_birth: String!, $contact: [Contact_Input], $address: [Address_Input], $sss: String, $tin: String, $philhealth: String, $hdmf: String, $title: String, $description: String, $salary: Float, $corrective_action: [Corrective_Action_Input], $work_history: [Work_History_Input], $transcript: [Transcript_Input] ) {
+	mutation addEmployee($first: String!, $middle: String, $last: String!, $date_of_birth: String!, $contact: [Contact_Input], $address: [Address_Input], $sss: String, $tin: String, $philhealth: String, $hdmf: String, $title: String, $description: String, $salary: Float, $corrective_action: [Corrective_Action_Input], $work_history: [Work_History_Input], $transcript: [Transcript_Input] ){
 		addEmployee(
 		person: {
 			first: $first,

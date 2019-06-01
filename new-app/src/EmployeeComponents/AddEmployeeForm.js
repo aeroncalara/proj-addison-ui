@@ -37,8 +37,9 @@ constructor(props) {
     city: '',
     country: '',
 
-    position:'',
+    
     title:'',
+    description:'', 
     salary:'',
 
     tin:'',
@@ -402,12 +403,15 @@ render() {
                         middle: this.state.middleName,
                         last: this.state.lastName,
                         date_of_birth: this.state.date_of_birth,
+
                         contact: [{type: this.state.type, number: this.state.number,}],
                         address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
                                      province: this.state.province, country: this.state.country,}],
 
                         title: this.state.title,
-                    
+                        description: this.state.description,
+                        // salary: this.state.salary,
+
                         sss: this.state.sss,
                         tin: this.state.tin,
                         philhealth: this.state.philhealth,
