@@ -23,22 +23,7 @@ const panes = [
 		<div>
 		<PayRollTable/>
 		</div>  
-
-    {/* <div className="searchpayroll">
-                <Popup
-                    trigger={<div className="ui category search">
-                    <div className="ui icon input">
-                    <input className="prompt" type="text" placeholder="Search..." />
-                    <i className="search icon"></i>
-                    </div>
-                        <div className="results"></div>
-                    </div>}
-                    header='Employee Payroll Search'
-                    content='You may search by Name'
-                    on='focus'/>
-              </div>
- */}
-
+		
 	</Form>
 	</Tab.Pane> 
 	},

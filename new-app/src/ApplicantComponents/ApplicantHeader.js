@@ -15,7 +15,7 @@ import { NavLink, Route} from 'react-router-dom'
 
 const panes = [
     { 
-      menuItem: { key: 'users', icon: 'list', content: 'List' },
+      menuItem: {icon: 'list', content: 'List' },
     render: () => <Tab.Pane> 
 
     <Form>
@@ -35,7 +35,7 @@ const panes = [
     </Tab.Pane> },
 
 
-  {menuItem: { key: 'users', icon: 'th large', content: 'Grid' },
+  {menuItem: {icon: 'th large', content: 'Grid' },
   render: () => <Tab.Pane>
 
     <Form>

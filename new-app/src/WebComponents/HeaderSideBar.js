@@ -12,6 +12,7 @@ import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
 import PayRoll from '../PayRoll/PayRoll';
 import { Dropdown, List } from 'semantic-ui-react'
 
+
 import {
 Image,
 Header,
@@ -72,16 +73,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 					</Menu.Item>
 				</NavLink>
 			</List.Item>
-
-			<List.Item>
-				<NavLink activeClassName="active" to="/PayRoll">
-					<Menu.Item>
-					<i className="money bill alternate outline icon"/>
-					Payroll	
-					</Menu.Item>
-				</NavLink>
-			</List.Item>
-								
+					
 			<List.Item>
 				<NavLink exact activeClassName="active" to="/EmployeeMain">
 					<Menu.Item>
@@ -100,8 +92,18 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 					</Menu.Item>
 				</NavLink>
 			</List.Item>
+
+			<List.Item>
+				<NavLink activeClassName="active" to="/PayRoll">
+					<Menu.Item>
+					<i className="money bill alternate outline icon"/>
+					Payroll	
+					</Menu.Item>
+				</NavLink>
+			</List.Item>
 		</List>
 
+	
 	</Sidebar>
 )
 
@@ -167,11 +169,11 @@ export default class HeaderSideBar extends Component {
 
 					{/* TIME */}
 					<Menu.Item  position='right' style={{right:10 }}>
-						<div className="App-header">
+						{/* <div className="App-header">
 							<p className="App-clock">
 								{this.state.time}
 							</p>
-						</div>
+						</div> */}
 					</Menu.Item>
 
 					{/* ADMINTOP */}

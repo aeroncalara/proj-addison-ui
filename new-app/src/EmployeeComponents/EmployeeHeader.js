@@ -162,7 +162,7 @@ export default class EmployeeHeader extends Component {
 						 </div>
 					
 						 <div className='TableTabs'>    
-								<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
+							<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
 						</div>
 
 

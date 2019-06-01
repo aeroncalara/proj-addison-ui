@@ -359,9 +359,9 @@ class AddEmployeeForm extends Component {
       <div className = "EmployeeTop">
 
           {/* ViewEmployeeimage */}
-          <div className='Img'>
+          {/* <div className='Img'>
             <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
-          </div>
+          </div> */}
 
           {/* eMPLoYEEname */}
           <div className='AppName'>
@@ -460,30 +460,10 @@ class AddEmployeeForm extends Component {
         {/* EMployee contents */}
       <div className='EmployeeContent'>
 
-          {/* Details in the left */}
-          <div className ='DetailsBg'>
-
-              {/*contact Details in the left */}
-              <div className ='Up'>
-          
-                    {/* Contact Details */}
-                 
-                    {/* <List verticalAlign='middle' selection verticalAlign='middle'>
-                      <List.Item>
-                                              <Input fluid 
-                              action={{ color: 'teal', icon: 'upload' }}
-                              placeholder='Upload Image'
-                            />
-                                               </List.Item>
-                      
-                  </List> */}
-                  
-              </div>
-          </div>
-
+        
           {/* Tabs */}
           <div className='Tabs'>    
-            <Tab style={{width:1500 ,height:10000 }} panes={panes} />
+            <Tab style={{width:1500 ,height:10000 }} menu={{ secondary: true, pointing: true }}panes={panes} />
           </div>
             
       </div>

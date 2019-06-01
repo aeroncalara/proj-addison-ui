@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
+import Incentives from '../EmployeeComponents/Incentives';
+import Deduction from '../EmployeeComponents/Deduction';
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './EmployeeDetails.css';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
@@ -389,70 +391,15 @@ const panes = [
 
 	{menuItem: 'Insentives', render: () => 
 	<Tab.Pane>
-	<Form inverted>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="user icon"/>
-			Insentives
-		</div>
-				</div>
-
-		<div>
-		<hr className="hrName" />
-		</div>  
-		
-		<Grid>
-	<Grid.Column width={11}>
-	<Segment raised inverted>
-			
 	
-	<Form.Group widths="equal">
-          <Form.Input fluid label="Amount" placeholder="Amount" />
-          <Form.Input fluid label="Date Given" placeholder="Date Given" />
-        </Form.Group>
-        <Form.TextArea label="Description" placeholder="Description" />
-        <Form.Button>Submit</Form.Button>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-	
-	</Form>
-
+<Incentives />
 	</Tab.Pane> 
 	},
 
 	
 	{menuItem: 'Deduction', render: () => 
 	<Tab.Pane>
-	<Form inverted>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="user icon"/>
-			Deduction
-		</div>
-				</div>
-
-		<div>
-		<hr className="hrName" />
-		</div>  
-		
-		<Grid>
-	<Grid.Column width={11}>
-	<Segment raised inverted>
-			
-	
-	<Form.Group widths="equal">
-          <Form.Input fluid label="Amount" placeholder="Amount" />
-         
-          <Form.Input fluid label="Date Given" placeholder="Date Given" />
-        </Form.Group>
-        <Form.TextArea label="Description" placeholder="Description" />
-        <Form.Button>Submit</Form.Button>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-	
-	</Form>
+	<Deduction/>
 	</Tab.Pane> 
 	},
 
