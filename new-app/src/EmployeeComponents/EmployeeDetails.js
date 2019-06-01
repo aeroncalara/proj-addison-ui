@@ -174,6 +174,10 @@ getEmployee = async () => {
 					description
 					salary
 				}
+				sss
+				tin
+				philhealth
+				hdmf
 			}
 		}
 	`
@@ -258,7 +262,8 @@ const panes = [
 			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
 	
 			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={employee.philhealth}/>
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
+			
+			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={employee.hdmf}/>
 
 
 		</Form.Group>

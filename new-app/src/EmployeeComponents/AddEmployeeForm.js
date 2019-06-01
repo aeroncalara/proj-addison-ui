@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {Button ,Header, Image, Tab, List, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
+import {Button ,Header, Tab, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
 import './AddEmployeeForm.css';
 import { NavLink} from 'react-router-dom';
 
-import { graphql, compose, Mutation } from 'react-apollo';
+import {Mutation } from 'react-apollo';
 const { ADD_EMPLOYEE } = require('../Queries/Queries')
 
 // TABS
@@ -37,16 +37,14 @@ constructor(props) {
     city: '',
     country: '',
 
-    
-    title:'',
-    description:'', 
-    salary:'',
-
     tin:'',
     sss:'',
     philhealth:'',
-    hdmf: ''
-
+    hdmf: '',
+    
+    title:'',
+    description:'', 
+    salary:''
     }
 }
 componentDidUpdate() {
@@ -335,11 +333,11 @@ render() {
 
         <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
 
-
         <Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
 
 
-        </Form.Group>
+    </Form.Group>
+
         <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'description')} value={this.state.description}/>
 
         </Segment>
@@ -410,7 +408,7 @@ render() {
 
                         title: this.state.title,
                         description: this.state.description,
-                        // salary: this.state.salary,
+                     
 
                         sss: this.state.sss,
                         tin: this.state.tin,
