@@ -10,7 +10,7 @@ import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
 import PayRoll from '../PayRoll/PayRoll';
-import { Dropdown, List } from 'semantic-ui-react'
+import { List ,Dropdown} from 'semantic-ui-react'
 
 
 import {
@@ -43,11 +43,11 @@ const trigger = (
 )
 
 // ADMINOPTIONS
-// const options = [
-// 	{ key: 'user', text: 'Account', icon: 'user' },
-// 	{ key: 'settings', text: 'Settings', icon: 'settings' },
-// 	{ key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
-// ]
+const options = [
+	{ key: 'user', text: 'Account', icon: 'user' },
+	{ key: 'settings', text: 'Settings', icon: 'settings' },
+	{ key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+]
 
 // SIDEBAR
 const VerticalSidebar = ({ animation, direction, visible }) => (
@@ -113,6 +113,8 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 	// visible: PropTypes.bool,
 	// }
 
+	
+
 export default class HeaderSideBar extends Component {
 	state = {
 	animation: 'overlay',
@@ -169,17 +171,18 @@ export default class HeaderSideBar extends Component {
 
 					{/* TIME */}
 					<Menu.Item  position='right' style={{right:10 }}>
-						{/* <div className="App-header">
+						<div className="App-header">
 							<p className="App-clock">
 								{this.state.time}
 							</p>
-						</div> */}
+						</div>
+						
 					</Menu.Item>
 
 					{/* ADMINTOP */}
-					{/* <Menu.Item  position='right' style={{right:95 }}>
+					<Menu.Item  position='right' style={{right:95 }}>
 						<Dropdown trigger={trigger} options={options} pointing='top left' icon={null} /> 
-					</Menu.Item> */}
+					</Menu.Item>
 				</Menu>
 
 				<Sidebar.Pushable as={Segment} style={{height: 620 , bottom:18 }} >
