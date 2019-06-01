@@ -79,8 +79,8 @@ handleCancel = () => { ;
     philhealth:'',
     hdmf: '',
 
-    position:'',
     title:'',
+    description:'',
     salary:'',
 
     open: !this.state.open
@@ -112,8 +112,8 @@ handlesave = () => { ;
     philhealth:'',
     hdmf: '',
 
-    position:'',
     title:'',
+    description:'',
     salary:'',
     });
 }
@@ -310,9 +310,6 @@ render() {
     </Tab.Pane> 
     },
 
-
-
-
     {menuItem: 'Position', render: () => 
     <Tab.Pane>
     <Form>
@@ -334,14 +331,15 @@ render() {
             
     
     <Form.Group widths="equal">
-        <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'position')} value={this.state.position}/>
+
+        <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
 
 
         <Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
 
 
         </Form.Group>
-        <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
+        <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'description')} value={this.state.description}/>
 
         </Segment>
     </Grid.Column>
@@ -406,8 +404,10 @@ render() {
                         date_of_birth: this.state.date_of_birth,
                         contact: [{type: this.state.type, number: this.state.number,}],
                         address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
-                        province: this.state.province, country: this.state.country,}],
+                                     province: this.state.province, country: this.state.country,}],
+
                         title: this.state.title,
+                    
                         sss: this.state.sss,
                         tin: this.state.tin,
                         philhealth: this.state.philhealth,

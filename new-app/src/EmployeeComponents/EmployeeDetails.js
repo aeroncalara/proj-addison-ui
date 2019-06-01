@@ -35,8 +35,8 @@ this.state = {
 
 	number:'',
 	street: '',
-	town: '',
 	city: '',
+	province:'',
 	country: '',
 
 	title:'',
@@ -46,7 +46,7 @@ this.state = {
 	tin:'',
 	sss:'',
 	philhealth:'',
-		hdmf: '',
+	hdmf: '',
 
 	employee: {
 		person:
@@ -67,7 +67,6 @@ this.state = {
 			{
 			number:'',
 			street:'',
-			town:'',
 			city:'',
 			province:'',
 			country:'',
@@ -111,13 +110,12 @@ this.setState({
 
 	number:'',
 	street:'',
-	town:'',
 	city:'',
 	province:'',
 	country:'',
 
-	position:'',
 	title:'',
+	description:'',
 	salary:'',
 
 	tin:'',
@@ -329,11 +327,14 @@ const panes = [
 	<Segment raised>
 			
 	<Form.Group>
+			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].number}/>
+	
 			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].street}/>
 		
-			<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={employee.person.address[0].town}/>
-		
 			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={employee.person.address[0].city}/>
+
+			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={employee.person.address[0].province}/>
+		
 		
 			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={employee.person.address[0].country}/>
 
@@ -370,11 +371,11 @@ const panes = [
 	<Form.Group>
 	
 	
-			<Form.Input label='Possition' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'position')} value={employee.position.position}/>
+			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.title}/>
 	
 
 	
-			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.title}/>
+			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.description}/>
 	
 
 		

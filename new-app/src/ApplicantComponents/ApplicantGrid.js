@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ApplicantHeader.css';
 import {List, Grid,Image,Segment,  } from 'semantic-ui-react'
-import ViewEmployee from '../EmployeeComponents/ViewEmployee';
+import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 import axios from 'axios';        
@@ -11,7 +11,7 @@ let my_query =
 `
 query
   {
-    getAllEmployees
+    getAllapplicants
     {
       _id
       person
@@ -44,22 +44,22 @@ query
 `
 
 
-class EmployeeGrid extends Component 
+class applicantGrid extends Component 
 {
 
     constructor(props){
         super(props);
         this.state = { 
-          employees: [],
+          applicants: [],
         }
       }
     
       componentDidMount(){
-        this.getEmployees();
+        this.getapplicants();
       }
     
-      getEmployees = async () => {
-        let employee_variable = await axios({
+      getapplicants = async () => {
+        let applicant_variable = await axios({
           url: `http://localhost:4000`,
           method: `post`,
           data: {
@@ -67,7 +67,7 @@ class EmployeeGrid extends Component
           }
         })
     
-        this.setState({ employees: employee_variable.data.data.getAllEmployees });
+        this.setState({ applicants: applicant_variable.data.data.getAllapplicants });
 	  }
 	  
 	  state = { visible: true }
@@ -75,9 +75,9 @@ class EmployeeGrid extends Component
 
 render() {
     
-    const employees = this.state.employees;
+    const applicants = this.state.applicants;
     
-    let employeeTable = employees.map((employee, index) => {
+    let applicantTable = applicants.map((applicant, index) => {
     
 
     return (
@@ -99,7 +99,7 @@ render() {
                                       
                                     <List.Item>
                                         <div className='name'>
-                                        {employee.person.first}
+                                        {applicant.person.first}
                                         </div>
                                     </List.Item>
 
@@ -109,12 +109,12 @@ render() {
 
                                     <List.Item>
                                         <i className="user icon"/>
-                                        {employee.position.title}
+                                        {applicant.position.title}
                                     </List.Item>
 
                                     <List.Item>
                                         <i className="mobile icon"/>
-                                        {employee.person.contact[0].number}
+                                        {applicant.person.contact[0].number}
                                     </List.Item>
 
 									<List.Item>
@@ -125,11 +125,11 @@ render() {
                                     <div className="action">
                                         <List divided horizontal inverted relaxed>
                                             <List.Item>
-                                                <List.Content verticalAlign='top'><ViewEmployee item={employee}/></List.Content>
+                                                <List.Content verticalAlign='top'><ViewApplicant item={applicant}/></List.Content>
                                             </List.Item>
                                             <List.Item>
                                                
-                                                <List.Content verticalAlign='middle'> <HIre Employee={employee} /></List.Content>
+                                                <List.Content verticalAlign='middle'> <HIre applicant={applicant} /></List.Content>
                                             </List.Item>
                                         </List>
                                     </div>
@@ -155,7 +155,8 @@ render() {
             <Grid columns={4}>
                 <Grid.Row> 
 
-                    {employeeTable}
+                    {applicantTable}
+
                 </Grid.Row> 
 
             </Grid>
@@ -172,4 +173,4 @@ render() {
 // ║┗┛║┗━╣┃║┃║00║
 // ║┏┓║┏━╣┗╣┗╣╰╯║
 // ╚┛┗╩━━╩━╩━╩2019??﻿
-export default EmployeeGrid;
+export default applicantGrid;
