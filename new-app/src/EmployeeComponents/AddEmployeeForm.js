@@ -167,18 +167,18 @@ render() {
         <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
     </Form.Group>
 
-    </Segment>
+    {/* </Segment>
     </Grid.Column>
-    </Grid>
+    </Grid> */}
 
 
-    <Grid>
+    {/* <Grid>
     <Grid.Column width={11}>
-    <Segment raised>
+    <Segment raised> */}
 
 
         <Label as='a' color='teal' ribbon>
-            Benefits
+            Additional Information
         </Label>
 
         <Form.Group>
@@ -415,7 +415,31 @@ render() {
                         philhealth: this.state.philhealth,
                         hdmf: this.state.hdmf
                         }})
-                        this.setState({firstName:""})
+                        this.setState({  firstName: '',
+                        middleName: '',
+                        lastName: '',
+                        date_of_birth: '',
+                        
+                        type:'',
+                        mobile: '',
+                        telephone: '',
+                        email: '',
+                    
+                        number:'',
+                        street: '',
+                        town: '',
+                        city: '',
+                        province:'',
+                        country: '',
+                    
+                        sss:'',
+                        tin:'',
+                        philhealth:'',
+                        hdmf: '',
+                    
+                        title:'',
+                        description:'',
+                        salary:'',})
                         alert("adding complete")
                     }}>
                         <Button.Content visible>
