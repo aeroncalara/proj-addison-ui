@@ -145,37 +145,25 @@ getApplicant = async () => {
 				_id
 				person
 				{
-					first
-					middle
-					last
-					date_of_birth
-					contact
-					{
-							type
-							number
-						}
-					address
-					{
-						number
-						street
-						city
-						province
-						country
-						
-					}
+				  first
+				  middle
+				  last
+				  date_of_birth
+				  address{
+					number
+					street
+					city
+					province
+					country
+				  }
+				  contact{
+					type
+					number
+					
+				  }
 				}
-				position
-				{
-					title
-					description
-					salary
-				}
-				sss
-				tin
-				philhealth
-				hdmf
+			  }
 			}
-		}
 	`
 
 let applicant_variable = await axios({
@@ -185,7 +173,7 @@ let applicant_variable = await axios({
 	query: my_query
 	}
 	})
-this.setState({ applicant: applicant_variable.data.data.getapplicant });
+this.setState({ applicant: applicant_variable.data.data.getApplicant });
 }
 
 render() {
@@ -194,7 +182,7 @@ const { open, closeOnEscape, closeOnDimmerClick, Applicant } = this.state;
 
 console.log(Applicant);
 
-// const {isEdit} = this.state
+const {isEdit} = this.state
 
 
 const panes = [
