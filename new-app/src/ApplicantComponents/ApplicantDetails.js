@@ -142,38 +142,47 @@ getApplicant = async () => {
 		{
 			getApplicant(Applicant_id: "${this.props.match.params.id}")
 			{
-				_id
-				person
+			 
+				data
 				{
-				  first
-				  middle
-				  last
-				  date_of_birth
-				  address{
-					number
-					street
-					city
-					province
-					country
+				  _id
+				  person
+				  {
+					first
+					middle
+					last
+					date_of_birth
+					address{
+					  number
+					  street
+					  city
+					  province
+					  country
+					}
+					contact{
+					  type
+					  number
+					}
 				  }
-				  contact{
-					type
-					number
-					
-				  }
+			  
+				  sss
+				  tin
+				  philhealth
+				  hdmf
+				  
 				}
 			  }
 			}
 	`
 
-let applicant_variable = await axios({
-	url: `http://localhost:4000`,
-	method: `post`,
-	data: {
-	query: my_query
-	}
-	})
-this.setState({ applicant: applicant_variable.data.data.getApplicant });
+	let Applicant_variable = await axios({
+		url: `http://localhost:4000`,
+		method: `post`,
+		data: {
+		  query: my_query
+		}
+	  })
+	this.setState({ Applicants: Applicant_variable.data.data.getAllApplicants });
 }
 
 render() {
@@ -210,23 +219,21 @@ const panes = [
 		<Form.Group>
 
 
-			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={Applicant.person.first} />
+			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={Applicant} />
 			
 
-			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={Applicant.person.middle} />
+			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={Applicant} />
 
 
-			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={Applicant.person.last}/>
+			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={Applicant}/>
 
 
 		</Form.Group>
 
 		<Form.Group>
-				<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={Applicant.person.date_of_birth}/>
+				<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={Applicant}/>
 		</Form.Group>
 		
-
-
 
 
 		<Label as='a' color='teal' ribbon>
@@ -235,13 +242,14 @@ const panes = [
 
 		<Form.Group>
 			
-			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={Applicant.tin}/>
+			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={Applicant
+			}/>
 		
-			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={Applicant.sss}/>
+			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={Applicant}/>
 	
-			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={Applicant.philhealth}/>
+			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={Applicant}/>
 			
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={Applicant.hdmf}/>
+			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={Applicant}/>
 
 
 		</Form.Group>
@@ -277,8 +285,10 @@ const panes = [
 	
 		<Form.Group>
             
-		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={Applicant.person.contact[0].number}/>
+		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={Applicant}/>
+
 		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+		
 		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
 	
 		</Form.Group>
@@ -310,16 +320,16 @@ const panes = [
 	<Segment raised>
 			
 	<Form.Group>
-			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant.person.address[0].number}/>
+			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant}/>
 	
-			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant.person.address[0].street}/>
+			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant}/>
 		
-			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={Applicant.person.address[0].city}/>
+			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={Applicant}/>
 
-			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={Applicant.person.address[0].province}/>
+			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={Applicant}/>
 		
 		
-			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={Applicant.person.address[0].country}/>
+			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={Applicant}/>
 
 			</Form.Group>
 	</Segment>
@@ -354,15 +364,15 @@ const panes = [
 	<Form.Group>
 	
 	
-			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant.position.title}/>
+			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant}/>
 	
 
 	
-			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant.position.description}/>
+			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant}/>
 	
 
 		
-			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={Applicant.position.salary}/>
+			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={Applicant}/>
 	
 
 			</Form.Group>
@@ -388,10 +398,10 @@ return (
 		<div className='EmpName'>
 			<Header as='h2'>
 				<Header.Content>
-					{Applicant.person.first} {Applicant.person.middle} {Applicant.person.last}
-					
-					<Header.Subheader>  
-						{Applicant.position.title}
+					{/* {Applicant.data.person.first} {Applicant.person.middle} {Applicant.person.last}
+					 */}
+				<Header.Subheader>  
+						{/* {Applicant.position.title} */}
 					</Header.Subheader>
 				</Header.Content>
 			</Header> 

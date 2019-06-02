@@ -8,9 +8,6 @@ import { NavLink} from 'react-router-dom'
 
 // import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 
-
-
-
 const panes = [
 	{ 
 	menuItem: {icon: 'list', content: 'List' },
@@ -158,9 +155,6 @@ render() {
 			<div className='TableTabs'>    
 				<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
 			</div>
-
-
-
 	</div>
 	)
 }

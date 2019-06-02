@@ -18,7 +18,7 @@ const panes = [
 		</Form>
 		</Tab.Pane> },
 
-	{menuItem: { key: 'users', icon: 'th large', content: 'Grid' },
+	{menuItem: { icon: 'th large', content: 'Grid' },
 	render: () => <Tab.Pane>
 
 		<Form>

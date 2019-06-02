@@ -68,9 +68,9 @@ class ApplicantTable extends Component {
     let ApplicantTable = Applicants.map((Applicant, index) => {
 
         let contactTable = Applicant.person.contact.map((contactInformation)=>{
-          
+
             return(
-                <div class="content">
+                <div className="content">
                     {contactInformation.type}
                     <div class="sub header">
                         {contactInformation.number}
