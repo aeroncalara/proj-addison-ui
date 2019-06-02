@@ -51,7 +51,7 @@ class ApplicantTable extends Component {
   }
 
   getApplicants = async () => {
-    let Applicant_variable = await axios({
+    let applicant_variable = await axios({
       url: `http://localhost:4000`,
       method: `post`,
       data: {
@@ -59,15 +59,15 @@ class ApplicantTable extends Component {
       }
     })
 
-    this.setState({ Applicants: Applicant_variable.data.data.getAllApplicants });
+    this.setState({ applicants: applicant_variable.data.data.getAllApplicants });
   }
 
   render() {
 
-    const Applicants = this.state.Applicants;
-    let ApplicantTable = Applicants.map((Applicant, index) => {
+    const applicants = this.state.epplicants;
+    let applicantTable = applicants.map((applicant, index) => {
 
-        let contactTable = Applicant.person.contact.map((contactInformation)=>{
+        let contactTable = applicant.person.contact.map((contactInformation)=>{
 
             return(
                 <div className="content">
@@ -81,19 +81,17 @@ class ApplicantTable extends Component {
       return (
 
         
-              <tr key={Applicant.id}>
+              <tr key={applicant.id}>
                 <td data-label="Name">
                 <h4 class="ui image header">
          <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
           <div class="content">
-          {Applicant.person.first}
-            {/* <div class="sub header">
-            {Applicant.position.title}
-          </div> */}
+          {applicant.person.first}
+          
         </div>
       </h4>
       </td>
-                <td data-label="Address">{Applicant.person.address[0].city}</td>
+                <td data-label="Address">{applicant.person.address[0].city}</td>
                 <td data-label="Contact Info">  
                     <h4 class="ui image header">
                     {contactTable}
@@ -105,7 +103,7 @@ class ApplicantTable extends Component {
 
                 <List.Item >
 					<List.Content>
-						<ViewApplicant item={Applicant}/>
+						<ViewApplicant item={applicant}/>
 					</List.Content>
                 </List.Item>
 
@@ -113,7 +111,7 @@ class ApplicantTable extends Component {
 
                 <List.Item>
 					<List.Content>
-						<HIre Applicant={Applicant} />
+						<HIre Applicant={applicant} />
 					</List.Content>
                 </List.Item>
                 </List>
@@ -182,7 +180,7 @@ class ApplicantTable extends Component {
           </tr>
           </thead>
           <tbody>
-           {ApplicantTable}
+           {applicantTable}
           
            </tbody>
            {/* <tfoot>
