@@ -128,7 +128,7 @@ render() {
 
 {menuItem: 'Personal', render: () =>
     <Tab.Pane> 
-    
+    <div className="TabContainer">
         <div className='EmpDetails'>
         <div className ='desc'>
         <i className="user icon"/>
@@ -204,15 +204,15 @@ render() {
     </Segment>
     </Grid.Column>
     </Grid>
-    
+ 
     </Form>
-
+    </div>   
     </Tab.Pane> 
     },
 
-
     {menuItem: 'Contact', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
         <div className='EmpDetails'>
         <div className ='desc'>
@@ -246,11 +246,13 @@ render() {
 
 
     </Form>
+    </div>
     </Tab.Pane>
     },
 
     {menuItem: 'Address', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
     <div className='EmpDetails'>  
         <div className ='desc'>
@@ -306,11 +308,13 @@ render() {
 
 
     </Form>
+    </div>
     </Tab.Pane> 
     },
 
     {menuItem: 'Position', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
         <div className='EmpDetails'>    
         <div className ='desc'>
@@ -345,6 +349,7 @@ render() {
     </Grid>		
     
     </Form>
+    </div>
     </Tab.Pane>
     },
     
