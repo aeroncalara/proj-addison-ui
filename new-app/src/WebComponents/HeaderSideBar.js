@@ -22,6 +22,23 @@ Segment,
 Sidebar,
 } from 'semantic-ui-react'
 
+const colors = [
+	'red',
+	'orange',
+	'yellow',
+	'olive',
+	'green',
+	'teal',
+	'blue',
+	'violet',
+	'purple',
+	'pink',
+	'brown',
+	'grey',
+	'black',
+  ]
+  
+
 const trigger = (
 	<span>
 		<Header as='h4' image>
@@ -123,6 +140,15 @@ export default class HeaderSideBar extends Component {
 	visible: false,
 	}
 
+	static propTypes = {
+		color: PropTypes.string,
+	  }
+
+	  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+
 	handleAnimationChange = animation => () =>
 
 	this.setState({ animation, visible: !this.state.visible })
@@ -160,7 +186,8 @@ export default class HeaderSideBar extends Component {
 	render() {
 		const { animation, direction, visible } = this.state
 		const vertical = direction === 'bottom' || direction === 'top'
-
+		const { color } = this.props
+		const { activeItem } = this.state
 		return (
 			<div>
 				<Menu inverted style={{height:50}}>

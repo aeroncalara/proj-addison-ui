@@ -64,8 +64,8 @@
 	`
 
 
-	export const getApplicants = gql`{
-	getAllEmployees{
+	export const getApplicant = gql`{
+	getAllApplicants{
 		_id
 		person{
 			first
@@ -89,7 +89,7 @@
 
 
 	export const ADD_APPLICANT = gql`
-	mutation addAppliacant($first: String!, $middle: String, $last: String!, $date_of_birth: String!, $contact: [Contact_Input], $address: [Address_Input], $sss: String, $tin: String, $philhealth: String, $hdmf: String, $title: String, $description: String, $salary: Float, $corrective_action: [Corrective_Action_Input], $work_history: [Work_History_Input], $transcript: [Transcript_Input] ) {
+	mutation addApplicant ($first: String!, $middle: String, $last: String!, $date_of_birth: String!, $contact: [Contact_Input], $address: [Address_Input], $sss: String, $tin: String, $philhealth: String, $hdmf: String, $title: String, $description: String, $salary: Float, $corrective_action: [Corrective_Action_Input], $work_history: [Work_History_Input], $transcript: [Transcript_Input] ) {
 		addApplicant(
 		person: {
 			first: $first,
@@ -112,7 +112,7 @@
 		work_history: $work_history,
 		transcript: $transcript
 		) {
-		_id
+		message
 		}
 	}
 	`

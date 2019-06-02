@@ -14,7 +14,7 @@ export default class extends Component {
     
 
 render() {
-    const {item} = this.state;
+    // const {item} = this.state;
     return (
       <div>
         <Link to={"/ApplicantDetails/"}>

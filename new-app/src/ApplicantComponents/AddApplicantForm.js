@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button ,Header, Image, Tab, List, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
+import {Button ,Header, Tab, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
 import './AddApplicantForm.css';
 import { NavLink} from 'react-router-dom';
 
@@ -37,15 +37,14 @@ constructor(props) {
     city: '',
     country: '',
 
-    position:'',
-    title:'',
-    salary:'',
-
     tin:'',
     sss:'',
     philhealth:'',
-    hdmf: ''
-
+    hdmf: '',
+    
+    title:'',
+    description:'', 
+    salary:''
     }
 }
 componentDidUpdate() {
@@ -79,8 +78,8 @@ handleCancel = () => { ;
     philhealth:'',
     hdmf: '',
 
-    position:'',
     title:'',
+    description:'',
     salary:'',
 
     open: !this.state.open
@@ -112,8 +111,8 @@ handlesave = () => { ;
     philhealth:'',
     hdmf: '',
 
-    position:'',
     title:'',
+    description:'',
     salary:'',
     });
 }
@@ -122,13 +121,14 @@ handleChange = (e, type) => {
     this.setState({[type]: e.target.value})
 }
 
+
 render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
     const panes = [
 
 {menuItem: 'Personal', render: () =>
     <Tab.Pane> 
-    
+    <div className="TabContainer">
         <div className='EmpDetails'>
         <div className ='desc'>
         <i className="user icon"/>
@@ -149,6 +149,8 @@ render() {
         </Label>
         <Form.Group>
 
+
+
         <Form.Input label='First name' placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} value={this.state.firstName} />
 
         <Form.Input label='Middle name' placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} value={this.state.middleName}/>
@@ -159,30 +161,41 @@ render() {
 
     <Form.Group>
     
+
+    
+
         <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
     </Form.Group>
 
-    </Segment>
+    {/* </Segment>
     </Grid.Column>
-    </Grid>
+    </Grid> */}
 
-    <Grid>
+
+    {/* <Grid>
     <Grid.Column width={11}>
-    <Segment raised>
+    <Segment raised> */}
 
 
         <Label as='a' color='teal' ribbon>
-            Benefits
+            Additional Information
         </Label>
 
         <Form.Group>
             
-        <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>    
+    
+        <Form.Input label='TIN #' placeholder='TIN #' onChange={(e) => this.handleChange(e, 'tin')} value={this.state.tin}/>
+        
+        
 
         <Form.Input label='SSS #' placeholder='SSS#' onChange={(e) => this.handleChange(e, 'sss')} value={this.state.sss}/>
     
-        <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
 
+    
+        <Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' onChange={(e) => this.handleChange(e, 'philhealth')} value={this.state.philhealth}/>
+    
+
+        
         <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
     
 
@@ -191,15 +204,15 @@ render() {
     </Segment>
     </Grid.Column>
     </Grid>
-    
+ 
     </Form>
-
+    </div>   
     </Tab.Pane> 
     },
 
-
     {menuItem: 'Contact', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
         <div className='EmpDetails'>
         <div className ='desc'>
@@ -233,11 +246,13 @@ render() {
 
 
     </Form>
+    </div>
     </Tab.Pane>
     },
 
     {menuItem: 'Address', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
     <div className='EmpDetails'>  
         <div className ='desc'>
@@ -257,15 +272,16 @@ render() {
     <Grid.Column width={11}>
     <Segment raised>
             
-    <Form.Group>
+    <Form.Group unstackable widths={2}>
         <Form.Input label='House number' placeholder='House Number' onChange={(e) => this.handleChange(e, 'number')} value={this.state.number}/>
-
         <Form.Input label='Street' placeholder='Street' onChange={(e) => this.handleChange(e, 'street')} value={this.state.street}/>
+    </Form.Group>
 
+    <Form.Group widths={2}>
         <Form.Input label='City' placeholder='city' onChange={(e) => this.handleChange(e, 'city')} value={this.state.city}/>
-        
+
         <Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')} value={this.state.province}/>
-    
+        
         <Form.Input label='Country' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} value={this.state.country}/>
         
 
@@ -276,14 +292,13 @@ render() {
 
 
     </Form>
+    </div>
     </Tab.Pane> 
     },
 
-
-
-
     {menuItem: 'Position', render: () => 
     <Tab.Pane>
+         <div className="TabContainer">
     <Form>
         <div className='EmpDetails'>    
         <div className ='desc'>
@@ -303,20 +318,22 @@ render() {
             
     
     <Form.Group widths="equal">
-        <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'position')} value={this.state.position}/>
 
+        <Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
 
         <Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} value={this.state.salary}/>
 
 
-        </Form.Group>
-        <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'title')} value={this.state.title}/>
+    </Form.Group>
+
+        <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'description')} value={this.state.description}/>
 
         </Segment>
     </Grid.Column>
     </Grid>		
     
     </Form>
+    </div>
     </Tab.Pane>
     },
     
@@ -324,8 +341,15 @@ render() {
     return (
     <div>
 
-    {/* EmployeeHeader */}
+    {/* applicantHeader */}
     <div className = "EmployeeTop">
+
+        {/* ViewEmployeeimage */}
+        {/* <div className='Img'>
+            <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
+        </div> */}
+
+        {/* eMPLoYEEname */}
         <div className='AppName'>
         
             <Header as='h2'>
@@ -333,7 +357,7 @@ render() {
         
             <i className="plus icon"/>
                             
-        Add Applicant
+        Add applicant
             </Header.Content>
             </Header> 
         </div>
@@ -366,16 +390,46 @@ render() {
                         middle: this.state.middleName,
                         last: this.state.lastName,
                         date_of_birth: this.state.date_of_birth,
+
                         contact: [{type: this.state.type, number: this.state.number,}],
                         address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
-                        province: this.state.province, country: this.state.country,}],
+                                     province: this.state.province, country: this.state.country,}],
+
                         title: this.state.title,
+                        description: this.state.description,
+                     
+
                         sss: this.state.sss,
                         tin: this.state.tin,
                         philhealth: this.state.philhealth,
                         hdmf: this.state.hdmf
                         }})
-                        this.setState({firstName:""})
+                        this.setState({  
+                            firstName: '',
+                            middleName: '',
+                            lastName: '',
+                            date_of_birth: '',
+                            
+                            type:'',
+                            mobile: '',
+                            telephone: '',
+                            email: '',
+                        
+                            number:'',
+                            street: '',
+                            town: '',
+                            city: '',
+                            province:'',
+                            country: '',
+                        
+                            sss:'',
+                            tin:'',
+                            philhealth:'',
+                            hdmf: '',
+                        
+                            title:'',
+                            description:'',
+                            salary:'',})
                         alert("adding complete")
                     }}>
                         <Button.Content visible>
@@ -419,7 +473,7 @@ render() {
         </div>
 
 
-        {/* EMployee contents */}
+        {/* Applicant contents */}
     <div className='EmployeeContent'>
 
         

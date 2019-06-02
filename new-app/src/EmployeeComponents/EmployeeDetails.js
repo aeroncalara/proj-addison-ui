@@ -241,18 +241,11 @@ const panes = [
 		</Form.Group>
 		
 
-	</Segment>
-	</Grid.Column>
-	</Grid>
 
-
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
 
 
 		<Label as='a' color='teal' ribbon>
-         	 Benefits
+         	Addtional Information
         </Label>
 
 		<Form.Group>

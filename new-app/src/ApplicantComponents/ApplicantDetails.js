@@ -1,24 +1,7 @@
 import React, { Component } from 'react'
 import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
-
-import {
-	Button,
-	Header,
-	Image,
-	Dropdown,
-	Tab,
-	List,
-	Form,
-	Icon,
-	Label,
-	Popup,
-	Modal,
-	Segment,
-	Grid}
-	from 'semantic-ui-react'
-	
+import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './ApplicantDetails.css';
-import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
 import axios from 'axios';        
 
@@ -48,8 +31,8 @@ this.state = {
 
 	number:'',
 	street: '',
-	town: '',
 	city: '',
+	province:'',
 	country: '',
 
 	title:'',
@@ -59,9 +42,9 @@ this.state = {
 	tin:'',
 	sss:'',
 	philhealth:'',
-		hdmf: '',
+	hdmf: '',
 
-	Applicant: {
+	applicant: {
 		person:
 			{
 			first:'',
@@ -80,7 +63,6 @@ this.state = {
 			{
 			number:'',
 			street:'',
-			town:'',
 			city:'',
 			province:'',
 			country:'',
@@ -124,13 +106,12 @@ this.setState({
 
 	number:'',
 	street:'',
-	town:'',
 	city:'',
 	province:'',
 	country:'',
 
-	position:'',
 	title:'',
+	description:'',
 	salary:'',
 
 	tin:'',
@@ -159,7 +140,7 @@ getApplicant = async () => {
 	`
 		query
 		{
-			getApplicant(applicant_id: "${this.props.match.params.id}")
+			getApplicant(Applicant_id: "${this.props.match.params.id}")
 			{
 				_id
 				person
@@ -189,18 +170,22 @@ getApplicant = async () => {
 					description
 					salary
 				}
+				sss
+				tin
+				philhealth
+				hdmf
 			}
 		}
 	`
 
-let Applicant_variable = await axios({
+let applicant_variable = await axios({
 	url: `http://localhost:4000`,
 	method: `post`,
 	data: {
 	query: my_query
 	}
 	})
-this.setState({ Applicant: Applicant_variable.data.data.getApplicant });
+this.setState({ applicant: applicant_variable.data.data.getapplicant });
 }
 
 render() {
@@ -252,18 +237,11 @@ const panes = [
 		</Form.Group>
 		
 
-	</Segment>
-	</Grid.Column>
-	</Grid>
 
-
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
 
 
 		<Label as='a' color='teal' ribbon>
-         	 Benefits
+         	Addtional Information
         </Label>
 
 		<Form.Group>
@@ -273,7 +251,8 @@ const panes = [
 			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={Applicant.sss}/>
 	
 			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={Applicant.philhealth}/>
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
+			
+			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={Applicant.hdmf}/>
 
 
 		</Form.Group>
@@ -342,11 +321,14 @@ const panes = [
 	<Segment raised>
 			
 	<Form.Group>
+			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant.person.address[0].number}/>
+	
 			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={Applicant.person.address[0].street}/>
 		
-			<Form.Input label='Town' placeholder='Town'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'town')} value={Applicant.person.address[0].town}/>
-		
 			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={Applicant.person.address[0].city}/>
+
+			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={Applicant.person.address[0].province}/>
+		
 		
 			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={Applicant.person.address[0].country}/>
 
@@ -383,11 +365,11 @@ const panes = [
 	<Form.Group>
 	
 	
-			<Form.Input label='Possition' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'position')} value={Applicant.position.position}/>
+			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant.position.title}/>
 	
 
 	
-			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant.position.title}/>
+			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={Applicant.position.description}/>
 	
 
 		
@@ -402,18 +384,18 @@ const panes = [
 	</Tab.Pane>
 	},
 
-
+	
 ]
 return (
 <div>
 	{/* ApplicantHeader */}
-	<div className = "ApplicantTop">
-		{/* ViewApplicantimage */}
+	<div className = "EmployeeTop">
+		{/* ViewEmployeeimage */}
 		<div className='Img'>
 			<Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
 		</div>
 
-		{/* Applicantname */}
+		{/* eMPLoYEEname */}
 		<div className='EmpName'>
 			<Header as='h2'>
 				<Header.Content>
@@ -426,7 +408,7 @@ return (
 			</Header> 
 		</div>
 
-		{/* ApplicantOptions */}
+		{/* EmployeeOptions */}
 		<div className="Edit">
 			<List horizontal>
 				<List.Item>
@@ -517,7 +499,7 @@ return (
 								<Modal.Header>Cancel Update</Modal.Header>
 
 									<Modal.Content>
-										<p>Are you sure you want to Cancel updating Applicant Information?</p>
+										<p>Are you sure you want to Cancel updating Employee Information?</p>
 									</Modal.Content>
 
 									<Modal.Actions>
@@ -542,8 +524,8 @@ return (
 		</div>
 	</div>
 	
-		{/* Applicant contents */}
-		<div className='ApplicantContent'>
+		{/* EMployee contents */}
+		<div className='EmployeeContent'>
 			
 			{/* Details in the left */}
 			<div className ='DetailsBg'>
