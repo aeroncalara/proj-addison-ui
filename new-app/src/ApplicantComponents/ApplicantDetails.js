@@ -194,14 +194,14 @@ const { open, closeOnEscape, closeOnDimmerClick, Applicant } = this.state;
 
 console.log(Applicant);
 
-const {isEdit} = this.state
+// const {isEdit} = this.state
 
 
 const panes = [
 
 	{menuItem: 'Personal', render: () =>
 	<Tab.Pane> 
-			<div className='EmpDetails'>
+		<div className='EmpDetails'>
 			<div className ='desc'>
 				<i className="user icon"/>
 					Personal Information
@@ -210,7 +210,8 @@ const panes = [
 
 		<div>
 			<hr className="hrName" />
-		</div>  
+		</div>
+
 	<Form key={Applicant} liquid>
 	<Grid>
 	<Grid.Column width={11}>
@@ -551,12 +552,12 @@ return (
 								Dave@semantic-ui.com
 							</a>}
 						/>
-					</List>
+					{/* </List> */}
 
 					<hr />
 
 					{/* Address in the left */}
-					<List animated verticalAlign='middle' selection verticalAlign='middle'>
+					{/* <List animated verticalAlign='middle' selection verticalAlign='middle'> */}
 						<List.Item>
 							<i className="group icon"/> HR
 						</List.Item>
@@ -570,10 +571,6 @@ return (
 							<i className="address card icon"/>
 							HR manager
 						</List.Item>
-
-												{/* <List.Item>
-						<TimeInOut/>
-						</List.Item> */}
 					</List>
 				</div>
 			</div>

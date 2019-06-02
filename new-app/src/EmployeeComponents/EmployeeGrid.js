@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import {List, Grid,Image,Segment,Transition  } from 'semantic-ui-react'
+import {List, Grid,Image,Segment  } from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 

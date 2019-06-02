@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form ,Button, Popup,Input  } from 'semantic-ui-react'
+import { List,Tab, Form  } from 'semantic-ui-react'
 
 import PayRollTable from './PayRollTable';
 import MonthlyPayrollTable from './MonthlyPayrollTable';

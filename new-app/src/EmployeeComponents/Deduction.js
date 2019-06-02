@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './DeductionList.js';
-import { List,Tab, Form ,Grid, Segment } from 'semantic-ui-react'
+import {Tab, Form ,Grid, Segment } from 'semantic-ui-react'
 import DeductionList from '../EmployeeComponents/DeductionList';
 
 

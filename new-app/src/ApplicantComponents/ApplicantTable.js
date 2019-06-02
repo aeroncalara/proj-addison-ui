@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import ViewApplicant from '../ApplicantComponents/ViewApplicant';
-import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
-import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
+
 import './ApplicantTable.css';
-import { Dropdown, List, Image } from 'semantic-ui-react'
-import TimeInOut from '../TimeInOutComponents/TimeInOut';
+import { List, Image } from 'semantic-ui-react'
 import HIre from '../ApplicantComponents/HIre'
 import axios from 'axios';        
 
@@ -63,12 +61,14 @@ class ApplicantTable extends Component {
 
     this.setState({ Applicants: Applicant_variable.data.data.getAllApplicants });
   }
+
   render() {
 
     const Applicants = this.state.Applicants;
     let ApplicantTable = Applicants.map((Applicant, index) => {
 
         let contactTable = Applicant.person.contact.map((contactInformation)=>{
+          
             return(
                 <div class="content">
                     {contactInformation.type}

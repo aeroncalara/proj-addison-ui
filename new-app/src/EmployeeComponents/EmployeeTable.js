@@ -1,8 +1,6 @@
 // import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
-import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './EmployeeTable.css';
 import { Dropdown, List, Image } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
@@ -97,7 +95,7 @@ class EmployeeTable extends Component {
          <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
           <div class="content">
           {employee.person.first}
-            <div class="sub header">
+            <div className="sub header">
             {employee.position.title}
           </div>
         </div>

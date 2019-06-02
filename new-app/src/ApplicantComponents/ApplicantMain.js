@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import ApplicantHeader from '../ApplicantComponents/ApplicantHeader';
-import ApplicantTable from '../ApplicantComponents/ApplicantTable';
+	import React, { Component } from 'react';
+	import ApplicantHeader from '../ApplicantComponents/ApplicantHeader';
 
 
-class App extends Component {
 
-  render() {
+	class App extends Component {
 
-    return (
-      <div className="App">
-         
-          <ApplicantHeader />
-          {/* <ApplicantTable />           */}
-      </div>        
-    );
-  }
-}
+	render() {
 
-export default App;
+		return (
+		<div className="App">
+			
+			<ApplicantHeader />
+			{/* <ApplicantTable />           */}
+		</div>        
+		);
+	}
+	}
+
+	export default App;

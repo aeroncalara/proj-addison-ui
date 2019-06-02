@@ -1,11 +1,6 @@
 // import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
-import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
-import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './TimeLogs.css';
-import { Dropdown, List, Image } from 'semantic-ui-react'
-import TimeInOut from '../TimeInOutComponents/TimeInOut';
 
 
 // import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'

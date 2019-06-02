@@ -1,8 +1,5 @@
 // import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
-import ViewEmployee from '../EmployeeComponents/ViewEmployee';
-import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
-import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import './Incentives';
 
 
