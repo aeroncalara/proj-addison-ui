@@ -139,31 +139,19 @@ getApplicant = async () => {
 	`
 		query
 		{
-			getApplicant(applicant_id: "${this.props.match.params.id}")
+			getApplicant(_id: "${this.props.match.params.id}")
 			{
-			
-				data{
-				  _id
-				  person
-				  {
-					first
-					middle
-					last
-					date_of_birth
-				 address{
-				  number
-				  street
-				  city
-				  province
-				  country
+				message
+				success
+			   data{
+				_id
+				person
+				{
+				  first
+				  middle
+				  last
 				}
-					contact{
-					  type
-					  number
-					}
-					
-				  }
-				}
+			  }
 			  }
 			}
 	`
@@ -367,7 +355,7 @@ return (
 		<div className='EmpName'>
 			<Header as='h2'>
 				<Header.Content>
-					{applicant.person.first} {applicant.person.middle} {applicant.person.last}
+				
 				</Header.Content>
 			</Header> 
 		</div>

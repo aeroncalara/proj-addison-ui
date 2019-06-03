@@ -19,19 +19,18 @@ const {item} = this.state;
 return (
 
 <div>
-<Link to={"/EmployeeDetails/" +item._id}>
+    <Link to={"/EmployeeDetails/" +item._id}>
 
-<Popup
-    trigger={<button class="ui circular icon button">
-    <i aria-hidden="true" class="eye icon"></i>
-    </button>}
-    content='View Employee Details'
-    position='top center'
-/>
+        <Popup
+            trigger={<button class="ui circular icon button">
+            <i aria-hidden="true" class="eye icon"></i>
+            </button>}
+            content='View Employee Details'
+            position='top center'
+        />
+    </Link>
 
-</Link>
-
-<Route path="/EmployeeDetails" component={EmployeeDetails } />
+    <Route path="/EmployeeDetails" component={EmployeeDetails } />
 
 </div>    
 )

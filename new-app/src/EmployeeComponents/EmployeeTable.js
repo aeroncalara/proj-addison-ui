@@ -1,20 +1,20 @@
-// import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import './EmployeeTable.css';
-import { Dropdown, List, Image } from 'semantic-ui-react'
+import { List, Image } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import axios from 'axios';        
 
 
 let my_query = 
+
 `query
-  {
+{
     getAllEmployees
     {
-      _id
-      person
-      {
+    _id
+    person
+    {
         first
         middle
         last
@@ -46,7 +46,6 @@ let my_query =
                                  
 class EmployeeTable extends Component {
 
-  
   constructor(props){
     super(props);
     this.state = { 
@@ -75,36 +74,40 @@ class EmployeeTable extends Component {
     let employeeTable = employees.map((employee, index) => {
 
         let contactTable = employee.person.contact.map((contactInformation)=>{
-            return(
+        return(
                 <div class="content">
                     {contactInformation.type}
-                    <div class="sub header">
-                        {contactInformation.number}
-                    </div>
+					<div class="sub header">
+						{contactInformation.number}
+					</div>
                 </div>
             )
         })
-      return (
+      	return (
 
-        
-              <tr key={employee.id}>
+            <tr key={employee.id}>
                 <td data-label="Name">
-                <h4 class="ui image header">
-         <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
-          <div class="content">
-          {employee.person.first}
-            <div className="sub header">
-            {employee.position.title}
-          </div>
-        </div>
-      </h4>
-      </td>
-                <td data-label="Address">{employee.person.address[0].city}</td>
+					<h4 class="ui image header">
+						<Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
+						<div class="content">
+							{employee.person.first}
+								<div className="sub header">
+									{employee.position.title}
+								</div>
+						</div>
+					</h4>
+      			</td>
+
+				<td data-label="Address">
+					{employee.person.address[0].city}
+				</td>
+
                 <td data-label="Contact Info">  
                     <h4 class="ui image header">
-                    {contactTable}
-                </h4>
-            </td>
+                    	{contactTable}
+                	</h4>
+           		</td>
+
                 <td data-label="Job">
 
                 <List divided horizontal>
@@ -117,24 +120,15 @@ class EmployeeTable extends Component {
 
                 
 
-                <List.Item>
-					<List.Content>
-						<TimeInOut Employee={employee} />
-					</List.Content>
-                </List.Item>
-                
-				{/* <List.Item> 
-					<List.Content>
-						<DeleteEmployee Employee={employee} />
-					</List.Content>
-                </List.Item> */}
+					<List.Item>
+						<List.Content>
+							<TimeInOut Employee={employee} />
+						</List.Content>
+					</List.Item>
                 </List>
-                  
-                 
                 </td>
               </tr> 
-       
-         
+      
       )
     }
     )
@@ -193,10 +187,9 @@ class EmployeeTable extends Component {
 </th>
           </tr>
           </thead>
-          <tbody>
+        <tbody>
            {employeeTable}
-          
-           </tbody>
+        </tbody>
            {/* <tfoot>
           <tr>
           <th colSpan="5">

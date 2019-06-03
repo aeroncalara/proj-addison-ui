@@ -1,13 +1,5 @@
-// import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
-
-
 import './Incentives';
-
-
-
-// import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
-
 import axios from 'axios';        
 
 
@@ -36,9 +28,8 @@ let my_query =
 
 
                                  
-class PayRollTable extends Component {
+class Incentives extends Component {
 
-  
   constructor(props){
     super(props);
     this.state = { 
@@ -71,13 +62,15 @@ class PayRollTable extends Component {
     let employeeTable = employees.map((employee, index) => {
       return (
         
-              <tr key={employee.id}>
+            <tr key={employee.id}>
                 <td data-label="Name"> 
-                 {employee.person.first}
-              </td>
-                <td data-label="Age"> {employee.person.middle}</td>
-                
-                </tr> 
+                 	{employee.person.first}
+              	</td>
+
+                <td data-label="Age">
+					 {employee.person.middle}
+				</td>    
+            </tr> 
        
       )
     }
@@ -88,12 +81,13 @@ class PayRollTable extends Component {
       
       
 
-      <div className="IncentivesTables">
+    <div className="IncentivesTables">
         <table className="ui teal table celled" width="50">
         
         <thead>
-              <tr><th>DATE</th>
-              <th>Total</th>
+              <tr>
+				  <th>DATE</th>
+              		<th>Total</th>
             
           </tr>
           </thead>
@@ -108,4 +102,4 @@ class PayRollTable extends Component {
     );
   }
 }
-export default PayRollTable;
+export default Incentives;

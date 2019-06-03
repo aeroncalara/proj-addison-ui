@@ -7,7 +7,7 @@ export default class HomeHeader extends Component {
   render() {
     return (
         <div className = "EmployeeHeader">
-         HOME
+          HOME
         </div>
     )
   }

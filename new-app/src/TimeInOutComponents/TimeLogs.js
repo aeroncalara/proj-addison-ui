@@ -1,12 +1,6 @@
-// import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
 import './TimeLogs.css';
-
-
-// import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
-
 import axios from 'axios';        
-
 
 let my_query = 
 `
@@ -29,10 +23,8 @@ let my_query =
     }
   }
 `
-
-
                                  
-class EmployeeTable extends Component {
+class TimeLogs extends Component {
 
   
   constructor(props){
@@ -48,7 +40,7 @@ class EmployeeTable extends Component {
 
   getEmployees = async () => {
     let employee_variable = await axios({
-      url: `http://localhost:4000`,
+      	url: `http://localhost:4000`,
       method: `post`,
       data: {
         query: my_query
@@ -84,36 +76,32 @@ class EmployeeTable extends Component {
 					{/* {employee.person.last} */}
 					5:01 pm
 				</td>
-                </tr> 
-       
-         
+                </tr>   
       )
     }
     )
     //here
 
     return (
-      
-      
-
       <div className="TimeLogsTables">
         <table className="ui teal table celled">
         
-        <thead>
-              <tr><th>Date</th>
-              <th>Timed In</th>
-            <th>Timed Out</th>
-          </tr>
-          </thead>
-          <tbody>
-           {employeeTable}
-          
-           </tbody>
-  
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Timed In</th>
+					<th>Timed Out</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			{employeeTable}
+			</tbody>
+
         </table>
         
-      </div>        
+    </div>        
     );
   }
 }
-export default EmployeeTable;
+export default TimeLogs;
