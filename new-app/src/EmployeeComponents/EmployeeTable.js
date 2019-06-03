@@ -4,13 +4,11 @@ import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import './EmployeeTable.css';
 import { Dropdown, List, Image } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
-
 import axios from 'axios';        
 
 
 let my_query = 
-`
-  query
+`query
   {
     getAllEmployees
     {

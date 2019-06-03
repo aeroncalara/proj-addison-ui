@@ -11,29 +11,29 @@ export default class extends Component {
         item: props.item
         }
     }
-    
 
-render() {
-    const {item} = this.state;
-    return (
-      <div>
-        <Link to={"/ApplicantDetails/" +item._id}>
-          <Popup
-    trigger={<button class="ui circular icon button">
-    <i aria-hidden="true" class="eye icon"></i>
-    </button>}
-    content='View Applicant Details'
-    position='top center'
-/>
+	render() {
+		const {item} = this.state;
+			return (
+				<div>
+					<Link to={"/ApplicantDetails/" +item._id}>
+						<Popup
+							trigger={<button class="ui circular icon button">
+										<i aria-hidden="true" class="eye icon" />
+									</button>}
+									
+							content='View Applicant Details'
+							position='top center'
+						/>
 
-</Link>
+					</Link>
 
-<Route path="/ApplicantDetails" component={ApplicantDetails } />
+					<Route path="/ApplicantDetails" component={ApplicantDetails } />
 
-</div>    
-    
-    )
-  }
+				</div>
+
+			)
+	}
 }
 
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './ApplicantDetails.css';
-
 import axios from 'axios';        
 
 export default class ApplicantDetails extends Component {
@@ -172,10 +171,11 @@ getApplicant = async () => {
 	let applicant_variable = await axios({
 		url: `http://localhost:4000`,
 		method: `post`,
-		data: {
-		  query: my_query
-		}
-	  })
+			data: {
+			query: my_query
+			}
+	})
+
 	this.setState({ applicant: applicant_variable.data.data.getApplicant });
 }
 
@@ -190,7 +190,7 @@ const {isEdit} = this.state
 
 const panes = [
 
-	{menuItem: 'Personal', render: () =>
+{menuItem: 'Personal', render: () =>
 	<Tab.Pane> 
 		<div className='EmpDetails'>
 			<div className ='desc'>
@@ -204,181 +204,156 @@ const panes = [
 		</div>
 
 	<Form key={applicant} liquid>
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-		<Label as='a' color='teal' ribbon>
-         	 Basic Information
-        </Label>
-		<Form.Group>
+		<Grid>
+			<Grid.Column width={11}>
+				<Segment raised>
+							
+				<Label as='a' color='teal' ribbon>
+					Basic Information
+				</Label>
+
+					<Form.Group>
+						<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={applicant.person.first} />
+						
+
+						<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={applicant.person.middle} />
 
 
-			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={applicant.person.first} />
+						<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={applicant}/>
+					</Form.Group>
+
+					<Form.Group>
+							<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant}/>
+					</Form.Group>
+				
+				<Label as='a' color='teal' ribbon>
+					Addtional Information
+				</Label>
+
+					<Form.Group>
 			
-
-			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={applicant.person.middle} />
-
-
-			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={applicant}/>
-
-
-		</Form.Group>
-
-		<Form.Group>
-				<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant}/>
-		</Form.Group>
+				<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={applicant
+				}/>
+			
+				<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={applicant}/>
 		
+				<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={applicant}/>
+				
+				<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={applicant}/>
 
-
-		<Label as='a' color='teal' ribbon>
-         	Addtional Information
-        </Label>
-
-		<Form.Group>
-			
-			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={applicant
-			}/>
-		
-			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={applicant}/>
-	
-			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={applicant}/>
-			
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={applicant}/>
-
-
-		</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>
-	
+			</Form.Group>
+				</Segment>
+			</Grid.Column>
+		</Grid>
 	</Form>
-	
-	</Tab.Pane> 
-	},
+</Tab.Pane> 
+},
 
-
-
-	{menuItem: 'Contact', render: () => 
+{menuItem: 'Contact', render: () => 
 	<Tab.Pane>
 		<Form key={applicant} liquid>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="phone square icon"/>
-				Contact Information
-		</div>
-		</div>
+			<div className='EmpDetails'>
+				<div className ='desc'>
+					<i className="phone square icon"/>
+						Contact Information
+				</div>
+			</div>
 
 		<div>
-		<hr className="hrName" />
+			<hr className="hrName" />
 		</div>  
 
-
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-	
-		<Form.Group>
-            
-		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={applicant}/>
-
-		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
-		
-		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
-	
-		</Form.Group>
-		
-	</Segment>
-	</Grid.Column>
-	</Grid>
-	
-	</Form>
-	</Tab.Pane>
-	},
-
-	{menuItem: 'Address', render: () => 
-	<Tab.Pane>
-	<Form key={applicant} liquid>
-	<div className='EmpDetails'>  
-		<div className ='desc'>
-		<i className="map marker alternate icon"/>
-			Address
-		</div>
-	</div>
-
-	<div>
-		<hr className="hrName" />
-	</div>  
-	
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
+			<Grid>
+				<Grid.Column width={11}>
+					<Segment raised>
 			
-	<Form.Group>
-			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
+						<Form.Group>	
+							<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} 
+							onChange={(e) => this.handleChange(e, 'mobile')} value={applicant}/>
+
+							<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+							
+							<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} 
+							onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+						</Form.Group>
+					</Segment>
+				</Grid.Column>
+			</Grid>
+		</Form>
+	</Tab.Pane>
+},
+
+{menuItem: 'Address', render: () => 
+	<Tab.Pane>
+		<Form key={applicant} liquid>
+			<div className='EmpDetails'>  
+				<div className ='desc'>
+					<i className="map marker alternate icon"/>
+						Address
+				</div>
+			</div>
+
+				<div>
+					<hr className="hrName" />
+				</div>  
 	
-			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
-		
-			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={applicant}/>
+			<Grid>
+				<Grid.Column width={11}>
+					<Segment raised>
+						
+						<Form.Group>
+							<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
+					
+							<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
+						
+							<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={applicant}/>
 
-			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={applicant}/>
+							<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={applicant}/>
+						
+							<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={applicant}/>
+						</Form.Group>
+					</Segment>
+				</Grid.Column>
+			</Grid>		
 		
-		
-			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={applicant}/>
-
-			</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-		
-
-	</Form>
+		</Form>
 	</Tab.Pane> 
-	},
+},
 
-	{menuItem: 'Position', render: () => 
+{menuItem: 'Position', render: () => 
 	<Tab.Pane>
-	<Form>
-		<div className='EmpDetails'>    
-		<div className ='desc'>
-			<i className="users icon"/>
-			Position
-		</div>
-		</div>
+		<Form>
+			<div className='EmpDetails'>    
+				<div className ='desc'>
+					<i className="users icon"/>
+					Position
+				</div>
+			</div>
 
-		<div>
-		<hr className="hrName" />
-		</div>  
-		
-
-
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-			
-	<Form.Group>
-	
-	
-			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
-	
-
-	
-			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
-	
-
-		
-			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={applicant}/>
-	
-
-			</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-	</Form>
+				<div>
+					<hr className="hrName" />
+				</div>  
+			<Grid>
+				<Grid.Column width={11}>
+					<Segment raised>
+					
+						<Form.Group>
+							<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} 
+							onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
+					
+							<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
+					
+							<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} 
+							onChange={(e) => this.handleChange(e, 'salary')} value={applicant}/>
+						</Form.Group>
+					</Segment>
+				</Grid.Column>
+			</Grid>		
+		</Form>
 	</Tab.Pane>
-	},
-
-	
+}	
 ]
+
 return (
 <div>
 	{/* ApplicantHeader */}
@@ -393,10 +368,6 @@ return (
 			<Header as='h2'>
 				<Header.Content>
 					{applicant.person.first} {applicant.person.middle} {applicant.person.last}
-					
-				<Header.Subheader>  
-						{/* {Applicant.position.title} */}
-					</Header.Subheader>
 				</Header.Content>
 			</Header> 
 		</div>
@@ -405,7 +376,6 @@ return (
 		<div className="Edit">
 			<List horizontal>
 				<List.Item>
-		
 					{!this.state.isEdit &&(
 						<div className="Options">
 							<List divided horizontal>
@@ -463,18 +433,20 @@ return (
 
 								<Button.Group>
 									<Button animated negative fluid onClick={this.closeConfigShow(true, false)}>
-										<Button.Content visible>
-										<Icon name='close' />
-										</Button.Content>
-										<Button.Content hidden>
-										Cancel
-										</Button.Content>
-										</Button>      
-									<Button.Or />
-										<Button animated positive fluid onClick={this.handleEdit}>
+											<Button.Content visible>
+												<Icon name='close' />
+											</Button.Content>
+
+											<Button.Content hidden>
+												Cancel
+											</Button.Content>
+									</Button>      
+								<Button.Or />
+									<Button animated positive fluid onClick={this.handleEdit}>
 										<Button.Content visible>
 											<Icon name='save' />
 										</Button.Content>
+
 										<Button.Content hidden>
 											Save
 										</Button.Content>     
@@ -482,36 +454,35 @@ return (
 								</Button.Group>    
 							</div>
 						}
-								<Modal
-									open={open}
-									closeOnEscape={closeOnEscape}
-									closeOnDimmerClick={closeOnDimmerClick}
-									onClose={this.close}
-								>
 
-								<Modal.Header>Cancel Update</Modal.Header>
+						<Modal
+							open={open}
+							closeOnEscape={closeOnEscape}
+							closeOnDimmerClick={closeOnDimmerClick}
+							onClose={this.close}
+						>
 
-									<Modal.Content>
-										<p>Are you sure you want to Cancel updating Employee Information?</p>
-									</Modal.Content>
+							<Modal.Header>Cancel Update</Modal.Header>
+								<Modal.Content>
+									<p>Are you sure you want to Cancel updating Employee Information?</p>
+								</Modal.Content>
 
-									<Modal.Actions>
-										<Button onClick={this.close} negative>
-											No
-										</Button>
-										<Button
-											onClick={this.handleCancel}
-											positive
-											labelPosition="right"
-											icon="checkmark"
-											content="Yes"
-										/>
-									</Modal.Actions>
+								<Modal.Actions>
+									<Button onClick={this.close} negative>
+										No
+									</Button>
 
-								</Modal>
+									<Button
+										onClick={this.handleCancel}
+										positive
+										labelPosition="right"
+										icon="checkmark"
+										content="Yes"
+									/>
+								</Modal.Actions>
+							</Modal>
 
 					</List.Item>
-				{/* </List.Item> */}
 			</List>
 
 		</div>
@@ -569,18 +540,14 @@ return (
 
 		{/* Tabs */}
 		<div className='Tabs'>
-			
 			<Tab style={{width:1500 ,height:10000 }}menu={{ secondary: true, pointing: true }} panes={panes}/>
-		
 		</div>
 	</div>
 </div>
 )
 }
 
-newMethod() {
-	return 'Time Logs';
-}
+
 }
 
 

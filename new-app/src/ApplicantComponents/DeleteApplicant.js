@@ -2,47 +2,41 @@ import React, { Component } from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 
+export default class extends Component {	
+	state = { modalOpen: false }
 
-export default class extends Component {
+	handleOpen = () => this.setState({ modalOpen: true })
 
-  state = { modalOpen: false }
+	handleClose = () => this.setState({ modalOpen: false })
 
-  handleOpen = () => this.setState({ modalOpen: true })
+	handleArchived = () => {
+	let hire = this.state.isArchived;
+	this.setState({ isArchived: !hire });
+	}
 
-  handleClose = () => this.setState({ modalOpen: false })
+	render() {
+		return (
+			<Modal
+				trigger={<Button icon className="ui button negative " onClick={this.handleOpen}>Terminate</Button>}
+				open={this.state.modalOpen}
+				onClose={this.handleClose}
+				basic size='small'
+			>
+				<Header icon='frown outline' content='Archive Applicant:' />
+					<Modal.Content>
+						<h3>Are you sure you want to Archive ?</h3>
+					</Modal.Content>
+				
+					<Modal.Actions>
+						<Button color='red' onClick={this.handleClose} inverted>
+							<Icon name='x' /> No
+						</Button>
 
-  handleArchived = () => {
-    let hire = this.state.isArchived;
-    this.setState({ isArchived: !hire });
-  }
-
-  render() {
-    return (
-      <Modal
-      
-        trigger={<Button icon className="ui button negative " onClick={this.handleOpen}>Terminate</Button>}
-      
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
-        basic size='small'
-      >
-        <Header icon='frown outline' content='Archive Applicant:' />
-        <Modal.Content>
-        <h3>Are you sure you want to Archive ?</h3>
-
-        {/* {this.props.Employee.person.first} {this.props.Employee.person.last} */}
-        </Modal.Content>
-        
-        <Modal.Actions>
-            <Button color='red' onClick={this.handleClose} inverted>
-                <Icon name='x' /> No
-            </Button>
-
-            <Button color='green' onClick={this.handleClose} inverted>
-              <Icon name='checkmark' /> Yes
-            </Button>
-        </Modal.Actions>
-      </Modal>
-    )
-  }
+						<Button color='green' onClick={this.handleClose} inverted>
+							<Icon name='checkmark' /> Yes
+						</Button>
+					</Modal.Actions>
+			</Modal>
+		)
+	}
 }
