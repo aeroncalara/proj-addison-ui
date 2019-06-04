@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import DeleteApplicant from '../ApplicantComponents/DeleteApplicant';
+import DeleteApplicant from '../ApplicantComponents/DeleteApplicant'
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
-import './ApplicantDetails.css';
-import axios from 'axios';        
+import './ApplicantDetails.css'
+import axios from 'axios'        
 
 export default class ApplicantDetails extends Component {
 
-state = { open: false };
+state = { open: false }
 
 closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-	this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
-};
-close = () => this.setState({ open: false });
+	this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+}
+close = () => this.setState({ open: false })
 
 constructor(props) {
 super(props)
@@ -83,15 +83,15 @@ this.state = {
 	}
 }
 
-componentDidUpdate() {
-	console.log(this.state.isEdit, 'hello')
+// componentDidUpdate() {
+// 	console.log(this.state.isEdit, 'hello')
+// }
+
+handleEdit = () => { 
+	this.setState({ isEdit: !this.state.isEdit })
 }
 
-handleEdit = () => { ;
-	this.setState({ isEdit: !this.state.isEdit });
-}
-
-handleCancel = () => {;
+handleCancel = () => {
 this.setState({ 
 	firstName: '',
 	middleName: '',
@@ -120,7 +120,7 @@ this.setState({
 
 	isEdit: !this.state.isEdit,
 	open: !this.state.open
-	});
+	})
 }
 
 handleChange = (e, type) => {
@@ -128,12 +128,12 @@ handleChange = (e, type) => {
 }
 
 componentDidMount(){
-this.getApplicant();
+this.getApplicant()
 }
 
 getApplicant = async () => {
 
-	console.log(this.props.match.params.id);
+	console.log(this.props.match.params.id)
 
 	let my_query = 
 	`
@@ -143,37 +143,40 @@ getApplicant = async () => {
 			{
 				message
 				success
-			   data{
-				_id
-				person
-				{
-				  first
-				  middle
-				  last
+			  	data{
+					_id
+					person
+					{
+						first
+					}
 				}
-			  }
-			  }
 			}
+		}
 	`
 
 	let applicant_variable = await axios({
-		url: `http://localhost:4000`,
-		method: `post`,
-			data: {
-			query: my_query
-			}
-	})
+		url: 'http://localhost:4000',
+		method: 'post',
+		data: {
+		  query: my_query
+		}
+	  })
+	  
+	  console.log(applicant_variable)
 
-	this.setState({ applicant: applicant_variable.data.data.getApplicant });
+	//   console.log(applicant_variable.data.person.first)
+
+
+	this.setState({ applicant: applicant_variable.data.data.getApplicant })
 }
 
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, applicant } = this.state;
+const { open, closeOnEscape, closeOnDimmerClick, applicant } = this.state
 
-console.log(applicant);
+// console.log(applicant)
 
-const {isEdit} = this.state
+// const {isEdit} = this.state
 
 
 const panes = [
@@ -191,7 +194,7 @@ const panes = [
 			<hr className="hrName" />
 		</div>
 
-	<Form key={applicant} liquid>
+	<Form key={applicant} liquid="true">
 		<Grid>
 			<Grid.Column width={11}>
 				<Segment raised>
@@ -201,13 +204,16 @@ const panes = [
 				</Label>
 
 					<Form.Group>
-						<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={applicant.person.first} />
+						<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true} 
+						 onChange={(e) => this.handleChange(e, 'firstName')} value={applicant} />
 						
 
-						<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={applicant.person.middle} />
+						<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} 
+						onChange={(e) => this.handleChange(e, 'middleName')} value={applicant} />
 
 
-						<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={applicant}/>
+						<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true}
+						 onChange={(e) => this.handleChange(e, 'lastName')} value={applicant}/>
 					</Form.Group>
 
 					<Form.Group>
@@ -239,7 +245,7 @@ const panes = [
 
 {menuItem: 'Contact', render: () => 
 	<Tab.Pane>
-		<Form key={applicant} liquid>
+		<Form key={applicant} liquid="true">
 			<div className='EmpDetails'>
 				<div className ='desc'>
 					<i className="phone square icon"/>
@@ -355,7 +361,7 @@ return (
 		<div className='EmpName'>
 			<Header as='h2'>
 				<Header.Content>
-				
+					{/* {applicant.data.person.first} */}
 				</Header.Content>
 			</Header> 
 		</div>
@@ -378,7 +384,7 @@ return (
 
 								<List.Item>
 									<Popup
-										trigger={<Dropdown icon="cog icon" />}
+										trigger={<Dropdown icon="cogs" />}
 										// <Button color='red'icon="close" content='Terminate'/ >
 										content={ <DeleteApplicant/>}
 										on='click'
@@ -389,31 +395,6 @@ return (
 						</div>
 					)}
 				</List.Item>
-
-				{/* <List.Item>
-					{!this.state.isEdit &&(
-						<div className="PrevNxt">
-							<List horizontal>
-
-								<List.Item>
-									<i className="users icon"/>3 of 100
-								</List.Item>
-
-								<List.Item>
-									<Label as='a'>
-										<Icon name='arrow left icon' />Prev
-									</Label>
-								</List.Item>
-								
-								<List.Item>
-									<Label as='a'>
-										Next
-										<Icon name='arrow right icon' />
-									</Label>
-								</List.Item> 
-							</List>
-						</div> 
-					)} */}
 					
 					<List.Item>
 						{this.state.isEdit &&
@@ -486,7 +467,7 @@ return (
 				<div className ='Details'>
 		
 					{/* Contact Details */}
-					<List animated verticalAlign='middle' selection verticalAlign='middle'>
+					<List animated verticalAlign='middle' selection>
 						<List.Item>
 							<i className="mobile icon"/>
 							+639167105579

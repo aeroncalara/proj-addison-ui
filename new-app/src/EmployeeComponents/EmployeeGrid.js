@@ -81,7 +81,7 @@ render() {
     return (
        
     
-        <Grid columns='equal'  key={index} columns={1} padded>
+        <Grid columns='equal'  key={index} padded>
             
             <Grid.Row stretched>
             <Grid.Column> 

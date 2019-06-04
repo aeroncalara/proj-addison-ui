@@ -67,29 +67,38 @@
 	export const getApplicant = gql`{
 	getAllApplicants{
 		_id
-		person{
+		person
+		{
 			first
 			middle
 			last
 			date_of_birth
-			address{
-			number
-			street
-			city
-			province
-			country
-			}
-			contact{
-			type
-			number
+
+			address
+			{
+				number
+				street
+				city
+				province
+				country
+				}
+			contact
+			{
+				type
+				number
 			}
 		}
+		sss
+		tin
+		philhealth
+		hdmf
 		}
 	}`;
 
 
 	export const ADD_APPLICANT = gql`
 	mutation addApplicant ($first: String!, $middle: String, $last: String!, $date_of_birth: String!, $contact: [Contact_Input], $address: [Address_Input], $sss: String, $tin: String, $philhealth: String, $hdmf: String, $title: String, $description: String, $salary: Float, $corrective_action: [Corrective_Action_Input], $work_history: [Work_History_Input], $transcript: [Transcript_Input] ) {
+
 		addApplicant(
 		person: {
 			first: $first,

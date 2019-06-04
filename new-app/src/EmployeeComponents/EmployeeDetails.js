@@ -4,7 +4,6 @@ import Incentives from '../EmployeeComponents/Incentives';
 import Deduction from '../EmployeeComponents/Deduction';
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './EmployeeDetails.css';
-import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
 import axios from 'axios';        
@@ -198,7 +197,7 @@ const { open, closeOnEscape, closeOnDimmerClick, employee } = this.state;
 
 console.log(employee);
 
-const {isEdit} = this.state
+// const {isEdit} = this.state
 
 
 const panes = [
@@ -572,7 +571,7 @@ return (
 				<div className ='Details'>
 		
 					{/* Contact Details */}
-					<List animated verticalAlign='middle' selection verticalAlign='middle'>
+					<List animated verticalAlign='middle' selection>
 						<List.Item>
 							<i className="mobile icon"/>
 							+639167105579
@@ -594,7 +593,7 @@ return (
 					<hr />
 
 					{/* Address in the left */}
-					<List animated verticalAlign='middle' selection verticalAlign='middle'>
+					<List animated verticalAlign='middle' selection >
 						<List.Item>
 							<i className="group icon"/> HR
 						</List.Item>

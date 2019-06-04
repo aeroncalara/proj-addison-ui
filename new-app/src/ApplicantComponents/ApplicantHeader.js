@@ -71,7 +71,7 @@ handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 
 render() {
-	const { activeItem } = this.state
+	// const { activeItem } = this.state
 	return (
 	<div>
 		{/* <div className = "ApplicantHeader">

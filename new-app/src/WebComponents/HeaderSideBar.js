@@ -5,7 +5,6 @@ import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import ApplicantMain from '../ApplicantComponents/ApplicantMain';
 import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
-import NotFound from '../WebComponents/Notfound';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 import ApplicantDetails from '../ApplicantComponents/ApplicantDetails';
@@ -22,21 +21,6 @@ Segment,
 Sidebar,
 } from 'semantic-ui-react'
 
-const colors = [
-	'red',
-	'orange',
-	'yellow',
-	'olive',
-	'green',
-	'teal',
-	'blue',
-	'violet',
-	'purple',
-	'pink',
-	'brown',
-	'grey',
-	'black',
-  ]
   
 
 const trigger = (
@@ -81,7 +65,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 	width='thin'
 	>
 
-		<List animated verticalAlign='middle' selection verticalAlign='middle'>
+		<List animated verticalAlign='middle' selection >
 			<List.Item>			
 				<NavLink activeClassName="active" to="/">
 					<Menu.Item>	
@@ -186,8 +170,8 @@ export default class HeaderSideBar extends Component {
 	render() {
 		const { animation, direction, visible } = this.state
 		const vertical = direction === 'bottom' || direction === 'top'
-		const { color } = this.props
-		const { activeItem } = this.state
+	
+		// const { activeItem } = this.state
 		return (
 			<div>
 				<Menu inverted style={{height:50}}>
