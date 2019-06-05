@@ -6,7 +6,6 @@ import {Mutation } from 'react-apollo';
 const { ADD_EMPLOYEE } = require('../Queries/Queries')
 
 // TABS
-
 class AddEmployeeForm extends Component {
 
 state = { open: false };
@@ -51,7 +50,6 @@ componentDidUpdate() {
 handleEdit = () => { ;
     this.setState({ isEdit: !this.state.isEdit });
 }
-
 handleCancel = () => { ;
     this.setState({ 
     firstName: '',
@@ -83,8 +81,6 @@ handleCancel = () => { ;
     open: !this.state.open
     });
 }
-
-
 handlesave = () => { ;
     this.setState({ 
     firstName: '',
@@ -114,7 +110,6 @@ handlesave = () => { ;
     salary:'',
     });
 }
-
 handleChange = (e, type) => {
     this.setState({[type]: e.target.value})
 }
@@ -122,7 +117,6 @@ handleChange = (e, type) => {
 
 render() {
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
-
     const panes = [
 
         {menuItem: 'Personal', render: () =>

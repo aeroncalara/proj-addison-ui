@@ -203,7 +203,7 @@ export default class HeaderSideBar extends Component {
 					)}
 
 				<Sidebar.Pusher dimmed={visible} style={{height: '100%'}}>
-					<div className="Segment">
+					{/* <div className="Segment"> */}
 						<Segment >
 						
 								<Switch>
@@ -223,7 +223,7 @@ export default class HeaderSideBar extends Component {
 								</Switch>
 					
 					</Segment>
-						</div>
+						{/* </div> */}
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 

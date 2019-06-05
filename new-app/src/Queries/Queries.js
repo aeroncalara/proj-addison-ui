@@ -92,7 +92,13 @@
 		tin
 		philhealth
 		hdmf
+		requested_position{
+			title
+		 	description
+		  	salary
 		}
+		}
+		
 	}`;
 
 
@@ -112,11 +118,11 @@
 		tin: $tin,
 		philhealth: $philhealth,
 		hdmf: $hdmf,
-		position: {
+		requested_position: {
 			title: $title,
 			description: $description,
 			salary: $salary
-		}
+		},
 		corrective_action: $corrective_action,
 		work_history: $work_history,
 		transcript: $transcript

@@ -70,7 +70,7 @@ this.state = {
 				}		
 			},
 
-			position:{
+			requested_position:{
 				title:'',
 				description:'',
 				salary:'',
@@ -145,6 +145,29 @@ getApplicant = async () => {
 					person
 					{
 						first
+						middle
+						last
+						date_of_birth
+						address{
+						  number
+						  street
+						  city
+						  province
+						  country
+						}
+						contact{
+							type
+							number
+						  }
+					}
+					sss
+					tin
+					philhealth
+					hdmf
+					requested_position{
+						title
+					  	description
+					  	salary
 					}
 				}
 			}
@@ -158,15 +181,18 @@ getApplicant = async () => {
 		}
 	  })
 	this.setState({ applicant: applicant_variable.data.data.getApplicant })
+	
 }
 
 render() {
 
 const { open, closeOnEscape, closeOnDimmerClick, applicant } = this.state
 
+// console.log(applicant.data.requested_position.title);
 
 const panes = [
 
+	
 {menuItem: 'Personal', render: () =>
 	<Tab.Pane> 
 		<div className='EmpDetails'>
@@ -203,7 +229,7 @@ const panes = [
 					</Form.Group>
 
 					<Form.Group>
-							<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant.data.person.birthdate}/>
+							<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant.data.person.date_of_birth}/>
 					</Form.Group>
 				
 				<Label as='a' color='teal' ribbon>
@@ -212,14 +238,13 @@ const panes = [
 
 					<Form.Group>
 			
-				<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={applicant
-				}/>
+				<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={applicant.data.tin}/>
 			
-				<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={applicant}/>
+				<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={applicant.data.sss}/>
 		
-				<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={applicant}/>
+				<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={applicant.data.philhealth}/>
 				
-				<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={applicant}/>
+				<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={applicant.data.hdmf}/>
 
 			</Form.Group>
 				</Segment>
@@ -249,12 +274,12 @@ const panes = [
 			
 						<Form.Group>	
 							<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} 
-							onChange={(e) => this.handleChange(e, 'mobile')} value={applicant}/>
+							onChange={(e) => this.handleChange(e, 'mobile')} value={applicant.data.person.contact[0].number}/>
 
-							<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
+							<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} value={applicant.data.person.contact[0].number}/>
 							
 							<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} 
-							onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
+							onChange={(e) => this.handleChange(e, 'email')} value={applicant.data.person.contact[0].number}/>
 						</Form.Group>
 					</Segment>
 				</Grid.Column>
@@ -282,15 +307,15 @@ const panes = [
 					<Segment raised>
 						
 						<Form.Group>
-							<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
+							<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant.data.person.address[0].number}/>
 					
-							<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant}/>
+							<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={applicant.data.person.address[0].street}/>
 						
-							<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={applicant}/>
+							<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={applicant.data.person.address[0].city}/>
 
-							<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={applicant}/>
+							<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={applicant.data.person.address[0].province}/>
 						
-							<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={applicant}/>
+							<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={applicant.data.person.address[0].country}/>
 						</Form.Group>
 					</Segment>
 				</Grid.Column>
@@ -319,12 +344,12 @@ const panes = [
 					
 						<Form.Group>
 							<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} 
-							onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
+							onChange={(e) => this.handleChange(e, 'title')} value={applicant.data.requested_position.title}/>
 					
-							<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={applicant}/>
+							<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={applicant.data.requested_position.description}/>
 					
 							<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} 
-							onChange={(e) => this.handleChange(e, 'salary')} value={applicant}/>
+							onChange={(e) => this.handleChange(e, 'salary')} value={applicant.data.requested_position.salary}/>
 						</Form.Group>
 					</Segment>
 				</Grid.Column>
@@ -477,7 +502,12 @@ return (
 					{/* Address in the left */}
 					{/* <List animated verticalAlign='middle' selection verticalAlign='middle'> */}
 						<List.Item>
-							<i className="group icon"/> HR
+							Applying for
+						</List.Item>
+
+						<List.Item>
+							<i className="group icon"/> 
+								{applicant.data.requested_position.title}
 						</List.Item>
 
 						<List.Item>
@@ -485,10 +515,6 @@ return (
 							Sydney Australia
 						</List.Item>
 						
-						<List.Item>
-							<i className="address card icon"/>
-							HR manager
-						</List.Item>
 					</List>
 				</div>
 			</div>

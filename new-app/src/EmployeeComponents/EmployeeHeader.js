@@ -6,8 +6,6 @@ import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
 import { NavLink} from 'react-router-dom'
 
 
-
-
 const panes = [
 	{ 
 	menuItem: { icon: 'list', content: 'List' },

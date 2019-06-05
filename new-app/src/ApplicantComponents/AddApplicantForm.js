@@ -5,7 +5,6 @@ import { NavLink} from 'react-router-dom';
 import {Mutation } from 'react-apollo';
 const { ADD_APPLICANT } = require('../Queries/Queries')
 
-
 // TABS
 class AddApplicantForm extends Component {
 
@@ -47,15 +46,12 @@ constructor(props) {
     salary:''
     }
 }
-
 componentDidUpdate() {
     console.log(this.state.isEdit, 'hello')
 }
-
 handleEdit = () => { ;
     this.setState({ isEdit: !this.state.isEdit });
 }
-
 handleCancel = () => { ;
     this.setState({ 
     firstName: '',
@@ -87,7 +83,6 @@ handleCancel = () => { ;
     open: !this.state.open
     });
 }
-
 handlesave = () => { ;
     this.setState({ 
     firstName: '',
@@ -117,7 +112,6 @@ handlesave = () => { ;
     salary:'',
     });
 }
-
 handleChange = (e, type) => {
     this.setState({[type]: e.target.value})
 }
@@ -307,9 +301,9 @@ render() {
 ]
 
     return (
-        <div className="main">
+        <div>
             {/* applicantHeader */}
-            <div className = "appTop">
+            <div className = "EmployeeTop">
                 {/* eMPLoYEEname */}
                 <div className='AppName'>
                 
