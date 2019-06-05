@@ -6,9 +6,9 @@ import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Mo
 import './EmployeeDetails.css';
 import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
-import axios from 'axios';        
-
-const addison_api_url = `http://localhost:4000`;
+import axios from 'axios';      
+  
+import {addison_api_url} from '../Utilities/config';
 
 export default class EmployeeDetails extends Component {
 
@@ -134,6 +134,7 @@ handleChange = (e, type) => {
 componentDidMount(){
 	this.getEmployee();
 	this.getIncentives();
+	this.getDeductions();
 }
 
 getEmployee = async () => {
@@ -194,7 +195,7 @@ getIncentives = async () =>{
 	let incentive_query = 
 	`
 		query{
-			getAllIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
+			getAllActiveIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
 		  		date_incurred
 		  		description
 		  		amount
@@ -216,12 +217,32 @@ getIncentives = async () =>{
 
 getDeductions = async () => {
 	//INSERT QUERY HERE
-	let deductions
+	let deductions_query =
+	`
+		query{
+			getAllActiveDeductionsOfEmployee(employee_id:"5cf759db9c09471f7c14d11e"){
+				date_incurred
+				description
+				amount
+				is_active
+			}
+		}
+	`
+
+	let deductions_variable = await axios({
+		url: addison_api_url,
+		method: `post`,
+		data: {
+			query: deductions_query
+		}
+	})
+
+	this.setState({deductions: deductions_variable.data.data.getAllActiveDeductionsOfEmployee})
 }
 
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, employee, incentives} = this.state;
+const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions} = this.state;
 
 const panes = [
 
@@ -410,7 +431,7 @@ const panes = [
 	
 	{menuItem: 'Deduction', render: () => 
 	<Tab.Pane>
-	<Deduction/>
+		<Deduction item={deductions}/>
 	</Tab.Pane> 
 	},
 

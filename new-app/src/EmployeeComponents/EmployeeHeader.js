@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import { List,Tab, Form ,Button, Popup, } from 'semantic-ui-react'
+import { List,Tab, Form ,Button } from 'semantic-ui-react'
 import EmployeeTable from '../EmployeeComponents/EmployeeTable';
 import EmployeeGrid from '../EmployeeComponents/EmployeeGrid';
 import { NavLink} from 'react-router-dom'

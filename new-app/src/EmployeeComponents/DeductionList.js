@@ -1,110 +1,57 @@
 import React, {Component} from 'react'
 import './Deduction';
 import './incentives.css';
-import axios from 'axios';        
-import ViewIncentives from '../EmployeeComponents/ViewIncentives';
-import ViewDeduction from './ViewDeduction';
-
-let my_query = 
-`
-  query{
-    getAllEmployees{
-      person{
-        first
-        middle
-        
-        last
-        date_of_birth
-        address{
-          number
-          street
-          city
-          province
-          country
-          
-        }
-      }
-    }
-  }
-`
-
 
                                  
 class Deduction extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = { 
-      employees: [],
-    }
-  }
-
-  componentDidMount(){
-    this.getEmployees();
-  }
-
-  getEmployees = async () => {
-    let employee_variable = await axios({
-      url: `http://localhost:4000`,
-      method: `post`,
-      data: {
-        query: my_query
-      }
-    })
-
-    this.setState({ employees: employee_variable.data.data.getAllEmployees });
-  }
-  render() {
-
+	constructor(props){
+		super(props);
+		this.state = { 
+		item: this.props.item
+		}
+	}
   
-    const employees = this.state.employees;
-    console.log(employees);
+  	render() {
     
-    let employeeTable = employees.map((employee, index) => {
-      return (
-        
-            <tr key={employee.id}>
-                <td data-label="Name"> 
-                 	{employee.person.first}
-              	</td>
+		const {item} = this.state;
+		console.log(item);
+			
+		let deductions_table = item.map((deduction, index) => {
+		return (
+				<tr key={deduction.id}>
+					<td data-label="Date Incurred"> 
+						{deduction.date_incurred}
+					</td>
 
-                <td data-label="Age">
-					      {employee.person.middle}
-			        	</td>    
+					<td data-label="Description">
+						{deduction.description}
+					</td> 
 
-                {/* <td data-label="Age">
-                    <ViewDeduction/>
-                </td>    */}
-            </tr> 
-       
-      )
-    }
-    )
-    //here
-
+					<td data-label="Amount">
+						{deduction.amount}
+					</td>    
+				</tr> 
+			)
+		})
+	
     return (
-      
-      
 
-    <div className="IncentivesTables">
-        <table className="ui teal table celled" width="50">
-        
-        <thead>
-              <tr>
-				         <th>DATE</th>
-              		<th>Total</th>
-                  {/* <th>Action</th> */}
-            
-                  </tr>
-          </thead>
-          <tbody>
-           {employeeTable}
-          
-           </tbody>
-
-        </table>
-        
-      </div>        
+		<div className="IncentivesTables">
+			<table className="ui teal table celled" width="50">
+				<thead>
+					<tr>
+						<th>DATE</th>
+						<th>DESCRIPTION</th>
+						<th>AMOUNT</th>
+										
+					</tr>
+				</thead>
+				<tbody>
+					{deductions_table}
+				</tbody>
+			</table>
+		</div>        
     );
   }
 }

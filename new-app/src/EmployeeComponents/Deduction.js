@@ -1,33 +1,38 @@
 import React, { Component } from 'react'
 import './DeductionList.js';
 import './incentives.css';
-import {Tab, Form ,Grid, Segment,Button, List, Modal} from 'semantic-ui-react'
+import {Tab, Form ,Grid, Segment,Button, Modal} from 'semantic-ui-react'
 
 import DeductionList from '../EmployeeComponents/DeductionList';
 
-const panes = [
-
-	{menuItem: 'Deduction list', render: () => 
-		<Tab.Pane>
-			<Form>
-				<DeductionList/>
-			</Form>
-		</Tab.Pane>
-	},	
-]
-
 export default class PayRoll extends Component {
 
-	state = { open: false }
+	state = { open: false };
+
+	constructor(props){
+		super(props);
+		this.state = {
+			item: this.props.item,
+		}
+	}
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+	  this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
 
   close = () => this.setState({ open: false })
 
-render() {
-	const { open, closeOnEscape, closeOnDimmerClick } = this.state
+	render() {
+		const {open, closeOnEscape, closeOnDimmerClick, item} = this.state
+		const panes = [
+			{menuItem: 'Deduction list', render: () => 
+				<Tab.Pane>
+					<Form>
+						<DeductionList item={item}/>
+					</Form>
+				</Tab.Pane>
+			},	
+		]
 
 	return (
 		<div>		
@@ -86,7 +91,7 @@ render() {
         </Modal>
 
 		<div className='IncentivesTabs'>    
-			<Tab style={{width:'75%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
+			<Tab style={{width:'75%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
 		</div>
 
 	</div>
