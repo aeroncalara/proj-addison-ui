@@ -390,7 +390,7 @@ const panes = [
 	{menuItem: 'Insentives', render: () => 
 	<Tab.Pane>
 	
-<Incentives />
+		<Incentives />
 	</Tab.Pane> 
 	},
 

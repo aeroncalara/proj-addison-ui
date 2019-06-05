@@ -3,8 +3,6 @@
 	import './PayRollTable.css';
 
 
-	// import { Menu, Segment ,Header, Divider } from 'semantic-ui-react'
-
 	import axios from 'axios';        
 
 
@@ -33,7 +31,7 @@
 
 									
 	class PayRollTable extends Component {
-
+		
 
 	constructor(props){
 	super(props);
@@ -103,6 +101,9 @@
 
 		<div className="PayrollTables">
 		
+	
+
+
 		<table className="ui teal table celled">
 		
 		<thead>

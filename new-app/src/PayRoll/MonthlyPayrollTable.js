@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-
+import ViewPayRoll from './ViewPayRoll';
 import './PayRollTable.css';
-
 import axios from 'axios';        
 
 let my_query = 
@@ -27,7 +26,7 @@ query{
 }
 `
 							
-class PayRollTable extends Component {
+class MonthlyPayrollTable extends Component {
 
 constructor(props){
 	super(props);
@@ -61,11 +60,16 @@ render() {
 		
 			<tr key={employee.id}>
 				<td data-label="Name"> 
-				{employee.person.first}
-			</td>
-				<td data-label="Age">{employee.person.middle}</td>
+					{employee.person.first}
+				</td>
+				<td data-label="Age">
+					{employee.person.middle}
+				</td>
+				<td data-label="Age">
+					<ViewPayRoll/>
+				</td>
 				
-				</tr> 
+			</tr> 
 	)
 	}
 	)
@@ -77,6 +81,7 @@ render() {
 		<thead>
 			<tr><th>DATE</th>
 			<th>Total</th>
+			<th>Action</th>
 			
 		</tr>
 		</thead>
@@ -90,4 +95,4 @@ render() {
 	);
 }
 }
-export default PayRollTable;
+export default MonthlyPayrollTable;

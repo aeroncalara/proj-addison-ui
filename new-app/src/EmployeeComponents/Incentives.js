@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './IncentivesList.js';
+import './incentives.css';
 import {Tab, Form ,Grid, Segment,Button, List, Modal} from 'semantic-ui-react'
 
 import IncentivesList from '../EmployeeComponents/IncentivesList';
@@ -30,22 +31,16 @@ render() {
 
 	return (
 		<div>		
-			<div className='incentivehead'>				
-				<div className ='incentiveTitle'>
-					<List horizontal size='massive'>
-					
-					</List>
-				</div>
+			
 
 				<div className="addincentive">
-						<Button onClick={this.closeConfigShow(true, false)}>
+					<Button primary onClick={this.closeConfigShow(true, false)}>
 
-									Add Insentives
+						Add Insentives
 						
-						</Button>
-					{/* </NavLink> */}
+					</Button>
 				</div>
-			</div>
+		
 
 		<Modal
           open={open}
@@ -55,7 +50,7 @@ render() {
 		  basic
 		  size='small'
         >
-			
+
 		<Modal.Header>Add Incentives</Modal.Header>
 			<Modal.Content>
 				<Form inverted>
@@ -79,6 +74,7 @@ render() {
 				<Button onClick={this.close} negative>
 					cancel
 				</Button>
+
 					<Button
 					onClick={this.close}
 					positive
@@ -90,7 +86,7 @@ render() {
         </Modal>
 
 		<div className='IncentivesTabs'>    
-			<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
+			<Tab style={{width:'75%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
 		</div>
 
 	</div>

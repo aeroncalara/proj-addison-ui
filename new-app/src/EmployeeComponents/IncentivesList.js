@@ -1,48 +1,39 @@
 import React, {Component} from 'react'
 import './Incentives';
+import './incentives.css';
 import axios from 'axios';        
+import ViewInsentives from '../EmployeeComponents/ViewInsentives';
 
 
 let my_query = 
 `
-  query{
-    getAllEmployees{
-      person{
-        first
-        middle
-        
-        last
-        date_of_birth
-        address{
-          number
-          street
-          city
-          province
-          country
-          
-        }
-      }
-    }
+query{
+  getAllIncentivesOfEmployee{
+    date_incurred
+    description
+    amount
+    is_active
   }
+}
 `
 
 
-                                 
+                             
 class Incentives extends Component {
 
   constructor(props){
     super(props);
     this.state = { 
-      employees: [],
+      incentives: [],
     }
   }
 
   componentDidMount(){
-    this.getEmployees();
+    this.getAllIncentivesOfEmployee();
   }
 
-  getEmployees = async () => {
-    let employee_variable = await axios({
+  getAllIncentivesOfEmployee= async () => {
+    let incentives_variable = await axios({
       url: `http://localhost:4000`,
       method: `post`,
       data: {
@@ -50,26 +41,29 @@ class Incentives extends Component {
       }
     })
 
-    this.setState({ employees: employee_variable.data.data.getAllEmployees });
+    this.setState({ incentives: incentives_variable.data.data.getAllIncentivesOfEmployee });
   }
   render() {
 
   
- 
-    const employees = this.state.employees;
-    console.log(employees);
+    const incentives = this.state.incentives;
+    console.log(incentives);
     
-    let employeeTable = employees.map((employee, index) => {
+    let incentivesTable = incentives.map((incentive, index) => {
       return (
         
-            <tr key={employee.id}>
-                <td data-label="Name"> 
-                 	{employee.person.first}
+            <tr key={incentive.id}>
+                <td data-label="Date Incured"> 
+                 	{incentive.date_incurred}
               	</td>
 
+                <td data-label="Total">
+					      {incentive.amount}
+			        	</td>    
+
                 <td data-label="Age">
-					 {employee.person.middle}
-				</td>    
+                    <ViewInsentives/>
+                </td>   
             </tr> 
        
       )
@@ -86,13 +80,14 @@ class Incentives extends Component {
         
         <thead>
               <tr>
-				  <th>DATE</th>
+				         <th>DATE</th>
               		<th>Total</th>
+                  <th>Action</th>
             
-          </tr>
+                  </tr>
           </thead>
           <tbody>
-           {employeeTable}
+           {incentivesTable}
           
            </tbody>
 

@@ -2,31 +2,10 @@ import React, { Component } from 'react'
 import './PayRoll.css';
 import { List,Tab, Form  } from 'semantic-ui-react'
 
-import PayRollTable from './PayRollTable';
+
 import MonthlyPayrollTable from './MonthlyPayrollTable';
 
 const panes = [
-
-	{menuItem: 'Payroll', render: () =>
-	<Tab.Pane> 
-	<Form>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="money bill alternate outline icon"/>
-			
-				Payroll
-			
-		</div>
-		</div>
-    
-
-		<div>
-		<PayRollTable/>
-		</div>  
-		
-	</Form>
-	</Tab.Pane> 
-	},
 
 	{menuItem: 'Monthly Payroll', render: () => 
 	<Tab.Pane>
@@ -51,42 +30,42 @@ const panes = [
 
 
 export default class PayRoll extends Component {
-  
 
-  render() {
-  
-    return (
-      <div>
-        
-          <div className='Payrollhead'>
-                       <div className ='payTitle'>
-              <List horizontal size='massive'>
+
+render() {
+
+	return (
+	<div>
+		
+		<div className='Payrollhead'>
+					<div className ='payTitle'>
+			<List horizontal size='massive'>
 							<List.Item>
 								<i className="money bill alternate outline icon"/>
 								PayRoll
 							</List.Item>
 						</List>
 
-              </div>
-              
-            
-          </div>
+			</div>
+			
+			
+		</div>
 
-          <div>
-           
-            <hr className="hr"/>
+		<div>
+		
+			<hr className="hr"/>
 
-          </div>
-          
-            
-          <div className='PayrollTabs'>    
+		</div>
+		
+			
+		<div className='PayrollTabs'>    
 								<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
 					</div>
 
 
-      </div>
-    )
-  }
+	</div>
+	)
+}
 }
 
 
