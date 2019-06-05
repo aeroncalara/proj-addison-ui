@@ -194,7 +194,6 @@ getIncentives = async () =>{
 	let incentive_query = 
 	`
 		query{
-			getAllIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
 		  		date_incurred
 		  		description
 		  		amount
