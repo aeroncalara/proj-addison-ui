@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ViewPayRoll from './ViewPayRoll';
 import './PayRollTable.css';
-import Axios from 'axios';
 	
 
 class MonthlyPayrollTable extends Component {
@@ -24,7 +23,9 @@ class MonthlyPayrollTable extends Component {
 					<td data-label="Total pay">
 						{payroll.total_pay}
 					</td>
-					
+					<td data-label="Age">
+						<ViewPayRoll item = {payroll._id}/>
+					</td>
 				</tr> 
 			)
 		})

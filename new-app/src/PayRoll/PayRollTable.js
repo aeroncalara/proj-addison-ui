@@ -1,100 +1,72 @@
-	// import {Button} from 'semantic-ui-react'
-	import React, {Component} from 'react'
-	import './PayRollTable.css';
-
-
-	import axios from 'axios';        
-
-
-	let my_query = 
-	`
-	query{
-	getAllEmployees{
-		person{
-		first
-		middle
-		last
-		date_of_birth
-		address{
-			number
-			street
-			city
-			province
-			country
-			
-		}
-		}
-	}
-	}
-	`
-
-
+// import {Button} from 'semantic-ui-react'
+import React, {Component} from 'react'
+import './PayRollTable.css';
 									
-	class PayRollTable extends Component {
-		
-
+class PayRollTable extends Component {
 	constructor(props){
-	super(props);
-	this.state = { 
-		employees: [],
-	}
-	}
-
-	componentDidMount(){
-	this.getEmployees();
-	}
-
-	getEmployees = async () => {
-	let employee_variable = await axios({
-		url: `http://localhost:4000`,
-		method: `post`,
-		data: {
-		query: my_query
+		super(props);
+		this.state = { 
+			item: this.props.item,
 		}
-	})
-
-	this.setState({ employees: employee_variable.data.data.getAllEmployees });
 	}
+
 	render() {
 
+		const {item} = this.state;
+		console.log(item);
+		let payroll_entities = item.entities.map((entity, index) => {
+			return (
+				<tr key={entity._id}>
 
+					<td data-label="Name">
+						{entity.employee_name}
+					</td>
 
-	const employees = this.state.employees;
-	console.log(employees);
+					<td data-label="Salary">
+						{entity.base_salary}
+					</td>
 
-	let employeeTable = employees.map((employee, index) => {
-		return (
+					<td>
+						{entity.deductions.length === 0?
+								<i>n/a</i>
+							:
+						
+							entity.deductions.map(deduction => {
+								return (
+									<ul key = {deduction._id}>
+										<li>DESCRIPTION: {deduction.description}</li>
+										<li>AMOUNT: {deduction.amount}</li>
+										<li>DATE INCURRED: {deduction.date_incurred}</li>
+									</ul>
+								)
+							})	
+						}
+					</td>
 
+					<td>
+					{entity.incentives.length === 0?
+								<i>n/a</i>
+							:
+						
+							entity.incentives.map(incentive => {
+								return (
+									<ul key = {incentive._id}>
+										<li>DESCRIPTION: {incentive.description}</li>
+										<li>AMOUNT: {incentive.amount}</li>
+										<li>DATE INCURRED: {incentive.date_incurred}</li>
+									</ul>
+								)
+							})	
+						}
+					</td>
+
+					<td>
+						{entity.total_pay}
+					</td>
+				</tr>
+			)
+		})
 		
-				<tr key={employee.id}>
-					<td data-label="Name"> 
-						{/* {employee.person.first} */}
-						Aeron
-					</td>
-					<td data-label="Base Salary">
-						{/* {employee.person.middle} */}
-						20,000P
-					</td>
-					<td data-label="Deduction">
-						{/* {employee.person.last} */}
-						500 P
-					</td>
-					<td data-label="Incentive">
-						{/* {employee.person.last} */}
-						0.00 P
-					</td>
-					<td data-label="Total">
-						{/* {employee.person.last} */}
-						15,500 P
-					</td>
-				</tr> 
-		
-			
-		)
-	}
-	)
-	//here
-
 	return (
 		
 		
@@ -116,8 +88,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			{employeeTable}
-			
+				{payroll_entities}
 			</tbody>
 			
 		</table>
