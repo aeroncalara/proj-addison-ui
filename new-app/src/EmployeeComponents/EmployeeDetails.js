@@ -426,13 +426,13 @@ const panes = [
 
 	{menuItem: 'Incentives', render: () => 
 	<Tab.Pane>
-		<Incentives item={incentives}/>
+		<Incentives item={incentives} employee_id={employee._id}/>
 	</Tab.Pane> 
 	},
 	
 	{menuItem: 'Deduction', render: () => 
 	<Tab.Pane>
-		<Deduction item={deductions}/>
+		<Deduction item={deductions} employee_id={employee._id}/>
 	</Tab.Pane> 
 	},
 
