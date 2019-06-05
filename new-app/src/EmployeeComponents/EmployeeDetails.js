@@ -220,7 +220,7 @@ getDeductions = async () => {
 	let deductions_query =
 	`
 		query{
-			getAllActiveDeductionsOfEmployee(employee_id:"5cf759db9c09471f7c14d11e"){
+			getAllActiveDeductionsOfEmployee(employee_id:"${this.props.match.params.id}"){
 				date_incurred
 				description
 				amount
