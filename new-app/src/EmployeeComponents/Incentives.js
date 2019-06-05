@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './IncentivesList.js';
 import './incentives.css';
-import {Tab, Form ,Grid, Segment,Button, List, Modal} from 'semantic-ui-react'
+import {Tab, Form ,Grid, Segment,Button, Modal} from 'semantic-ui-react'
 
 import IncentivesList from '../EmployeeComponents/IncentivesList';
 

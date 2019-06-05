@@ -1,21 +1,6 @@
 import React, {Component} from 'react'
 import './Incentives';
 import './incentives.css';
-import axios from 'axios';        
-import ViewIncentives from '../EmployeeComponents/ViewIncentives';
-
-
-let my_query = 
-`
-query{
-  getAllIncentivesOfEmployee{
-    date_incurred
-    description
-    amount
-    is_active
-  }
-}
-`
 
 
                              
@@ -27,10 +12,6 @@ class Incentives extends Component {
 	  item: this.props.item,
     }
   }
-
-  componentDidMount(){
-  }
-
   
   render() {
 
