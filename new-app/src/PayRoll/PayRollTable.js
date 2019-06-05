@@ -13,10 +13,9 @@ class PayRollTable extends Component {
 	render() {
 
 		const {item} = this.state;
-		console.log(item);
 		let payroll_entities = item.entities.map((entity, index) => {
 			return (
-				<tr key={entity._id}>
+				<tr key={entity.employee_id}>
 
 					<td data-label="Name">
 						{entity.employee_name}
@@ -30,10 +29,9 @@ class PayRollTable extends Component {
 						{entity.deductions.length === 0?
 								<i>n/a</i>
 							:
-						
 							entity.deductions.map(deduction => {
 								return (
-									<ul key = {deduction._id}>
+									<ul key={deduction.description}>
 										<li>DESCRIPTION: {deduction.description}</li>
 										<li>AMOUNT: {deduction.amount}</li>
 										<li>DATE INCURRED: {deduction.date_incurred}</li>
@@ -68,13 +66,7 @@ class PayRollTable extends Component {
 		})
 		
 	return (
-		
-		
-
 		<div className="PayrollTables">
-		
-	
-
 
 		<table className="ui teal table celled">
 		

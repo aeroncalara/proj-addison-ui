@@ -31,6 +31,7 @@ export default class ViewPayRoll extends Component {
 					release_date
 					total_pay
 					entities{
+						_id
 						employee_id
 						employee_name
 						base_salary
