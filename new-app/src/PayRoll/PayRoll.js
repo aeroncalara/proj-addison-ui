@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form } from 'semantic-ui-react'
+import { List,Tab, Form, Button, Modal, Icon } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';
@@ -16,12 +16,22 @@ export default class PayRoll extends Component {
 		this.state = {
 			payrolls: [],
 			is_fetching: true,
+			release_date: "",
+			open: false,
 		}
+
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentDidMount(){
 		this.getPayrolls();
 	}
+
+	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+        this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+	}
+	
+	close = () => this.setState({ open: false })
 
 	getPayrolls = async () =>{
 		let payroll_query = 
@@ -45,9 +55,41 @@ export default class PayRoll extends Component {
 		this.setState({is_fetching: false});
 	}
 
+	createPayroll = async () =>{
+		let payroll_mutation = 
+		`
+			mutation{
+				createPayroll(
+					release_date: "${this.state.release_date}"
+				){
+					message
+					success
+				}
+			}
+		`
+
+		await axios({
+			url: addison_api_url,
+			method: `post`,
+			data: {
+				query: payroll_mutation
+			}
+		})
+		
+	}
+
+	handleChange(e){
+		const target = e.target;
+		const value = target.value;
+		const name = target.name;
+
+		this.setState({ [name]: value});
+	}
+
 	render() {
 
-		const {payrolls, is_fetching} = this.state;
+		const {payrolls, is_fetching, open, closeOnEscape, closeOnDimmerClick} = this.state;
+		
 		const panes = [
 			{
 				menuItem: 'Monthly Payroll', render: () => 
@@ -71,13 +113,52 @@ export default class PayRoll extends Component {
 				<div className='Payrollhead'>
 					<div className ='payTitle'>
 						<List horizontal size='massive'>
-							<List.Item><i className="money bill alternate outline icon"/>PayRoll</List.Item>
+							<List.Item><i className="money bill alternate outline icon"/>PayRolls</List.Item>
 						</List>
 					</div>
 				</div>
 
 				<div>
 					<hr className="hr"/>
+				</div>
+
+				<div>
+					<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
+					<Modal
+						open={open}
+						closeOnEscape={closeOnEscape}
+						closeOnDimmerClick={closeOnDimmerClick}
+						onClose={this.close}
+					>
+						<Modal.Header>	
+							<div className='EmpDetails'>
+								<div className ='desc'>
+									<i className="money bill alternate outline icon"/>Create Payroll
+								</div>
+							</div>
+						</Modal.Header>
+
+						<Modal.Content image scrolling>
+							<Form>
+								<Form.Field>
+									<label>Release Date</label>
+									<input onChange={this.handleChange} value={this.state.release_date} name="release_date" placeholder='Release date' type="date"/>
+								</Form.Field>
+								<Button onClick={this.createPayroll} type="submit">Submit</Button>
+							</Form>
+
+
+						</Modal.Content>
+
+						<Modal.Actions>
+
+							<Button primary onClick={this.close}
+								labelPosition='right'
+							>
+								Proceed <Icon name='chevron right' />
+							</Button>
+						</Modal.Actions>
+					</Modal>
 				</div>
 				
 				{
