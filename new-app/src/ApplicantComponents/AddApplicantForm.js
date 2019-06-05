@@ -21,6 +21,7 @@ constructor(props) {
     this.state = {
     visible: true,
     isEdit : false,
+    
     firstName: '',
     middleName: '',
     lastName: '',

@@ -28,8 +28,7 @@
 				description
 				salary
 			  }
-		}
-			
+		}	
 	}`;
 
 
