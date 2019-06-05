@@ -196,32 +196,34 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 				</Menu>
 
-				<Sidebar.Pushable as={Segment} style={{height: '100%' , bottom:18 }} >
+				<Sidebar.Pushable as={Segment} style={{height: 1000, bottom:18 }} >
 
 					{vertical ? null : (
 					<VerticalSidebar animation={animation} direction={direction} visible={visible} />
 					)}
 
-					<Sidebar.Pusher dimmed={visible} >
-						<Segment basic>
+				<Sidebar.Pusher dimmed={visible} style={{height: '100%'}}>
+					<div className="Segment">
+						<Segment >
+						
+								<Switch>
+									<Route exact path="/" component={EmployeeMain} />
+									<Route path="/EmployeeMain" component={EmployeeMain} />
+									<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
+									<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+									
+									<Route path="/ApplicantMain" component={ApplicantMain} />
+									<Route path="/AddApplicantForm" component={AddApplicantForm}/>
+									<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/>
 
-							<Switch>
-								<Route exact path="/" component={EmployeeMain} />
-								<Route path="/EmployeeMain" component={EmployeeMain} />
-								<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
-								<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
-								
-								<Route path="/ApplicantMain" component={ApplicantMain} />
-								<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-								<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/>
-
-								<Route path="/PayRoll" component={PayRoll}/>
-								
-								<Route path="/PayRoll" component={PayRoll}/>
-								{/* <Route component={NotFound} /> */}
-							</Switch>
-							
-						</Segment>
+									<Route path="/PayRoll" component={PayRoll}/>
+									
+									<Route path="/PayRoll" component={PayRoll}/>
+									{/* <Route component={NotFound} /> */}
+								</Switch>
+					
+					</Segment>
+						</div>
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 

@@ -145,7 +145,7 @@ render() {
         <Grid>
             <Grid.Column width={11}>
                 <Segment raised>
-
+                    <div className="Segment">
                     <Label as='a' color='teal' ribbon>
                         Basic Information
                     </Label>
@@ -175,7 +175,7 @@ render() {
                             
                         <Form.Input label='HDMF #' placeholder='HDMF #'  onChange={(e) => this.handleChange(e, 'hdmf')} value={this.state.hdmf}/>
                     </Form.Group>
-
+                    </  div>
                 </Segment>
             </Grid.Column>
          </Grid>
@@ -307,9 +307,9 @@ render() {
 ]
 
     return (
-        <div>
+        <div className="main">
             {/* applicantHeader */}
-            <div className = "EmployeeTop">
+            <div className = "appTop">
                 {/* eMPLoYEEname */}
                 <div className='AppName'>
                 

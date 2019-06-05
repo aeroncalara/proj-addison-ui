@@ -4,15 +4,14 @@
   color: rgb(255, 255, 255);
   font-size: 30px;
 } 
-.search {
-  margin-left: 1px;
-  margin-right: 1px; 
-  width: 10px;
-  height: 1px;
+.Segment {
+  
+  height: 100%;
 } 
 
 .navigation {
-  
+  height: 100%;
+
   list-style: none;
   margin: 0 auto;
   margin-left: 5.5%;

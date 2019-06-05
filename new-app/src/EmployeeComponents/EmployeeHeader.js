@@ -73,7 +73,7 @@ export default class EmployeeHeader extends Component {
 
 					<div className='tableHeader'>
 						<div className="Button">
-							<Popup
+							{/* <Popup
 								trigger={
 									<div className="ui category search">
 										<div className="ui icon input">
@@ -85,7 +85,7 @@ export default class EmployeeHeader extends Component {
 								header='Employee Search'
 								content='You may search by Name, Position and Department'
 								on='focus'
-							/>
+							/> */}
 						</div>
 					</div>
 					

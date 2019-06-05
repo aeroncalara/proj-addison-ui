@@ -18,8 +18,6 @@ export default class HeaderTry extends Component {
   </div>
   <div class="pusher">
         {/* sitecontent */}
-
-
   </div>
 </body>
 

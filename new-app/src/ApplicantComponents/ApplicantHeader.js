@@ -135,12 +135,13 @@ render() {
 					
 					</div>
 					</div> */}
-				<div className="Button">
+				{/* <div className="Button">
 				<div className="ui category search">
+
 				<div className="ui icon input">
 					<input className="prompt" type="text" placeholder="Search..." />
 					<i className="search icon"></i>
-					</div>
+				</div>
 					<div className="results"></div>
 					</div>
 
@@ -148,7 +149,7 @@ render() {
 
 				
 
-				</div>
+				</div> */}
 
 			</div>
 		
