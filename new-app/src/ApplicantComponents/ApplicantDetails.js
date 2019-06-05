@@ -44,82 +44,81 @@ this.state = {
 	hdmf: '',
 
 	applicant: {
-		person:
-			{
-			first:'',
-			middle:'',
-			last:'',
-			date_of_birth:'',
+
+		success: '',
+		message: '',
+		data: {
+			id: "",
+			person:{
+				first:'',
+				middle:'',
+				last:'',
+				date_of_birth:'',
 			
-		contact:
-			{
-			type:'',
-			telephone:'',
-			number:'',
+				contact:{
+					type:'',
+					telephone:'',
+					number:'',
+				},
+
+				address:{
+					number:'',
+					street:'',
+					city:'',
+					province:'',
+					country:'',
+				}		
 			},
 
-			address:
-			{
-			number:'',
-			street:'',
-			city:'',
-			province:'',
-			country:'',
-			}		
-		},
+			position:{
+				title:'',
+				description:'',
+				salary:'',
+			},
 
-		position:{
-			title:'',
-			description:'',
-			salary:'',
-		},
-
-		tin:'',
-		sss:'',
-		philhealth:'',
-		hdmf: '',
-		},
-		id: ""
+			tin:'',
+			sss:'',
+			philhealth:'',
+			hdmf: '',
+			},
+		}
 	}
 }
 
-// componentDidUpdate() {
-// 	console.log(this.state.isEdit, 'hello')
-// }
 
 handleEdit = () => { 
 	this.setState({ isEdit: !this.state.isEdit })
 }
 
 handleCancel = () => {
-this.setState({ 
-	firstName: '',
-	middleName: '',
-	lastName: '',
-	birthDate: '',
+	this.setState({ 
+		firstName: '',
+		middleName: '',
+		lastName: '',
+		birthDate: '',
 
-	type:'',
-	mobile: '',
-	telephone: '',
-	email: '',
+		type:'',
+		mobile: '',
+		telephone: '',
+		email: '',
 
-	number:'',
-	street:'',
-	city:'',
-	province:'',
-	country:'',
+		number:'',
+		street:'',
+		city:'',
+		province:'',
+		country:'',
 
-	title:'',
-	description:'',
-	salary:'',
+		title:'',
+		description:'',
+		salary:'',
 
-	tin:'',
-	sss:'',
-	philhealth:'',
-	hdmf: '',
+		tin:'',
+		sss:'',
+		philhealth:'',
+		hdmf: '',
 
-	isEdit: !this.state.isEdit,
-	open: !this.state.open
+		isEdit: !this.state.isEdit,
+		open: !this.state.open
 	})
 }
 
@@ -132,8 +131,6 @@ this.getApplicant()
 }
 
 getApplicant = async () => {
-
-	console.log(this.props.match.params.id)
 
 	let my_query = 
 	`
@@ -153,7 +150,6 @@ getApplicant = async () => {
 			}
 		}
 	`
-
 	let applicant_variable = await axios({
 		url: 'http://localhost:4000',
 		method: 'post',
@@ -161,22 +157,12 @@ getApplicant = async () => {
 		  query: my_query
 		}
 	  })
-	  
-	  console.log(applicant_variable)
-
-	//   console.log(applicant_variable.data.person.first)
-
-
 	this.setState({ applicant: applicant_variable.data.data.getApplicant })
 }
 
 render() {
 
 const { open, closeOnEscape, closeOnDimmerClick, applicant } = this.state
-
-// console.log(applicant)
-
-// const {isEdit} = this.state
 
 
 const panes = [
@@ -205,19 +191,19 @@ const panes = [
 
 					<Form.Group>
 						<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true} 
-						 onChange={(e) => this.handleChange(e, 'firstName')} value={applicant} />
+						 onChange={(e) => this.handleChange(e, 'firstName')} value={applicant.data.person.first} />
 						
 
 						<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} 
-						onChange={(e) => this.handleChange(e, 'middleName')} value={applicant} />
+						onChange={(e) => this.handleChange(e, 'middleName')} value={applicant.data.person.middle} />
 
 
 						<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true}
-						 onChange={(e) => this.handleChange(e, 'lastName')} value={applicant}/>
+						 onChange={(e) => this.handleChange(e, 'lastName')} value={applicant.data.person.last}/>
 					</Form.Group>
 
 					<Form.Group>
-							<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant}/>
+							<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={applicant.data.person.birthdate}/>
 					</Form.Group>
 				
 				<Label as='a' color='teal' ribbon>
