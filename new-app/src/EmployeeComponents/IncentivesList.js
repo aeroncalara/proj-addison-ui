@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './Incentives';
 import './incentives.css';
 import axios from 'axios';        
-import ViewInsentives from '../EmployeeComponents/ViewInsentives';
+import ViewIncentives from '../EmployeeComponents/ViewIncentives';
 
 
 let my_query = 
@@ -24,76 +24,53 @@ class Incentives extends Component {
   constructor(props){
     super(props);
     this.state = { 
-      incentives: [],
+	  item: this.props.item,
     }
   }
 
   componentDidMount(){
-    this.getAllIncentivesOfEmployee();
   }
-
-  getAllIncentivesOfEmployee= async () => {
-    let incentives_variable = await axios({
-      url: `http://localhost:4000`,
-      method: `post`,
-      data: {
-        query: my_query
-      }
-    })
-
-    this.setState({ incentives: incentives_variable.data.data.getAllIncentivesOfEmployee });
-  }
-  render() {
 
   
-    const incentives = this.state.incentives;
-    console.log(incentives);
-    
-    let incentivesTable = incentives.map((incentive, index) => {
-      return (
+  render() {
+
+    const {item} = this.state;
         
+    let incentivesTable = item.map((incentive, index) => {
+      return (
             <tr key={incentive.id}>
-                <td data-label="Date Incured"> 
+                <td data-label="Date Incurred"> 
                  	{incentive.date_incurred}
               	</td>
 
-                <td data-label="Total">
-					      {incentive.amount}
-			        	</td>    
+				<td data-label="Description">
+					{incentive.description}
+				</td> 
 
-                <td data-label="Age">
-                    <ViewInsentives/>
-                </td>   
+                <td data-label="Amount">
+					{incentive.amount}
+			    </td>    
             </tr> 
-       
-      )
-    }
-    )
-    //here
-
-    return (
-      
-      
-
-    <div className="IncentivesTables">
-        <table className="ui teal table celled" width="50">
+		)
+	})
+    
+    return(
+    	<div className="IncentivesTables">
+			<table className="ui teal table celled" width="50">
+				<thead>
+					<tr>
+						<th>DATE</th>
+						<th>DESCRIPTION</th>
+						<th>AMOUNT</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					{incentivesTable}
+				</tbody>
+			</table>
         
-        <thead>
-              <tr>
-				         <th>DATE</th>
-              		<th>Total</th>
-                  <th>Action</th>
-            
-                  </tr>
-          </thead>
-          <tbody>
-           {incentivesTable}
-          
-           </tbody>
-
-        </table>
-        
-      </div>        
+    	</div>        
     );
   }
 }

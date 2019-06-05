@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './Deduction';
 import './incentives.css';
 import axios from 'axios';        
-import ViewInsentives from '../EmployeeComponents/ViewInsentives';
+import ViewIncentives from '../EmployeeComponents/ViewIncentives';
 import ViewDeduction from './ViewDeduction';
 
 let my_query = 

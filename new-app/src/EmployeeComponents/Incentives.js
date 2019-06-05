@@ -5,45 +5,46 @@ import {Tab, Form ,Grid, Segment,Button, List, Modal} from 'semantic-ui-react'
 
 import IncentivesList from '../EmployeeComponents/IncentivesList';
 
-const panes = [
+export default class Incentives extends Component {
 
-	{menuItem: 'Incentives list', render: () => 
-		<Tab.Pane>
-			<Form>
-				<IncentivesList/>
-			</Form>
-		</Tab.Pane>
-	},	
-]
-
-export default class PayRoll extends Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			item: this.props.item,
+		}
+	}
 
 	state = { open: false }
 
-  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
-  }
+	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+		this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+	}
 
-  close = () => this.setState({ open: false })
+  	close = () => this.setState({ open: false })
 
 render() {
-	const { open, closeOnEscape, closeOnDimmerClick } = this.state
+
+	const { open, closeOnEscape, closeOnDimmerClick, item } = this.state
+	const panes = [
+		{menuItem: 'Incentives list', render: () => 
+			<Tab.Pane>
+				<Form>
+					<IncentivesList item = {item}/>
+				</Form>
+			</Tab.Pane>
+		},	
+	]
 
 	return (
 		<div>		
 			
-
-				<div className="addincentive">
-					<Button primary onClick={this.closeConfigShow(true, false)}>
-
-						Add Insentives
-						
-					</Button>
-				</div>
+			<div className="addincentive">
+				<Button primary onClick={this.closeConfigShow(true, false)}>Add Incentives</Button>
+			</div>
 		
 
 		<Modal
-          open={open}
+          open={open}c
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
 		  onClose={this.close}
@@ -86,7 +87,7 @@ render() {
         </Modal>
 
 		<div className='IncentivesTabs'>    
-			<Tab style={{width:'75%' }} menu={{ secondary: true, pointing: true }}panes={panes} />
+			<Tab style={{width:'75%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
 		</div>
 
 	</div>

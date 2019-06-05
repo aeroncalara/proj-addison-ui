@@ -3,7 +3,7 @@ import { Button, Modal ,Form, Grid, Segment} from 'semantic-ui-react'
 
 
 
-export default class ViewInsentives extends Component {
+export default class ViewIncentives extends Component {
 
     state = { open: false }
 
@@ -23,9 +23,9 @@ export default class ViewInsentives extends Component {
           open={open}
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
-		  onClose={this.close}
-		  basic
-		  size='small'
+					onClose={this.close}
+					basic
+					size='small'
         >
 
 		<Modal.Header>View Incentives</Modal.Header>
@@ -49,13 +49,13 @@ export default class ViewInsentives extends Component {
 
 			<Modal.Actions>
 					<Button
-					onClick={this.close}
-					positive
-					labelPosition='right'
-					icon='checkmark'
-					content='ok'
+						onClick={this.close}
+						positive
+						labelPosition='right'
+						icon='checkmark'
+						content='ok'
 					/>
-          	</Modal.Actions>
+      </Modal.Actions>
         </Modal>
 
           </div>
