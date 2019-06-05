@@ -194,7 +194,7 @@ getIncentives = async () =>{
 	let incentive_query = 
 	`
 		query{
-			getAllActiveIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
+			getAllIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
 		  		date_incurred
 		  		description
 		  		amount
@@ -216,6 +216,7 @@ getIncentives = async () =>{
 
 getDeductions = async () => {
 	//INSERT QUERY HERE
+	let deductions
 }
 
 render() {

@@ -64,7 +64,6 @@ class Incentives extends Component {
 						<th>AMOUNT</th>
 					</tr>
 				</thead>
-			
 				<tbody>
 					{incentivesTable}
 				</tbody>
