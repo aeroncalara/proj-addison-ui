@@ -8,6 +8,8 @@ import TimeLogs from '../TimeInOutComponents/TimeLogs';
 
 import axios from 'axios';        
 
+const addison_api_url = `http://localhost:4000`;
+
 export default class EmployeeDetails extends Component {
 
 state = { open: false };
@@ -47,6 +49,8 @@ this.state = {
 	philhealth:'',
 	hdmf: '',
 
+	incentives:[],
+	deductions:[],
 	employee: {
 		person:
 			{
@@ -87,43 +91,39 @@ this.state = {
 	}
 }
 
-componentDidUpdate() {
-	console.log(this.state.isEdit, 'hello')
-}
-
 handleEdit = () => { ;
 	this.setState({ isEdit: !this.state.isEdit });
 }
 
 handleCancel = () => {;
-this.setState({ 
-	firstName: '',
-	middleName: '',
-	lastName: '',
-	birthDate: '',
+	this.setState({ 
+		firstName: '',
+		middleName: '',
+		lastName: '',
+		birthDate: '',
 
-	type:'',
-	mobile: '',
-	telephone: '',
-	email: '',
+		type:'',
+		mobile: '',
+		telephone: '',
+		email: '',
 
-	number:'',
-	street:'',
-	city:'',
-	province:'',
-	country:'',
+		number:'',
+		street:'',
+		city:'',
+		province:'',
+		country:'',
 
-	title:'',
-	description:'',
-	salary:'',
+		title:'',
+		description:'',
+		salary:'',
 
-	tin:'',
-	sss:'',
-	philhealth:'',
-	hdmf: '',
+		tin:'',
+		sss:'',
+		philhealth:'',
+		hdmf: '',
 
-	isEdit: !this.state.isEdit,
-	open: !this.state.open
+		isEdit: !this.state.isEdit,
+		open: !this.state.open
 	});
 }
 
@@ -132,12 +132,11 @@ handleChange = (e, type) => {
 }
 
 componentDidMount(){
-this.getEmployee();
+	this.getEmployee();
+	this.getIncentives();
 }
 
 getEmployee = async () => {
-
-	console.log(this.props.match.params.id);
 
 	let my_query = 
 	`
@@ -181,24 +180,47 @@ getEmployee = async () => {
 		}
 	`
 
-let employee_variable = await axios({
-	url: `http://localhost:4000`,
-	method: `post`,
-	data: {
-	query: my_query
-	}
+	let employee_variable = await axios({
+		url: addison_api_url,
+		method: `post`,
+		data: {
+		query: my_query
+		}
+		})
+	this.setState({ employee: employee_variable.data.data.getEmployee });
+}
+
+getIncentives = async () =>{
+	let incentive_query = 
+	`
+		query{
+			getAllActiveIncentivesOfEmployee(employee_id:"${this.props.match.params.id}"){
+		  		date_incurred
+		  		description
+		  		amount
+		  		is_active
+			}
+	  	}
+	`
+
+	let incentive_variable = await axios({
+		url: addison_api_url,
+		method: `post`,
+		data: {
+			query: incentive_query
+		}
 	})
-this.setState({ employee: employee_variable.data.data.getEmployee });
+
+	this.setState({incentives: incentive_variable.data.data.getAllActiveIncentivesOfEmployee})
+}
+
+getDeductions = async () => {
+	//INSERT QUERY HERE
 }
 
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, employee } = this.state;
-
-console.log(employee);
-
-// const {isEdit} = this.state
-
+const { open, closeOnEscape, closeOnDimmerClick, employee, incentives} = this.state;
 
 const panes = [
 
@@ -369,17 +391,9 @@ const panes = [
 	
 	
 			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.title}/>
-	
-
-	
 			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.description}/>
-	
-
-		
 			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={employee.position.salary}/>
-	
-
-			</Form.Group>
+		</Form.Group>
 	</Segment>
 	</Grid.Column>
 	</Grid>		
@@ -387,10 +401,9 @@ const panes = [
 	</Tab.Pane>
 	},
 
-	{menuItem: 'Insentives', render: () => 
+	{menuItem: 'Incentives', render: () => 
 	<Tab.Pane>
-	
-		<Incentives  item="this.state.item"/>
+		<Incentives item={incentives}/>
 	</Tab.Pane> 
 	},
 	

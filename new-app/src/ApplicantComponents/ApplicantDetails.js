@@ -206,7 +206,7 @@ const panes = [
 			<hr className="hrName" />
 		</div>
 
-	<Form key={applicant} liquid="true">
+	<Form key={applicant} liquid>
 		<Grid>
 			<Grid.Column width={11}>
 				<Segment raised>
@@ -256,7 +256,7 @@ const panes = [
 
 {menuItem: 'Contact', render: () => 
 	<Tab.Pane>
-		<Form key={applicant} liquid="true">
+		<Form key={applicant} liquid>
 			<div className='EmpDetails'>
 				<div className ='desc'>
 					<i className="phone square icon"/>
