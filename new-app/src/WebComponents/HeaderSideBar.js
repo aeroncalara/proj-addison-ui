@@ -143,28 +143,28 @@ export default class HeaderSideBar extends Component {
 
 	handleDirectionHide = direction => () => this.setState({ direction, visible: false })
 
-	TIME
-	constructor(props) {
-	super(props);
-	this.state = {
-	time: new Date().toLocaleString()
-	};
-	}
+	// TIME
+	// constructor(props) {
+	// super(props);
+	// this.state = {
+	// time: new Date().toLocaleString()
+	// };
+	// }
 	
-	componentDidMount() {
-	this.intervalID = setInterval(
-	() => this.tick(),
-	1000
-	);
-	}
-	componentWillUnmount() {
-	clearInterval(this.intervalID);
-	}
-	tick() {
-	this.setState({
-	time: new Date().toLocaleString()
-	});
-	}
+	// componentDidMount() {
+	// this.intervalID = setInterval(
+	// () => this.tick(),
+	// 1000
+	// );
+	// }
+	// componentWillUnmount() {
+	// clearInterval(this.intervalID);
+	// }
+	// tick() {
+	// this.setState({
+	// time: new Date().toLocaleString()
+	// });
+	// }
 
 
 	render() {

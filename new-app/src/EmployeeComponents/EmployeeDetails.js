@@ -407,7 +407,6 @@ const panes = [
 		<Incentives item={incentives}/>
 	</Tab.Pane> 
 	},
-
 	
 	{menuItem: 'Deduction', render: () => 
 	<Tab.Pane>
