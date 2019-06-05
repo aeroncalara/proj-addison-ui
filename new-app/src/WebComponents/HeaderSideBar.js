@@ -196,7 +196,7 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 				</Menu>
 
-				<Sidebar.Pushable as={Segment} style={{height: 620 , bottom:18 }} >
+				<Sidebar.Pushable as={Segment} style={{height: '100%' , bottom:18 }} >
 
 					{vertical ? null : (
 					<VerticalSidebar animation={animation} direction={direction} visible={visible} />

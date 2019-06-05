@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button ,Header, Tab, Form, Icon, Grid, Segment,Label, Modal } from 'semantic-ui-react'
+import {Button ,Header, Tab, Form, Icon, Grid, Segment,Label, Modal }from 'semantic-ui-react'
 import './AddEmployeeForm.css';
 import { NavLink} from 'react-router-dom';
 import {Mutation } from 'react-apollo';

@@ -506,7 +506,7 @@ return (
 					</List>
 				</div>
 			</div>
-
+s
 		{/* Tabs */}
 		<div className='Tabs'>
 			<Tab style={{width:1500 ,height:10000 }}menu={{ secondary: true, pointing: true }} panes={panes}/>
