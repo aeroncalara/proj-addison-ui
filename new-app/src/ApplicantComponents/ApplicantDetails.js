@@ -44,7 +44,6 @@ this.state = {
 	hdmf: '',
 
 	applicant: {
-
 		success: '',
 		message: '',
 		data: {

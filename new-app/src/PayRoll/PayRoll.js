@@ -122,7 +122,7 @@ export default class PayRoll extends Component {
 					<hr className="hr"/>
 				</div>
 
-				<div>
+				<div className="payrollbutton">
 					<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
 					<Modal
 						open={open}
