@@ -152,11 +152,10 @@ export default class PayRoll extends Component {
 
 						<Modal.Actions>
 
-							<Button primary onClick={this.close}
-								labelPosition='right'
-							>
-								Proceed <Icon name='chevron right' />
+							<Button primary onClick={this.close}>
+								Proceed 
 							</Button>
+							
 						</Modal.Actions>
 					</Modal>
 				</div>

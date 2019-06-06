@@ -41,7 +41,7 @@ constructor(props) {
     
     title:'',
     description:'', 
-    salary:''
+    salary:0
     }
 }
 componentDidUpdate() {
@@ -76,7 +76,7 @@ handleCancel = () => { ;
 
     title:'',
     description:'',
-    salary:'',
+    salary:0,
 
     open: !this.state.open
     });
@@ -107,7 +107,7 @@ handlesave = () => { ;
 
     title:'',
     description:'',
-    salary:'',
+    salary:0,
     });
 }
 handleChange = (e, type) => {
@@ -120,6 +120,7 @@ render() {
     const panes = [
 
         {menuItem: 'Personal', render: () =>
+        
             <Tab.Pane> 
                 <div className="TabContainer">
                     <div className='EmpDetails'>
@@ -152,8 +153,11 @@ render() {
                          value={this.state.lastName}/>
                     </Form.Group>
 
-                    <Form.Group>
-                        <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
+                    <Form.Group width="equal">
+                        
+                        {/* <Form.Input label='Birthdate'  fluid type="date" placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/> */}
+
+                        <Form.Input  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth} name="Birthdate" type="date" label="Date Given" placeholder="Birthdate" />
                     </Form.Group>
 
                 <Label as='a' color='teal' ribbon>
@@ -329,65 +333,66 @@ render() {
                             </Button.Content>
                         </Button>    
                 <Button.Or />
-                    <Mutation mutation={ADD_EMPLOYEE}>
-                        {addEmployee => (
-                            <Button animated positive fluid onClick={() => {
-                                addEmployee({ variables: {
-                                first: this.state.firstName,
-                                middle: this.state.middleName,
-                                last: this.state.lastName,
-                                date_of_birth: this.state.date_of_birth,
+    <Mutation mutation={ADD_EMPLOYEE}>
+        {addEmployee => (
+            <Button animated positive fluid onClick={() => {
+                addEmployee({ variables: {
+                first: this.state.firstName,
+                middle: this.state.middleName,
+                last: this.state.lastName,
+                date_of_birth: this.state.date_of_birth,
 
-                                contact: [{type: this.state.type, number: this.state.number,}],
-                                address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
-                                            province: this.state.province, country: this.state.country,}],
+                contact: [{type: this.state.type, number: this.state.number,}],
+                address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
+                            province: this.state.province, country: this.state.country,}],
 
-                                title: this.state.title,
-                                description: this.state.description,
-                            
-                                sss: this.state.sss,
-                                tin: this.state.tin,
-                                philhealth: this.state.philhealth,
-                                hdmf: this.state.hdmf
-                                }})
-                                this.setState({  firstName: '',
-                                middleName: '',
-                                lastName: '',
-                                date_of_birth: '',
-                                
-                                type:'',
-                                mobile: '',
-                                telephone: '',
-                                email: '',
-                            
-                                number:'',
-                                street: '',
-                                town: '',
-                                city: '',
-                                province:'',
-                                country: '',
-                            
-                                sss:'',
-                                tin:'',
-                                philhealth:'',
-                                hdmf: '',
-                            
-                                title:'',
-                                description:'',
-                                salary:'',})
-                                alert("adding complete")
-                            }}>
+                title: this.state.title,
+                description: this.state.description,
+                salary:parseFloat(this.state.salary),
+            
+                sss: this.state.sss,
+                tin: this.state.tin,
+                philhealth: this.state.philhealth,
+                hdmf: this.state.hdmf
+                }})
+                this.setState({  firstName: '',
+                middleName: '',
+                lastName: '',
+                date_of_birth: '',
+                
+                type:'',
+                mobile: '',
+                telephone: '',
+                email: '',
+            
+                number:'',
+                street: '',
+                town: '',
+                city: '',
+                province:'',
+                country: '',
+            
+                sss:'',
+                tin:'',
+                philhealth:'',
+                hdmf: '',
+            
+                title:'',
+                description:'',
+                salary:'',})
+                alert("adding complete")
+            }}>
 
-                            <Button.Content visible>
-                                <Icon name='save' />
-                            </Button.Content>
+            <Button.Content visible>
+                <Icon name='save' />
+            </Button.Content>
 
-                            <Button.Content hidden>
-                                 Save
-                            </Button.Content>     
-                        </Button>
-                        )}
-                    </Mutation>
+            <Button.Content hidden>
+                    Save
+            </Button.Content>     
+        </Button>
+        )}
+    </Mutation>
                     </Button.Group>   
                      
                     <Modal

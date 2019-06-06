@@ -49,6 +49,7 @@ this.state = {
 	philhealth:'',
 	hdmf: '',
 
+	sessions: [],
 	incentives:[],
 	deductions:[],
 	employee: {
@@ -135,6 +136,7 @@ componentDidMount(){
 	this.getEmployee();
 	this.getIncentives();
 	this.getDeductions();
+	this.getTimeLogs();
 }
 
 getEmployee = async () => {
@@ -241,9 +243,33 @@ getDeductions = async () => {
 	this.setState({deductions: deductions_variable.data.data.getAllActiveDeductionsOfEmployee})
 }
 
+getTimeLogs = async () =>{
+    let timelogs_query = 
+    `
+      query{
+        getAttendanceOfEmployee(employee_id:"${this.props.match.params.id}"){
+          sessions{
+            time_in
+            time_out
+          }
+        }
+      }
+    `
+  
+    let timelogs_variable = await axios({
+      url: addison_api_url,
+      method: `post`,
+      data: {
+        query: timelogs_query
+      }
+    })
+
+    this.setState({sessions: timelogs_variable.data.data.getAttendanceOfEmployee})
+  }
+
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions} = this.state;
+const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions} = this.state;
 
 const panes = [
 
@@ -443,13 +469,13 @@ const panes = [
 			<div className ='desc'>
 				<i className="clock outline icon"/>
 				Time Logs
-			</div>a
+			</div>
 		</div>
 
 		<div>
 		<hr className="hrName" />
 		
-			<TimeLogs/>
+		<TimeLogs sessions={sessions.sessions}/>
 	
 		</div>  
 	

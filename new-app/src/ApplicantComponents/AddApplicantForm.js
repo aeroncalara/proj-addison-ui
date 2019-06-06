@@ -24,7 +24,7 @@ constructor(props) {
     firstName: '',
     middleName: '',
     lastName: '',
-    birthDate: '',
+    date_of_birth: '',
 
     mobile: '',
     telephone: '',
@@ -43,7 +43,7 @@ constructor(props) {
     
     title:'',
     description:'', 
-    salary:''
+    salary:0
     }
 }
 componentDidUpdate() {
@@ -78,7 +78,7 @@ handleCancel = () => { ;
 
     title:'',
     description:'',
-    salary:'',
+    salary:0,
 
     open: !this.state.open
     });
@@ -109,7 +109,7 @@ handlesave = () => { ;
 
     title:'',
     description:'',
-    salary:'',
+    salary:0,
     });
 }
 handleChange = (e, type) => {
@@ -153,7 +153,9 @@ render() {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/>
+                        {/* <Form.Input label='Birthdate' placeholder='Birthdate'  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth}/> */}
+
+                        <Form.Input  onChange={(e) => this.handleChange(e, 'date_of_birth')} value={this.state.date_of_birth} name="Birthdate" type="date" label="Birthdate" placeholder="Birthdate" />
                     </Form.Group>
 
                     <Label as='a' color='teal' ribbon>
@@ -332,7 +334,7 @@ render() {
                             <Button.Or />
                                 <Mutation mutation={ADD_APPLICANT}>
                                     {addApplicant => (
-                                        <Button animated positive fluid onClick={() => {
+                                        <Button animated positive fluid onClick={() => {console.log("date given")
                                             addApplicant({ variables: {
                                                 first: this.state.firstName,
                                                 middle: this.state.middleName,

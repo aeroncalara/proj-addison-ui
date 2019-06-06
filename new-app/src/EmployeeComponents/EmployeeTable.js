@@ -122,7 +122,7 @@ class EmployeeTable extends Component {
 
 					<List.Item>
 						<List.Content>
-							<TimeInOut Employee={employee} />
+							<TimeInOut item={employee._id} />
 						</List.Content>
 					</List.Item>
                 </List>
