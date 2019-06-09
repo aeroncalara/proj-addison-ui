@@ -44,7 +44,24 @@
     margin-top: 3px;
    
     width: 66%; 
+    border: 1px solid #e3f1ef;
+    max-height: 350px;
+    overflow-x: scroll;
+    background-color: #8eb4b4;
   }
+
+    
+  .decTables{
+    margin-left: 1%;
+    margin-top: 3px;
+   
+    width: 94%; 
+    border: 1px solid #e3f1ef;
+    max-height: 350px;
+    overflow-x: scroll;
+    background-color: #8eb4b4;
+  }
+  
   
   .PayrollTabs{
     /* margin-top: 1%; */

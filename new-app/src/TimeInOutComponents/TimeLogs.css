@@ -3,6 +3,8 @@
     border: 1px solid #e3f1ef;
     /* margin: 0 auto; */
     width: 70%;
-    overflow: scroll;
+    max-height: 350px;
+    overflow-x: scroll;
+    background-color: #8eb4b4;
 }
 
