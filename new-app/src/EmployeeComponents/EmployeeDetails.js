@@ -339,8 +339,6 @@ const panes = [
 	</Tab.Pane> 
 	},
 
-
-
 	{menuItem: 'Contact', render: () => 
 	<Tab.Pane>
 		<Form key={employee} liquid>
@@ -487,7 +485,7 @@ const panes = [
 return (
 <div>
 	{/* EmployeeHeader */}
-	<div className = "EmployeeTop">
+	<div className = "EmpTop">
 		{/* ViewEmployeeimage */}
 		<div className='Img'>
 			<Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
@@ -525,7 +523,7 @@ return (
 
 								<List.Item>
 									<Popup
-										trigger={<Dropdown icon="cog icon" />}
+										trigger={<Dropdown icon="cogs icon" />}
 										// <Button color='red'icon="close" content='Terminate'/ >
 										content={ <DeleteEmployee/>}
 										on='click'
@@ -536,31 +534,6 @@ return (
 						</div>
 					)}
 				</List.Item>
-
-				{/* <List.Item>
-					{!this.state.isEdit &&(
-						<div className="PrevNxt">
-							<List horizontal>
-
-								<List.Item>
-									<i className="users icon"/>3 of 100
-								</List.Item>
-
-								<List.Item>
-									<Label as='a'>
-										<Icon name='arrow left icon' />Prev
-									</Label>
-								</List.Item>
-								
-								<List.Item>
-									<Label as='a'>
-										Next
-										<Icon name='arrow right icon' />
-									</Label>
-								</List.Item> 
-							</List>
-						</div> 
-					)} */}
 					
 					<List.Item>
 						{this.state.isEdit &&
@@ -655,6 +628,7 @@ return (
 
 					{/* Address in the left */}
 					<List animated verticalAlign='middle' selection >
+
 						<List.Item>
 							<i className="group icon"/> HR
 						</List.Item>
@@ -669,9 +643,6 @@ return (
 							HR manager
 						</List.Item>
 
-												{/* <List.Item>
-						<TimeInOut/>
-						</List.Item> */}
 					</List>
 				</div>
 			</div>

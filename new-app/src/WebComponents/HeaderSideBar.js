@@ -60,12 +60,13 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 	icon='labeled'
 	inverted    
 	vertical
-
+	
 	visible={visible}
 	width='thin'
 	>
 
 		<List animated verticalAlign='middle' selection >
+
 			<List.Item>			
 				<NavLink activeClassName="active" to="/">
 					<Menu.Item>	
@@ -102,6 +103,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 					</Menu.Item>
 				</NavLink>
 			</List.Item>
+
 		</List>
 
 	
@@ -130,7 +132,7 @@ export default class HeaderSideBar extends Component {
 
 	  state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 
 	handleAnimationChange = animation => () =>
@@ -142,30 +144,6 @@ export default class HeaderSideBar extends Component {
 	handleDirectionChange = direction => () => this.setState({ direction, visible: false })
 
 	handleDirectionHide = direction => () => this.setState({ direction, visible: false })
-
-	// TIME
-	// constructor(props) {
-	// super(props);
-	// this.state = {
-	// time: new Date().toLocaleString()
-	// };
-	// }
-	
-	// componentDidMount() {
-	// this.intervalID = setInterval(
-	// () => this.tick(),
-	// 1000
-	// );
-	// }
-	// componentWillUnmount() {
-	// clearInterval(this.intervalID);
-	// }
-	// tick() {
-	// this.setState({
-	// time: new Date().toLocaleString()
-	// });
-	// }
-
 
 	render() {
 		const { animation, direction, visible } = this.state
@@ -181,14 +159,14 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 
 					{/* TIME */}
-					<Menu.Item  position='right' style={{right:10 }}>
+					{/* <Menu.Item  position='right' style={{right:10 }}>
 						<div className="App-header">
 							<p className="App-clock">
 								{this.state.time}
 							</p>
 						</div>
 						
-					</Menu.Item>
+					</Menu.Item> */}
 
 					{/* ADMINTOP */}
 					<Menu.Item  position='right' style={{right:95 }}>
@@ -196,15 +174,15 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 				</Menu>
 
-				<Sidebar.Pushable as={Segment} style={{height: 1000, bottom:18 }} >
+				<Sidebar.Pushable as={Segment} style={{height: '90vh', bottom:18 }} >
 
 					{vertical ? null : (
 					<VerticalSidebar animation={animation} direction={direction} visible={visible} />
 					)}
 
-				<Sidebar.Pusher dimmed={visible} style={{height: '100%'}}>
-					{/* <div className="Segment"> */}
-						<Segment >
+				<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
+				
+					
 						
 								<Switch>
 									<Route exact path="/" component={EmployeeMain} />
@@ -222,8 +200,8 @@ export default class HeaderSideBar extends Component {
 									{/* <Route component={NotFound} /> */}
 								</Switch>
 					
-					</Segment>
-						{/* </div> */}
+			
+					
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 

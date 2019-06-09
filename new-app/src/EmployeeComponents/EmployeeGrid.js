@@ -148,7 +148,7 @@ render() {
 
     return (
     
-        <div>
+        <div className ='employeeGrid'>
         
             <Grid columns={4}>
                 <Grid.Row> 

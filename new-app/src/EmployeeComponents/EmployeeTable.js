@@ -140,26 +140,6 @@ class EmployeeTable extends Component {
 
       <div className="EmployeeTables">
 
-      {/* <div className='head'>
-          
-          <div className ='Title'>
-              <Header icon='users' content='Employee' />
-          </div>
-
-          <div className="find">
-              <div className="ui right aligned category search">
-                   <div className="ui icon input">
-                   <input className="prompt" type="text" placeholder="Search..." />
-                   <i classn="search icon"></i>
-                   </div>
-                   <div classn="results"></div>
-              </div>
-          </div>
-
-
-      </div> */}
-
-
 
         <table className="ui teal table celled">
         
