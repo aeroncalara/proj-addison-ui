@@ -10,7 +10,7 @@ let my_query =
 
 `query
 {
-    getAllEmployees
+    getAllActivatedEmployees
     {
     _id
     person
@@ -54,10 +54,10 @@ class EmployeeTable extends Component {
   }
 
   componentDidMount(){
-    this.getEmployees();
+    this.getAllActivatedEmployees();
   }
 
-  getEmployees = async () => {
+  getAllActivatedEmployees = async () => {
     let employee_variable = await axios({
       url: `http://localhost:4000`,
       method: `post`,
@@ -66,11 +66,10 @@ class EmployeeTable extends Component {
       }
     })
 
-    this.setState({ employees: employee_variable.data.data.getAllEmployees });
+    this.setState({ employees: employee_variable.data.data.getAllActivatedEmployees });
   }
   render() {
-
-    const employees = this.state.employees;
+    let employees = this.state.employees;
     let employeeTable = employees.map((employee, index) => {
 
         let contactTable = employee.person.contact.map((contactInformation)=>{

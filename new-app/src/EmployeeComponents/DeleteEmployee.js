@@ -1,8 +1,41 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Modal,Popup } from 'semantic-ui-react'
-
+import axios from 'axios';
+import {addison_api_url} from '../Utilities/config'
+import { NavLink} from 'react-router-dom';
 
 export default class extends Component {
+
+	constructor(props){
+		super(props)
+		this.state = {
+			item: this.props.item,
+		
+		}
+		this.getTerminateEmployees = this.getTerminateEmployees.bind(this);
+		
+	}
+
+	getTerminateEmployees = async () =>{
+		let my_terminated_mutation = 
+		`
+		mutation{
+			terminateEmployee(employee_id:"${this.state.item}"){
+			}
+			message
+		  }
+		`
+		await axios({
+			url: addison_api_url,
+			method: `post`,
+			data: {
+				query: my_terminated_mutation
+			}
+		})
+		//this.setState({terminateEmployee: my_terminated_mutation.data.data.getTerminateEmployees})
+	}
+
+
 
 state = { modalOpen: false }
 
@@ -35,10 +68,16 @@ render() {
 					<Icon name='x' /> No
 				</Button>
 
-				<Button color='green' onClick={this.handleClose} inverted>
-					<Icon name='checkmark' /> Yes
-				</Button>
-
+				<NavLink exact to="/EmployeeMain">
+                                  		 	<Button
+												onClick={this.handleClose}
+												positive
+												labelPosition="right"
+												icon="checkmark"
+												content="Yes"
+                                    		/>
+                               			</NavLink>
+		
 			</Modal.Actions>
 		</Modal>
 	)

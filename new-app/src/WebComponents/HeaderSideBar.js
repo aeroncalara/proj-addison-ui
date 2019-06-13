@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './Header.css';
 import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
+import Login from '../Login/Login';
+
 import ApplicantMain from '../ApplicantComponents/ApplicantMain';
 import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
@@ -185,7 +187,8 @@ export default class HeaderSideBar extends Component {
 					
 						
 								<Switch>
-									<Route exact path="/" component={EmployeeMain} />
+									<Route exact path="/" component={Login} />
+									<Route path="/Login" component={Login} />
 									<Route path="/EmployeeMain" component={EmployeeMain} />
 									<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
 									<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>

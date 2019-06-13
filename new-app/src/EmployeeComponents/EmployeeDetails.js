@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import DeleteEmployee from '../EmployeeComponents/DeleteEmployee';
 import Incentives from '../EmployeeComponents/Incentives';
 import Deduction from '../EmployeeComponents/Deduction';
@@ -137,6 +138,55 @@ componentDidMount(){
 	this.getIncentives();
 	this.getDeductions();
 	this.getTimeLogs();
+	this.getTerminateEmployees();
+
+}
+
+getTerminateEmployees = async () => {
+
+	let my_terminated_query = 
+	`
+	query{
+		getTerminateEmployees(employee_id: "${this.props.match.params.id}"){
+			_id
+			person{
+			first
+			middle
+			last
+			date_of_birth
+			address{
+						number
+						street
+				city
+				province
+				country
+			}
+			contact{
+				type
+				number
+			}
+			}
+			tin
+			sss
+			philhealth
+			hdmf
+			position{
+			title
+			description
+			salary
+			}
+		}
+		}
+	`
+
+	let terminateEmployee_variable = await axios({
+		url: addison_api_url,
+		method: `post`,
+		data: {
+		query: my_terminated_query
+		}
+		})
+	this.setState({ terminateEmployee: terminateEmployee_variable.data.data.getTerminateEmployees });
 }
 
 getEmployee = async () => {
@@ -269,7 +319,7 @@ getTimeLogs = async () =>{
 
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions} = this.state;
+const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions,terminateEmployee} = this.state;
 
 const panes = [
 
@@ -525,7 +575,9 @@ return (
 									<Popup
 										trigger={<Dropdown icon="cogs icon" />}
 										// <Button color='red'icon="close" content='Terminate'/ >
-										content={ <DeleteEmployee/>}
+										content={ 
+											<DeleteEmployee item={terminateEmployee} employee_id={employee._id}/>
+												}
 										on='click'
 										position='bottom right'
 									/>
