@@ -68,21 +68,29 @@ render() {
 
                         <Form size="large">
                             
+                            
+                        <Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
+
                         <Dropdown
-                                                 fluid
-                                                search
-                                                selection
-                                                wrapSelection={false}
-                                                options={options}
-                                                placeholder='Choose a Question'
-                                              />
-                                              <br/>
+                            fluid
+                            search
+                            selection
+                            wrapSelection={false}
+                            options={options}
+                            placeholder='Choose a Question'
+                        />
+                        
+                        <br/>
 
-                                                <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
+                            <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
 
-                                                <Form.Input fluid icon="user" iconPosition="left" placeholder="youre password is"/>
-                                                
+                            <Button color="teal" fluid size="large">
+                                                   Confirm
+                                            </Button> 
 
+<br/>
+                            <Form.Input fluid icon="user" iconPosition="left" placeholder="you're password is"/>
+                            
                         </Form>
 
                     </div>

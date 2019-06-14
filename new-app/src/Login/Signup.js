@@ -78,9 +78,22 @@ render() {
 
                                             <Form size="large">
                                              
+
+                                            <Form.Group>
+                        <Form.Input placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
+                        value={this.state.firstName} />
+
+                        <Form.Input  placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} 
+                        value={this.state.middleName}/>
+
+                        <Form.Input  placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')}
+                         value={this.state.lastName}/>
+                    </Form.Group>
                                                 <Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
 
                                                 <Form.Input placeholder="Password" icon="lock" iconPosition="left" fluid type={this.state.type} className="password__input" onChange={this.passwordStrength}/>
+
+                                                <Form.Input placeholder="Verify Password" icon="lock" iconPosition="left" fluid type={this.state.type} onChange={this.passwordStrength}/>
                                                 {/* <Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'} Password</Label> */}
 
                                                 <Dropdown
@@ -94,7 +107,7 @@ render() {
                                               <br/>
 
                                                 <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
-                                            </Form>
+                                                </Form>
 
                                         </div>
 					</Grid>		
