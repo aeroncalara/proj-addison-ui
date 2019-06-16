@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import './TimeLogs.css';
-// import axios from 'axios';        
-// import {addison_api_url} from '../Utilities/config';
+
 
 
                          

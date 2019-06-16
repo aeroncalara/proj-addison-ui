@@ -43,7 +43,7 @@ constructor(props){
 		`
 
 		this.handleClose()
-		
+		console.log(time.toISOString());
 		console.log(this.state.isEdit);
 
 		if(this.state.isEdit===false){

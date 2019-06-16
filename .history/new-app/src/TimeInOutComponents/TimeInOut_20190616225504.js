@@ -14,7 +14,6 @@ constructor(props){
 			item: this.props.item,
 			isEdit: false,	
 			time: new Date().toLocaleString()
-	
 		}
 	}
 
@@ -43,7 +42,6 @@ constructor(props){
 		`
 
 		this.handleClose()
-		
 		console.log(this.state.isEdit);
 
 		if(this.state.isEdit===false){
@@ -107,7 +105,7 @@ return (
 	<div className="timeText">
 		<Modal.Content>
 		<h3>{this.state.isEdit !== true? "Timed In":"Timed Out"}
-		{this.state.time}
+		{this.state.time.toISOstring()}
 		</h3>
 		
 		</Modal.Content>

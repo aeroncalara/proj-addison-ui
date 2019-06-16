@@ -14,7 +14,6 @@ constructor(props){
 			item: this.props.item,
 			isEdit: false,	
 			time: new Date().toLocaleString()
-	
 		}
 	}
 
@@ -43,7 +42,6 @@ constructor(props){
 		`
 
 		this.handleClose()
-		
 		console.log(this.state.isEdit);
 
 		if(this.state.isEdit===false){

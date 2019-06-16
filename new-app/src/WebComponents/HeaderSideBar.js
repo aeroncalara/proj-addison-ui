@@ -87,7 +87,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 				</NavLink>
 			</List.Item>
 
-			<List.Item>
+			{/* <List.Item>
 				<NavLink activeClassName="active" to="/ApplicantMain">
 					<Menu.Item>
 						<i className="add user icon" />
@@ -95,7 +95,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 				
 					</Menu.Item>
 				</NavLink>
-			</List.Item>
+			</List.Item> */}
 
 			<List.Item>
 				<NavLink activeClassName="active" to="/PayRoll">
@@ -193,9 +193,9 @@ export default class HeaderSideBar extends Component {
 									<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
 									<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
 									
-									<Route path="/ApplicantMain" component={ApplicantMain} />
+									{/* <Route path="/ApplicantMain" component={ApplicantMain} />
 									<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-									<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/>
+									<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
 
 									<Route path="/PayRoll" component={PayRoll}/>
 									

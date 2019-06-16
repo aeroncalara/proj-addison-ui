@@ -43,7 +43,6 @@ constructor(props){
 		`
 
 		this.handleClose()
-		
 		console.log(this.state.isEdit);
 
 		if(this.state.isEdit===false){
