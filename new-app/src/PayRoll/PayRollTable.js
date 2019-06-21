@@ -1,4 +1,3 @@
-// import {Button} from 'semantic-ui-react'
 import React, {Component} from 'react'
 import './PayRollTable.css';
 									
@@ -65,29 +64,32 @@ class PayRollTable extends Component {
 			)
 		})
 		
-	return (
-		<div className="PayrollTables">
+		return (
+			<div className="PayrollTables">
 
-		<table className="ui teal table celled">
-		
-		<thead>
-						
-			<tr><th>Employee</th>
-			<th>Base Salary</th>
-			<th>Deduction</th>
-			<th>Incentive</th>
-			<th>Total</th>
-			</tr>
-			</thead>
-			<tbody>
-				{payroll_entities}
-			</tbody>
+			<table className="ui teal table celled">
 			
-		</table>
-		
+			<thead>
+							
+				<tr>
+					<th>Employee</th>
+					<th>Base Salary</th>
+					<th>Deduction</th>
+					<th>Incentive</th>
+					<th>Total</th>
+				</tr>
+				
+				</thead>
+				<tbody>
+					{payroll_entities}
+				</tbody>
+				
+			</table>
+			
 
-		</div>        
-	);
+			</div>        
+		);
 	}
-	}
-	export default PayRollTable;
+}
+
+export default PayRollTable;

@@ -140,7 +140,7 @@ render() {
 
     return (
     
-        <div>
+        <div className='appgrid'>
         
             <Grid columns={4}>
                 <Grid.Row> 

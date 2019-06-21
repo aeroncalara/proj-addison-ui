@@ -1,85 +1,34 @@
 import React, {Component} from 'react'
 import './TimeLogs.css';
-import axios from 'axios';        
 
-let my_query = 
-`
-  query{
-    getAllEmployees{
-      person{
-        first
-        middle
-        last
-        date_of_birth
-        address{
-          number
-          street
-          city
-          province
-          country
-          
-        }
-      }
-    }
-  }
-`
-                                 
+
+
+                         
 class TimeLogs extends Component {
 
-  
   constructor(props){
-    super(props);
-    this.state = { 
-      employees: [],
+    super(props)
+    this.state = {
+      sessions: this.props.sessions,
     }
-  }
+  }       
 
-  componentDidMount(){
-    this.getEmployees();
-  }
 
-  getEmployees = async () => {
-    let employee_variable = await axios({
-      	url: `http://localhost:4000`,
-      method: `post`,
-      data: {
-        query: my_query
-      }
-    })
-
-    this.setState({ employees: employee_variable.data.data.getAllEmployees });
-  }
   render() {
 
-  
- 
-    const employees = this.state.employees;
-    console.log(employees);
-    
-    let employeeTable = employees.map((employee, index) => {
-      return (
+    const {sessions} = this.state;
+    console.log(sessions);
 
-        
-              <tr key={employee.id}>
-                <td data-label="Date">
-{/*          
-          {employee.person.first}
-             */}
-             05/10/19
-
-      </td>
-                <td data-label="TimeIn">
-					{/* {employee.person.middle} */}
-					8:00 am
-				</td>
-				<td data-label="TimeOut">
-					{/* {employee.person.last} */}
-					5:01 pm
-				</td>
-                </tr>   
+    const sessions_table = sessions.map((session, index) =>{
+      return(
+        <tr key={session._id}>
+          <td>{session.time_in}</td>
+          <td>{session.time_in}</td>
+          <td>{session.time_out}</td>
+        </tr> 
       )
-    }
-    )
+    })
+    
     //here
 
     return (
@@ -95,7 +44,7 @@ class TimeLogs extends Component {
 			</thead>
 
 			<tbody>
-			{employeeTable}
+        {sessions_table}
 			</tbody>
 
         </table>

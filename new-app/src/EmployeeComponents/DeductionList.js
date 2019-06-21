@@ -37,7 +37,7 @@ class Deduction extends Component {
 	
     return (
 
-		<div className="IncentivesTables">
+		<div className="decTables">
 			<table className="ui teal table celled" width="50">
 				<thead>
 					<tr>

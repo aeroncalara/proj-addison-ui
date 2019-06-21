@@ -10,7 +10,7 @@ let my_query =
 
 `query
 {
-    getAllEmployees
+    getAllActivatedEmployees
     {
     _id
     person
@@ -54,10 +54,10 @@ class EmployeeTable extends Component {
   }
 
   componentDidMount(){
-    this.getEmployees();
+    this.getAllActivatedEmployees();
   }
 
-  getEmployees = async () => {
+  getAllActivatedEmployees = async () => {
     let employee_variable = await axios({
       url: `http://localhost:4000`,
       method: `post`,
@@ -66,11 +66,10 @@ class EmployeeTable extends Component {
       }
     })
 
-    this.setState({ employees: employee_variable.data.data.getAllEmployees });
+    this.setState({ employees: employee_variable.data.data.getAllActivatedEmployees });
   }
   render() {
-
-    const employees = this.state.employees;
+    let employees = this.state.employees;
     let employeeTable = employees.map((employee, index) => {
 
         let contactTable = employee.person.contact.map((contactInformation)=>{
@@ -122,7 +121,7 @@ class EmployeeTable extends Component {
 
 					<List.Item>
 						<List.Content>
-							<TimeInOut Employee={employee} />
+							<TimeInOut item={employee._id} />
 						</List.Content>
 					</List.Item>
                 </List>
@@ -139,26 +138,6 @@ class EmployeeTable extends Component {
       
 
       <div className="EmployeeTables">
-
-      {/* <div className='head'>
-          
-          <div className ='Title'>
-              <Header icon='users' content='Employee' />
-          </div>
-
-          <div className="find">
-              <div className="ui right aligned category search">
-                   <div className="ui icon input">
-                   <input className="prompt" type="text" placeholder="Search..." />
-                   <i classn="search icon"></i>
-                   </div>
-                   <div classn="results"></div>
-              </div>
-          </div>
-
-
-      </div> */}
-
 
 
         <table className="ui teal table celled">

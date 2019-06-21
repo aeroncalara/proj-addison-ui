@@ -44,7 +44,6 @@ this.state = {
 	hdmf: '',
 
 	applicant: {
-
 		success: '',
 		message: '',
 		data: {
@@ -372,7 +371,7 @@ return (
 		<div className='EmpName'>
 			<Header as='h2'>
 				<Header.Content>
-					{/* {applicant.data.person.first} */}
+					{applicant.data.person.first} {applicant.data.person.middle} {applicant.data.person.last}
 				</Header.Content>
 			</Header> 
 		</div>
