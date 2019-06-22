@@ -97,29 +97,27 @@ render() {
 									<br/>
 
                                     <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
-                            </Form>
+                                </Form>
 
                     </div>
            		 </Grid>		
           	</Form>
         </Modal.Content>
 
-			<Modal.Actions>
-				<Button onClick={this.close} negative>
-					cancel
-				</Button>
+        <Modal.Actions>
+          	<Button onClick={this.close} negative>
+            	cancel
+          	</Button>
 
-				<Button
-				onClick={this.addIncentive}
-				positive
-				labelPosition='right'
-				icon='checkmark'
-				content='Submit'
-				/>
-
-			</Modal.Actions>
-			
-    	</Modal>
+            <Button
+            onClick={this.addIncentive}
+            positive
+            labelPosition='right'
+            icon='checkmark'
+            content='Submit'
+            />
+              </Modal.Actions>
+          </Modal>
 
     </div>
     )

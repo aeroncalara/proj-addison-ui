@@ -118,7 +118,6 @@ render() {
 				/>
 
 			</Modal.Actions>
-			
     	</Modal>
 
     </div>

@@ -104,22 +104,21 @@ render() {
           	</Form>
         </Modal.Content>
 
-			<Modal.Actions>
-				<Button onClick={this.close} negative>
-					cancel
-				</Button>
+        <Modal.Actions>
+          	<Button onClick={this.close} negative>
+            	cancel
+          	</Button>
 
-				<Button
-				onClick={this.addIncentive}
-				positive
-				labelPosition='right'
-				icon='checkmark'
-				content='Submit'
-				/>
+            <Button
+            onClick={this.addIncentive}
+            positive
+            labelPosition='right'
+            icon='checkmark'
+            content='Submit'
+            />
 
-			</Modal.Actions>
-			
-    	</Modal>
+        </Modal.Actions>
+          </Modal>
 
     </div>
     )

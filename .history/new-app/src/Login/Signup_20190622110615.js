@@ -86,40 +86,37 @@ render() {
                                                   {/* <Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'} Password</Label> */}
 
 									<Dropdown
-										fluid
-										search
-										selection
-										wrapSelection={false}
-										options={options}
-										placeholder='Choose a Question'
-									/>
-                                    
-									<br/>
+									fluid
+									search
+									selection
+									wrapSelection={false}
+									options={options}
+									placeholder='Choose a Question'
+								/>
+                                                <br/>
 
-                                    <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
-                            </Form>
+                                                  <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
+                                                  </Form>
 
-                    </div>
-           		 </Grid>		
-          	</Form>
+                                          </div>
+            </Grid>		
+          </Form>
         </Modal.Content>
 
-			<Modal.Actions>
-				<Button onClick={this.close} negative>
-					cancel
-				</Button>
+        <Modal.Actions>
+          <Button onClick={this.close} negative>
+            cancel
+          </Button>
 
-				<Button
-				onClick={this.addIncentive}
-				positive
-				labelPosition='right'
-				icon='checkmark'
-				content='Submit'
-				/>
-
-			</Modal.Actions>
-			
-    	</Modal>
+            <Button
+            onClick={this.addIncentive}
+            positive
+            labelPosition='right'
+            icon='checkmark'
+            content='Submit'
+            />
+              </Modal.Actions>
+          </Modal>
 
     </div>
     )
