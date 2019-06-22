@@ -18,7 +18,7 @@
     width: 80%;
     height:  80%;
     box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);
-  
+    background-color: aliceblue;
     align-items: center;
     justify-content: center;
     border-radius: 25px;

@@ -80,7 +80,7 @@
 												
 
 						<Form.Group >
-									
+							<div className='group'>		
 							<Form.Input  placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
 							value={this.state.firstName}/>
 
@@ -89,6 +89,7 @@
 
 							<Form.Input  placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')}
 							value={this.state.lastName}/>
+							</div>
 						</Form.Group>
 
 

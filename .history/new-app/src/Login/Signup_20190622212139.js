@@ -79,18 +79,16 @@
 						<Form size="large">
 												
 
-						<Form.Group >
-									
-							<Form.Input  placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
-							value={this.state.firstName}/>
+						<Form.Group>
+							<Form.Input placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
+							value={this.state.firstName} />
 
 							<Form.Input  placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} 
 							value={this.state.middleName}/>
 
 							<Form.Input  placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')}
-							value={this.state.lastName}/>
+								value={this.state.lastName}/>
 						</Form.Group>
-
 
 							<Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
 

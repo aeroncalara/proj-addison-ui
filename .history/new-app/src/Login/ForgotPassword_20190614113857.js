@@ -92,7 +92,7 @@ render() {
                             <Form.Input fluid icon="user" iconPosition="left" placeholder="you're password is"/>
                             
                         </Form>
-                        
+
                     </div>
 
 					</Grid>		

@@ -72,47 +72,44 @@
 				<Form inverted>
 					<Grid>
 					<div className='rightside'>
-						<Header as="h2" color="teal" textAlign="center">
-							Sign up
-						</Header>
+											<Header as="h2" color="teal" textAlign="center">
+												Sign up
+											</Header>
 
-						<Form size="large">
+											<Form size="large">
 												
 
-						<Form.Group >
-									
-							<Form.Input  placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
-							value={this.state.firstName}/>
+											<Form.Group>
+						<Form.Input placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
+						value={this.state.firstName} />
 
-							<Form.Input  placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} 
-							value={this.state.middleName}/>
+						<Form.Input  placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} 
+						value={this.state.middleName}/>
 
-							<Form.Input  placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')}
+						<Form.Input  placeholder='Last name'  onChange={(e) => this.handleChange(e, 'lastName')}
 							value={this.state.lastName}/>
-						</Form.Group>
+					</Form.Group>
+												<Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
 
+												<Form.Input placeholder="Password" icon="lock" iconPosition="left" fluid type={this.state.type} className="password__input" onChange={this.passwordStrength}/>
 
-							<Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
-
-							<Form.Input placeholder="Password" icon="lock" iconPosition="left" fluid type={this.state.type} className="password__input" onChange={this.passwordStrength}/>
-
-							<Form.Input placeholder="Verify Password" icon="lock" iconPosition="left" fluid type={this.state.type} onChange={this.passwordStrength}/>
+												<Form.Input placeholder="Verify Password" icon="lock" iconPosition="left" fluid type={this.state.type} onChange={this.passwordStrength}/>
 												{/* <Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'} Password</Label> */}
 
-							<Dropdown
-								fluid
-							search
-							selection
-							wrapSelection={false}
-							options={options}
-							placeholder='Choose a Question'
-							/>
-							<br/>
+												<Dropdown
+													fluid
+												search
+												selection
+												wrapSelection={false}
+												options={options}
+												placeholder='Choose a Question'
+												/>
+												<br/>
 
-							<Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
-							</Form>
+												<Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
+												</Form>
 
-						</div>
+										</div>
 					</Grid>		
 				</Form>
 			</Modal.Content>

@@ -80,7 +80,7 @@
 												
 
 						<Form.Group >
-									
+										
 							<Form.Input  placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
 							value={this.state.firstName}/>
 
