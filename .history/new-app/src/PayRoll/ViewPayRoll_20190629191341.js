@@ -100,16 +100,13 @@ export default class ViewPayRoll extends Component {
 
 						<Modal.Actions>
 
+						<Button color='green' inverted>
+        						<Icon name='print' /> print payroll
+     						</Button>
 
 						<Button primary onClick={this.close}>
-							back 
+							Proceed 
 						</Button>
-
-						<Button color='green'>
-        					<Icon name='print' /> print payroll
-     					</Button>
-
-						
 
 
 						</Modal.Actions>

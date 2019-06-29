@@ -102,7 +102,7 @@ export default class PayRoll extends Component {
 							</div>
 						</div>
 						<div>
-							<MonthlyPayrollTable item={payrolls}/>
+							<EmployeeTimelogsTable item={payrolls}/>
 						</div>  
 					</Form>
 				</Tab.Pane>

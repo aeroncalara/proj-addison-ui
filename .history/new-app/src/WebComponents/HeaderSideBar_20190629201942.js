@@ -196,7 +196,7 @@ export default class HeaderSideBar extends Component {
 						<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
 						<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
 						
-						<Route path="/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
+						<Route path="/EmployeeTimeLogs" exact component={EmployeeTimeLogs}/>
 						
 						{/* <Route path="/ApplicantMain" component={ApplicantMain} />
 						<Route path="/AddApplicantForm" component={AddApplicantForm}/>

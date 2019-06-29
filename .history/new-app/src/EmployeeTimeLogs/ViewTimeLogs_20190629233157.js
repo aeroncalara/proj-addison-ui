@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button,Modal,Icon } from 'semantic-ui-react'
-import PayRollTable from './PayRollTable';
+import TimeTable from './TimeTable';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
 
@@ -94,7 +94,7 @@ export default class ViewPayRoll extends Component {
 								is_fetching? 
 									<div>Loading</div>
 									:
-									<PayRollTable item = {payroll}/>
+									<TimeTable item = {payroll}/>
 							}
 						</Modal.Content>
 
@@ -106,7 +106,7 @@ export default class ViewPayRoll extends Component {
 						</Button>
 
 						<Button color='green'>
-        					<Icon name='print' /> print payroll
+        					<Icon name='print' /> print Timelogs
      					</Button>
 
 						

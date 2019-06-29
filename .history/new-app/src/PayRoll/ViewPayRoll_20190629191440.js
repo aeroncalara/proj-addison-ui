@@ -102,12 +102,12 @@ export default class ViewPayRoll extends Component {
 
 
 						<Button primary onClick={this.close}>
-							back 
+							Back 
 						</Button>
-
+						
 						<Button color='green'>
-        					<Icon name='print' /> print payroll
-     					</Button>
+        						<Icon name='print' /> print payroll
+     						</Button>
 
 						
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form, Button, Modal, Icon } from 'semantic-ui-react'
+import { List,Tab, Form, Button, Modal, } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';

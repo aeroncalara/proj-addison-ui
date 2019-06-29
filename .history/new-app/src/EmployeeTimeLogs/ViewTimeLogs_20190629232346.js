@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button,Modal,Icon } from 'semantic-ui-react'
-import PayRollTable from './PayRollTable';
+import TimeTable from './TimeTable';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
 

@@ -189,24 +189,24 @@ export default class HeaderSideBar extends Component {
 				
 					
 						
-					<Switch>
-						<Route exact path="/" component={Login} />
-						<Route path="/Login" component={Login} />
-						<Route path="/EmployeeMain" component={EmployeeMain} />
-						<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
-						<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
-						
-						<Route path="/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
-						
-						{/* <Route path="/ApplicantMain" component={ApplicantMain} />
-						<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-						<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
+								<Switch>
+									<Route exact path="/" component={Login} />
+									<Route path="/Login" component={Login} />
+									<Route path="/EmployeeMain" component={EmployeeMain} />
+									<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
+									<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+									
+									<Route path="/EmployeeTimeLogs/:id" exact component={EmployeeTimeLogs}/>
+									
+									{/* <Route path="/ApplicantMain" component={ApplicantMain} />
+									<Route path="/AddApplicantForm" component={AddApplicantForm}/>
+									<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
 
-						<Route path="/PayRoll" component={PayRoll}/>
-						
-						{/* <Route path="/PayRoll" component={PayRoll}/> */}
-						{/* <Route component={NotFound} /> */}
-					</Switch>
+									<Route path="/PayRoll" component={PayRoll}/>
+									
+									{/* <Route path="/PayRoll" component={PayRoll}/> */}
+									{/* <Route component={NotFound} /> */}
+								</Switch>
 					
 			
 					

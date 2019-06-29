@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './PayRoll.css';
+// import './PayRoll.css';
 import { List,Tab, Form, Button, Modal, Icon } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';
 
 
-import MonthlyPayrollTable from './MonthlyPayrollTable';
+// import MonthlyPayrollTable from './MonthlyPayrollTable';
 
 
 export default class PayRoll extends Component {
@@ -102,7 +102,7 @@ export default class PayRoll extends Component {
 							</div>
 						</div>
 						<div>
-							<MonthlyPayrollTable item={payrolls}/>
+							{/* <MonthlyPayrollTable item={payrolls}/> */}
 						</div>  
 					</Form>
 				</Tab.Pane>

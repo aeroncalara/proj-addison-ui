@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form, Button, Modal, Icon } from 'semantic-ui-react'
+import { List,Tab, Form, Button, Modal } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';
@@ -153,7 +153,10 @@ export default class PayRoll extends Component {
 
 						<Modal.Actions>
 
-						
+							<Button basic color='red' inverted>
+        						<Icon name='print' /> print payroll
+     						</Button>
+
 							<Button primary onClick={this.close}>
 								Proceed 
 							</Button>

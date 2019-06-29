@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button,Modal,Icon } from 'semantic-ui-react'
+import { Button,Modal } from 'semantic-ui-react'
 import PayRollTable from './PayRollTable';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
@@ -100,16 +100,10 @@ export default class ViewPayRoll extends Component {
 
 						<Modal.Actions>
 
-
-						<Button primary onClick={this.close}>
-							back 
-						</Button>
-
-						<Button color='green'>
-        					<Icon name='print' /> print payroll
-     					</Button>
-
 						
+						<Button primary onClick={this.close}>
+							Proceed 
+						</Button>
 
 
 						</Modal.Actions>

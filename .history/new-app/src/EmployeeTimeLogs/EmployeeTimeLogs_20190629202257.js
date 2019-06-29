@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './PayRoll.css';
+// import './PayRoll.css';
 import { List,Tab, Form, Button, Modal, Icon } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';
 
 
-import MonthlyPayrollTable from './MonthlyPayrollTable';
+// import MonthlyPayrollTable from './MonthlyPayrollTable';
 
 
 export default class PayRoll extends Component {
@@ -92,7 +92,7 @@ export default class PayRoll extends Component {
 		
 		const panes = [
 			{
-				menuItem: 'Monthly Payroll', render: () => 
+				menuItem: 'Daily TimeLogs', render: () => 
 				<Tab.Pane>
 					<Form>
 						<div className='EmpDetails'>
@@ -102,7 +102,7 @@ export default class PayRoll extends Component {
 							</div>
 						</div>
 						<div>
-							<MonthlyPayrollTable item={payrolls}/>
+							{/* <MonthlyPayrollTable item={payrolls}/> */}
 						</div>  
 					</Form>
 				</Tab.Pane>
@@ -123,7 +123,7 @@ export default class PayRoll extends Component {
 				</div>
 
 				<div className="payrollbutton">
-					<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
+					<Button primary onClick={this.closeConfigShow(true, false)}>Create TimeLogs</Button>
 					<Modal
 						open={open}
 						closeOnEscape={closeOnEscape}
@@ -133,7 +133,7 @@ export default class PayRoll extends Component {
 						<Modal.Header>	
 							<div className='EmpDetails'>
 								<div className ='desc'>
-									<i className="money bill alternate outline icon"/>Create Payroll
+									<i className="money bill alternate outline icon"/>Create TimeLogs
 								</div>
 							</div>
 						</Modal.Header>

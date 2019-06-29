@@ -106,8 +106,8 @@ export default class ViewPayRoll extends Component {
 						</Button>
 
 						<Button color='green'>
-        					<Icon name='print' /> print payroll
-     					</Button>
+        						<Icon name='print' /> print payroll
+     						</Button>
 
 						
 

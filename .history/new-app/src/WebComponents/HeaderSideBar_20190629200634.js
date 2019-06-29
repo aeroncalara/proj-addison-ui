@@ -9,8 +9,7 @@ import ApplicantMain from '../ApplicantComponents/ApplicantMain';
 import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
-
-import EmployeeTimeLogs from '../EmployeeTimeLogs/EmployeeTimeLogs';
+import EmployeeTimeLogs from '../EmployeeTimeLogs/ApplicantDetails';
 
 
 import PayRoll from '../PayRoll/PayRoll';
@@ -161,7 +160,7 @@ export default class HeaderSideBar extends Component {
 					<Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')}>
 						<Icon name='bars' />
 							RP INNOTECH
-					</Menu.Item>t4t
+					</Menu.Item>
 
 					{/* TIME */}
 					{/* <Menu.Item  position='right' style={{right:10 }}>
@@ -189,24 +188,24 @@ export default class HeaderSideBar extends Component {
 				
 					
 						
-					<Switch>
-						<Route exact path="/" component={Login} />
-						<Route path="/Login" component={Login} />
-						<Route path="/EmployeeMain" component={EmployeeMain} />
-						<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
-						<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
-						
-						<Route path="/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
-						
-						{/* <Route path="/ApplicantMain" component={ApplicantMain} />
-						<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-						<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
+								<Switch>
+									<Route exact path="/" component={Login} />
+									<Route path="/Login" component={Login} />
+									<Route path="/EmployeeMain" component={EmployeeMain} />
+									<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
+									<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+									
+									<Route path="/EmployeeTimeLogs/:id" exact component={EmployeeTimeLogs}/>
+									
+									{/* <Route path="/ApplicantMain" component={ApplicantMain} />
+									<Route path="/AddApplicantForm" component={AddApplicantForm}/>
+									<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
 
-						<Route path="/PayRoll" component={PayRoll}/>
-						
-						{/* <Route path="/PayRoll" component={PayRoll}/> */}
-						{/* <Route component={NotFound} /> */}
-					</Switch>
+									<Route path="/PayRoll" component={PayRoll}/>
+									
+									{/* <Route path="/PayRoll" component={PayRoll}/> */}
+									{/* <Route component={NotFound} /> */}
+								</Switch>
 					
 			
 					

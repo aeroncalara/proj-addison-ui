@@ -6,7 +6,7 @@ import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
 
 
-import MonthlyPayrollTable from './MonthlyPayrollTable';
+import EmployeeTimelogsTable from './EmployeeTimelogsTable';
 
 
 export default class PayRoll extends Component {
