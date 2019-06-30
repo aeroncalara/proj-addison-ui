@@ -82,7 +82,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			</List.Item>
 					
 			<List.Item>
-				<NavLink exact activeClassName="active" to="/EmployeeMain">
+				<NavLink exact activeClassName="active" to="/main/employees/">
 					<Menu.Item>
 					<i className="users icon"/>
 						Employee			
@@ -91,7 +91,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			</List.Item>
 
 			<List.Item>
-				<NavLink activeClassName="active" to="/EmployeeTimeLogs">
+				<NavLink activeClassName="active" to="/main/timelogs/">
 					<Menu.Item>
 						<i className="clock icon" />
 						TimeLogs
@@ -101,7 +101,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 			</List.Item>
 
 			<List.Item>
-				<NavLink activeClassName="active" to="/PayRoll">
+				<NavLink activeClassName="active" to="/main/payroll/">
 					<Menu.Item>
 					<i className="money bill alternate outline icon"/>
 					Payroll	
@@ -161,7 +161,7 @@ export default class HeaderSideBar extends Component {
 					<Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')}>
 						<Icon name='bars' />
 							RP INNOTECH
-					</Menu.Item>t4t
+					</Menu.Item>
 
 					{/* TIME */}
 					{/* <Menu.Item  position='right' style={{right:10 }}>
@@ -185,36 +185,26 @@ export default class HeaderSideBar extends Component {
 					<VerticalSidebar animation={animation} direction={direction} visible={visible} />
 					)}
 
-				<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
-				
-					
-						
-					<Switch>
-						<Route exact path="/" component={Login} />
-						<Route path="/Login" component={Login} />
-						<Route path="/EmployeeMain" component={EmployeeMain} />
-						<Route path="/AddEmployeeForm" component={AddEmployeeForm}/>
-						<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
-						
-						<Route path="/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
-						
-						{/* <Route path="/ApplicantMain" component={ApplicantMain} />
-						<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-						<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
-
-						<Route path="/PayRoll" component={PayRoll}/>
-						
-						{/* <Route path="/PayRoll" component={PayRoll}/> */}
-						{/* <Route component={NotFound} /> */}
-					</Switch>
-					
-			
-					
+					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
+						<Switch>
+							<Route path="/main/employees/" component={EmployeeMain}/>
+							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
+							<Route path="/main/payroll/" exact component={PayRoll} />
+							{/* <Route path="/EmployeeMain/AddEmployeeForm" component={AddEmployeeForm} />
+							<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+							
+							<Route path="/EmployeeMain/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
+							
+							{/* <Route path="/ApplicantMain" component={ApplicantMain} />
+							<Route path="/AddApplicantForm" component={AddApplicantForm}/>
+							<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
+							
+							{/* <Route path="/PayRoll" component={PayRoll}/> */}
+							{/* <Route component={NotFound} /> */}
+						</Switch>
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
-
-					
 			</div>
-)
-}
+		)
+	}
 }

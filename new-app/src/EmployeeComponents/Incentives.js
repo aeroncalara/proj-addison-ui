@@ -52,8 +52,7 @@ export default class Incentives extends Component {
 				query: add_incentive_mutation
 			}
 		})
-		this.forceUpdate();
-		this.setState({state:this.state});
+
 		this.close()
 	}
 
@@ -108,9 +107,7 @@ render() {
 
 								<Form.Group widths="equal">
 									<Form.Input onChange={this.handleChange} value={this.state.amount} name="amount" fluid label="Amount" placeholder="Amount" />
-
 									<Form.Input onChange={this.handleChange} value={this.state.date_incurred} name="date_incurred" fluid type="date" label="Date Given" placeholder="Date Given" />
-									
 								</Form.Group>
 
 									<Form.TextArea onChange={this.handleChange} value={this.state.description} name="description" label="Description" placeholder="Description" />

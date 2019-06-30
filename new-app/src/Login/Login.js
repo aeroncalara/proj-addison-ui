@@ -6,35 +6,27 @@ import ForgotPassword from './ForgotPassword';
 
 export default class Login extends Component {
 
-
-
     constructor(props){
         super(props);
         this.state = {
-          type: 'input',
-       
+        	type: 'input',       
         }
         this.showHide = this.showHide.bind(this);
-      }
+    }
       
-      showHide(e){
+    showHide(e){
         e.preventDefault();
         e.stopPropagation();
         this.setState({
-          type: this.state.type === 'input' ? 'password' : 'input'
+        	type: this.state.type === 'input' ? 'password' : 'input'
         })  
-      }
-      
-    
-    
+    }
       
     render() {
         return (
             <div className='main'>
-                
                 <div className='LoginContent'>
-               
-                        <Grid columns={2} stackable textAlign='center'>
+            		<Grid columns={2} stackable textAlign='center'>
                             {/* <Divider vertical>or</Divider> */}
 
                                     <Grid.Column style={{ maxWidth: 445,height: 400 }} color={'teal'} className='grid'>
@@ -83,10 +75,8 @@ export default class Login extends Component {
                                         </div>
                                     </Grid.Column>
                            
-                                 </Grid>
-                 
+                    </Grid>
                 </div>
-                
             </div>
         )
     }
