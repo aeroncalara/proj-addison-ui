@@ -98,7 +98,7 @@ render() {
 			</div>
 
 			<div className="find">
-			<NavLink exact activeClassName="active" to="/AddApplicantForm">
+			<NavLink exact activeClassName="active" to="/main/addApplicant">
 				<Button color='blue'>
 			<i className="plus icon"></i>
 			Add New Applicant

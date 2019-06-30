@@ -411,7 +411,7 @@ render() {
                             <Button onClick={this.close} negative>
                                 No
                             </Button>
-                            <NavLink exact to="/ApplicantMain">
+                            <NavLink exact to="/main/applicants">
                                 <Button
                                     onClick={this.handleCancel}
                                         positive

@@ -73,7 +73,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 		<List animated verticalAlign='middle' selection >
 
 			<List.Item>			
-				<NavLink activeClassName="active" to="/">
+				<NavLink activeClassName="active" to="/main/employees/">
 					<Menu.Item>	
 						<i className="home icon"/>
 						Home
@@ -188,10 +188,16 @@ export default class HeaderSideBar extends Component {
 					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
 						<Switch>
 							<Route path="/main/employees/" component={EmployeeMain}/>
+							<Route path="/main/addEmployee/" component ={AddEmployeeForm} />
+							<Route path="/main/employees/:id/" component={EmployeeDetails} />
 							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
 							<Route path="/main/payroll/" exact component={PayRoll} />
+
+							
 							{/* <Route path="/EmployeeMain/AddEmployeeForm" component={AddEmployeeForm} />
 							<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
+							<Route path="/main/applicants/" component={ApplicantMain} />
+							<Route path="/main/addApplicant/" compnent={AddApplicantForm}></Route>
 							
 							<Route path="/EmployeeMain/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
 							

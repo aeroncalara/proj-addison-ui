@@ -47,9 +47,6 @@ export default class App extends Component {
 								<Route path="/signin/" exact component={Login} />
 
 								<AuthRoute path="/main/:directory" exact component={HeaderSideBar} />
-
-								
-
 							</Switch>
 
 

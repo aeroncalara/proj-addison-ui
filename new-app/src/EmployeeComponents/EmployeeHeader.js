@@ -55,11 +55,10 @@ export default class EmployeeHeader extends Component {
 
 					<div className="findemp">
 									{/* <AddEmployeeButton/> */}
-						<NavLink exact activeClassName="active" to="/AddEmployeeForm">
+						<NavLink exact activeClassName="active" to="/main/addEmployee/">
 							<Button color='blue'>
 								<i className="plus icon"></i>
 										Add New Employee
-							
 							</Button>
 						</NavLink>
 					</div>
