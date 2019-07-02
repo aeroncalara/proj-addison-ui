@@ -54,6 +54,7 @@ this.state = {
 	incentives:[],
 	deductions:[],
 	employee: {
+		id: "",
 		person:
 			{
 			first:'',
@@ -89,7 +90,7 @@ this.state = {
 		philhealth:'',
 		hdmf: '',
 		},
-		id: ""
+		
 	}
 }
 
@@ -251,8 +252,7 @@ getIncentives = async () =>{
 		  		date_incurred
 		  		description
 		  		amount
-				  is_active
-				  
+				is_active
 			}
 	  	}
 	`
@@ -264,6 +264,8 @@ getIncentives = async () =>{
 			query: incentive_query
 		}
 	})
+
+	console.log(incentive_variable.data.data.getAllActiveIncentivesOfEmployee);
 
 	this.setState({incentives: incentive_variable.data.data.getAllActiveIncentivesOfEmployee})
 }
@@ -320,7 +322,6 @@ getTimeLogs = async () =>{
 render() {
 
 const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions,terminateEmployee} = this.state;
-console.log("HELLO");
 const panes = [
 
 	{menuItem: 'Personal', render: () =>

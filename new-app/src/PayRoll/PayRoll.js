@@ -51,6 +51,8 @@ export default class PayRoll extends Component {
 				query: payroll_query
 			}
 		})
+
+		console.log(payrolls_variable.data.data.getAllPayrolls);
 		this.setState({payrolls: payrolls_variable.data.data.getAllPayrolls})
 		this.setState({is_fetching: false});
 	}

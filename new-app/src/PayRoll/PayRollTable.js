@@ -13,6 +13,7 @@ class PayRollTable extends Component {
 
 		const {item} = this.state;
 		let payroll_entities = item.entities.map((entity, index) => {
+			console.log(entity.employee_id);
 			return (
 				<tr key={entity.employee_id}>
 
