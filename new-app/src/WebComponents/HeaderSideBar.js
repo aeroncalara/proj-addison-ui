@@ -187,11 +187,20 @@ export default class HeaderSideBar extends Component {
 
 					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
 						<Switch>
-							<Route path="/main/employees/" component={EmployeeMain}/>
-							<Route path="/main/addEmployee/" component ={AddEmployeeForm} />
-							<Route path="/main/employees/:id/" component={EmployeeDetails} />
+							<Route path="/main/a" component={()=>{return (<div>a</div>)}}/>
+							<Route path="/main/b/:id" component={()=>{return (<div>b</div>)}}/>
+
+							<Route path="/main/employees" component={EmployeeMain} />
+							<Route path="/main/employee/id/:id" component={EmployeeDetails} />
 							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
 							<Route path="/main/payroll/" exact component={PayRoll} />
+						</Switch>
+							{/* <Route path="/main/employees" component={EmployeeMain}/>
+							<Route path="/main/addEmployee/" component ={AddEmployeeForm} />
+							<Route path="/main/employees/:id" component={EmployeeDetails} />
+
+							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
+							<Route path="/main/payroll/" exact component={PayRoll} /> */}
 
 							
 							{/* <Route path="/EmployeeMain/AddEmployeeForm" component={AddEmployeeForm} />
@@ -207,7 +216,7 @@ export default class HeaderSideBar extends Component {
 							
 							{/* <Route path="/PayRoll" component={PayRoll}/> */}
 							{/* <Route component={NotFound} /> */}
-						</Switch>
+						
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 			</div>

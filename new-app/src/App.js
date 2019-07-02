@@ -8,8 +8,10 @@ import './index.css';
 // import ApplicantMain from './ApplicantComponents/ApplicantMain'
 // import Notfound from './WebComponents/Notfound';
 import HomeLandingPage from './HomeComponents/HomeLandingPage'
-import HeaderSideBar from './WebComponents/HeaderSideBar'
+import HeaderSideBar from './WebComponents/HeaderSideBar';
+import FunctionalPages from './HomeComponents/FunctionalPages';
 import Login from './Login/Login';
+import EmployeeDetails from './EmployeeComponents/EmployeeDetails';
 // import { NavLink } from 'react-router-dom'
 // import { Header } from 'semantic-ui-react';
 
@@ -22,7 +24,11 @@ const client = new ApolloClient({
 });
 
 const checkAuthentication = () => {
-	return true;
+	let hash = localStorage.getItem("hash");
+	let logged_in = localStorage.getItem("logged_in");
+
+	if(logged_in == "true") return true;
+	return false;
 }
 
 const AuthRoute = ({component: Component, ...rest}) => (
@@ -31,8 +37,6 @@ const AuthRoute = ({component: Component, ...rest}) => (
 			(<Component {...props} />): (<Redirect to={{pathname: '/signin/'}} />)
 	}/>
 )
-
-
 
 export default class App extends Component {
 	render() {
@@ -46,7 +50,12 @@ export default class App extends Component {
 								<Redirect strict exact from="/" to="/signin/" />
 								<Route path="/signin/" exact component={Login} />
 
-								<AuthRoute path="/main/:directory" exact component={HeaderSideBar} />
+								<AuthRoute path="/main/" exact component={HeaderSideBar} />
+								<AuthRoute path="/main/employees/" exact component={HeaderSideBar} />
+								<AuthRoute path="/main/employee/id/:id" exact component ={HeaderSideBar} />
+								<AuthRoute path="/main/timelogs/" exact component={HeaderSideBar} />
+								<AuthRoute path="/main/payroll/" exact component={HeaderSideBar} />
+
 							</Switch>
 
 

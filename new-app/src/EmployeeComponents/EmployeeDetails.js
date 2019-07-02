@@ -320,7 +320,7 @@ getTimeLogs = async () =>{
 render() {
 
 const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions,terminateEmployee} = this.state;
-
+console.log("HELLO");
 const panes = [
 
 	{menuItem: 'Personal', render: () =>
