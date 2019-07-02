@@ -1,20 +1,15 @@
 .main{
-    background: url("../images/ba.jpeg");
-    
+    background: url("../images/background.jpg");
+    /* background-size:contain;
+    background: cover; */
     background-repeat: no-repeat;
-  
+    /* align-items: center; */
     justify-content: center;
     padding-top: 120px;
     padding-left: 240px;
-    
+    /* background-color: aqua; */
     height: 48.5vw;
     width: 100%;
-    background-color: #cccccc;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
    
 }
 

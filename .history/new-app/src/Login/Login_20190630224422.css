@@ -1,28 +1,19 @@
 .main{
-    background: url("../images/ba.jpeg");
-    
-    background-repeat: no-repeat;
-  
+    background: url("../images/back.jpg");
+    background-size:contain;
+    background: cover;
+    /* align-items: center; */
     justify-content: center;
     padding-top: 120px;
     padding-left: 240px;
-    
+    /* background-color: aqua; */
     height: 48.5vw;
     width: 100%;
-    background-color: #cccccc;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
    
 }
 
 .LoginContent{
     /* margin-left:1%; */
-    margin-top: 2%;
-    margin-bottom: auto;
-    
     width: 81%;
     height:  auto;
     box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);
@@ -62,13 +53,13 @@
 
 .showpassword{
     margin-top: -10px;
-    margin-left: 76%;
+    margin-left: 78%;
     margin-bottom: 5px;
 }
 
 .forgotpassword{
     margin-top: -15px;
     margin-left: 115px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     width: 100%;
 }

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Label } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Label, Segment, Divider } from 'semantic-ui-react'
 import './Login.css';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
 import axios from 'axios';
 import { addison_api_url } from '../Utilities/config';
+
+
+
 
 export default class Login extends Component {
 
@@ -23,7 +26,7 @@ export default class Login extends Component {
         e.preventDefault();
         e.stopPropagation();
         this.setState({
-        	type: this.state.type === 'input' ? 'password' : 'input'
+        	type: this.state.type === 'password' ? 'input' : 'password'
         })  
 	}
 
@@ -79,7 +82,10 @@ export default class Login extends Component {
       
     render() {
         return (
+          
             <div className='main'>
+             
+       
                 <div className='LoginContent'>
             		<Grid columns={2} stackable textAlign='center'>
                         <Grid.Column style={{ maxWidth: 445,height: 400 }} color={'teal'} className='grid'>
@@ -113,6 +119,8 @@ export default class Login extends Component {
                             </div>
                         </Grid.Column>
                     </Grid>
+                    <Divider vertical>Or</Divider>
+  
                 </div>
             </div>
         )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Signup.css';
-import {List, Form ,Grid, Header,Button, Modal,Dropdown} from 'semantic-ui-react'
+import {Label, Form ,Grid, Header,Button, Modal,Dropdown} from 'semantic-ui-react'
 
 const options = [
     { key: 1, text: 'What was your favorite place to visit as a child?', value: 1 },

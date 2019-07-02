@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Signup.css';
-import {List, Form ,Grid, Header,Button, Modal,Dropdown} from 'semantic-ui-react'
+import {Item, Form ,Grid, Header,Button, Modal,Dropdown} from 'semantic-ui-react'
 
 const options = [
     { key: 1, text: 'What was your favorite place to visit as a child?', value: 1 },
@@ -42,9 +42,8 @@ render() {
 		<div>		
 			
 			
-         <List>
-            <List.Item as='a' basic color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
-        </List>
+         
+        <Item as='a' basic color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
 
                                                 
 
