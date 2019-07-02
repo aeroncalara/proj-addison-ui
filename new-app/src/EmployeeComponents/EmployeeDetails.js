@@ -64,18 +64,18 @@ this.state = {
 			
 		contact:
 			{
-			type:'',
-			telephone:'',
-			number:'',
+				type:'',
+				telephone:'',
+				number:'',
 			},
 
 			address:
 			{
-			number:'',
-			street:'',
-			city:'',
-			province:'',
-			country:'',
+				number:'',
+				street:'',
+				city:'',
+				province:'',
+				country:'',
 			}		
 		},
 
