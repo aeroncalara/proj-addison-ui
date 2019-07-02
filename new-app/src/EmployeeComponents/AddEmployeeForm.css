@@ -1,12 +1,11 @@
 .EmployeeTop {
     
     background-color: #84A9BF;
-    height: 100px;
-    width: 101.1%;
+    width: 100%;
     /* font-size: calc(20px + 2vmin);
     color: #effaf8;
      */
-    margin-top: -15px;
+    margin-top: 5px;
     /* margin-bottom: 11px; */
   }
   

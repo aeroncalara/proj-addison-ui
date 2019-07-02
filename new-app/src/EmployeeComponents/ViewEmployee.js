@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {Link, Route} from 'react-router-dom'
-import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
+import {Link} from 'react-router-dom'
 import { Popup } from 'semantic-ui-react'
 
 export default class extends Component {
@@ -20,8 +19,8 @@ export default class extends Component {
             <div>
                 <Link to={"/main/employee/id/" +item._id}>
                     <Popup
-                        trigger={<button class="ui circular icon button">
-                        <i aria-hidden="true" class="eye icon"></i>
+                        trigger={<button className="ui circular icon button">
+                        <i aria-hidden="true" className="eye icon"></i>
                         </button>}
                         content='View Employee Details'
                         position='top center'

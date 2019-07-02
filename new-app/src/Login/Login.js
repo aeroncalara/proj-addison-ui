@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Label, Segment, Divider } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Label, Divider } from 'semantic-ui-react'
 import './Login.css';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';

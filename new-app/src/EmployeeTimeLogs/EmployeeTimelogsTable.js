@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ViewTimelogs from './ViewTimeLogs';
+// import ViewTimelogs from './ViewTimeLogs';
 
 
 class MonthlyPayrollTable extends Component {
@@ -12,19 +12,19 @@ class MonthlyPayrollTable extends Component {
 	}
 
 	render() {
-		const {item} = this.state;
-		let payroll_table = item.map((payroll, index) => {
-			return (
-				<tr key={payroll._id}>
-					<td data-label="Release date"> 
-						{payroll.release_date}
-					</td>
-					<td data-label="Age">
-						<ViewTimelogs item = {payroll._id}/>
-					</td>
-				</tr> 
-			)
-		})
+		//const {item} = this.state;
+		// let payroll_table = item.map((payroll, index) => {
+		// 	return (
+		// 		<tr key={payroll._id}>
+		// 			<td data-label="Release date"> 
+		// 				{payroll.release_date}
+		// 			</td>
+		// 			<td data-label="Age">
+		// 				<ViewTimelogs item = {payroll._id}/>
+		// 			</td>
+		// 		</tr> 
+		// 	)
+		// })
 		//here
 		return (
 		

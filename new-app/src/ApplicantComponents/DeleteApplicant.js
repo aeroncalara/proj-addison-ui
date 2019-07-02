@@ -20,7 +20,7 @@ export default class extends Component {
 				trigger={<Button icon className="ui button negative " onClick={this.handleOpen}>Terminate</Button>}
 				open={this.state.modalOpen}
 				onClose={this.handleClose}
-				basic size='small'
+				size='small'
 			>
 				<Header icon='frown outline' content='Archive Applicant:' />
 					<Modal.Content>

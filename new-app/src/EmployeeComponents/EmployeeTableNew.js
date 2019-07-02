@@ -8,7 +8,7 @@ export default class EmployeeTable extends Component {
   render() {
     return (
       <div className="EmployeeTable" >
-         <Table basic='very' celled collapsing>
+         <Table celled collapsing>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Employee</Table.HeaderCell>

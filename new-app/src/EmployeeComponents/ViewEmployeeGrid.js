@@ -23,8 +23,8 @@ export default class extends Component {
     <Link to={"/EmployeeDetails/" +item._id}>
 
     <Popup
-        trigger={<button class="ui circular icon button">
-        <i aria-hidden="true" class="eye icon"></i>
+        trigger={<button className="ui circular icon button">
+        <i aria-hidden="true" className="eye icon"></i>
         </button>}
         content='View Employee Details'
         position='top center'

@@ -53,7 +53,7 @@ render() {
 			/>}
 				open={this.state.modalOpen}
 				onClose={this.handleClose}
-				basic size='small'
+				size='small'
 			>
 
 			<Header icon='remove user' content='Archive Employee:' />

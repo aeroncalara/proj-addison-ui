@@ -97,7 +97,6 @@ export default class Deduction extends Component {
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
 		  onClose={this.close}
-		  basic
 		  size='small'
         >
 

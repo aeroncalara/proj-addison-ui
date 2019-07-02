@@ -101,7 +101,7 @@ return (
 }
 	open={this.state.modalOpen}
 	onClose={this.handleClose}
-	basic size='small'
+	size='small'
 	>
 	<Header icon='check' content='Successfully' />
 	<div className="timeText">

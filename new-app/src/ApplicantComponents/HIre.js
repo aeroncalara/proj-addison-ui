@@ -22,7 +22,7 @@ render() {
 			trigger={<Button className="ui button blue " onClick={this.handleOpen}>Hire</Button>}
 			open={this.state.modalOpen}
 			onClose={this.handleClose}
-			basic size='small'
+			size='small'
 		>
 			<Header icon='thumbs up outline' content='Hire Applicant' />
 

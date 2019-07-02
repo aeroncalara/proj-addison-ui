@@ -23,9 +23,8 @@ export default class ViewIncentives extends Component {
           open={open}
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
-					onClose={this.close}
-					basic
-					size='small'
+		onClose={this.close}
+		size='small'
         >
 
 		<Modal.Header>View Incentives</Modal.Header>

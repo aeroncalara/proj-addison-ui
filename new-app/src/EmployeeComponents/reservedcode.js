@@ -6,7 +6,7 @@
                   </Menu> */}
 
                   <ul className="list">
-                    <li><a class="active" href="#home">Home</a></li>
+                    <li><a className="active" href="#home">Home</a></li>
                     <li><a href="#news">Employees</a></li>
                     <li><a href="#contact">Performance</a></li>
                     <li><a href="#about"> Transcript</a></li>

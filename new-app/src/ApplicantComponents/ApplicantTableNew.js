@@ -8,7 +8,7 @@ export default class ApplicantTable extends Component {
   render() {
     return (
       <div className="ApplicantTable" >
-         <Table basic='very' celled collapsing>
+         <Table celled collapsing>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Applicant</Table.HeaderCell>

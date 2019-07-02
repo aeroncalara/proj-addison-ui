@@ -77,7 +77,6 @@ render() {
     const employees = this.state.employees;
     let employeeTable = employees.map((employee, index) => {
     
-
     return (
        
     

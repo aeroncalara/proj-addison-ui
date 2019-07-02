@@ -4,16 +4,14 @@ import {Form ,Grid, Header,Button, Modal} from 'semantic-ui-react'
 import axios from 'axios';
 import {addison_api_url} from "../Utilities/config";
 
-const options = [
-	{ key: 1, text: 'What was your favorite place to visit as a child?', value: 1 },
-	{ key: 2, text: 'What is the name of your favorite pet?', value: 2 },
-	{ key: 3, text: 'In what city were you born?', value: 3 },
-	{ key: 4, text: 'What high school did you attend?', value: 4 },
-	{ key: 5, text: 'What is the name of your first school?', value: 5 },
-	{ key: 6, text: 'What is your favorite movie?', value: 6 },
-]
-
-
+// const options = [
+// 	{ key: 1, text: 'What was your favorite place to visit as a child?', value: 1 },
+// 	{ key: 2, text: 'What is the name of your favorite pet?', value: 2 },
+// 	{ key: 3, text: 'In what city were you born?', value: 3 },
+// 	{ key: 4, text: 'What high school did you attend?', value: 4 },
+// 	{ key: 5, text: 'What is the name of your first school?', value: 5 },
+// 	{ key: 6, text: 'What is your favorite movie?', value: 6 },
+// ]
 
 export default class Signup extends Component {
 
@@ -94,13 +92,13 @@ export default class Signup extends Component {
 
 		return (
 			<div>		
-				<Button basic color='black' content='Sign up' fluid onClick={this.closeConfigShow(true, false)}/>
+				<Button color='black' content='Sign up' fluid onClick={this.closeConfigShow(true, false)}/>
 				<Modal
 					open={open}
 					closeOnEscape={closeOnEscape}
 					closeOnDimmerClick={closeOnDimmerClick}
 					onClose={this.close}
-					basic
+					
 					size='small'
 				>
 					

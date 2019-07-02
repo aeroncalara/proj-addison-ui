@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import './Header.css';
 import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
-import Login from '../Login/Login';
 
-import ApplicantMain from '../ApplicantComponents/ApplicantMain';
-import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
+// import ApplicantMain from '../ApplicantComponents/ApplicantMain';
+// import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 
@@ -187,13 +186,11 @@ export default class HeaderSideBar extends Component {
 
 					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
 						<Switch>
-							<Route path="/main/a" component={()=>{return (<div>a</div>)}}/>
-							<Route path="/main/b/:id" component={()=>{return (<div>b</div>)}}/>
-
-							<Route path="/main/employees" component={EmployeeMain} />
+							<Route path="/main/employees/" component={EmployeeMain} />
 							<Route path="/main/employee/id/:id" component={EmployeeDetails} />
 							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
 							<Route path="/main/payroll/" exact component={PayRoll} />
+							<Route path="/main/addEmployee/" exact component={AddEmployeeForm} />
 						</Switch>
 							{/* <Route path="/main/employees" component={EmployeeMain}/>
 							<Route path="/main/addEmployee/" component ={AddEmployeeForm} />

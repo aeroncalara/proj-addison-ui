@@ -43,7 +43,7 @@ render() {
 			
 			
          <List>
-            <List.Item as='a' basic color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
+            <List.Item as='a'  color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
         </List>
 
                                                 
@@ -53,7 +53,7 @@ render() {
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
 		  onClose={this.close}
-		  basic
+		  
 		  size='small'
         >
 

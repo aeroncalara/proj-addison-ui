@@ -69,7 +69,7 @@ const applicants = this.state.applicants;
 		return(
 			<div className="content">
 				{contactInformation.type}
-					<div class="sub header">
+					<div className="sub header">
 						{contactInformation.number}
 					</div>
 			</div>
@@ -79,10 +79,10 @@ const applicants = this.state.applicants;
 		return (
 			<tr key={applicant.id}>
 				<td data-label="Name">
-					<h4 class="ui image header">
+					<h4 className="ui image header">
 						<Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' size='mini'circular />
 
-						<div class="content">
+						<div className="content">
 							{applicant.person.first}
 						</div>
 					</h4>
@@ -93,7 +93,7 @@ const applicants = this.state.applicants;
 				</td>
 
 				<td data-label="Contact Info">  
-					<h4 class="ui image header">
+					<h4 className="ui image header">
 						{contactTable}
 					</h4>
 				</td>

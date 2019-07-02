@@ -24,7 +24,6 @@ const panes = [
 					<EmployeeGrid/>
 				</Form>
 			</Tab.Pane> },
-
 ]
 
 
@@ -54,7 +53,7 @@ export default class EmployeeHeader extends Component {
 					</div>
 
 					<div className="findemp">
-									{/* <AddEmployeeButton/> */}
+									
 						<NavLink exact activeClassName="active" to="/main/addEmployee/">
 							<Button color='blue'>
 								<i className="plus icon"></i>
@@ -68,27 +67,10 @@ export default class EmployeeHeader extends Component {
 					<hr />
 				</div>
 
-					<div className='tableHeader'>
-						<div className="Button">
-							{/* <Popup
-								trigger={
-									<div className="ui category search">
-										<div className="ui icon input">
-											<input className="prompt" type="text" placeholder="Search..." />
-												<i className="search icon"></i>
-										</div>
-											<div className="results"/>
-									</div>}
-								header='Employee Search'
-								content='You may search by Name, Position and Department'
-								on='focus'
-							/> */}
-						</div>
-					</div>
-					
 				<div className='TableTabs'>    
-					<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }}panes={panes} />
+					<Tab style={{width:'100%' }} menu={{ fluid: true, vertical: false, tabular: true }} panes={panes} />
 				</div>
+					
 			</div>
 		)
 	}

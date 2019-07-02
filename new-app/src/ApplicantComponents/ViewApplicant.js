@@ -18,8 +18,8 @@ export default class extends Component {
 				<div>
 					<Link to={"/ApplicantDetails/" +item._id}>
 						<Popup
-							trigger={<button class="ui circular icon button">
-										<i aria-hidden="true" class="eye icon" />
+							trigger={<button className="ui circular icon button">
+										<i aria-hidden="true" className="eye icon" />
 									</button>}
 									
 							content='View Applicant Details'
