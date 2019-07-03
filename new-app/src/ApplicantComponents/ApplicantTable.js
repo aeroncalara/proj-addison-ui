@@ -75,7 +75,7 @@ const applicants = this.state.applicants;
 			</div>
 		)
 	})
-		
+	console.log(contactTable)
 		return (
 			<tr key={applicant.id}>
 				<td data-label="Name">
