@@ -120,11 +120,6 @@ class EmployeeTable extends Component {
 								</List.Content>
 							</List.Item>
 
-							<List.Item>
-								<List.Content>
-									<AttendanceReport item={employee}/>
-								</List.Content>
-							</List.Item>
 
 							<List.Item>
 								<List.Content>

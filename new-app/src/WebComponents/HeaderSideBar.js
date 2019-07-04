@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './Header.css';
 import { NavLink, Route, Switch} from 'react-router-dom'
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
+import axios from 'axios';
+import {addison_api_url} from '../Utilities/config';
 
 // import ApplicantMain from '../ApplicantComponents/ApplicantMain';
 // import AddApplicantForm from '../ApplicantComponents/AddApplicantForm';
@@ -13,16 +15,16 @@ import EmployeeTimeLogs from '../EmployeeTimeLogs/EmployeeTimeLogs';
 
 
 import PayRoll from '../PayRoll/PayRoll';
-import { List ,Dropdown} from 'semantic-ui-react'
+import { List, Button, Modal} from 'semantic-ui-react'
 
 
 import {
-Image,
-Header,
-Icon,
-Menu,
-Segment,
-Sidebar,
+	Image,
+	Header,
+	Icon,
+	Menu,
+	Segment,
+	Sidebar,
 } from 'semantic-ui-react'
 
   
@@ -38,9 +40,6 @@ const trigger = (
 						Admin
 					</List.Item>
 
-					{/* <List.Item>
-						Human Resources
-					</List.Item> */}
 				</List>
 			</Header.Content>
 		</Header>
@@ -123,11 +122,19 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 	
 
 export default class HeaderSideBar extends Component {
-	state = {
-	animation: 'overlay',
-	direction: 'left',
-	dimmed: false,
-	visible: false,
+
+
+	constructor(props){
+		super(props);
+		this.state = {
+			animation: 'overlay',
+			direction: 'left',
+			dimmed: false,
+			visible: false,
+			open: false,
+		}
+
+		this.signOut = this.signOut.bind(this);
 	}
 
 	static propTypes = {
@@ -137,6 +144,42 @@ export default class HeaderSideBar extends Component {
 	  state = { activeItem: 'home' }
 
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+        this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+	}
+
+	close = () => this.setState({ open: false })
+
+	signOut = async () => {
+		let username = localStorage.getItem("hash");
+		let sign_out_query = `
+			mutation{
+				signOut(username:"${username}"){
+				message
+				success
+				}
+			}
+		`
+
+		
+		return axios({
+			url: addison_api_url,
+			method: `post`,
+			data: {
+				query: sign_out_query
+			}
+		}).then(result =>{
+			const {success, message} = result.data.data.signOut;
+			alert(message)
+			if(success){
+				localStorage.clear();
+				this.close()
+				this.props.history.push("/main/employees");
+			}
+		})
+		
+	}
 
 
 	handleAnimationChange = animation => () =>
@@ -150,7 +193,7 @@ export default class HeaderSideBar extends Component {
 	handleDirectionHide = direction => () => this.setState({ direction, visible: false })
 
 	render() {
-		const { animation, direction, visible } = this.state
+		const { animation, direction, visible, open, closeOnEscape, closeOnDimmerClick } = this.state
 		const vertical = direction === 'bottom' || direction === 'top'
 	
 		// const { activeItem } = this.state
@@ -174,7 +217,31 @@ export default class HeaderSideBar extends Component {
 
 					{/* ADMINTOP */}
 					<Menu.Item  position='right' style={{right:95 }}>
-						<Dropdown trigger={trigger} options={options} pointing='top left' icon={null} /> 
+
+						<Button secondary onClick={this.closeConfigShow(true, false)}> Sign-out </Button>
+						<Modal
+						open={open}
+						closeOnEscape={closeOnEscape}
+						closeOnDimmerClick={closeOnDimmerClick}
+						onClose={this.close}
+						basic
+						
+					>
+						
+						<Modal.Content >
+							<p>Are you sure you want to sign out?</p>
+						</Modal.Content>
+
+						<Modal.Actions>
+							<Button onClick={this.close} basic color='red' inverted>
+								<Icon name='remove' /> No
+							</Button>
+							<Button onClick={this.signOut} color='green' inverted>
+								<Icon name='checkmark' /> Yes
+							</Button>
+						</Modal.Actions>
+					</Modal>
+
 					</Menu.Item>
 				</Menu>
 
@@ -192,28 +259,6 @@ export default class HeaderSideBar extends Component {
 							<Route path="/main/payroll/" exact component={PayRoll} />
 							<Route path="/main/addEmployee/" exact component={AddEmployeeForm} />
 						</Switch>
-							{/* <Route path="/main/employees" component={EmployeeMain}/>
-							<Route path="/main/addEmployee/" component ={AddEmployeeForm} />
-							<Route path="/main/employees/:id" component={EmployeeDetails} />
-
-							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
-							<Route path="/main/payroll/" exact component={PayRoll} /> */}
-
-							
-							{/* <Route path="/EmployeeMain/AddEmployeeForm" component={AddEmployeeForm} />
-							<Route path="/EmployeeDetails/:id" exact component={EmployeeDetails}/>
-							<Route path="/main/applicants/" component={ApplicantMain} />
-							<Route path="/main/addApplicant/" compnent={AddApplicantForm}></Route>
-							
-							<Route path="/EmployeeMain/EmployeeTimeLogs" component={EmployeeTimeLogs}/>
-							
-							{/* <Route path="/ApplicantMain" component={ApplicantMain} />
-							<Route path="/AddApplicantForm" component={AddApplicantForm}/>
-							<Route path="/ApplicantDetails/:id" exact component={ApplicantDetails}/> */}
-							
-							{/* <Route path="/PayRoll" component={PayRoll}/> */}
-							{/* <Route component={NotFound} /> */}
-						
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 			</div>

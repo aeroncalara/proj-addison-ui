@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 // import './PayRoll.css';
-import { List,Tab, Form, Button, Modal } from 'semantic-ui-react'
+import {Tab, Form, Button, Loader, Dimmer} from 'semantic-ui-react'
 import axios from 'axios';
+import jspdf from 'jspdf';
 
 import {addison_api_url} from '../Utilities/config';
 
@@ -14,68 +15,52 @@ export default class PayRoll extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			payrolls: [],
+			attendance: [],
 			is_fetching: true,
-			release_date: "",
-			open: false,
-		}
+			}
 
 		this.handleChange = this.handleChange.bind(this);
+		this.getAttendanceReport = this.getAttendanceReport.bind(this);
+		this.generateAttendanceReport = this.generateAttendanceReport.bind(this);
 	}
 
 	componentDidMount(){
-		this.getPayrolls();
-	}
-
-	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-        this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+		this.getAttendanceReport();
 	}
 	
 	close = () => this.setState({ open: false })
 
-	getPayrolls = async () =>{
-		let payroll_query = 
+	getAttendanceReport = async () =>{
+		let attendance_query =
 		`
 			query{
-				getAllPayrolls{
-					_id
-					release_date
-					total_pay
+				getAttendanceReport{
+					employee{
+						person{
+							first
+							middle
+							last
+					}
+				}
+				position
+				attendance_entries
+				total_hours
+				hours_per_entry
 				}
 			}
 		`
-		let payrolls_variable = await axios({
+
+		let attendance_logs = await axios({
 			url: addison_api_url,
 			method: `post`,
 			data: {
-				query: payroll_query
+			  query: attendance_query
 			}
 		})
-		this.setState({payrolls: payrolls_variable.data.data.getAllPayrolls})
+
+		let data = attendance_logs.data.data.getAttendanceReport;
+		this.setState({attendance: data});
 		this.setState({is_fetching: false});
-	}
-
-	createPayroll = async () =>{
-		let payroll_mutation = 
-		`
-			mutation{
-				createPayroll(
-					release_date: "${this.state.release_date}"
-				){
-					message
-					success
-				}
-			}
-		`
-
-		await axios({
-			url: addison_api_url,
-			method: `post`,
-			data: {
-				query: payroll_mutation
-			}
-		})
-		
 	}
 
 	handleChange(e){
@@ -86,23 +71,79 @@ export default class PayRoll extends Component {
 		this.setState({ [name]: value});
 	}
 
+	generateAttendanceReport = () =>{
+		let date = new Date();
+
+        let pdf = new jspdf('p', 'mm', 'a4');
+        pdf.setFont("times");
+
+        pdf.setFontSize(12);
+        // pdf.text(50, 42, this.state.employee_name);
+        // pdf.text(50, 50, this.state.position);
+        // pdf.text(50, 58, this.state.base_salary.toString());
+
+        pdf.line(15, 18, 185, 18, "closed");
+        pdf.line(15, 20, 185, 20, "closed");
+
+        pdf.setFontSize("10");
+        pdf.text(70,25, "AUTOMATED ATTENDANCE REPORT");
+        pdf.setFontSize("8")
+        pdf.text(55,29, "Generated as of" + new Date());
+        
+        pdf.line(15, 32, 185, 32, "closed");
+        pdf.line(15, 34, 185, 34, "closed");
+        pdf.text(15, 42, "EMPLOYEE");
+		pdf.text(50, 42, "POSITION");
+		pdf.text(83, 42, "ATTENDANCE ENTRIES");
+		pdf.text(128, 42, "TOTAL HOURS");
+		pdf.text(155, 42, "HOURS/ENTRY");
+
+		let current_y = 46;
+
+
+		console.log(this.state.attendance);
+		pdf.setFontSize("10");
+		this.state.attendance.map(sessions =>{
+			pdf.text(7, current_y, sessions.employee.person.first + " " +sessions.employee.person.last);
+			pdf.text(40, current_y, sessions.position);
+			pdf.text(95, current_y, sessions.attendance_entries.toString());
+			pdf.text(130, current_y, sessions.total_hours.toString());
+			let rates = (!sessions.hours_per_entry)? 0: sessions.hours_per_entry;
+			pdf.text(165, current_y, rates.toString());
+			current_y += 5;
+		})
+		
+
+
+        pdf.line(15, 195, 50, 195);
+        pdf.text(15, 200, "         APPROVED BY:")
+
+        pdf.line(15, 220, 50, 220);
+        pdf.text(15, 225, "         CREATED BY:")
+
+        pdf.line(0, 280, 220, 280, "closed");
+        pdf.text(15, 286, "As signed, all of the information stated above is true and correct to best knowledge of the company.\nIn case any of the above information is false or untrue, the company may be held liable for.\nThis serves as an official document from the company\n")
+
+        pdf.output('dataurlnewwindow');
+	}
+
 	render() {
 
-		const {payrolls, is_fetching, open, closeOnEscape, closeOnDimmerClick} = this.state;
+		const {is_fetching} = this.state;
 		
 		const panes = [
 			{
-				menuItem: 'Daily TimeLogs', render: () => 
+				menuItem: 'Employee Attendances', render: () => 
 				<Tab.Pane>
 					<Form>
 						<div className='EmpDetails'>
 							<div className ='desc'>
 								<i className="calendar alternate outline icon"/>
-									Daily TimeLogs
+									Time logs
 							</div>
 						</div>
 						<div>
-							<EmployeeTimelogsTable item={payrolls}/>
+							<EmployeeTimelogsTable/>
 						</div>  
 					</Form>
 				</Tab.Pane>
@@ -112,9 +153,8 @@ export default class PayRoll extends Component {
 			<div>
 				<div className='Payrollhead'>
 					<div className ='payTitle'>
-						<List horizontal size='massive'>
-							<List.Item><i className="clock icon"/>TimeLogs</List.Item>
-						</List>
+						
+						
 					</div>
 				</div>
 
@@ -123,48 +163,17 @@ export default class PayRoll extends Component {
 				</div>
 
 				<div className="payrollbutton">
-					<Button primary onClick={this.closeConfigShow(true, false)}>Create TimeLogs</Button>
-					<Modal
-						open={open}
-						closeOnEscape={closeOnEscape}
-						closeOnDimmerClick={closeOnDimmerClick}
-						onClose={this.close}
-					>
-						<Modal.Header>	
-							<div className='EmpDetails'>
-								<div className ='desc'>
-									<i className="money bill alternate outline icon"/>Create TimeLogs
-								</div>
-							</div>
-						</Modal.Header>
-
-						<Modal.Content image scrolling>
-							
-							<Form>
-								<Form.Field>
-									<label>Release Date</label>
-									<input onChange={this.handleChange} value={this.state.release_date} name="release_date" placeholder='Release date' type="date"/>
-								</Form.Field>
-								<Button onClick={this.createPayroll} type="submit">Submit</Button>
-							</Form>
-
-
-						</Modal.Content>
-
-						<Modal.Actions>
-
-						
-							<Button primary onClick={this.close}>
-								Proceed 
-							</Button>
-							
-						</Modal.Actions>
-					</Modal>
+					<Button primary onClick={this.generateAttendanceReport}>EXPORT TO PDF</Button>
+					
+					
 				</div>
 				
 				{
 					is_fetching?
-						<div>Loading</div>
+						<Dimmer active>
+							<Loader active>Fetching data</Loader>
+						</Dimmer>
+							
 						:
 						<div className='PayrollTabs'>    
 							<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }} panes={panes} />

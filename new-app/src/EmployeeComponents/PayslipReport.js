@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Modal, Image, Header} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 import axios from 'axios';
 import jspdf from 'jspdf';
 import {addison_api_url} from '../Utilities/config';

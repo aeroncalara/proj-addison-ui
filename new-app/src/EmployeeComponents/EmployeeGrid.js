@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import {List, Grid,Image,Segment  } from 'semantic-ui-react'
+import {List, Grid,Image,Segment, Button} from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
+import Payslipt from '../EmployeeComponents/PayslipReport';
 
 import axios from 'axios';        
+import PayslipReport from '../EmployeeComponents/PayslipReport';
 
 let my_query = 
 `
@@ -114,21 +116,33 @@ render() {
                                         {employee.person.contact[0].number}
                                     </List.Item>
 
-									<List.Item>
+									                <List.Item>
                                         <hr/>
                                     </List.Item>
 
                                    
                                     <div className="action">
-                                        <List divided horizontal inverted relaxed>
+										<Button.Group>
+											<ViewEmployee item={employee} />
+
+											<TimeInOut Employee={employee} />
+
+											<PayslipReport item={employee} />
+										</Button.Group>
+										
+
+                                        {/* <List>
                                             <List.Item>
                                                 <List.Content verticalAlign='top'><ViewEmployee item={employee}/></List.Content>
                                             </List.Item>
                                             <List.Item>
-                                               
                                                 <List.Content verticalAlign='middle'> <TimeInOut Employee={employee} /></List.Content>
                                             </List.Item>
-                                        </List>
+
+                                            <List.Item>
+                                            	<List.Content verticalAlign="top" ><Payslipt item={employee} /></List.Content>
+                                            </List.Item>
+                                        </List> */}
                                     </div>
                                    
 
