@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import './EmployeeTable.css';
-import { List, Image } from 'semantic-ui-react'
+import { List, Image, Button } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
+import AttendanceReport from './AttendanceReport';
+import PayslipReport from './PayslipReport';
 import axios from 'axios';        
 
 
 let my_query = 
-
 `query
 {
     getAllActivatedEmployees
@@ -36,7 +37,8 @@ let my_query =
       }
       position
       {
-        title
+		title
+		salary
       }
     }
   }
@@ -117,6 +119,18 @@ class EmployeeTable extends Component {
 									<TimeInOut item={employee._id} />
 								</List.Content>
 							</List.Item>
+
+							<List.Item>
+								<List.Content>
+									<AttendanceReport item={employee}/>
+								</List.Content>
+							</List.Item>
+
+							<List.Item>
+								<List.Content>
+									<PayslipReport item={employee}/>
+								</List.Content>
+							</List.Item>							
 						</List>
 					</td>
 				</tr> 
@@ -126,44 +140,29 @@ class EmployeeTable extends Component {
 
     
     return (
-      
-      
-
       <div className="EmployeeTables">
-
-
         <table className="ui teal table celled">
+			<thead>
+				<tr>
+					<th>Employee</th>
+					<th>Address</th>
+					<th>Contact Info.</th>
+					<th> 
+						<List divided horizontal>
+							<List.Item>
+								<List.Content>
+									Actions
+								</List.Content>
+							</List.Item>
+						</List>
+					</th>
+			</tr>
+			</thead>
         
-        <thead>
-              <tr><th>Employee</th>
-              <th>Address</th>
-              <th>Contact Info.</th>
-              <th> 
-				  <List divided horizontal>
-
-					<List.Item>
-						<List.Content>
-							Actions
-						</List.Content>
-					</List.Item>
-
-					<List.Item>
-						<List.Content>
-							Status
-						</List.Content>
-					</List.Item>
-
-
-					</List>
-</th>
-          </tr>
-          </thead>
-        <tbody>
-           {employeeTable}
-        </tbody>
-           
+			<tbody>
+				{employeeTable}
+			</tbody>
         </table>
-        
       </div>        
     );
   }
