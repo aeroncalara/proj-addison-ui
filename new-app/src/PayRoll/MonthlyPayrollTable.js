@@ -36,9 +36,9 @@ class MonthlyPayrollTable extends Component {
 				<table className="ui teal table celled">
 				<thead>
 					<tr>
-						<th>DATE</th>
+						<th>DATE RELEASED</th>
 						<th>TOTAL PAY</th>
-						<th>Action</th>
+						<th>ACTION</th>
 					
 					</tr>
 				</thead>

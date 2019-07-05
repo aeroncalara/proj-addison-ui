@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form, Button, Modal } from 'semantic-ui-react'
+import { List,Tab, Form, Button, Modal, Container } from 'semantic-ui-react'
 import axios from 'axios';
 
 import {addison_api_url} from '../Utilities/config';
@@ -89,9 +89,7 @@ export default class PayRoll extends Component {
 	}
 
 	render() {
-
 		const {payrolls, is_fetching, open, closeOnEscape, closeOnDimmerClick} = this.state;
-		
 		const panes = [
 			{
 				menuItem: 'Monthly Payroll', render: () => 
@@ -110,12 +108,13 @@ export default class PayRoll extends Component {
 				</Tab.Pane>
 			},
 		]
+
 		return (
 			<div>
-				<div className='Payrollhead'>
+				<div className='payroll_head'>
 					<div className ='payTitle'>
 						<List horizontal size='massive'>
-							<List.Item><i className="money bill alternate outline icon"/>PayRolls</List.Item>
+							<List.Item>Company Payrolls</List.Item>
 						</List>
 					</div>
 				</div>
@@ -124,53 +123,50 @@ export default class PayRoll extends Component {
 					<hr className="hr"/>
 				</div>
 
-				<div className="payrollbutton">
-					<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
-					<Modal
-						open={open}
-						closeOnEscape={closeOnEscape}
-						closeOnDimmerClick={closeOnDimmerClick}
-						onClose={this.close}
-					>
-						<Modal.Header>	
-							<div className='EmpDetails'>
-								<div className ='desc'>
-									<i className="money bill alternate outline icon"/>Create Payroll
-								</div>
-							</div>
-						</Modal.Header>
-
-						<Modal.Content image scrolling>
-							
-							<Form>
-								<Form.Field>
-									<label>Release Date</label>
-									<input onChange={this.handleChange} value={this.state.release_date} name="release_date" placeholder='Release date' type="date"/>
-								</Form.Field>
-								<Button onClick={this.createPayroll} type="submit">Submit</Button>
-							</Form>
-
-
-						</Modal.Content>
-
-						<Modal.Actions>
-
+				<div className="payroll_button_div">
+					<div center className="payroll_buttons">
+						<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
+						<Button primary>Create Payslip</Button>
 						
-							<Button primary onClick={this.close}>
-								Proceed 
-							</Button>
-							
-						</Modal.Actions>
-					</Modal>
+						<Modal
+							open={open}
+							closeOnEscape={closeOnEscape}
+							closeOnDimmerClick={closeOnDimmerClick}
+							onClose={this.close}
+						>
+							<Modal.Header>
+								<div className='EmpDetails'>
+									<div className ='desc'>
+										<i className="money bill alternate outline icon"/>Create Payroll
+									</div>
+								</div>
+							</Modal.Header>
+
+							<Modal.Content image scrolling>
+								<Form>
+									<Form.Field>
+										<label>Release Date</label>
+										<input onChange={this.handleChange} value={this.state.release_date} name="release_date" placeholder='Release date' type="date"/>
+									</Form.Field>
+									<Button onClick={this.createPayroll} type="submit">Submit</Button>
+								</Form>
+							</Modal.Content>
+
+							<Modal.Actions>
+								<Button primary onClick={this.close}>
+									Proceed 
+								</Button>
+							</Modal.Actions>
+						</Modal>
+					</div>
 				</div>
-				
 				{
-					is_fetching?
-						<div>Loading</div>
-						:
-						<div className='PayrollTabs'>    
-							<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
-						</div>
+					is_fetching	?
+					<div>Loading</div>
+					:
+					<div className='PayrollTabs'>    
+						<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
+					</div>
 				}
 			</div>
 		)
