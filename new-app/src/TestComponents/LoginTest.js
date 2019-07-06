@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 //import {Button} from 'semantic-ui-react';
 // import * as Semantic from 'semantic-ui-react';
-import {Form, Grid, Header, Message, Segment, Button} from 'semantic-ui-react';
 import './LoginTest.css'
 // import Background from './ba.jpg'
 import RegisterTest from './RegisterTest.js'
@@ -35,19 +34,7 @@ class LoginTest extends Component {
             
         <div className = "box">
             
-        <style>{`
-            body > div,
-            body > div > div,
-            body > div > div>
-            body > div > div> div> div.box{
-            
-                height: 100%
-            }
-        `}
-        </style>
-            <Grid textAlign="center" style={{height:'100%'}} verticalAlign="middle">
-            <Grid.Column style={{ maxWidth:1165 }}>
-           
+      
             
          <div className = "container">
 
@@ -80,8 +67,7 @@ class LoginTest extends Component {
                     </button>
                 </div>
             </div>
-                </Grid.Column>
-            </Grid>
+              
             </div>
         )
     }

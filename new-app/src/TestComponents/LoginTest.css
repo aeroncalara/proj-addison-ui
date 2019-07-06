@@ -15,15 +15,16 @@
     flex-direction: column;
     justify-content: center;
     height: auto;
+    padding-top: 10%;
   
 }
 
 .title{
-    margin-left: 22px;
+    margin-left: 1%;
     font-weight: bold;
     font-size: 30px;
     padding-bottom: 20px;
-    border: 3px dotted red;
+    
     
 
 }
@@ -60,6 +61,7 @@ input[type=password]{
     border-radius: 30px;
     margin-left: 30%;
     background-color: rgba(100, 154, 177, 0.196);
+    width:40%;
 }
 .userIn{
     flex-direction: column;
