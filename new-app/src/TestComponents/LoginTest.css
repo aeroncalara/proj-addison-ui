@@ -1,5 +1,167 @@
-img{
-    width: 100%;
-    position: fixed;
-    opacity: 0.6;
+.box{
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0,0,0,0.7)), url("ba.jpeg");   
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.container{
+    color: #F2F6FA;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+  
+}
+
+.title{
+    margin-left: 22px;
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 20px;
+    border: 3px dotted red;
+    
+
+}
+.title a{
+    color: rgb(12, 147, 177) !important;
+}
+.header{
+    margin: 0;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 17px;
+     margin-left: 35px; 
+     margin-right: 35px; 
+     font-family: sans-serif;
+    font-size: 22px;  
+} 
+input[type=text]{
+    margin-left: 2%;
+    color: whitesmoke;
+}
+input[type=password]{
+    color: whitesmoke;
+    margin-left: 2.5%;
+}
+
+::placeholder{
+    color: white;
+}
+
+
+.wholeSet{
+    border-style: 1px solid rgba(209, 228, 237) ;
+    /* position: absolute; */
+    border-radius: 30px;
+    margin-left: 30%;
+    background-color: rgba(100, 154, 177, 0.196);
+}
+.userIn{
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 18px;
+}
+
+button{
+    margin: 10%;
+    background-color: rgb(132, 164, 172);
+    border-color: #007bff;
+    background-image: rgb(12, 147, 177);
+    color:  #F2F6FA;
+    border-radius: .3rem;
+      
+    /* font-size: 14px;
+    font-weight: 500; */
+}
+.clickChoose{
+    padding-top: 20px;
+    
+    
+}
+.clickChoose a{
+    padding: 5%;
+    
+}
+
+.clickChoose .textReg{
+    color: rgb(9, 185, 224) !important;
+}
+
+.clickChoose a:hover{
+    color: #26a2ff;
+    border-bottom: 2px solid rgb(132, 164, 172);
+    padding: 20px;
+}
+
+
+.login-input{
+    height: 2.1em;
+    border-radius: 15px;
+    border: 1px solid rgb(132, 164, 172);
+    transition: border 0.4s ease-out;
+    padding: 13px;
+    font-family: Oxygen, sans-serif;
+    font-size: 16px;
+    color: #3e3e42;
+    background: rgba(15, 15, 15, 0.01);
+} 
+
+ .login-input:hover {
+    border: 2px solid rgb(132, 164, 172);
+}
+
+.login-input:focus {
+    border: 2px solid #6565e7;
+    box-shadow: 0px 0px 20px rgba(15, 15, 15, 0.2);
+}
+
+
+.login-input::placeholder {
+    font-family: Oxygen, sans-serif;
+    font-size: 16px;
+    color: rgba(15, 15, 15, 0.4);
+} 
+
+.login-btn{
+    padding: 2px 20px;
+     border: 0;
+    /* font-size: 18px; */
+    border-radius: 15px;
+    font-family: Oxygen, sans-serif;
+    background-color: rgb(12, 147, 177);
+    margin-top: 20px;
+    border: 2px solid rgb(20, 106, 126);
+    transition: background-color 0.3s ease-out;
+    cursor: pointer;
+   
+} 
+
+.userReg{
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 20px;
+}
+
+
+
+@media screen and (min-width: 1270){
+    .title{ 
+    margin-left: 42px;
+    }   
+}
+
+@media only screen and (min-width: 360){
+    .wholeSet{
+        position: absolute;
+        border-radius: 30px;
+        margin-left: 0%;
+        background-color: rgba(100, 154, 177, 0.196);
+    }
 }

@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 //import App from './App';
-import LoginTest from './TestComponents/LoginTest';
+import Testhome from './TestComponents/Testhome'
 
 
 
 
-ReactDOM.render(<LoginTest/>, document.getElementById('root'));
+ReactDOM.render(<Testhome/>, document.getElementById('root'));
 
