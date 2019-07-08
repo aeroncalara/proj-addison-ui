@@ -18,6 +18,7 @@ state = { open: false };
 closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
 	this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
 };
+
 close = () => this.setState({ open: false });
 
 constructor(props) {
@@ -26,14 +27,15 @@ this.state = {
 	item: this.props.item,
 	visible: true,
 	isEdit : false,
-	firstName: '',
-	middleName: '',
-	lastName: '',
+	first_name: '',
+	middle_name: '',
+	last_name: '',
 	date_of_birth: '',
 
-	mobile: '',
+	mobile_number: '',
 	telephone: '',
-	email: '',
+	email_address: '',
+	type: '',
 
 	number:'',
 	street: '',
@@ -42,7 +44,7 @@ this.state = {
 	country: '',
 
 	title:'',
-	position:'',
+	description:'',
 	salary:'',
 
 	tin:'',
@@ -53,8 +55,9 @@ this.state = {
 	sessions: [],
 	incentives:[],
 	deductions:[],
+
 	employee: {
-		id: "",
+		_id: "",
 		person:
 			{
 			first:'',
@@ -94,44 +97,131 @@ this.state = {
 	}
 }
 
-handleEdit = () => { ;
+handleEdit = () => { 
 	this.setState({ isEdit: !this.state.isEdit });
 }
 
-handleCancel = () => {;
-	this.setState({ 
-		firstName: '',
-		middleName: '',
-		lastName: '',
-		birthDate: '',
+editEmployee = async () => {
+	let edit_query = 
+	`
+	mutation{
+		editEmployee(
+		  employee_id:"${this.props.match.params.id}"
+		  person:{
+		    first:"${this.state.first_name}"
+		    middle:"${this.state.middle_name}"
+		    last:"${this.state.last_name}"
+		    date_of_birth:"${this.state.date_of_birth}"
+		    contact:{
+			 type:"${this.state.type}"
+			 number:"${this.state.mobile_number}"
+		    }
+		    address:{
+			 number:"${this.state.number}"
+			 street:"${this.state.street}"
+			 city:"${this.state.city}"
+			 province:"${this.state.province}"
+			 country:"${this.state.country}"
+		    }
+		  }
+		  tin:"${this.state.tin}"
+		  philhealth:"${this.state.philhealth}"
+		  sss:"${this.state.sss}"
+		  hdmf:"${this.state.hdmf}"
+		  position:{
+		    title:"${this.state.title}"
+		    description:"${this.state.description}"
+		    salary:${this.state.salary}
+		  }
+		  
+		){
+		  _id
+		  person{
+		    first
+		    middle
+		    last
+		    date_of_birth
+		    address{
+			 number
+			 street
+			 city
+			 province
+			 country
+		    }
+		    contact{
+			 type
+			 number
+		    }
+		  }
+		  position{
+		    title
+		    description
+		    salary
+		  }
+		  tin
+		  philhealth
+		  hdmf
+		  sss
+		}
+	   }
+	`
 
-		type:'',
-		mobile: '',
-		telephone: '',
-		email: '',
+	let edited_employee = await axios({
+		url: addison_api_url,
+		method: `post`,
+		data: {
+			query: edit_query
+		}
+	})
 
-		number:'',
-		street:'',
-		city:'',
-		province:'',
-		country:'',
+	console.log(edited_employee);
+	this.setState({ employee: edited_employee.data.data.editEmployee });
+	this.setState({ first_name: this.state.employee.person.first, middle_name: this.state.employee.person.middle, last_name: this.state.employee.person.last });
+	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
+	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
+	//CONTACT
+	if(this.state.employee.person.contact[0].type == "MOBILE"){
+		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
+	}else{
+		this.setState({ telephone: this.state.employee.person.contact[0].number});
+	}
+	
+	this.setState({type: this.state.employee.person.contact[0].type});
 
-		title:'',
-		description:'',
-		salary:'',
+	//ADDRESS
+	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
+	
+	//POSITION
+	this.setState({ title: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
+	this.handleEdit();
 
-		tin:'',
-		sss:'',
-		philhealth:'',
-		hdmf: '',
-
-		isEdit: !this.state.isEdit,
-		open: !this.state.open
-	});
 }
 
-handleChange = (e, type) => {
-	this.setState({[type]: e.target.value})
+handleCancel = () => {;
+	this.setState({ first_name: this.state.employee.person.first, middle_name: this.state.employee.person.middle, last_name: this.state.employee.person.last });
+	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
+	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
+	//CONTACT
+	if(this.state.employee.person.contact[0].type == "MOBILE"){
+		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
+	}else{
+		this.setState({ telephone: this.state.employee.person.contact[0].number});
+	}
+	this.setState({type: this.state.employee.person.contact[0].type});
+
+	//ADDRESS
+	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
+	
+	//POSITION
+	this.setState({ position: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
+
+	this.handleEdit();
+}
+
+handleChange = (e) => {
+	const {target} = e;
+	const {name, value} = target;
+	this.setState({[name]: value})
 }
 
 componentDidMount(){
@@ -139,56 +229,9 @@ componentDidMount(){
 	this.getIncentives();
 	this.getDeductions();
 	this.getTimeLogs();
-	this.getTerminateEmployees();
-
+	//this.getTerminateEmployees();
 }
 
-getTerminateEmployees = async () => {
-
-	let my_terminated_query = 
-	`
-	query{
-		getTerminateEmployees(employee_id: "${this.props.match.params.id}"){
-			_id
-			person{
-			first
-			middle
-			last
-			date_of_birth
-			address{
-						number
-						street
-				city
-				province
-				country
-			}
-			contact{
-				type
-				number
-			}
-			}
-			tin
-			sss
-			philhealth
-			hdmf
-			position{
-			title
-			description
-			salary
-			}
-		}
-		}
-	`
-
-	let terminateEmployee_variable = await axios({
-		url: addison_api_url,
-		method: `post`,
-		data: {
-		query: my_terminated_query
-		}
-		})
-	this.setState({ terminateEmployee: terminateEmployee_variable.data.data.getTerminateEmployees });
-}
 
 getEmployee = async () => {
 
@@ -238,10 +281,27 @@ getEmployee = async () => {
 		url: addison_api_url,
 		method: `post`,
 		data: {
-		query: my_query
+			query: my_query
 		}
-		})
+	})
 	this.setState({ employee: employee_variable.data.data.getEmployee });
+	//PERSONAL INFORMATION
+	this.setState({ first_name: this.state.employee.person.first, middle_name: this.state.employee.person.middle, last_name: this.state.employee.person.last });
+	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
+	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
+	//CONTACT
+	if(this.state.employee.person.contact[0].type == "MOBILE"){
+		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
+	}else{
+		this.setState({ telephone: this.state.employee.person.contact[0].number});
+	}
+	this.setState({type: this.state.employee.person.contact[0].type});
+
+	//ADDRESS
+	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
+	
+	//POSITION
+	this.setState({ position: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
 }
 
 getIncentives = async () =>{
@@ -321,182 +381,146 @@ getTimeLogs = async () =>{
 
 render() {
 
-const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions,terminateEmployee} = this.state;
+const { open, closeOnEscape, closeOnDimmerClick, employee, incentives, deductions, sessions, terminateEmployee} = this.state;
 const panes = [
 
 	{menuItem: 'Personal', render: () =>
-	<Tab.Pane> 
-			<div className='EmpDetails'>
-			<div className ='desc'>
-				<i className="user icon"/>
-					Personal Information
+		<Tab.Pane> 
+				<div className='EmpDetails'>
+				<div className ='desc'>
+					<i className="user icon"/>
+						Personal Information
+				</div>
 			</div>
-		</div>
 
-		<div>
-			<hr className="hrName" />
-		</div>  
-	<Form key={employee} liquid>
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-		<Label as='a' color='teal' ribbon>
-         	 Basic Information
-        </Label>
-		<Form.Group>
+			<div>
+				<hr className="hrName" />
+			</div>  
+			<Form key={employee} liquid>
+				<Grid>
+					<Grid.Column width={11}>
+						<Segment raised>
+							<Label as='a' color='teal' ribbon>
+								Basic Information
+							</Label>
+							<Form.Group>
+								<Form.Input name="first_name" label='First name' placeholder='First Name' readOnly={this.state.isEdit?false:true} width={3} onChange={this.handleChange} value={this.state.first_name}/>
+								<Form.Input name="middle_name" label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.middle_name} />
+								<Form.Input name="last_name" label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.last_name}/>
+							</Form.Group>
 
+							<Form.Group>
+								{this.state.isEdit?
+									<Form.Input name="date_of_birth" type="date" label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.date_of_birth}/>
+									:
+									<Form.Input name="date_of_birth" label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.date_of_birth}/>	
+								}
+								
+							</Form.Group>
+							
+							<Label as='a' color='teal' ribbon>
+								Addtional Information
+							</Label>
 
-			<Form.Input label='First name' placeholder='First Name' width={3} readOnly={this.state.isEdit?false:true}  onChange={(e) => this.handleChange(e, 'firstName')} value={employee.person.first} />
-			
-
-			<Form.Input label='Middle Name' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'middleName')} value={employee.person.middle} />
-
-
-			<Form.Input label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'lastName')} value={employee.person.last}/>
-
-
-		</Form.Group>
-
-		<Form.Group>
-		<Form.Input label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'birthDate')} value={employee.person.date_of_birth}/>
-		</Form.Group>
-		
-
-
-
-
-		<Label as='a' color='teal' ribbon>
-         	Addtional Information
-        </Label>
-
-		<Form.Group>
-			
-			<Form.Input label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'tin')} value={employee.tin}/>
-		
-			<Form.Input label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'sss')} value={employee.sss}/>
-	
-			<Form.Input label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'philhealth')} value={employee.philhealth}/>
-			
-			<Form.Input label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'hdmf')} value={employee.hdmf}/>
-
-
-		</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>
-	
-	</Form>
-	
-	</Tab.Pane> 
+							<Form.Group>
+								<Form.Input name="tin" label='TIN #' placeholder='TIN #' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.tin}/>
+								<Form.Input name="sss" label='SSS #' placeholder='SSS#' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.sss}/>
+								<Form.Input name="philhealth" label='PHILHEALTH #' placeholder='PHILHEALTH #' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.philhealth}/>
+								<Form.Input name="hdmf" label='HDMF #' placeholder='HDMF #' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.hdmf}/>
+							</Form.Group>
+						</Segment>
+					</Grid.Column>
+				</Grid>
+			</Form>
+		</Tab.Pane> 
 	},
 
 	{menuItem: 'Contact', render: () => 
-	<Tab.Pane>
-		<Form key={employee} liquid>
-		<div className='EmpDetails'>
-		<div className ='desc'>
-			<i className="phone square icon"/>
-				Contact Information
-		</div>
-		</div>
+		<Tab.Pane>
+			<Form key={employee} liquid>
+				<div className='EmpDetails'>
+					<div className ='desc'>
+						<i className="phone square icon"/> Contact Information
+					</div>
+				</div>
 
-		<div>
-		<hr className="hrName" />
-		</div>  
+				<div>
+					<hr className="hrName" />
+				</div>  
 
 
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-	
-		<Form.Group>
-            
-		<Form.Input label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'mobile')} value={employee.person.contact[0].number}/>
-		<Form.Input label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'telephone')} />
-		<Form.Input label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'email')} value={this.state.email}/>
-	
-		</Form.Group>
-		
-	</Segment>
-	</Grid.Column>
-	</Grid>
-	
-	</Form>
-	</Tab.Pane>
+				<Grid>
+					<Grid.Column width={11}>
+						<Segment raised>
+							<Form.Group>
+								<Form.Input name="mobile_number" label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.mobile_number}/>
+								<Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.state.telephone} />
+								{/* <Form.Input name="email_address" label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.email_address}/> */}
+							</Form.Group>
+						</Segment>
+					</Grid.Column>
+				</Grid>
+			</Form>
+		</Tab.Pane>
 	},
 
 	{menuItem: 'Address', render: () => 
-	<Tab.Pane>
-	<Form key={employee} liquid>
-	<div className='EmpDetails'>  
-		<div className ='desc'>
-		<i className="map marker alternate icon"/>
-			Address
-		</div>
-	</div>
+		<Tab.Pane>
+			<Form key={employee} liquid>
+				<div className='EmpDetails'>  
+					<div className ='desc'>
+						<i className="map marker alternate icon"/> Address
+					</div>
+				</div>
 
-	<div>
-		<hr className="hrName" />
-	</div>  
-	
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-			
-	<Form.Group>
-			<Form.Input label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].number}/>
-	
-			<Form.Input label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'street')} value={employee.person.address[0].street}/>
-		
-			<Form.Input label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'city')} value={employee.person.address[0].city}/>
-
-			<Form.Input label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'Province')} value={employee.person.address[0].province}/>
-		
-		
-			<Form.Input label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'country')} value={employee.person.address[0].country}/>
-
-			</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-		
-
-	</Form>
-	</Tab.Pane> 
+				<div>
+					<hr className="hrName" />
+				</div>  
+			 
+				<Grid>
+					<Grid.Column width={11}>
+						<Segment raised>
+							<Form.Group>
+									<Form.Input name="number" label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.number}/>
+									<Form.Input name="street" label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.street}/>
+									<Form.Input name="city" label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.city}/>
+									<Form.Input name="province" label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.province}/>
+									<Form.Input name="country" label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
+							</Form.Group>
+						</Segment>
+					</Grid.Column>
+				</Grid>		
+			</Form>
+		</Tab.Pane> 
 	},
 
 	{menuItem: 'Position', render: () => 
-	<Tab.Pane>
-	<Form>
-		<div className='EmpDetails'>    
-		<div className ='desc'>
-			<i className="users icon"/>
-			Position
-		</div>
-		</div>
+		<Tab.Pane>
+			<Form>
+				<div className='EmpDetails'>    
+					<div className ='desc'>
+						<i className="users icon"/>
+						Position
+					</div>
+				</div>
 
-		<div>
-		<hr className="hrName" />
-		</div>  
-		
-
-
-	<Grid>
-	<Grid.Column width={11}>
-	<Segment raised>
-			
-	<Form.Group>
-	
-	
-			<Form.Input label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.title}/>
-			<Form.Input label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'title')} value={employee.position.description}/>
-			<Form.Input label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={(e) => this.handleChange(e, 'salary')} value={employee.position.salary}/>
-		</Form.Group>
-	</Segment>
-	</Grid.Column>
-	</Grid>		
-	</Form>
-	</Tab.Pane>
+				<div>
+					<hr className="hrName" />
+				</div>  
+					
+				<Grid>
+					<Grid.Column width={11}>
+						<Segment raised>
+							<Form.Group>
+								<Form.Input name="position" label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.position}/>
+								<Form.Input name="description" label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.description}/>
+								<Form.Input name="salary" label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.salary}/>
+							</Form.Group>
+						</Segment>
+					</Grid.Column>
+				</Grid>		
+			</Form>
+		</Tab.Pane>
 	},
 
 	{menuItem: 'Incentives', render: () => 
@@ -547,7 +571,6 @@ return (
 			<Header as='h2'>
 				<Header.Content>
 					{employee.person.first} {employee.person.middle} {employee.person.last}
-					
 					<Header.Subheader>  
 						{employee.position.title}
 					</Header.Subheader>
@@ -557,94 +580,24 @@ return (
 
 		{/* EmployeeOptions */}
 		<div className="Edit">
-			<List horizontal>
-				<List.Item>
-		
-					{!this.state.isEdit &&(
-						<div className="Options">
-							<List divided horizontal>
-								<List.Item>
-									<Popup
-										trigger={<Dropdown text="Request a Change" />}
-										content={<Button color='green'icon="edit" content='Edit'onClick={this.handleEdit} />}
-										on='click'
-										position='bottom center'
-									/>
-								</List.Item>
-
-								<List.Item>
-									<Popup
-										trigger={<Dropdown icon="cogs icon" />}
-										// <Button color='red'icon="close" content='Terminate'/ >
-										content={ 
-											<DeleteEmployee item={terminateEmployee} employee_id={employee._id}/>
-												}
-										on='click'
-										position='bottom right'
-									/>
-								</List.Item>
-							</List>
-						</div>
-					)}
-				</List.Item>
-					
-					<List.Item>
-						{this.state.isEdit &&
-							<div className='deSave'>
-
-								<Button.Group>
-									<Button animated negative fluid onClick={this.closeConfigShow(true, false)}>
-										<Button.Content visible>
-										<Icon name='close' />
-										</Button.Content>
-										<Button.Content hidden>
-										Cancel
-										</Button.Content>
-										</Button>      
-									<Button.Or />
-										<Button animated positive fluid onClick={this.handleEdit}>
-										<Button.Content visible>
-											<Icon name='save' />
-										</Button.Content>
-										<Button.Content hidden>
-											Save
-										</Button.Content>     
-									</Button>
-								</Button.Group>    
-							</div>
-						}
-								<Modal
-									open={open}
-									closeOnEscape={closeOnEscape}
-									closeOnDimmerClick={closeOnDimmerClick}
-									onClose={this.close}
-								>
-
-								<Modal.Header>Cancel Update</Modal.Header>
-
-									<Modal.Content>
-										<p>Are you sure you want to Cancel updating Employee Information?</p>
-									</Modal.Content>
-
-									<Modal.Actions>
-										<Button onClick={this.close} negative>
-											No
-										</Button>
-										<Button
-											onClick={this.handleCancel}
-											positive
-											labelPosition="right"
-											icon="checkmark"
-											content="Yes"
-										/>
-									</Modal.Actions>
-
-								</Modal>
-
-					</List.Item>
-				{/* </List.Item> */}
-			</List>
-
+				{
+					this.state.isEdit?
+						<List horizontal>
+							<List.Item>
+								<Button onClick={this.editEmployee}> Apply Changes </Button>
+							</List.Item>
+							
+							<List.Item>
+								<Button onClick={this.handleCancel}> Cancel</Button>
+							</List.Item>
+						</List>
+					:
+					<List>
+						<List.Item>
+							<Button onClick={this.handleEdit}> Edit Details </Button>
+						</List.Item>
+					</List>			
+				}
 		</div>
 	</div>
 	
