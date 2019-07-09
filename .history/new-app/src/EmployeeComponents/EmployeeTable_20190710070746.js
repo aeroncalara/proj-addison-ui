@@ -102,7 +102,7 @@ class EmployeeTable extends Component {
 						{employee.person.address[0].city}
 					</td>
 
-					<td data-label="Contact Info">  
+					<td data-label="Contact Number">  
 						<h4 className="ui image header">
 							{contactTable}
 						</h4>
@@ -143,7 +143,7 @@ class EmployeeTable extends Component {
 				<tr>
 					<th>Employee</th>
 					<th>Address</th>
-					<th>Contact Number.</th>
+					<th>Contact Info.</th>
 					<th> 
 						<List divided horizontal>
 							<List.Item>

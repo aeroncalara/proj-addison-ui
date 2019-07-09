@@ -143,7 +143,7 @@ class EmployeeTable extends Component {
 				<tr>
 					<th>Employee</th>
 					<th>Address</th>
-					<th>Contact Number.</th>
+					<th>Contact Info.</th>
 					<th> 
 						<List divided horizontal>
 							<List.Item>

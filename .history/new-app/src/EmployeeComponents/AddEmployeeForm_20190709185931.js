@@ -205,9 +205,9 @@ class AddEmployeeForm extends Component {
 								<Form.Group>													    
 									<Form.Input label='Mobile Number' placeholder='Mobile Number'  onChange={(e) => this.handleChange(e, 'mobile')} value={this.state.mobile}/>
 
-									<Form.Input label='Telephone Number' 
+									{/* <Form.Input label='Telephone Number' 
 									placeholder='Telephone Number' onChange={(e) => this.handleChange(e, 'telephone')}
-									value={this.state.telephone}/>
+									value={this.state.telephone}/> */}
 
 									<Form.Input label='Email' placeholder='Email'  onChange={(e) => this.handleChange(e, 'email')} 
 									value={this.state.email}/>
@@ -250,13 +250,13 @@ class AddEmployeeForm extends Component {
 							</Form.Group>
 
 							<Form.Group widths={2}>
-								<Form.Input label='City / Town' placeholder='City / Town' onChange={(e) => this.handleChange(e, 'city')} 
+								<Form.Input label='City' placeholder='city' onChange={(e) => this.handleChange(e, 'city')} 
 								value={this.state.city}/>
 
 								<Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')}
 								value={this.state.province}/>
 								
-								<Form.Input label='Brgy' placeholder='Brgy' onChange={(e) => this.handleChange(e, 'country')} 
+								<Form.Input label='Country' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} 
 								value={this.state.country}/>
 							</Form.Group>
 						</Segment>

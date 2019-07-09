@@ -256,7 +256,7 @@ class AddEmployeeForm extends Component {
 								<Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')}
 								value={this.state.province}/>
 								
-								<Form.Input label='Brgy' placeholder='Brgy' onChange={(e) => this.handleChange(e, 'country')} 
+								<Form.Input label='Brgy' placeholder='country' onChange={(e) => this.handleChange(e, 'country')} 
 								value={this.state.country}/>
 							</Form.Group>
 						</Segment>

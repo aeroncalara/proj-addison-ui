@@ -121,19 +121,14 @@ render() {
                                     </List.Item>
 
                                    
-                <div className="action">
+                                    <div className="action">
 										
-                  	<List horizontal>
-						<List.Item>
-							<ViewEmployee item={employee} />
-        	            </List.Item>
 
-            	        <List.Item>
-							<TimeInOut Employee={employee} />
-	                    </List.Item>
-                  	</List>		
+											<ViewEmployee item={employee} />
 
-				<PayslipReport item={employee} />
+											<TimeInOut Employee={employee} />
+
+											<PayslipReport item={employee} />
 
 									
 										

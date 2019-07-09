@@ -121,21 +121,14 @@ render() {
                                     </List.Item>
 
                                    
-                <div className="action">
-										
-                  	<List horizontal>
-						<List.Item>
-							<ViewEmployee item={employee} />
-        	            </List.Item>
+                                    <div className="action">
+										<Button.Group>
+											<ViewEmployee item={employee} />
 
-            	        <List.Item>
-							<TimeInOut Employee={employee} />
-	                    </List.Item>
-                  	</List>		
+											<TimeInOut Employee={employee} />
 
-				<PayslipReport item={employee} />
-
-									
+											<PayslipReport item={employee} />
+										</Button.Group>
 										
 
                                         {/* <List>

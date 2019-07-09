@@ -520,7 +520,7 @@ const panes = [
 
 									<Form.Input name="province" label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.province}/>
 
-									<Form.Input name="country" label='Brgy' placeholder='Brgy'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
+									<Form.Input name="coutry" label='Brgy' placeholder='Brgy'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
 
 							</Form.Group>
 						</Segment>

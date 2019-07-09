@@ -104,12 +104,11 @@ return (
 	size='small'
 	>
 	<Header icon='check' content='Successfully'   />
-	
+		{this.state.isEdit !== true? "Timed In":"Timed Out"}
 	<div className="timeText">
 		<Modal.Content>
-		<h3>
-			{this.state.isEdit !== true? "Timed In":"Timed Out"}
-			{this.state.time}
+		<h3>{this.state.isEdit !== true? "Timed In":"Timed Out"}
+		{this.state.time}
 		</h3>
 		
 		</Modal.Content>

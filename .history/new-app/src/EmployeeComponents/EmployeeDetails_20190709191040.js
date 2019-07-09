@@ -115,7 +115,6 @@ editEmployee = async () => {
 		    contact:{
 			 type:"${this.state.type}"
 			 number:"${this.state.mobile_number}"
-			 number:"${this.state.mobile_number}"
 		    }
 		    address:{
 			 number:"${this.state.number}"
@@ -281,7 +280,6 @@ getEmployee = async () => {
 					{
 							type
 							number
-							
 						}
 					address
 					{
@@ -484,7 +482,7 @@ const panes = [
 							<Form.Group>
 								<Form.Input name="mobile_number" label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.mobile_number}/>
 								<Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.state.telephone} />
-								<Form.Input name="email_address" label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.email_address}/>
+								{/* <Form.Input name="email_address" label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.email_address}/> */}
 							</Form.Group>
 						</Segment>
 					</Grid.Column>
@@ -509,19 +507,12 @@ const panes = [
 				<Grid>
 					<Grid.Column width={11}>
 						<Segment raised>
-							<Form.Group  unstackable widths={2}>
+							<Form.Group>
 									<Form.Input name="number" label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.number}/>
-
 									<Form.Input name="street" label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.street}/>
-								</Form.Group>
-
-								<Form.Group widths={2}>
-									<Form.Input name="city" label='City / Town' placeholder='City / Town'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.city}/>
-
+									<Form.Input name="city" label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.city}/>
 									<Form.Input name="province" label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.province}/>
-
-									<Form.Input name="country" label='Brgy' placeholder='Brgy'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
-
+									<Form.Input name="country" label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
 							</Form.Group>
 						</Segment>
 					</Grid.Column>
@@ -618,7 +609,7 @@ const panes = [
 				</div>
 
 				{/* EmployeeOptions */}
-				<div className="Edi">
+				<div className="Edit">
 					{
 						this.state.isEdit?
 							<List horizontal>
@@ -627,7 +618,7 @@ const panes = [
 								</List.Item>
 								
 								<List.Item>
-									<Button negative onClick={this.handleCancel}> Cancel</Button>
+									<Button onClick={this.handleCancel}> Cancel</Button>
 								</List.Item>
 
 								
@@ -635,7 +626,7 @@ const panes = [
 						:
 						<List horizontal>
 							<List.Item>
-								<Button primary onClick={this.handleEdit}> Edit Details </Button>
+								<Button  onClick={this.handleEdit}> Edit Details </Button>
 							</List.Item>
 
 							<List.Item>

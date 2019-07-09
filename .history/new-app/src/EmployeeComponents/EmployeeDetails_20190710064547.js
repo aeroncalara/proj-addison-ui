@@ -281,7 +281,7 @@ getEmployee = async () => {
 					{
 							type
 							number
-							
+							email_address
 						}
 					address
 					{
@@ -509,19 +509,12 @@ const panes = [
 				<Grid>
 					<Grid.Column width={11}>
 						<Segment raised>
-							<Form.Group  unstackable widths={2}>
+							<Form.Group>
 									<Form.Input name="number" label='House No.' placeholder='House No.' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.number}/>
-
 									<Form.Input name="street" label='Street' placeholder='Street' readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.street}/>
-								</Form.Group>
-
-								<Form.Group widths={2}>
-									<Form.Input name="city" label='City / Town' placeholder='City / Town'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.city}/>
-
+									<Form.Input name="city" label='City' placeholder='City'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.city}/>
 									<Form.Input name="province" label='Province' placeholder='Province'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.province}/>
-
-									<Form.Input name="country" label='Brgy' placeholder='Brgy'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
-
+									<Form.Input name="country" label='Country' placeholder='Country'readOnly={this.state.isEdit?false:true}onChange={this.handleChange} value={this.state.country}/>
 							</Form.Group>
 						</Segment>
 					</Grid.Column>
