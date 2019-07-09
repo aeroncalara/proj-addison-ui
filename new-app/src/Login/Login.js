@@ -38,7 +38,6 @@ export default class Login extends Component {
 	
 	signIn = async () => {
 		const {username, password} = this.state;
-		console.log(this.state);
 		let sign_in_mutation = `
 			mutation{
 				signIn(

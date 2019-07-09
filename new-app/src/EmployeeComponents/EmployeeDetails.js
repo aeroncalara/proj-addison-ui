@@ -232,9 +232,37 @@ componentDidMount(){
 	//this.getTerminateEmployees();
 }
 
+	terminateEmployee = async () => {
+		let terminate_mutation =
+		`
+			mutation{
+				terminateEmployee(
+					employee_id: "${this.props.match.params.id}"
+				){
+					message
+					success
+				}
+			}
+		`;
+
+		await axios({
+			url: addison_api_url,
+			method: `post`,
+			data: {
+				query: terminate_mutation
+			}
+		}).then(result =>{
+			console.log(result.data.data.terminateEmployee);
+			const {message, success} = result.data.data.terminateEmployee;
+			alert(message, success);
+			this.props.history.push("/main/employees");
+		})
+
+		
+	}
+
 
 getEmployee = async () => {
-
 	let my_query = 
 	`
 		query
@@ -284,6 +312,7 @@ getEmployee = async () => {
 			query: my_query
 		}
 	})
+
 	this.setState({ employee: employee_variable.data.data.getEmployee });
 	//PERSONAL INFORMATION
 	this.setState({ first_name: this.state.employee.person.first, middle_name: this.state.employee.person.middle, last_name: this.state.employee.person.last });
@@ -301,7 +330,7 @@ getEmployee = async () => {
 	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
 	
 	//POSITION
-	this.setState({ position: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
+	this.setState({ title: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
 }
 
 getIncentives = async () =>{
@@ -324,8 +353,6 @@ getIncentives = async () =>{
 			query: incentive_query
 		}
 	})
-
-	console.log(incentive_variable.data.data.getAllActiveIncentivesOfEmployee);
 
 	this.setState({incentives: incentive_variable.data.data.getAllActiveIncentivesOfEmployee})
 }
@@ -512,7 +539,7 @@ const panes = [
 					<Grid.Column width={11}>
 						<Segment raised>
 							<Form.Group>
-								<Form.Input name="position" label='Position' placeholder='Possition' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.position}/>
+								<Form.Input name="title" label='Position' placeholder='Position' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.title}/>
 								<Form.Input name="description" label='Title Description' placeholder='Title Description'readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.description}/>
 								<Form.Input name="salary" label='Salary' placeholder='Salary' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.salary}/>
 							</Form.Group>
@@ -555,118 +582,120 @@ const panes = [
 	</Form>
 	</Tab.Pane> 
 	}
-	
 ]
-return (
-<div>
-	{/* EmployeeHeader */}
-	<div className = "EmpTop">
-		{/* ViewEmployeeimage */}
-		<div className='Img'>
-			<Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
-		</div>
+	return (
+		<div>
+			{/* EmployeeHeader */}
+			<div className = "EmpTop">
+				{/* ViewEmployeeimage */}
+				<div className='Img'>
+					<Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='massive' circular />
+				</div>
 
-		{/* eMPLoYEEname */}
-		<div className='EmpName'>
-			<Header as='h2'>
-				<Header.Content>
-					{employee.person.first} {employee.person.middle} {employee.person.last}
-					<Header.Subheader>  
-						{employee.position.title}
-					</Header.Subheader>
-				</Header.Content>
-			</Header> 
-		</div>
+				{/* eMPLoYEEname */}
+				<div className='EmpName'>
+					<Header as='h2'>
+						<Header.Content>
+							{employee.person.first} {employee.person.middle} {employee.person.last}
+							<Header.Subheader>  
+								{employee.position.title}
+							</Header.Subheader>
+						</Header.Content>
+					</Header> 
+				</div>
 
-		{/* EmployeeOptions */}
-		<div className="Edit">
-				{
-					this.state.isEdit?
+				{/* EmployeeOptions */}
+				<div className="Edit">
+					{
+						this.state.isEdit?
+							<List horizontal>
+								<List.Item>
+									<Button onClick={this.editEmployee}> Apply Changes </Button>
+								</List.Item>
+								
+								<List.Item>
+									<Button onClick={this.handleCancel}> Cancel</Button>
+								</List.Item>
+
+								
+							</List>
+						:
 						<List horizontal>
 							<List.Item>
-								<Button onClick={this.editEmployee}> Apply Changes </Button>
+								<Button  onClick={this.handleEdit}> Edit Details </Button>
 							</List.Item>
-							
+
 							<List.Item>
-								<Button onClick={this.handleCancel}> Cancel</Button>
+								<Button onClick={this.terminateEmployee} negative>Terminate Employee</Button>
 							</List.Item>
-						</List>
-					:
-					<List>
-						<List.Item>
-							<Button onClick={this.handleEdit}> Edit Details </Button>
-						</List.Item>
-					</List>			
-				}
-		</div>
-	</div>
-	
-		{/* EMployee contents */}
-		<div className='EmployeeContent'>
-			
-			{/* Details in the left */}
-			<div className ='DetailsBg'>
-
-				{/*contact Details in the left */}
-				<div className ='Details'>
-		
-					{/* Contact Details */}
-					<List animated verticalAlign='middle' selection>
-						<List.Item>
-							<i className="mobile icon"/>
-							+639167105579
-						</List.Item>
-
-						<List.Item>
-							<i className="text telephone icon"/>
-								+639167105579
-						</List.Item>
-
-						<List.Item
-							icon='mail' 
-							content={<a href='mailto:jack@semantic-ui.com'>
-								Dave@semantic-ui.com
-							</a>}
-						/>
-					</List>
-
-					<hr />
-
-					{/* Address in the left */}
-					<List animated verticalAlign='middle' selection >
-
-						<List.Item>
-							<i className="group icon"/> HR
-						</List.Item>
-
-						<List.Item>
-							<i className="map marker alternate icon"/>
-							Sydney Australia
-						</List.Item>
-						
-						<List.Item>
-							<i className="address card icon"/>
-							HR manager
-						</List.Item>
-
-					</List>
+						</List>			
+					}
 				</div>
 			</div>
-
-		{/* Tabs */}
-		<div className='Tabs'>
 			
-			<Tab style={{width:1500 ,height:10000 }}menu={{ secondary: true, pointing: true }} panes={panes}/>
-		
+				{/* EMployee contents */}
+				<div className='EmployeeContent'>
+					
+					{/* Details in the left */}
+					<div className ='DetailsBg'>
+
+						{/*contact Details in the left */}
+						<div className ='Details'>
+				
+							{/* Contact Details */}
+							<List animated verticalAlign='middle' selection>
+								<List.Item>
+									<i className="mobile icon"/>
+									+639167105579
+								</List.Item>
+
+								<List.Item>
+									<i className="text telephone icon"/>
+										+639167105579
+								</List.Item>
+
+								<List.Item
+									icon='mail' 
+									content={<a href='mailto:jack@semantic-ui.com'>
+										Dave@semantic-ui.com
+									</a>}
+								/>
+							</List>
+
+							<hr />
+
+							{/* Address in the left */}
+							<List animated verticalAlign='middle' selection >
+
+								<List.Item>
+									<i className="group icon"/> HR
+								</List.Item>
+
+								<List.Item>
+									<i className="map marker alternate icon"/>
+									Sydney Australia
+								</List.Item>
+								
+								<List.Item>
+									<i className="address card icon"/>
+									{this.state.employee.position.title}
+								</List.Item>
+							</List>
+						</div>
+					</div>
+
+				{/* Tabs */}
+				<div className='Tabs'>
+					<Tab style={{width:1500 ,height:10000 }}menu={{ secondary: true, pointing: true }} panes={panes}/>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-)
+		)
 }
 
-newMethod() {
-	return 'Time Logs';
-}
+	newMethod() {
+		return 'Time Logs';
+	}
 }
 
 
