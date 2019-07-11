@@ -133,7 +133,7 @@ render() {
 	                    </List.Item>
                   	</List>		
 
-				<PayslipReport item={employee} />
+				{/* <PayslipReport item={employee} /> */}
 
 									
 										
@@ -150,7 +150,7 @@ render() {
                                             	<List.Content verticalAlign="top" ><Payslipt item={employee} /></List.Content>
                                             </List.Item>
                                         </List> */}
-                                    </div>
+                                    </div> 
                                    
 
                                 </List>

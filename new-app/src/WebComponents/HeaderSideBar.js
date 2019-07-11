@@ -92,7 +92,7 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 				<NavLink activeClassName="active" to="/main/timelogs/">
 					<Menu.Item>
 						<i className="clock icon" />
-						TimeLogs
+						Hours Rendered
 				
 					</Menu.Item>
 				</NavLink>

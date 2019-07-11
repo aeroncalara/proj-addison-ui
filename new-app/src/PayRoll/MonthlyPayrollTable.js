@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {List} from 'semantic-ui-react';
 import ViewPayRoll from './ViewPayRoll';
 import './PayRollTable.css';
 	
@@ -18,13 +19,17 @@ class MonthlyPayrollTable extends Component {
 			return (
 				<tr key={payroll._id}>
 					<td data-label="Release date"> 
-						{payroll.release_date}
+						{payroll.start_date} - {payroll.end_date}
 					</td>
 					<td data-label="Total pay">
 						{payroll.total_pay}
 					</td>
-					<td data-label="Age">
-						<ViewPayRoll item = {payroll._id}/>
+					<td data-label="Action">
+						<List horizontal>
+							<List.Item>
+								<ViewPayRoll item = {payroll._id}/>	
+							</List.Item>
+						</List>
 					</td>
 				</tr> 
 			)
@@ -36,10 +41,9 @@ class MonthlyPayrollTable extends Component {
 				<table className="ui teal table celled">
 				<thead>
 					<tr>
-						<th>DATE RELEASED</th>
+						<th>DATE INTERVAL</th>
 						<th>TOTAL PAY</th>
-						<th>ACTION</th>
-					
+						<th>ACTIONS</th>
 					</tr>
 				</thead>
 

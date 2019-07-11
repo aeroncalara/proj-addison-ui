@@ -6,6 +6,7 @@ import Deduction from '../EmployeeComponents/Deduction';
 import {Button ,Header, Image, Dropdown,Tab, List, Form, Icon, Label, Popup , Modal ,Segment,Grid} from 'semantic-ui-react'
 import './EmployeeDetails.css';
 import TimeLogs from '../TimeInOutComponents/TimeLogs';
+import PayslipReport from '../EmployeeComponents/PayslipReport';
 
 import axios from 'axios';      
   
@@ -25,6 +26,7 @@ constructor(props) {
 super(props)
 this.state = {
 	item: this.props.item,
+	is_fetching: true,
 	visible: true,
 	isEdit : false,
 	first_name: '',
@@ -333,6 +335,7 @@ getEmployee = async () => {
 	
 	//POSITION
 	this.setState({ title: this.state.employee.position.title, description: this.state.employee.position.description, salary: this.state.employee.position.salary });
+	this.setState({is_fetching: false});
 }
 
 getIncentives = async () =>{
@@ -618,7 +621,7 @@ const panes = [
 				</div>
 
 				{/* EmployeeOptions */}
-				<div className="Edi">
+				<div className="Edit">
 					{
 						this.state.isEdit?
 							<List horizontal>
@@ -694,6 +697,20 @@ const panes = [
 									{this.state.employee.position.title}
 								</List.Item>
 							</List>
+
+							<hr></hr>
+
+							{
+								this.state.is_fetching?
+								<p>Loading</p>
+								:
+								<List>
+									<List.Item>
+										<PayslipReport item={this.state.employee}/>
+									</List.Item>
+								</List>
+							}
+							
 						</div>
 					</div>
 

@@ -123,11 +123,11 @@ class EmployeeTable extends Component {
 							</List.Item>
 
 
-							<List.Item>
+							{/* <List.Item>
 								<List.Content>
 									<PayslipReport item={employee}/>
 								</List.Content>
-							</List.Item>							
+							</List.Item>							 */}
 						</List>
 					</td>
 				</tr> 

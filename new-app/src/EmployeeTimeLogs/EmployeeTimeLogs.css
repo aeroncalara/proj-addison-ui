@@ -10,7 +10,6 @@
         /* justify-content: center; */
    
         /* color: #00cca3; */
-       
       }
   
     
@@ -71,7 +70,5 @@
   
   
   .payrollbutton{ 
-    margin-left: 83%;
-    
-  
+    text-align: center;
   }
