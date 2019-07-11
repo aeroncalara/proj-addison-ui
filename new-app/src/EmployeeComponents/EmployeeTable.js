@@ -104,7 +104,9 @@ class EmployeeTable extends Component {
 
 					<td data-label="Contact Info">  
 						<h4 className="ui image header">
-							{contactTable}
+							<div className="sub header">
+								{employee.person.contact[0].number}
+							</div>
 						</h4>
 					</td>
 

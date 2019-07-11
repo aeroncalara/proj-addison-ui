@@ -70,7 +70,6 @@ this.state = {
 		contact:
 			{
 				type:'',
-				telephone:'',
 				number:'',
 			},
 
@@ -116,7 +115,6 @@ editEmployee = async () => {
 		    date_of_birth:"${this.state.date_of_birth}"
 		    contact:{
 			 type:"${this.state.type}"
-			 number:"${this.state.mobile_number}"
 			 number:"${this.state.mobile_number}"
 		    }
 		    address:{
@@ -177,7 +175,6 @@ editEmployee = async () => {
 		}
 	})
 
-	console.log(edited_employee);
 	this.setState({ employee: edited_employee.data.data.editEmployee });
 	this.setState({ first_name: this.state.employee.person.first, middle_name: this.state.employee.person.middle, last_name: this.state.employee.person.last });
 	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
@@ -388,16 +385,18 @@ getDeductions = async () => {
 }
 
 getTimeLogs = async () =>{
-    let timelogs_query = 
-    `
-      query{
-        getAttendanceOfEmployee(employee_id:"${this.props.match.params.id}"){
-          sessions{
-            time_in
-            time_out
-          }
-        }
-      }
+	let timelogs_query = 
+	`
+		query{
+    		getAttendanceOfEmployee(employee_id:"${this.props.match.params.id}"){
+				sessions{
+					date 
+					time_in
+					time_out
+					difference
+				}
+        	}
+      	}
     `
   
     let timelogs_variable = await axios({
@@ -486,7 +485,7 @@ const panes = [
 						<Segment raised>
 							<Form.Group>
 								<Form.Input name="mobile_number" label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.mobile_number}/>
-								<Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.state.telephone} />
+								{/* <Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.state.telephone} /> */}
 								<Form.Input name="email_address" label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.email_address}/>
 							</Form.Group>
 						</Segment>

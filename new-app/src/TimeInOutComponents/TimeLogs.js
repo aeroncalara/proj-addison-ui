@@ -22,7 +22,7 @@ class TimeLogs extends Component {
     const sessions_table = sessions.map((session, index) =>{
       return(
         <tr key={session._id}>
-          <td>{session.time_in}</td>
+          <td>{session.date}</td>
           <td>{session.time_in}</td>
           <td>{session.time_out}</td>
         </tr> 

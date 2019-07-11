@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import {Button ,Header, Tab, Form, Icon, Grid, Segment,Label, Modal }from 'semantic-ui-react'
+import {Button, Tab, Form, Grid, Segment,Label,  }from 'semantic-ui-react'
 import './AddEmployeeForm.css';
-import { NavLink} from 'react-router-dom';
-import {Mutation } from 'react-apollo';
-const { ADD_EMPLOYEE } = require('../Queries/Queries')
+import axios from 'axios';
+import { addison_api_url } from '../Utilities/config';
 
 // TABS
 class AddEmployeeForm extends Component {
@@ -38,6 +37,8 @@ class AddEmployeeForm extends Component {
 			salary:0,
 			open: false,
 		}
+
+		this.addEmployee = this.addEmployee.bind(this);
 	}
 
 	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
@@ -114,6 +115,71 @@ class AddEmployeeForm extends Component {
 
 	handleChange = (e, type) => {
 		this.setState({[type]: e.target.value})
+	}
+
+	addEmployee = async () => {
+		let add_employee_mutation = 
+		`
+			mutation{
+				addEmployee(
+					person: {
+						first: "${this.state.firstName}"
+						middle: "${this.state.middleName}"
+						last: "${this.state.lastName}"
+						date_of_birth: "${this.state.date_of_birth}"
+						contact: [
+							{
+								type: "MOBILE"
+								number: "${this.state.mobile}"
+							},
+
+							{
+								type: "TELEPHONE"
+								number: "${this.state.telephone}"
+							},
+						]
+						address: [
+							{
+								number: "${this.state.number}"
+								street: "${this.state.street}"
+								city: "${this.state.city}"
+								province: "${this.state.province}"
+								country: "${this.state.country}"
+							}
+						]
+					}
+					sss: "${this.state.sss}"
+					tin: "${this.state.tin}"
+					philhealth: "${this.state.philhealth}"
+					hdmf: "${this.state.hdmf}"
+					position: {
+						title: "${this.state.title}"
+						description: "${this.state.description}"
+						salary: ${this.state.salary}
+					}
+				){
+					_id
+				}
+			}
+		`
+
+		console.log(add_employee_mutation);
+
+		await axios({
+			url: addison_api_url,
+			method: `post`,
+			data: {
+				query: add_employee_mutation
+			}
+		}).then(result =>{
+			const {_id} = result.data.data.addEmployee
+			if(_id){
+				alert("Added employee succesfully!");
+				this.props.history.push("/main/employees")
+			}else{
+				alert("Something went wrong");
+			}
+		})
 	}
 
 	render() {
@@ -256,7 +322,7 @@ class AddEmployeeForm extends Component {
 								<Form.Input label='Province' placeholder='province' onChange={(e) => this.handleChange(e, 'province')}
 								value={this.state.province}/>
 								
-								<Form.Input label='Brgy' placeholder='Brgy' onChange={(e) => this.handleChange(e, 'country')} 
+								<Form.Input label='Country' placeholder='Country' onChange={(e) => this.handleChange(e, 'country')} 
 								value={this.state.country}/>
 							</Form.Group>
 						</Segment>
@@ -304,135 +370,25 @@ class AddEmployeeForm extends Component {
 			},
 		]
 		return (
-		<div>
+			<div>
+				<div className>
+					<div className>
 
-		{/* EmployeeHeader */}
-		<div className = "EmployeeTop">
-			<div className='AppName'>
-				<Header as='h2'>
-					<Header.Content>
-						<i className="plus icon"/>
-							Add Employee
-					</Header.Content>
-				</Header> 
-			</div>
+					</div>
 
-			{/* EmployeeOptions */}
-				<div className="Edit">
-					<div className="Save">
-
+					<div className="button_group">
 						<Button.Group>
-							<Button animated negative fluid onClick={this.closeConfigShow(true, false)}>
-								<Button.Content visible>
-									<Icon name='close' />
-								</Button.Content>
-
-								<Button.Content hidden>
-									Cancel
-								</Button.Content>
-							</Button>    
-					<Button.Or />
-		<Mutation mutation={ADD_EMPLOYEE}>
-			{addEmployee => (
-				<Button animated positive fluid onClick={() => {
-					addEmployee({ variables: {
-					first: this.state.firstName,
-					middle: this.state.middleName,
-					last: this.state.lastName,
-					date_of_birth: this.state.date_of_birth,
-
-					contact: [{type: this.state.type, number: this.state.number,}],
-					address: [{number: this.state.number, street: this.state.street, city: this.state.city, 
-								province: this.state.province, country: this.state.country,}],
-
-					title: this.state.title,
-					description: this.state.description,
-					salary:parseFloat(this.state.salary),
-				
-					sss: this.state.sss,
-					tin: this.state.tin,
-					philhealth: this.state.philhealth,
-					hdmf: this.state.hdmf
-					}})
-					this.setState({  firstName: '',
-					middleName: '',
-					lastName: '',
-					date_of_birth: '',
-					
-					type:'',
-					mobile: '',
-					telephone: '',
-					email: '',
-				
-					number:'',
-					street: '',
-					town: '',
-					city: '',
-					province:'',
-					country: '',
-				
-					sss:'',
-					tin:'',
-					philhealth:'',
-					hdmf: '',
-				
-					title:'',
-					description:'',
-					salary:'',})
-					alert("adding complete")
-				}}>
-
-				<Button.Content visible>
-					<Icon name='save' />
-				</Button.Content>
-
-				<Button.Content hidden>
-						Save
-				</Button.Content>     
-			</Button>
-			)}
-		</Mutation>
-						</Button.Group>   
-						
-						<Modal
-							open={open}
-							closeOnEscape={closeOnEscape}
-							closeOnDimmerClick={closeOnDimmerClick}
-							onClose={this.close}
-						>
-							<Modal.Header>Cancel Adding</Modal.Header>
-								<Modal.Content>
-									<p>Are you sure you want to Cancel adding Employee?</p>
-								</Modal.Content>
-
-								<Modal.Actions>
-									<Button onClick={this.close} negative>
-										No
-									</Button>
-									<NavLink exact to="/main/employees">
-										<Button
-											onClick={this.handleCancel}
-											positive
-											labelPosition="right"
-											icon="checkmark"
-											content="Yes"
-										/>
-									</NavLink>
-								</Modal.Actions>
-							</Modal>
+							<Button primary onClick={this.addEmployee}>Add Employee</Button>
+							<Button secondary>Cancel</Button>
+						</Button.Group>
 					</div>
 				</div>
-
-			</div>
-
-
-			{/* EMployee contents */}
-		<div className='EmployeeContent'>
-			<div className='Tabs'>    
-				<Tab style={{width:1500 ,height:10000 }} menu={{ secondary: true, pointing: true }}panes={panes} />
+			<div className=''>
+				<div className='Tabs'>    
+					<Tab style={{width:1500 ,height:10000 }} menu={{ secondary: true, pointing: true }} panes={panes} />
+				</div>
 			</div>
 		</div>
-	</div>
 		)
 	}
 }

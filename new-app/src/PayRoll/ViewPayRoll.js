@@ -98,6 +98,7 @@ export default class ViewPayRoll extends Component {
 		pdf.text(160, 46, "TOTAL");
 
 		let current_y = 50;
+		let overall = 0;
 		this.state.payroll.entities.map(entity => {
 			
 			let incentives_total = 0;
@@ -109,6 +110,7 @@ export default class ViewPayRoll extends Component {
 			else entity.deductions.map(deduction => {deductions_total += deduction.amount});
 			
 			let total = incentives_total - deductions_total + entity.base_salary;
+			overall += total;
 			
 			pdf.text(10, current_y, entity.employee_name);
 			pdf.text(55, current_y, entity.base_salary.toFixed(2).toString());
@@ -118,8 +120,11 @@ export default class ViewPayRoll extends Component {
 
 
 			current_y += 4;
-
 		})
+
+		pdf.text(160, current_y+10, "IN TOTAL: " +overall.toString());
+
+
 		pdf.line(15, 195, 50, 195);
         pdf.text(15, 200, "         APPROVED BY:")
 
