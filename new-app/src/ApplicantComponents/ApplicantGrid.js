@@ -5,6 +5,7 @@ import ViewApplicant from '../ApplicantComponents/ViewApplicant';
 
 import axios from 'axios';        
 import HIre from './HIre';
+import { addison_api_url } from '../Utilities/config';
 
 let my_query = 
 `query
@@ -51,7 +52,7 @@ class ApplicantGrid extends Component
     
       getApplicants = async () => {
         let Applicant_variable = await axios({
-          url: `http://localhost:4000`,
+          url: addison_api_url,
           method: `post`,
           data: {
             query: my_query

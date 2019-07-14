@@ -5,15 +5,17 @@ import { List, Image, Button } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
 import AttendanceReport from './AttendanceReport';
 import PayslipReport from './PayslipReport';
-import axios from 'axios';        
+import axios from 'axios';
+import {addison_api_url} from '../Utilities/config'
 
 
 let my_query = 
 `query
 {
-    getAllActivatedEmployees
+    getAllEmployees
     {
-    _id
+	_id
+	employee_number
     person
     {
         first
@@ -22,8 +24,9 @@ let my_query =
         date_of_birth
         contact
         {
-            type
-            number
+			mobile_number
+			telephone_number
+			email_address
           }
         address
         {
@@ -54,36 +57,26 @@ class EmployeeTable extends Component {
 	}
 
 	componentDidMount(){
-		this.getAllActivatedEmployees();
+		this.getAllEmployees();
 	}
 
-	getAllActivatedEmployees = async () => {
+	getAllEmployees = async () => {
     	let employee_variable = await axios({
-      		url: `http://localhost:4000`,
+      		url: addison_api_url,
       		method: `post`,
       		data: {
         		query: my_query
       		}
-    	})
+		})
+		
+		console.log({employee_variable})
 
-    	this.setState({ employees: employee_variable.data.data.getAllActivatedEmployees });
+    	this.setState({ employees: employee_variable.data.data.getAllEmployees });
 	  }
 
 	render() {
     	let employees = this.state.employees;
     	let employeeTable = employees.map((employee, index) => {
-			let contactTable = employee.person.contact.map((contactInformation, key)=>{
-				return(
-						<div key={key} className="content">
-						{/* {contactInformation.type} */}
-
-							<div className="sub header">
-								{contactInformation.number}
-							</div>
-						</div>
-					)
-				})
-
 			return (
 				<tr key={employee._id}>
 					<td data-label="Name">
@@ -99,13 +92,13 @@ class EmployeeTable extends Component {
 					</td>
 
 					<td data-label="Address">
-						{employee.person.address[0].city}
+						{employee.person.address[0].city + ", " + employee.person.address[0].province}
 					</td>
 
 					<td data-label="Contact Info">  
 						<h4 className="ui image header">
 							<div className="sub header">
-								{employee.person.contact[0].number}
+								{employee.person.contact.mobile_number}
 							</div>
 						</h4>
 					</td>
@@ -118,11 +111,11 @@ class EmployeeTable extends Component {
 								</List.Content>
 							</List.Item>
 
-							<List.Item>
+							{/* <List.Item>
 								<List.Content>
 									<TimeInOut item={employee._id} />
 								</List.Content>
-							</List.Item>
+							</List.Item> */}
 
 
 							{/* <List.Item>
@@ -143,7 +136,7 @@ class EmployeeTable extends Component {
         <table className="ui teal table celled">
 			<thead>
 				<tr>
-					<th>Employee</th>
+					<th>Employee JM UNLIMITED</th>
 					<th>Address</th>
 					<th>Contact Number.</th>
 					<th> 

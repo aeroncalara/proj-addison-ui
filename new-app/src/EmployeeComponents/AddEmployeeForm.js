@@ -17,9 +17,9 @@ class AddEmployeeForm extends Component {
 			lastName: '',
 			birthDate: '',
 
-			mobile: '',
-			telephone: '',
-			email: '',
+			mobile_number: '',
+			telephone_number: '',
+			email_address: '',
 
 			number:'',
 			street: '',
@@ -58,10 +58,9 @@ class AddEmployeeForm extends Component {
 			lastName: '',
 			date_of_birth: '',
 			
-			type:'',
-			mobile: '',
-			telephone: '',
-			email: '',
+			mobile_number: '',
+			telephone_number: '',
+			email_address: '',
 
 			number:'',
 			street: '',
@@ -90,10 +89,9 @@ class AddEmployeeForm extends Component {
 		lastName: '',
 		date_of_birth: '',
 		
-		type:'',
-		mobile: '',
-		telephone: '',
-		email: '',
+		mobile_number: '',
+		telephone_number: '',
+		email_address: '',
 
 		number:'',
 		street: '',
@@ -127,17 +125,11 @@ class AddEmployeeForm extends Component {
 						middle: "${this.state.middleName}"
 						last: "${this.state.lastName}"
 						date_of_birth: "${this.state.date_of_birth}"
-						contact: [
-							{
-								type: "MOBILE"
-								number: "${this.state.mobile}"
-							},
-
-							{
-								type: "TELEPHONE"
-								number: "${this.state.telephone}"
-							},
-						]
+						contact: {
+							mobile_number: "${this.state.mobile_number}"
+							telephone_number: "${this.state.telephone_number}"
+							email_address: "${this.state.email_address}"
+						}
 						address: [
 							{
 								number: "${this.state.number}"
@@ -269,14 +261,14 @@ class AddEmployeeForm extends Component {
 							<Segment raised>
 					
 								<Form.Group>													    
-									<Form.Input label='Mobile Number' placeholder='Mobile Number'  onChange={(e) => this.handleChange(e, 'mobile')} value={this.state.mobile}/>
+									<Form.Input label='Mobile Number' placeholder='Mobile Number'  onChange={(e) => this.handleChange(e, 'mobile_number')} value={this.state.mobile_number}/>
 
 									<Form.Input label='Telephone Number' 
-									placeholder='Telephone Number' onChange={(e) => this.handleChange(e, 'telephone')}
-									value={this.state.telephone}/>
+									placeholder='Telephone Number' onChange={(e) => this.handleChange(e, 'telephone_number')}
+									value={this.state.telephone_number}/>
 
-									<Form.Input label='Email' placeholder='Email'  onChange={(e) => this.handleChange(e, 'email')} 
-									value={this.state.email}/>
+									<Form.Input label='Email' placeholder='Email'  onChange={(e) => this.handleChange(e, 'email_address')} 
+									value={this.state.email_address}/>
 								</Form.Group>
 						
 							</Segment>
@@ -352,7 +344,7 @@ class AddEmployeeForm extends Component {
 						<Segment raised >
 					
 							<Form.Group widths="equal">
-								<Form.Input label='Possition' placeholder='Possition'  onChange={(e) => this.handleChange(e, 'title')}
+								<Form.Input label='Position' placeholder='Position'  onChange={(e) => this.handleChange(e, 'title')}
 								value={this.state.title}/>
 
 								<Form.Input label='Salary' placeholder='Salary'  onChange={(e) => this.handleChange(e, 'salary')} 

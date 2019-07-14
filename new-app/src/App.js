@@ -6,6 +6,7 @@ import './index.css';
 import HomeLandingPage from './HomeComponents/HomeLandingPage'
 import HeaderSideBar from './WebComponents/HeaderSideBar';
 import Login from './Login/Login';
+import EmployeeLounge from './EmployeeTimeLogs/EmployeeLounge';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 
@@ -46,6 +47,7 @@ export default class App extends Component {
 								<AuthRoute path="/main/timelogs/" exact component={HeaderSideBar} />
 								<AuthRoute path="/main/payroll/" exact component={HeaderSideBar} />
 								<AuthRoute path="/main/addEmployee/" exact component={HeaderSideBar} />
+								<Route path="/utility/lounge" exact component={EmployeeLounge}></Route>
 
 							</Switch>
 

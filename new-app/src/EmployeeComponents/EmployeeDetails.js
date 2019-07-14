@@ -35,9 +35,8 @@ this.state = {
 	date_of_birth: '',
 
 	mobile_number: '',
-	telephone: '',
+	telephone_number: '',
 	email_address: '',
-	type: '',
 
 	number:'',
 	street: '',
@@ -114,8 +113,9 @@ editEmployee = async () => {
 		    last:"${this.state.last_name}"
 		    date_of_birth:"${this.state.date_of_birth}"
 		    contact:{
-			 type:"${this.state.type}"
-			 number:"${this.state.mobile_number}"
+			 mobile_number:"${this.state.mobile_number}"
+			 telephone_number:"${this.state.telephone_number}"
+			 email_address: "${this.state.email_address}"
 		    }
 		    address:{
 			 number:"${this.state.number}"
@@ -137,6 +137,7 @@ editEmployee = async () => {
 		  
 		){
 		  _id
+		  employee_number
 		  person{
 		    first
 		    middle
@@ -150,8 +151,9 @@ editEmployee = async () => {
 			 country
 		    }
 		    contact{
-			 type
-			 number
+				mobile_number
+				telephone_number
+				email_address
 		    }
 		  }
 		  position{
@@ -180,13 +182,9 @@ editEmployee = async () => {
 	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
 	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
 	//CONTACT
-	if(this.state.employee.person.contact[0].type == "MOBILE"){
-		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
-	}else{
-		this.setState({ telephone: this.state.employee.person.contact[0].number});
-	}
-	
-	this.setState({type: this.state.employee.person.contact[0].type});
+	this.setState({ mobile_number: this.state.employee.person.contact.mobile_number});
+	this.setState({ telephone_number: this.state.employee.person.contact.telephone_number});
+	this.setState({ email_address: this.state.employee.person.contact.email_address});
 
 	//ADDRESS
 	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
@@ -202,12 +200,10 @@ handleCancel = () => {;
 	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
 	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
 	//CONTACT
-	if(this.state.employee.person.contact[0].type == "MOBILE"){
-		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
-	}else{
-		this.setState({ telephone: this.state.employee.person.contact[0].number});
-	}
-	this.setState({type: this.state.employee.person.contact[0].type});
+	
+	this.setState({ mobile_number: this.state.employee.person.contact.mobile_number });
+	this.setState({ telephone_number: this.state.employee.person.contact.telephone_number });
+	this.setState({ email_address: this.state.employee.person.contact.email_address });
 
 	//ADDRESS
 	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
@@ -278,8 +274,9 @@ getEmployee = async () => {
 					date_of_birth
 					contact
 					{
-							type
-							number
+							mobile_number
+							telephone_number
+							email_address
 							
 						}
 					address
@@ -320,12 +317,9 @@ getEmployee = async () => {
 	this.setState({ date_of_birth: this.state.employee.person.date_of_birth});
 	this.setState({ tin: this.state.employee.tin, sss: this.state.employee.sss, philhealth: this.state.employee.philhealth, hdmf: this.state.employee.hdmf });
 	//CONTACT
-	if(this.state.employee.person.contact[0].type == "MOBILE"){
-		this.setState({ mobile_number: this.state.employee.person.contact[0].number});
-	}else{
-		this.setState({ telephone: this.state.employee.person.contact[0].number});
-	}
-	this.setState({type: this.state.employee.person.contact[0].type});
+	this.setState({ mobile_number: this.state.employee.person.contact.mobile_number});
+	this.setState({ telephone_number: this.state.employee.person.contact.telephone_number});
+	this.setState({	email_address: this.state.employee.person.contact.email_address});
 
 	//ADDRESS
 	this.setState({ number: this.state.employee.person.address[0].number, street: this.state.employee.person.address[0].street, city: this.state.employee.person.address[0].city, province: this.state.employee.person.address[0].province, country: this.state.employee.person.address[0].country});
@@ -485,7 +479,7 @@ const panes = [
 						<Segment raised>
 							<Form.Group>
 								<Form.Input name="mobile_number" label='Mobile Number' placeholder='Mobile Number' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.mobile_number}/>
-								{/* <Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.state.telephone} /> */}
+								<Form.Input name="telephone_number" label='Telephone Number' placeholder='Telephone Number'readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.telephone_number} />
 								<Form.Input name="email_address" label='Email' placeholder='Email' readOnly={this.state.isEdit?false:true}  onChange={this.handleChange} value={this.state.email_address}/>
 							</Form.Group>
 						</Segment>
