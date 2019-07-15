@@ -53,6 +53,7 @@ class EmployeeTable extends Component {
 		super(props);
 		this.state = { 
 			employees: [],
+			is_fetching: true,
 		}
 	}
 
@@ -69,14 +70,17 @@ class EmployeeTable extends Component {
       		}
 		})
 		
-		console.log({employee_variable})
-
-    	this.setState({ employees: employee_variable.data.data.getAllEmployees });
+		this.setState({ employees: employee_variable.data.data.getAllEmployees });
+		//this.setState({ is_fetching: false });
 	  }
 
 	render() {
-    	let employees = this.state.employees;
-    	let employeeTable = employees.map((employee, index) => {
+		let {employees, is_fetching} = this.state;
+		let employeeTable;
+
+		console.log(employees);
+		
+    	employeeTable = employees.map((employee, index) => {
 			return (
 				<tr key={employee._id}>
 					<td data-label="Name">
@@ -90,6 +94,8 @@ class EmployeeTable extends Component {
 							</div>
 						</h4>
 					</td>
+
+					<td>{employee.employee_number}</td>
 
 					<td data-label="Address">
 						{employee.person.address[0].city + ", " + employee.person.address[0].province}
@@ -136,9 +142,11 @@ class EmployeeTable extends Component {
         <table className="ui teal table celled">
 			<thead>
 				<tr>
-					<th>Employee JM UNLIMITED</th>
+					<th>Employee</th>
+					<th>Employee Number</th>
 					<th>Address</th>
 					<th>Contact Number.</th>
+					
 					<th> 
 						<List divided horizontal>
 							<List.Item>
