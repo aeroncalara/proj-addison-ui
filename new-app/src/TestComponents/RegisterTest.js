@@ -33,21 +33,21 @@ class RegisterTest extends React.Component{
             <div className = "userReg">
                 <label htmlFor = "Email">Email Add:</label>
                     <input type = "text" name = "email" className = "login-input"
-                        placeholder = "Email Address"               
+                                      
                         />
             </div>
     
             <div className = "userReg">
                 <label htmlFor = "Username">Username:</label>
                     <input type = "text" name = "username" className = "login-input"
-                        placeholder = "Username"               
+                                      
                         />
             </div>
 
             <div className = "userReg">
                 <label htmlFor = "password">Password:</label>
                 <input type = "password" name = "password" className = "login-input"
-                    placeholder = "Password"               
+                                 
                     />
             </div>
 

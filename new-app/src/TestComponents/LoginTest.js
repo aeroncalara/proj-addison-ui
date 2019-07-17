@@ -51,14 +51,14 @@ class LoginTest extends Component {
                 <div className = "userIn">
                     <label htmlFor = "username">Username:</label>
                     <input type = "text"  name = "username" className = "login-input"
-                    placeholder = "Username"               
+                       
                     />
                 </div>
             
                 <div className = "userIn">
                     <label htmlFor = "password">Password:</label>
                     <input type = "password"  name = "password" className = "login-input"
-                    placeholder = "Password"               
+                                 
                         />
                     </div>
             
