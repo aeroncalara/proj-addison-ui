@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 // import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import './index.css';
+import './Dashboard.css';
 import HomeLandingPage from './HomeComponents/HomeLandingPage'
 import HeaderSideBar from './WebComponents/HeaderSideBar';
 import Login from './Login/Login';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
+
 
 
 const client = new ApolloClient({

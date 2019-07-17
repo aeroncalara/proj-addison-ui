@@ -20,9 +20,7 @@ body {
 } 
 
 
-
 .navigation {
-  
   list-style: none;
   margin: 0 auto;
   margin-left: 51.5%;
@@ -74,14 +72,6 @@ body {
   .navigation li:last-of-type a {
     border-bottom: none;
   }
-}
-
-
-
-
-
-.active{
-  /* color:red; */
 }
 
 code {

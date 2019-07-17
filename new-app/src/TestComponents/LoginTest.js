@@ -33,9 +33,7 @@ class LoginTest extends Component {
         return( 
             
         <div className = "box">
-            
-      
-            
+        
          <div className = "container">
 
             <a className = "title">
