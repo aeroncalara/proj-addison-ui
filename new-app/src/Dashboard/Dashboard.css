@@ -1,78 +1,19 @@
-*{
-    margin: 0;
-padding: 0;
+.container{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-family: 'Kanit', sans-serif;
 }
-.dashPage{
-height: 100vh;
 
+.emailDash{
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin-left: 7%;
+    margin-top: 7%;
+    width: 18%;
 }
-.navDash {
-    list-style-type: none;
-    overflow: hidden;
-    background-color: #24292e;
-  }
-ul {
-    margin-right:2%;
-    margin-bottom: 0; 
-    }
-  
-li {
-    float: right;
-    display: inline-block;
-    border-left: none;
+
+.emailDash .Chart{
     
-    }
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    }
-.navDash .logo{
-   padding: 12px 8px;
-}
- .navDash .icon{
-      vertical-align: middle;
-      border-style: none;
-      width: 25px;
-    }
-
-.sideDash{
-  height: 100%;
-  width: 13%;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  background-color: #24292e;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-.sideDash .tabs{
-    /* padding: 6px 8px 6px 40px; */
-    text-decoration: none;
-    text-align: center;
-    font-size: 15px;
-    color: white;
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: normal
-}
-
-.sideDash .nameDash{
-    color: white!important;
-    padding-left: 12%;
-}
-.sideDash .nameDash a{
-    color: #0c93b1;
-    text-decoration: none;
-}
-.sideDash .nameDash a:hover{
-color: #55cae4
-}
-
-i.icon, i.icons {
-    color: #fff;
-    font-size: 1.5em;
-    padding-left: 45%;
 }
