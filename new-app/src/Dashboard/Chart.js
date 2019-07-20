@@ -1,40 +1,74 @@
 import React from "react";
 import { render } from "react-dom";
+import { Animate } from "react-move";
+import {
+  easeSinOut,
+  easeQuadIn,
+  easeQuadInOut,
+  easeLinear,
+  easeCubicInOut
+} from "d3-ease";
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./Chart.css";
 
-function CustomContentProgressbar(props) {
-  const { children, ...otherProps } = props;
+class AnimatedProgressbar extends React.Component {
+  state = {
+    isAnimated: false
+  };
 
-  return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%"
-      }}
-    >
-      <div style={{ position: "absolute" }}>
-        <CircularProgressbar {...otherProps} />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
+  componentDidMount() {
+    this.setState({
+      isAnimated: true
+    });
+  }
+
+  render() {
+    return (
+      <Animate
+        start={() => ({
+          percentage: 0
+        })}
+        update={() => ({
+          percentage: [this.state.isAnimated ? this.props.percentage : 0],
+          timing: {
+            duration: this.props.duration * 1000,
+            ease: this.props.easingFunction
+          }
+        })}
       >
-        {props.children}
-      </div>
-    </div>
-  );
+        {({ percentage }) => {
+          const roundedPercentage = Math.round(percentage);
+          return (
+            <CircularProgressbar
+              percentage={roundedPercentage}
+              text={`${roundedPercentage}%`}
+            />
+          );
+        }}
+      </Animate>
+    );
+  }
+  abstract;
 }
 
-
-
-export default CustomContentProgressbar;
+class Chart extends React.Component {
+  render() {
+    return (
+      <div
+        style={{
+          width: "200px",
+          height: "200px"
+        }}
+      >
+        <AnimatedProgressbar
+          percentage={66}
+          duration={1.4}
+          /* Can swap this out with other easing functions from d3-ease */
+          easingFunction={easeQuadInOut}
+        />
+      </div>
+    );
+  }
+}
+export default Chart;

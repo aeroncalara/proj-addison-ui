@@ -29,17 +29,10 @@ class Dashboard extends Component {
     }
     render(){
         return(
-            <div className = "container">
-                <Navbar></Navbar>
-                    <div className ="emailDash">
-                    Email
-                    </div>
-                        <div className ="emailDash">
-                            <Chart></Chart>
-                    </div>
-                    <div className ="emailDash">
-                    </div>
-            </div>   
+            <div>
+            <Navbar></Navbar>
+           
+            </div> 
         )
     }
 }

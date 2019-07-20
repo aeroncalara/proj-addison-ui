@@ -1,19 +1,65 @@
 .container{
     display: flex;
-    justify-content: center;
-    position: absolute;
+    /* justify-content: center; */
     font-family: 'Kanit', sans-serif;
+    padding: 3%;
+    margin-left: 15%;
 }
 
 .emailDash{
     border-radius: 25px;
-    border: 2px solid #73AD21;
+    /* border: 2px solid #73AD21; */
+    background-color: #ffffff;
     padding: 20px;
-    margin-left: 7%;
-    margin-top: 7%;
-    width: 18%;
+    margin-left: 0%;
+    margin-top: 5%;
+    width: 28%;
+    height: 510px;
 }
 
-.emailDash .Chart{
-    
+.chartcalDash{
+    padding-top: 35px;
+    padding-left: 40px;
 }
+
+.chartDash{
+    border-radius: 25px;
+    margin-top: 5%;
+    /* width: 18%; */
+    display: flex;
+    flex-direction: row;
+}
+
+.calDash{
+    padding-top: 20%;
+}
+.eventDash{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 51px;
+}
+
+.activeDash{
+    border-radius: 25px;
+    background-color: #ffffff;
+    padding: 20px;
+    height: 231px;
+    margin: 2px;
+    margin-bottom: 16%;
+    width: 300px;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

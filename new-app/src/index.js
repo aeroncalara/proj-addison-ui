@@ -4,7 +4,16 @@ import './index.css';
 
 //import App from './App';
 // import Testhome from './TestComponents/Testhome'
-import Dashboard from './Dashboard/Dashboard'
 
-ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-
+import Navbar from './Dashboard/Navbar';
+class App extends React.Component {
+    componentDidMount() {
+        // alert('lykzz')
+    }
+    render(){
+        return (
+            <Navbar />
+        );
+    }
+}
+ReactDOM.render(<App />, document.getElementById('root'))
