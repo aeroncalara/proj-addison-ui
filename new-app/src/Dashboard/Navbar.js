@@ -7,6 +7,8 @@ import iconnotif from '../iconnotif.png';
 import icondash from '../dash.png';
 import {Icon } from 'semantic-ui-react';
 import Chart from './Chart';
+import PresentChart from './PresentChart'
+import OnLeaveChart from './OnLeaveChart'
 import './Dashboard';
 import Calendar from './Calendar'
 
@@ -42,23 +44,26 @@ class Navbar extends Component {
                         <a className = "tabs" href = "">PAYROLL</a>
                     </div>
                     <div className = "container">
-                        <div className ="emailDash">Email
+                        <div className ="emailDash">
+                            <div className = "textbox"> Email</div>
                             <hr></hr>
                             Jane Doe <br></br>
                             Inquiries
                         </div>
                         <div className = "chartcalDash">
                             <div className ="chartDash">
-                                <Chart />
-                                <Chart />
-                                <Chart />
+                                 <Chart />
+                                <PresentChart />
+                                <OnLeaveChart />
                             </div>
                             <div className = "calDash">
                                 <Calendar></Calendar>
                             </div>
                         </div>
                         <div className = "eventDash">
-                            <div className ="activeDash"><hr></hr></div>
+                            <div className ="activeDash">
+                                Urgent Activities
+                                <hr></hr></div>
                             <div className = "activeDash"><hr></hr></div>  
                         </div> 
                     </div>

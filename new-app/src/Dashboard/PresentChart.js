@@ -10,7 +10,7 @@ import {
 } from "d3-ease";
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import "./Chart.css";
+import "./PresentChart.css";
 
 class AnimatedProgressbar extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class AnimatedProgressbar extends React.Component {
               strokeWidth = {5}
               styles={{
                 path:{
-                  stroke: "DAF7A6"
+                  stroke: "#FFA500"
                 }
               }}
             />
@@ -58,26 +58,28 @@ class AnimatedProgressbar extends React.Component {
   abstract;
 }
 
-class Chart extends React.Component {
+class PresentChart extends React.Component {
   render() {
     return (
       <div
         style={{
           width: "140px",
           height: "140px",
-          padding: "2%"
+          padding: "2%",
+          
+          
         }}
       >
         <AnimatedProgressbar
-          percentage={22}
+          percentage={20}
           duration={1.4}
           /* Can swap this out with other easing functions from d3-ease */
           easingFunction={easeQuadInOut}
         />
-        <div className = "text">Total of Employee</div>
+        <div className = "text">Present Today</div>
       </div>
       
     );
   }
 }
-export default Chart;
+export default PresentChart;

@@ -46,7 +46,7 @@ class AnimatedProgressbar extends React.Component {
               strokeWidth = {5}
               styles={{
                 path:{
-                  stroke: "DAF7A6"
+                  stroke: "#EC8F7B"
                 }
               }}
             />
@@ -58,7 +58,7 @@ class AnimatedProgressbar extends React.Component {
   abstract;
 }
 
-class Chart extends React.Component {
+class OnLeaveChart extends React.Component {
   render() {
     return (
       <div
@@ -69,15 +69,15 @@ class Chart extends React.Component {
         }}
       >
         <AnimatedProgressbar
-          percentage={22}
+          percentage={2}
           duration={1.4}
           /* Can swap this out with other easing functions from d3-ease */
           easingFunction={easeQuadInOut}
         />
-        <div className = "text">Total of Employee</div>
+        <div className = "text">On Leave</div>
       </div>
       
     );
   }
 }
-export default Chart;
+export default OnLeaveChart;
