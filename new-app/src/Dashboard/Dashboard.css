@@ -83,3 +83,13 @@
     border-top: 1px solid rgba(0,0,0,.1);
     }
   
+  .textName{
+    margin-left: 13px;
+    margin-top: 15px;
+    font-size: 17px;
+  }
+
+  .textDetails{
+      margin-left: 13px;
+      font-size: 12px;
+  }

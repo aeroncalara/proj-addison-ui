@@ -47,8 +47,8 @@ class Navbar extends Component {
                         <div className ="emailDash">
                             <div className = "textbox"> Email</div>
                             <hr></hr>
-                            Jane Doe <br></br>
-                            Inquiries
+                            <div className = "textName">Jane Doe </div>
+                            <div className = "textDetails">Inquiries</div>
                         </div>
                         <div className = "chartcalDash">
                             <div className ="chartDash">
