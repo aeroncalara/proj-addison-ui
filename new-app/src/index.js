@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-//import App from './App';
-// import Testhome from './TestComponents/Testhome'
-
 import Navbar from './Dashboard/Navbar';
+import EmployeePage from './Employee/EmployeePage';
 class App extends React.Component {
+    
     componentDidMount() {
         // alert('lykzz')
     }
     render(){
         return (
-            <Navbar />
+            <EmployeePage />
         );
     }
 }

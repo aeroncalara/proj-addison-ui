@@ -8,8 +8,13 @@
 
 .text{
   text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
-.CircularProgressbar .CircularProgressbar-trails {
-  
+.CircularProgressbar .CircularProgressbar-text {
+  font-size: 50px;
+  fill: black;
+  dominant-baseline: middle;
+  text-anchor: middle;
 }

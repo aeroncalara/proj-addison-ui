@@ -46,7 +46,7 @@ class AnimatedProgressbar extends React.Component {
               strokeWidth = {5}
               styles={{
                 path:{
-                  stroke: "DAF7A6"
+                  stroke: "#6CC866"
                 }
               }}
             />

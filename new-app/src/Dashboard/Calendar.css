@@ -5,25 +5,25 @@ body{
     overflow: hidden;
 }
 .jzdbox1 {
-  width:315px; 
-  background:#332f2e; 
-  border-radius:5px; 
-  overflow:hidden; 
-  display:block; 
-  margin-bottom:10px; 
-  box-shadow:0 0 10px #201d1c; 
-  margin:0 auto; 
-  margin-top:13px;
+  width: 411px;
+  background: #332f2e;
+  border-radius: 30px;
+  height: 295px;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  margin-top: 31px;
 }
 
 .jzdcal {
-  padding:0 10px 10px 10px; 
-  box-sizing:border-box!important; 
-  background:#749d9e; 
-  background: -webkit-linear-gradient(#749d9e, #b3a68b)!important; 
-  background: -o-linear-gradient(#749d9e, #b3a68b)!important; 
-  background: -moz-linear-gradient(#749d9e, #b3a68b)!important; 
-  background: linear-gradient(#749d9e, #b3a68b)!important;
+  padding: 0 47px 1px 54px;
+  box-sizing: border-box!important;
+  background: #668788;
+  /* background: -webkit-linear-gradient(#749d9e, #24292e)!important; 
+  background: -o-linear-gradient(#749d9e, #24292e)!important; 
+  background: -moz-linear-gradient(#749d9e, #24292e)!important; 
+  background: linear-gradient(#749d9e, #24292e)!important; */
 }
 
 .jzdcalt {
@@ -31,7 +31,7 @@ body{
   font-weight:700; 
   color:#f7f3eb; 
   display:block; 
-  margin:18px 0 0 0; 
+  margin:14px 0 0 0; 
   text-transform:uppercase; 
   text-align:center; 
   letter-spacing:1px;
