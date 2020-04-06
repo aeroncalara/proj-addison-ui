@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import './EmployeeHeader.css';
-import {List, Grid,Image,Segment  } from 'semantic-ui-react'
+import {List, Grid,Image,Segment, Button} from 'semantic-ui-react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
+import Payslipt from '../EmployeeComponents/PayslipReport';
 
 import axios from 'axios';        
+import PayslipReport from '../EmployeeComponents/PayslipReport';
+import { addison_api_url } from '../Utilities/config';
 
 let my_query = 
 `
@@ -21,8 +24,9 @@ query
         date_of_birth
         contact
         {
-            type
-            number
+            mobile_number
+            telephone_number
+            email_address
           }
         address
         {
@@ -59,7 +63,7 @@ class EmployeeGrid extends Component
     
       getEmployees = async () => {
         let employee_variable = await axios({
-          url: `http://localhost:4000`,
+          url: addison_api_url,
           method: `post`,
           data: {
             query: my_query
@@ -111,25 +115,44 @@ render() {
 
                                     <List.Item>
                                         <i className="mobile icon"/>
-                                        {employee.person.contact[0].number}
+                                        {employee.person.contact.mobile_number}
                                     </List.Item>
 
-									<List.Item>
+									                <List.Item>
                                         <hr/>
                                     </List.Item>
 
                                    
-                                    <div className="action">
-                                        <List divided horizontal inverted relaxed>
+                <div className="action">
+										
+                  	<List horizontal>
+						<List.Item>
+							<ViewEmployee item={employee} />
+        	            </List.Item>
+
+            	        {/* <List.Item>
+							          <TimeInOut Employee={employee} />
+	                    </List.Item> */}
+                  	</List>		
+
+				{/* <PayslipReport item={employee} /> */}
+
+									
+										
+
+                                        {/* <List>
                                             <List.Item>
                                                 <List.Content verticalAlign='top'><ViewEmployee item={employee}/></List.Content>
                                             </List.Item>
                                             <List.Item>
-                                               
                                                 <List.Content verticalAlign='middle'> <TimeInOut Employee={employee} /></List.Content>
                                             </List.Item>
-                                        </List>
-                                    </div>
+
+                                            <List.Item>
+                                            	<List.Content verticalAlign="top" ><Payslipt item={employee} /></List.Content>
+                                            </List.Item>
+                                        </List> */}
+                                    </div> 
                                    
 
                                 </List>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './PayRoll.css';
-import { List,Tab, Form, Button, Modal } from 'semantic-ui-react'
-import axios from 'axios';
+import { List,Tab, Form, Button, Modal, Container } from 'semantic-ui-react'
 
 import {addison_api_url} from '../Utilities/config';
-
-
 import MonthlyPayrollTable from './MonthlyPayrollTable';
+
+import axios from 'axios';
+
 
 
 export default class PayRoll extends Component {
@@ -16,7 +16,8 @@ export default class PayRoll extends Component {
 		this.state = {
 			payrolls: [],
 			is_fetching: true,
-			release_date: "",
+			start_date: "",
+			end_date : "",
 			open: false,
 		}
 
@@ -39,7 +40,8 @@ export default class PayRoll extends Component {
 			query{
 				getAllPayrolls{
 					_id
-					release_date
+					start_date
+					end_date
 					total_pay
 				}
 			}
@@ -51,6 +53,8 @@ export default class PayRoll extends Component {
 				query: payroll_query
 			}
 		})
+
+		console.log(payrolls_variable.data.data.getAllPayrolls);
 		this.setState({payrolls: payrolls_variable.data.data.getAllPayrolls})
 		this.setState({is_fetching: false});
 	}
@@ -60,7 +64,8 @@ export default class PayRoll extends Component {
 		`
 			mutation{
 				createPayroll(
-					release_date: "${this.state.release_date}"
+					start_date: "${this.state.start_date}"
+					end_date: "${this.state.end_date}"
 				){
 					message
 					success
@@ -76,6 +81,7 @@ export default class PayRoll extends Component {
 			}
 		})
 		
+		this.close();
 	}
 
 	handleChange(e){
@@ -86,10 +92,9 @@ export default class PayRoll extends Component {
 		this.setState({ [name]: value});
 	}
 
-	render() {
 
+	render() {
 		const {payrolls, is_fetching, open, closeOnEscape, closeOnDimmerClick} = this.state;
-		
 		const panes = [
 			{
 				menuItem: 'Monthly Payroll', render: () => 
@@ -108,12 +113,13 @@ export default class PayRoll extends Component {
 				</Tab.Pane>
 			},
 		]
+
 		return (
 			<div>
-				<div className='Payrollhead'>
+				<div className='payroll_head'>
 					<div className ='payTitle'>
 						<List horizontal size='massive'>
-							<List.Item><i className="money bill alternate outline icon"/>PayRolls</List.Item>
+							<List.Item>Company Payrolls</List.Item>
 						</List>
 					</div>
 				</div>
@@ -122,53 +128,57 @@ export default class PayRoll extends Component {
 					<hr className="hr"/>
 				</div>
 
-				<div className="payrollbutton">
-					<Button primary onClick={this.closeConfigShow(true, false)}>Create Payroll</Button>
-					<Modal
-						open={open}
-						closeOnEscape={closeOnEscape}
-						closeOnDimmerClick={closeOnDimmerClick}
-						onClose={this.close}
-					>
-						<Modal.Header>	
-							<div className='EmpDetails'>
-								<div className ='desc'>
-									<i className="money bill alternate outline icon"/>Create Payroll
-								</div>
-							</div>
-						</Modal.Header>
-
-						<Modal.Content image scrolling>
-							
-							<Form>
-								<Form.Field>
-									<label>Release Date</label>
-									<input onChange={this.handleChange} value={this.state.release_date} name="release_date" placeholder='Release date' type="date"/>
-								</Form.Field>
-								<Button onClick={this.createPayroll} type="submit">Submit</Button>
-							</Form>
-
-
-						</Modal.Content>
-
-						<Modal.Actions>
-
+				<div className="payroll_button_div">
+					<div center className="payroll_buttons">
+						<Button primary onClick={this.closeConfigShow(true, false)}> Create Payroll </Button>
 						
-							<Button primary onClick={this.close}>
-								Proceed 
-							</Button>
-							
-						</Modal.Actions>
-					</Modal>
+						{/* <Button primary>Create Payslip</Button> */}
+						
+						<Modal
+							open={open}
+							closeOnEscape={closeOnEscape}
+							closeOnDimmerClick={closeOnDimmerClick}
+							onClose={this.close}
+						>
+							<Modal.Header>
+								<div className='EmpDetails'>
+									<div className ='desc'>
+										<i className="money bill alternate outline icon"/>Create Payroll
+									</div>
+								</div>
+							</Modal.Header>
+
+							<Modal.Content>
+								<Form>
+									<Form.Field>
+										<label>Start Date</label>
+										<input onChange={this.handleChange} value={this.state.start_date} name="start_date" placeholder='Start Date' type="date"/>
+
+										<label>End Date</label>
+										<input onChange={this.handleChange} value={this.state.end_date} name="end_date" placeholder='End Date' type="date"/>
+									</Form.Field>
+								</Form>
+							</Modal.Content>
+
+							<Modal.Actions>
+								<Button primary onClick={this.createPayroll}>
+									Proceed 
+								</Button>
+
+								<Button negative onClick={this.close}>
+									Cancel 
+								</Button>
+							</Modal.Actions>
+						</Modal>
+					</div>
 				</div>
-				
 				{
-					is_fetching?
-						<div>Loading</div>
-						:
-						<div className='PayrollTabs'>    
-							<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
-						</div>
+					is_fetching	?
+					<div>Loading</div>
+					:
+					<div className='PayrollTabs'>    
+						<Tab style={{width:'100%' }} menu={{ secondary: true, pointing: true }} panes={panes} />
+					</div>
 				}
 			</div>
 		)

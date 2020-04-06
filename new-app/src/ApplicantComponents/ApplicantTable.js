@@ -4,6 +4,7 @@ import './ApplicantTable.css';
 import { List, Image } from 'semantic-ui-react'
 import HIre from '../ApplicantComponents/HIre'
 import axios from 'axios';        
+import { addison_api_url } from '../Utilities/config';
 
 
 let my_query = 
@@ -50,7 +51,7 @@ class ApplicantTable extends Component {
 
 	getApplicants = async () => {
 	let applicant_variable = await axios({
-		url: `http://localhost:4000`,
+		url: addison_api_url,
 		method: `post`,
 		data: {
 		query: my_query
@@ -75,7 +76,7 @@ const applicants = this.state.applicants;
 			</div>
 		)
 	})
-	console.log(contactTable)
+		
 		return (
 			<tr key={applicant.id}>
 				<td data-label="Name">

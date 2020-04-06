@@ -1,18 +1,21 @@
 import React, {Component} from 'react'
 import ViewEmployee from '../EmployeeComponents/ViewEmployee';
 import './EmployeeTable.css';
-import { List, Image } from 'semantic-ui-react'
+import { List, Image, Button } from 'semantic-ui-react'
 import TimeInOut from '../TimeInOutComponents/TimeInOut';
-import axios from 'axios';        
+import AttendanceReport from './AttendanceReport';
+import PayslipReport from './PayslipReport';
+import axios from 'axios';
+import {addison_api_url} from '../Utilities/config'
 
 
 let my_query = 
-
 `query
 {
-    getAllActivatedEmployees
+    getAllEmployees
     {
-    _id
+	_id
+	employee_number
     person
     {
         first
@@ -21,8 +24,9 @@ let my_query =
         date_of_birth
         contact
         {
-            type
-            number
+			mobile_number
+			telephone_number
+			email_address
           }
         address
         {
@@ -36,7 +40,8 @@ let my_query =
       }
       position
       {
-        title
+		title
+		salary
       }
     }
   }
@@ -48,38 +53,34 @@ class EmployeeTable extends Component {
 		super(props);
 		this.state = { 
 			employees: [],
+			is_fetching: true,
 		}
 	}
 
 	componentDidMount(){
-		this.getAllActivatedEmployees();
+		this.getAllEmployees();
 	}
 
-	getAllActivatedEmployees = async () => {
+	getAllEmployees = async () => {
     	let employee_variable = await axios({
-      		url: `http://localhost:4000`,
+      		url: addison_api_url,
       		method: `post`,
       		data: {
         		query: my_query
       		}
-    	})
-
-    	this.setState({ employees: employee_variable.data.data.getAllActivatedEmployees });
+		})
+		
+		this.setState({ employees: employee_variable.data.data.getAllEmployees });
+		//this.setState({ is_fetching: false });
 	  }
 
 	render() {
-    	let employees = this.state.employees;
-    	let employeeTable = employees.map((employee, index) => {
-			let contactTable = employee.person.contact.map((contactInformation, key)=>{
-				return(
-						<div key={key} className="content">{contactInformation.type}
-							<div className="sub header">
-							{contactInformation.number}
-							</div>
-						</div>
-					)
-				})
+		let {employees, is_fetching} = this.state;
+		let employeeTable;
 
+		console.log(employees);
+		
+    	employeeTable = employees.map((employee, index) => {
 			return (
 				<tr key={employee._id}>
 					<td data-label="Name">
@@ -94,13 +95,17 @@ class EmployeeTable extends Component {
 						</h4>
 					</td>
 
+					<td>{employee.employee_number}</td>
+
 					<td data-label="Address">
-						{employee.person.address[0].city}
+						{employee.person.address[0].city + ", " + employee.person.address[0].province}
 					</td>
 
 					<td data-label="Contact Info">  
 						<h4 className="ui image header">
-							{contactTable}
+							<div className="sub header">
+								{employee.person.contact.mobile_number}
+							</div>
 						</h4>
 					</td>
 
@@ -112,11 +117,18 @@ class EmployeeTable extends Component {
 								</List.Content>
 							</List.Item>
 
-							<List.Item>
+							{/* <List.Item>
 								<List.Content>
 									<TimeInOut item={employee._id} />
 								</List.Content>
-							</List.Item>
+							</List.Item> */}
+
+
+							{/* <List.Item>
+								<List.Content>
+									<PayslipReport item={employee}/>
+								</List.Content>
+							</List.Item>							 */}
 						</List>
 					</td>
 				</tr> 
@@ -126,44 +138,31 @@ class EmployeeTable extends Component {
 
     
     return (
-      
-      
-
       <div className="EmployeeTables">
-
-
         <table className="ui teal table celled">
+			<thead>
+				<tr>
+					<th>Employee</th>
+					<th>Employee Number</th>
+					<th>Address</th>
+					<th>Contact Number.</th>
+					
+					<th> 
+						<List divided horizontal>
+							<List.Item>
+								<List.Content>
+									Actions
+								</List.Content>
+							</List.Item>
+						</List>
+					</th>
+			</tr>
+			</thead>
         
-        <thead>
-              <tr><th>Employee</th>
-              <th>Address</th>
-              <th>Contact Info.</th>
-              <th> 
-				  <List divided horizontal>
-
-					<List.Item>
-						<List.Content>
-							Actions
-						</List.Content>
-					</List.Item>
-
-					<List.Item>
-						<List.Content>
-							Status
-						</List.Content>
-					</List.Item>
-
-
-					</List>
-</th>
-          </tr>
-          </thead>
-        <tbody>
-           {employeeTable}
-        </tbody>
-           
+			<tbody>
+				{employeeTable}
+			</tbody>
         </table>
-        
       </div>        
     );
   }
