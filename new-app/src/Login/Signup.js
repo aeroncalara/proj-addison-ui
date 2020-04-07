@@ -14,7 +14,6 @@ import {addison_api_url} from "../Utilities/config";
 // ]
 
 export default class Signup extends Component {
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -26,12 +25,11 @@ export default class Signup extends Component {
 			password_verified: '',
 			email_address: '',
 		}
-		
 		this.showHide = this.showHide.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 		
-	showHide(e){
+	showHide(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		this.setState({
@@ -43,20 +41,22 @@ export default class Signup extends Component {
 		this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
 	}
 
-	handleChange = (e) => {
-		const {target} = e;
-		const {value, name} = target;
+	handleChange = (event) => {
+		const { target } = event;
+		const { value, name } = target;
 		
 		this.setState({[name]: value})
 	}
 
 	addUser = async () => {
 		//User validation
-		const {password, password_verified, username, email_address} = this.state;
+		const { password, password_verified, username, email_address } = this.state;
 
-		if(password.length < 6) alert("Password can't be shorter than six characters")
-		else if(password !== password_verified) alert("Passwords do not match!")
-		else {
+		if(password.length < 6) {
+			alert("Password can't be shorter than six characters")
+		} else if(password !== password_verified) {
+			alert("Passwords do not match!")
+		} else {
 			let add_user_mutation = `
 				mutation {
 					addUser(
@@ -79,7 +79,10 @@ export default class Signup extends Component {
 			}).then(result =>{
 				const {success, message} = result.data.data.addUser;
 				alert(message);
-				if(success) this.close()
+
+				if(success) {
+					this.close()
+				}
 			})
 		}
 	}
@@ -87,8 +90,7 @@ export default class Signup extends Component {
 	close = () => this.setState({ open: false })
 
 	render() {
-
-	const { open, closeOnEscape, closeOnDimmerClick } = this.state
+		const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
 		return (
 			<div>		
@@ -98,10 +100,8 @@ export default class Signup extends Component {
 					closeOnEscape={closeOnEscape}
 					closeOnDimmerClick={closeOnDimmerClick}
 					onClose={this.close}
-					
 					size='small'
-				>
-					
+				>		
 				<Modal.Content>
 					<Form inverted>
 						<Grid>
@@ -109,10 +109,8 @@ export default class Signup extends Component {
 								<Header as="h2" color="teal" textAlign="center">
 									Sign up
 								</Header>
-
-								<Form size="large">
-														
-									<Form.Input name="username" fluid icon="user" iconPosition="left" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
+								<Form size="large">						
+									<Form.Input name="username" fluid icon="user" iconPosition="left" placeholder="Username" onChange={ this.handleChange } value={ this.state.username }/>
 									<Form.Input name="email_address" fluid icon="user" iconPosition="left" placeholder="Email Address" onChange={this.handleChange} value={this.state.email_address}/>
 									<Form.Input name="password" placeholder="Password" icon="lock" iconPosition="left" fluid type="password" className="password__input" onChange={this.handleChange} value={this.state.password}/>
 									<Form.Input name="password_verified" placeholder="Verify Password" icon="lock" iconPosition="left" fluid type="password" onChange={this.handleChange} value={this.state.password_verified}/>
@@ -134,14 +132,12 @@ export default class Signup extends Component {
 						</Grid>		
 					</Form>
 				</Modal.Content>
-
 				<Modal.Actions>
-					<Button onClick={this.close} negative>
+					<Button onClick={ this.close } negative>
 						cancel
 					</Button>
-
 					<Button
-						onClick={this.addUser}
+						onClick={ this.addUser }
 						positive
 						labelPosition='right'
 						icon='checkmark'
@@ -149,7 +145,6 @@ export default class Signup extends Component {
 					/>
 				</Modal.Actions>
 			</Modal>
-
 		</div>
 		)
 	}

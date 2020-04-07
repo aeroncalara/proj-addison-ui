@@ -12,112 +12,82 @@ const options = [
   ]
   
 export default class ForgotPassword extends Component {
+    state = { open: false }
 
-
-      showHide(e){
+    showHide(e) {
         e.preventDefault();
         e.stopPropagation();
         this.setState({
-          type: this.state.type === 'input' ? 'password' : 'input'
+            type: this.state.type === 'input' ? 'password' : 'input'
         })  
-      }
-      
-	
-
-	state = { open: false }
+    }
 
 	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
 		this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
 	}
 
-
-
   	close = () => this.setState({ open: false })
 
-render() {
+    render() {
+        const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
-	const { open, closeOnEscape, closeOnDimmerClick } = this.state
-
-	return (
-		<div>		
-			
-			
-         <List>
-            <List.Item as='a'  color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
-        </List>
-
-                                                
-
-		<Modal
-          open={open}
-          closeOnEscape={closeOnEscape}
-          closeOnDimmerClick={closeOnDimmerClick}
-		  onClose={this.close}
-		  
-		  size='small'
-        >
-
-
-			<Modal.Content>
-				<Form inverted>
-					<Grid>
-                    <div className='rightside'>
-
-                        <Header as="h2" color="teal" textAlign="center">
-                            forgot password
-                        </Header>
-
-                        <Form size="large">
-                            
-                            
-                        <Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
-
-                        <Dropdown
-                            fluid
-                            search
-                            selection
-                            wrapSelection={false}
-                            options={options}
-                            placeholder='Choose a Question'
-                        />
-                        
-                        <br/>
-
-                            <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
-
-                            <Button color="teal" fluid size="large">
-                                                   Confirm
-                                            </Button> 
-
-<br/>
-                            <Form.Input fluid icon="user" iconPosition="left" placeholder="you're password is"/>
-                            
+        return (
+            <div>		
+                <List>
+                    <List.Item as='a'  color='black' content='Forgot Password?'  onClick={this.closeConfigShow(true, false)}/>
+                </List>                                         
+                <Modal
+                    open={open}
+                    closeOnEscape={closeOnEscape}
+                    closeOnDimmerClick={closeOnDimmerClick}
+                    onClose={this.close}
+                    size='small'
+                >
+                    <Modal.Content>
+                        <Form inverted>
+                            <Grid>
+                                <div className='rightside'>
+                                    <Header as="h2" color="teal" textAlign="center">
+                                        forgot password
+                                    </Header>
+                                    <Form size="large">
+                                        <Form.Input fluid icon="user" iconPosition="left" placeholder="User Name"/>
+                                        <Dropdown
+                                            fluid
+                                            search
+                                            selection
+                                            wrapSelection={false}
+                                            options={options}
+                                            placeholder='Choose a Question'
+                                        />
+                                        <br/>
+                                        <Form.Input fluid icon="user" iconPosition="left" placeholder="Answer"/>
+                                        <Button color="teal" fluid size="large">
+                                            Confirm
+                                        </Button> 
+                                        <br/>
+                                        <Form.Input fluid icon="user" iconPosition="left" placeholder="you're password is"/>
+                                    </Form>
+                                </div>
+                            </Grid>		
                         </Form>
-                        
-                    </div>
-
-					</Grid>		
-				</Form>
-			</Modal.Content>
-
-			<Modal.Actions>
-				<Button onClick={this.close} negative>
-					cancel
-				</Button>
-
-					<Button
-					onClick={this.addIncentive}
-					positive
-					labelPosition='right'
-					icon='checkmark'
-					content='Submit'
-					/>
-          	</Modal.Actions>
-        </Modal>
-
-	</div>
-	)
-}
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button onClick={this.close} negative>
+                            cancel
+                        </Button>
+                        <Button
+                            onClick={this.addIncentive}
+                            positive
+                            labelPosition='right'
+                            icon='checkmark'
+                            content='Submit'
+                        />
+                    </Modal.Actions>
+                </Modal>
+            </div>
+        )
+    }
 }
 
 
