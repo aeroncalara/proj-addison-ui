@@ -1,0 +1,19 @@
+.emp{
+    background: url("../images/ba.jpeg");
+    
+    background-repeat: no-repeat;
+  
+    justify-content: center;
+    padding-top: 120px;
+    padding-left: 240px;
+    
+    height: 48.5vw;
+    width: 100%;
+    
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+   
+}
