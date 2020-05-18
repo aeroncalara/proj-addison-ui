@@ -3,13 +3,13 @@
     
     background-repeat: no-repeat;
   
-    justify-content: center;
+    /* justify-content: center;
     padding-top: 120px;
-    padding-left: 240px;
+    padding-left: 240px; */
     
     height: 48.5vw;
     width: 100%;
-    /* background-color: #cccccc; */
+    background-color: #cccccc;
 
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@
     /* margin-left:1%; */
     margin-top: 2%;
     margin-bottom: auto;
-    background-color: aqua;
+    
     width: 81%;
     height:  auto;
     box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);
@@ -30,7 +30,6 @@
     padding-left: auto;
     align-items: center;
     justify-content: center;
-    color: white;
     /* border-radius: 25px;
     border: 1px solid #f7f7f7; */
 

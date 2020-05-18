@@ -143,7 +143,7 @@ class EmployeeLounge extends Component {
 
 
         return(
-            <div className="emp">
+            <div className="EmpLounge.css">
             <div className="login-form">
                 <style>{`
                     body > div,
@@ -159,14 +159,8 @@ class EmployeeLounge extends Component {
 
                 <Grid textAlign="center" style={{height:'100%'}} verticalAlign="middle">
                     <Grid.Column style={{ maxWidth:450 }}>
-<<<<<<< HEAD
-
                     <TIME/>
-                    
-=======
-                    <TIME/>
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
-                        <Header as="h2" color="black" textAlign="center">
+                        <Header as="h2" color="teal" textAlign="center">
                            Welcome to the Employee's Lounge
                         </Header>
 			

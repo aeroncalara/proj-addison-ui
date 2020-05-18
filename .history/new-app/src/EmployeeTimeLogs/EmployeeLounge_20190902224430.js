@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Button, Form, Segment, Grid, Header, Message, Modal, Transition} from 'semantic-ui-react';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
-import EmpLounge from '../EmployeeTimeLogs/EmpLounge.css'
-import TIME from './TIME';
 
 class EmployeeLounge extends Component {
 
@@ -12,8 +10,8 @@ class EmployeeLounge extends Component {
 
     constructor(props){
         super(props);
-        
-        this.state = { time: new Date() }
+        this.state={time:new Date()}
+        this.state = { time: new Date() };
         this.state = {
             employee_number: '',
             error_message: '',
@@ -121,6 +119,16 @@ class EmployeeLounge extends Component {
 
     }
 
+    currentTime()
+    {
+      this.setState({
+        time: new Date()
+      })
+    }
+    componentWillMount()
+    {
+  setInterval(()=>this.currentTime(),1000)
+    }
   
 
   
@@ -143,9 +151,11 @@ class EmployeeLounge extends Component {
 
 
         return(
-            <div className="emp">
             <div className="login-form">
-                <style>{`
+
+
+        {this.state.time.toLocaleTimeString()}
+                      <style>{`
                     body > div,
                     body > div > div,
                     body > div > div> div.login-form{
@@ -155,18 +165,11 @@ class EmployeeLounge extends Component {
 
                 </style>
 
-             
+         
 
                 <Grid textAlign="center" style={{height:'100%'}} verticalAlign="middle">
                     <Grid.Column style={{ maxWidth:450 }}>
-<<<<<<< HEAD
-
-                    <TIME/>
-                    
-=======
-                    <TIME/>
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
-                        <Header as="h2" color="black" textAlign="center">
+                        <Header as="h2" color="teal" textAlign="center">
                            Welcome to the Employee's Lounge
                         </Header>
 			
@@ -193,7 +196,6 @@ class EmployeeLounge extends Component {
 
                 
             </div>
-        </div>
         )
     }
 }

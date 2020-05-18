@@ -419,7 +419,14 @@ const panes = [
 				</div>
 			</div>
 
+<<<<<<< HEAD
 			
+=======
+			<div>
+				<hr className="hrName" />
+			</div>  
+
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
 			<Form key={employee} liquid>
 				<Grid className='personal_info'>
 			
@@ -434,7 +441,11 @@ const panes = [
 							
 							<Form.Group>
 								<Form.Input name="first_name" label='First name' placeholder='First Name' readOnly={this.state.isEdit?false:true} width={3} onChange={this.handleChange} value={this.state.first_name}/>
+<<<<<<< HEAD
 								<Form.Input name="middle_name" label='Mid Name ' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={this. handleChange} value={this.state.middle_name} />
+=======
+								<Form.Input name="middle_name" label='Mid Name ' placeholder='Middle Name' width={2} readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.middle_name} />
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
 								<Form.Input name="last_name" label='Last Name' placeholder='Last Name' width={3} readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.last_name}/>
 							</Form.Group>
 

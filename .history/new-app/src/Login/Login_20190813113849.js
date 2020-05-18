@@ -84,76 +84,43 @@ export default class Login extends Component {
           
             <div className='main'>
              
-<<<<<<< HEAD
-               <div  className='LoginContainer'>
-            	
-						<div className="left-box">
-						<span class="left-text">
-							
-							RP Innotech
-						<br/>
-						<br/>
-						<br/>
-							Attendance And Payroll
-						
-						</span>
-								
-										
-						</div>
-						
-							<div className="right-box">
-
-							<span className="signinwith">Welcome</span>
-								
-								<label className="field a-field a-field_a1">
-
-									<input className="field__input a-field__input" name="username" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
-
-									<span className="a-field__label-wrap">
-										<span className="a-field__label">User name</span>
-									</span>
-
-								</label>
-=======
        
                 <div className='LoginContent'>
             		<Grid columns={2} stackable textAlign='center'>
-                        <Grid.Column style={{ maxWidth: 445,height: 350 }} color={'teal'} className='grid'>
+                        <Grid.Column style={{ maxWidth: 445,height: 400 }} color={'teal'} className='grid'>
                             <div className='leftside'>
                             	<Header as="h2" color="black" textAlign="center">RP Innotech</Header>
-                                <Header as="h2" color="black" textAlign="center">Attendance and Payroll</Header>
-								<Header as="h2" color="black" textAlign="center">System </Header>
+                                <Header as="h2" color="black" textAlign="center">Attendance and Payroll System </Header>
                                 <p>Don't have account? Create an account</p>
                                 <Signup />           
                             </div>
                         
 						</Grid.Column>
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
 						
+						<Grid.Column style={{ maxWidth: 450 }}  >
+                        	<div className='rightside'>
+                                <Header as="h2" color="teal" textAlign="center">Login</Header>
+								<Form size="large">
+                                	<Form.Input name="username" fluid icon="user" iconPosition="left" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
+									<Form.Input name="password" icon="lock" iconPosition="left" type={this.state.type} onChange={this.handleChange} value={this.state.password} className="password__input" placeholder="Password"/>
 
-								<label className="field a-field a-field_a2">
-									
-									<input class="field__input a-field__input" name="password" type={this.state.type} onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
+                                    <div className='showpassword'>
+                                    	<Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'} </Label>
+                                    </div>
 
-									<span className="a-field__label-wrap">
-										<span className="a-field__label">Password</span>
-									</span>
+                                    <Button color="teal" fluid size="large" onClick={this.signIn}>Login</Button>                 
+                                </Form>
 
-								</label>
-
-
-								<div className='showpassword' >
-
-                                    	<Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide password' : 'Show password'} </Label>
-
-                                </div>
-
-								{/* <button className="ui.color1.button" color="teal" onClick={this.signIn}>Login</button>   */}
-
-								<button class="ui color1 button" fluid size="large" onClick={this.signIn}>Login</button>   
-								
+                                	<br/>
+								<div className='forgotpassword'>
+									<ForgotPassword/>
+								</div>
                             </div>
-				</div>
+                        </Grid.Column>
+                    </Grid>
+                    <Divider vertical>Or</Divider>
+  
+                </div>
             </div>
         )
     }
