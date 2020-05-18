@@ -1,0 +1,98 @@
+
+      .Payrollhead{
+        /* background-color: #00cca3; */
+        min-height: 10vh;
+        margin-left: 8%;
+        display: flex;
+        /* flex-direction: column; */
+        width: 85%;
+        align-items: center;
+        /* justify-content: center; */
+   
+        /* color: #00cca3; */
+       
+      }
+  
+    
+    .payTitle {
+      min-height: 5vh;
+      font-size: calc(20px);
+      margin-left:1%;
+      width: 80%;
+      margin-top: 30px;
+      margin-bottom: 1px;
+      float: left;
+    }
+    .hr {
+    margin-left: 8%;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  }
+  
+    .searchpayroll { 
+      /* width: 100%; */
+      margin-top: 2%;
+      margin-bottom: 3%;
+      margin-left:100%;
+      border-width: 1px;
+    } 
+  
+  .IncentivesTables{
+    margin-left: 1%;
+    margin-top: 3px;
+   
+    width: 66%; 
+    border: 1px solid #e3f1ef;
+    max-height: 350px;
+    overflow-x: scroll;
+    background-color: #8eb4b4;
+  }
+
+    
+  .decTables{
+    margin-left: 1%;
+    margin-top: 3px;
+   
+    width: 94%; 
+    border: 1px solid #e3f1ef;
+    max-height: 350px;
+    overflow-x: scroll;
+    background-color: #8eb4b4;
+  }
+  
+  
+  .PayrollTabs{
+    /* margin-top: 1%; */
+    margin-left: 8%;
+    width: 85%;
+  }
+  
+  .EmpDetails{
+  
+    margin-top: -30px;
+    min-height: 10vh;
+    display: flex; 
+  }
+  
+  .Button {
+    /* background-color: #ffffff; */
+    
+    margin-left: 60%; 
+    margin-bottom: 60px;
+    width: 15%;
+    height: 10%;
+    float: right;
+    
+  } 
+
+.addincentive{
+  margin-left: 60%;
+  margin-top: -10px;
+  margin-bottom: -35px; 
+}
+
+.IncentivesTables{
+  width: 95%;
+}
