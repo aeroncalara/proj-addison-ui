@@ -84,7 +84,6 @@ export default class Login extends Component {
           
             <div className='main'>
              
-<<<<<<< HEAD
                <div  className='LoginContainer'>
             	
 						<div className="left-box">
@@ -114,21 +113,6 @@ export default class Login extends Component {
 									</span>
 
 								</label>
-=======
-       
-                <div className='LoginContent'>
-            		<Grid columns={2} stackable textAlign='center'>
-                        <Grid.Column style={{ maxWidth: 445,height: 350 }} color={'teal'} className='grid'>
-                            <div className='leftside'>
-                            	<Header as="h2" color="black" textAlign="center">RP Innotech</Header>
-                                <Header as="h2" color="black" textAlign="center">Attendance and Payroll</Header>
-								<Header as="h2" color="black" textAlign="center">System </Header>
-                                <p>Don't have account? Create an account</p>
-                                <Signup />           
-                            </div>
-                        
-						</Grid.Column>
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
 						
 
 								<label className="field a-field a-field_a2">

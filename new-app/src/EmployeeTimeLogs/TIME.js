@@ -22,15 +22,9 @@ setInterval(()=>this.currentTime(),1000)
     render() {
         return (
             <div>
-<<<<<<< HEAD
               <h3>
               {this.state.time.toLocaleTimeString()}
             </h3>
-=======
-                   <h1>
-        {this.state.time.toLocaleTimeString()}
-      </h1>
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
             </div>
         )
     }

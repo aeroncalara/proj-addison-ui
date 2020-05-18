@@ -180,11 +180,7 @@ width: 30%;
 
 .personal_info{
   overflow-x: scroll;
-<<<<<<< HEAD
   max-height: 390px;
-=======
-  max-height: 350px;
->>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50
   max-width: 70%;
   margin-top: -20px;
 }
