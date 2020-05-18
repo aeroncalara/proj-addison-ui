@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:.history/new-app/src/Login/Login_20200517113403.css
+body{
+    background: url("../images/bg.png");
+    
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    /* justify-content: center; */
+    /* padding-top: 120px;
+    padding-left: 240px; */
+    
+    /* height: 48.5vw;
+    width: 100%; */
+ background-color: #cccccc;
+=======
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
 .main{
     background: url("../images/bg.png");
     
@@ -10,6 +28,10 @@
     height: 48.5vw;
     width: 100%;
     /* background-color: #cccccc; */
+<<<<<<< HEAD
+=======
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50:.history/new-app/src/Login/Login_20200402104909.css
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
 
   background-position: center;
   background-repeat: no-repeat;
@@ -20,16 +42,42 @@
 
 .LoginContent{
     /* margin-left:1%; */
+<<<<<<< HEAD
     margin-top: 2%;
     margin-bottom: auto;
+=======
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* margin-top: auto;
+    margin-bottom: auto;
+<<<<<<< HEAD:.history/new-app/src/Login/Login_20200517113403.css
+    margin-left: auto;
+    margin-top: auto; */
+    width: 90%;
+    height:  80%;
+    /* box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466); */
+    /* padding-top: auto;
+    padding-left: auto; */
+=======
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
     /* background-color: aqua; */
     width: 81%;
     height:  auto;
     box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);
     padding-top: auto;
     padding-left: auto;
+<<<<<<< HEAD
     align-items: center;
     justify-content: center;
+=======
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50:.history/new-app/src/Login/Login_20200402104909.css
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    transform: translate(-50%, -50%);
+
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
     /* border-radius: 25px;
     border: 1px solid #f7f7f7; */
 
@@ -56,9 +104,15 @@
    
 }
 
+<<<<<<< HEAD
 .grid{
     border-radius: 25px;
 }
+=======
+/* .grid{
+    border-radius: 25px;
+} */
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
 
 .showpassword{
     margin-top: -10px;

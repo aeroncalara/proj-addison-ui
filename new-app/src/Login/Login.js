@@ -7,9 +7,10 @@ import axios from 'axios';
 import { addison_api_url } from '../Utilities/config';
 
 export default class Login extends Component {
-   constructor(props){
-      super(props);
-      this.state = {
+
+    constructor(props){
+        super(props);
+        this.state = {
 			type: 'password',
 			username: '',
 			password: '',
@@ -33,7 +34,7 @@ export default class Login extends Component {
 	}
 	
 	signIn = async () => {
-		const { username, password } = this.state;
+		const {username, password} = this.state;
 		let sign_in_mutation = `
 			mutation{
 				signIn(
@@ -76,39 +77,65 @@ export default class Login extends Component {
 		this.setState({ blogPost: copy_array });
 	}
       
-   render() {
-      return (
-         <div className='main'>
-            <div className='LoginContent'>
-            	<Grid columns={ 2 } stackable textAlign='center'>
-                  <Grid.Column style={{ maxWidth: 445,height: 350 }} color={ 'teal' } className='grid'>
-                     <div className='leftside'>
-                        <Header as="h2" color="black" textAlign="center">RP Innotech</Header>
-                        <Header as="h2" color="black" textAlign="center">Attendance and Payroll</Header>
-								<Header as="h2" color="black" textAlign="center">System </Header>
-                        <p>Don't have account? Create an account</p>
-                        <Signup />           
-                     </div>   
-						</Grid.Column>
-						<Grid.Column style={{ maxWidth: 450 }}  >
-                     <div className='rightside'>
-                        <Header as="h2" color="teal" textAlign="center">Login</Header>
-								<Form size="large">
-                              <Form.Input name="username" fluid icon="user" iconPosition="left" placeholder="Username" onChange={ this.handleChange } value={ this.state.username }/>
-										<Form.Input name="password" icon="lock" iconPosition="left" type={ this.state.type } onChange={ this.handleChange } value={ this.state.password } className="password__input" placeholder="Password"/>
-                              <div className='showpassword'>
-                                 <Label className="password__show" onClick={ this.showHide }>{ this.state.type === 'input' ? 'Hide' : 'Show' }</Label>
-                              </div>
-                              <Button color="teal" fluid size="large" onClick={this.signIn}>Login</Button>
-                        </Form>
-                        <br/>
-								<div className='forgotpassword'>
-									<ForgotPassword/>
-								</div>
-                     </div>
-                  </Grid.Column>
-               </Grid>
-               <Divider vertical>Or</Divider>
+    render() {
+        return (
+          
+            <div className='main'>
+             
+               <div  className='LoginContainer'>
+            	
+						<div className="left-box">
+						<span class="left-text">
+							
+							RP Innotech
+						<br/>
+						<br/>
+						<br/>
+							Attendance And Payroll
+						
+						</span>
+								
+										
+						</div>
+						
+							<div className="right-box">
+
+							<span className="signinwith">Welcome</span>
+								
+								<label className="field a-field a-field_a1">
+
+									<input className="field__input a-field__input" name="username" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
+
+									<span className="a-field__label-wrap">
+										<span className="a-field__label">User name</span>
+									</span>
+
+								</label>
+						
+
+								<label className="field a-field a-field_a2">
+									
+									<input class="field__input a-field__input" name="password" type={this.state.type} onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
+
+									<span className="a-field__label-wrap">
+										<span className="a-field__label">Password</span>
+									</span>
+
+								</label>
+
+
+								<div className='showpassword' >
+
+                                    	<Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide password' : 'Show password'} </Label>
+
+                                </div>
+
+								{/* <button className="ui.color1.button" color="teal" onClick={this.signIn}>Login</button>   */}
+
+								<button class="ui color1 button" fluid size="large" onClick={this.signIn}>Login</button>   
+								
+                            </div>
+				
             </div>
          </div>
         )
