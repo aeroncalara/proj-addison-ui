@@ -1,3 +1,4 @@
+<<<<<<< HEAD:.history/new-app/src/Login/Login_20200517113403.css
 body{
     background: url("../images/bg.png");
     
@@ -11,6 +12,24 @@ body{
     /* height: 48.5vw;
     width: 100%; */
  background-color: #cccccc;
+=======
+.main{
+    background: url("../images/bg.png");
+    
+    background-repeat: no-repeat;
+  
+    justify-content: center;
+    padding-top: 120px;
+    padding-left: 240px;
+    
+    height: 48.5vw;
+    width: 100%;
+    /* background-color: #cccccc; */
+<<<<<<< HEAD
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5:.history/new-app/src/Login/Login_20200402104956.css
+=======
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50:.history/new-app/src/Login/Login_20200402104909.css
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
 
   background-position: center;
   background-repeat: no-repeat;
@@ -26,6 +45,7 @@ body{
     top: 50%;
     /* margin-top: auto;
     margin-bottom: auto;
+<<<<<<< HEAD:.history/new-app/src/Login/Login_20200517113403.css
     margin-left: auto;
     margin-top: auto; */
     width: 90%;
@@ -33,6 +53,22 @@ body{
     /* box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466); */
     /* padding-top: auto;
     padding-left: auto; */
+=======
+    /* background-color: aqua; */
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
+    width: 81%;
+    height:  auto;
+    box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);
+    padding-top: auto;
+    padding-left: auto;
+<<<<<<< HEAD
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5:.history/new-app/src/Login/Login_20200402104956.css
+=======
+>>>>>>> 804eb5710c6f7243c13df2755ce54ddf062c6d50:.history/new-app/src/Login/Login_20200402104909.css
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
     align-items: center;
     justify-content: center;
     background-color: whitesmoke;

@@ -9,7 +9,11 @@
     
     height: 48.5vw;
     width: 100%;
+<<<<<<< HEAD
     background-color: #cccccc;
+=======
+    /* background-color: #cccccc; */
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
 
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +26,11 @@
     /* margin-left:1%; */
     margin-top: 2%;
     margin-bottom: auto;
+<<<<<<< HEAD
     
+=======
+    background-color: aqua;
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
     width: 81%;
     height:  auto;
     box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466);

@@ -21,8 +21,15 @@ export default class extends Component {
                 <Link to={"/main/employee/id/" +item._id}>
                     <Popup
                         trigger={<Button primary> View
+<<<<<<< HEAD
                         </Button>}
                         content='View Employee Profile'
+=======
+                        {/* <i aria-hidden="true" className="eye icon"></i> */}
+
+                        </Button>}
+                        content='View Employee Details'
+>>>>>>> 9afaff996ea6d201a18b264a26c2f1fb97ac03b5
                         position='top center'
                     />
                 </Link>
