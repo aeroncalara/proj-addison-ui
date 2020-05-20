@@ -1,0 +1,78 @@
+.main{
+    background: url("../images/bg.png");
+    height: 100%;
+    width: 100%;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.LoginContainer{
+    /* margin-left:1%; */
+    /* position: absolute; */
+    /* left: 50%;
+    top: 50%; */
+    /* margin: 0 auto; */
+    width: 85%;
+    height:  80%;
+    /* display: block; */
+    /* box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.466); */
+    /* padding-top: auto;
+    padding-left: auto; */
+    /* align-items: center;
+    justify-content: center; */
+    background-color: whitesmoke;
+    /* transform: translate(-50%, -50%); */
+
+    /* border-radius: 25px;
+    border: 1px solid #f7f7f7; */
+    /* display: flex;
+    justify-content: center; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    position: absolute;
+
+}
+
+
+.leftside{
+    z-index: 1;
+    height: 4%;
+    margin-top: 8%;
+    margin-left: 20%;
+    width: 60%;
+   
+     
+}
+
+.rightside{
+    z-index: 1;
+    height: 10%;
+    margin-top: 15%;
+    margin-left: 20%;
+    width: 10%;
+    border-radius: 25px;
+   
+}
+
+/* .grid{
+    border-radius: 25px;
+} */
+
+.showpassword{
+    margin-top: -10px;
+    margin-left: 76%;
+    margin-bottom: 5px;
+}
+
+.forgotpassword{
+    margin-top: -15px;
+    margin-left: 115px;
+    margin-bottom: 50px;
+    width: 100%;
+}
