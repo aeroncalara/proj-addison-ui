@@ -84,6 +84,7 @@ export default class Login extends Component {
           
             <div className='main'>
              
+               <div  className='LoginContainer'>
        
                 <div className='LoginContent'>
             		<Grid columns={2} stackable textAlign='center'>
@@ -120,7 +121,7 @@ export default class Login extends Component {
                     </Grid>
                     <Divider vertical>Or</Divider>
   
-                </div>
+				</div>
             </div>
         )
     }
