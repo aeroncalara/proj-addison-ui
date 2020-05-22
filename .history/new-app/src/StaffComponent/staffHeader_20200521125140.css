@@ -1,0 +1,36 @@
+ 
+.App-header {
+  
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+  } 
+  .Segment {
+    
+    height: 100%;
+  } 
+  
+  .navigation {
+    height: 100%;
+  
+    list-style: none;
+    margin: 0 auto;
+    margin-left: 5.5%;
+    
+    
+    
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    /* -webkit-flex-flow: row wrap; */
+    justify-content: flex-end;
+  }
+
+  .ViewStaff-Profile-Content{
+    background-color: black;
+  }
+  
+  
+  
