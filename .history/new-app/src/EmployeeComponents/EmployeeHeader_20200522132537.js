@@ -56,21 +56,21 @@ export default class EmployeeHeader extends Component {
 									
 									{/* Add Staff */}
 
-						<NavLink exact activeClassName="active" to="/main/addEmployee/">
+						{/* <NavLink exact activeClassName="active" to="/main/addEmployee/">
 							<Button color='blue'>
 								<i className="plus icon"></i>
-									Add Staff
+									Add New Employee
 							</Button>
-						</NavLink>
+						</NavLink> */}
 
 									{/* Add Admin and Staff */}
 
-					{/* <NavLink exact activeClassName="active" to="/main/addAdminComponent/">
+					<NavLink exact activeClassName="active" to="/main/addAdminComponent/">
 							<Button color='blue'>
 								<i className="plus icon"></i>
-									Add Admin and Staff
+									Add New Admin
 							</Button>
-						</NavLink> */}
+						</NavLink>
 
 					</div>
 				</div>

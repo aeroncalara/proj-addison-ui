@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {Button, Form,
 		Segment,
 		Label,
-		Dropdown
 		}from 'semantic-ui-react'
 
 import './AddEmployeeForm.css';
@@ -182,10 +181,6 @@ class AddEmployeeForm extends Component {
 	render() {
 		const { open, closeOnEscape, closeOnDimmerClick } = this.state;
 		
-		const options = [
-            { key: 1, text: 'Admin', value: 1 },
-            { key: 2, text: 'Staff', value: 2 },
-          ]
 
 		return (
 			<div>

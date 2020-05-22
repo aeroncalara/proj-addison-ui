@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
-import {Button, Form,
-		Segment,
-		Label,
-		Dropdown
-		}from 'semantic-ui-react'
+import _ from 'lodash'
+import {
+        Button,
+        Form, 
+        Segment,
+        Label,
+        Menu,
+        Dropdown
+        }from 'semantic-ui-react'
 
-import './AddEmployeeForm.css';
+import './AddAdminComponent.css';
 import axios from 'axios';
 import { addison_api_url } from '../Utilities/config';
 
 // TABS
-class AddEmployeeForm extends Component {
+class AddAdminComponent extends Component {
+
+    
 
 	constructor(props) {
 		super(props)
@@ -178,11 +184,12 @@ class AddEmployeeForm extends Component {
 			}
 		})
 	}
-
+   
 	render() {
 		const { open, closeOnEscape, closeOnDimmerClick } = this.state;
-		
-		const options = [
+    
+
+        const options = [
             { key: 1, text: 'Admin', value: 1 },
             { key: 2, text: 'Staff', value: 2 },
           ]
@@ -302,7 +309,10 @@ class AddEmployeeForm extends Component {
 							<br/>
 <br/>
 							<Form.Group widths="equal">
-								<Dropdown selection options={options} placeholder='Choose a Position' />
+
+                                {/* <Form.Input label='Company position' placeholder='Company Position'  onChange={(e) => this.handleChange(e, 'title')}
+								value={this.state.title}/> */}
+                               <Dropdown selection options={options} placeholder='Choose a Position' />
 
 								<Form.Input label='Position' placeholder='Position'  onChange={(e) => this.handleChange(e, 'title')}
 								value={this.state.title}/>
@@ -311,7 +321,7 @@ class AddEmployeeForm extends Component {
 								value={this.state.salary}/>
 								</Form.Group>
 
-							<Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'description')} value={this.state.description}/>
+                                <Form.TextArea label='Title Description' placeholder='Title Description'  onChange={(e) => this.handleChange(e, 'description')} value={this.state.description}/>
 
 
 
@@ -342,9 +352,6 @@ class AddEmployeeForm extends Component {
 							
 							</Segment>
 
-							{/* </div>								 */}
-							{/* </Grid.Column> */}
-							{/* </Grid> */}
 
 									</Form>
 						</div>
@@ -352,14 +359,9 @@ class AddEmployeeForm extends Component {
 
 					</div>
 
-			{/* <div className=''>
-				<div className='Tabs'>    
-					<Tab style={{width:1500 ,height:10000 }} menu={{ secondary: true, pointing: true }} panes={panes} />
-				</div>
-			</div> */}
 		</div>
 		)
 	}
 }
-export default (AddEmployeeForm)
+export default (AddAdminComponent)
 

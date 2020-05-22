@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {Button, Form,
 		Segment,
 		Label,
-		Dropdown
 		}from 'semantic-ui-react'
 
 import './AddEmployeeForm.css';
