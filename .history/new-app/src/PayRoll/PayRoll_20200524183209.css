@@ -1,0 +1,62 @@
+	.payroll_head{
+		min-height: 10vh;
+		display: flex;
+		width: 100%;
+		flex: auto,
+	}
+
+	.payroll_button_div{
+		text-align: center
+	}
+
+
+	.payroll_buttons{
+	max-width: 100%;
+	margin-left: 75%;
+	}
+
+	.payTitle {
+		min-height: 5vh;
+		font-size: calc(20px);
+		width: 80%;
+		margin-top: 30px;
+		margin-bottom: 1px;
+		float: left;
+	}
+	
+	.hr {
+	border: 0;
+	height: 2px;
+	background: #333;
+	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+	}
+
+	.searchpayroll { 
+		margin-top: 2%;
+		margin-bottom: 3%;
+		margin-left:100%;
+		border-width: 1px;
+	} 
+
+	.payTable{
+		width: 85%; 
+	}
+
+	.PayrollTabs{
+		margin-left: 8%;
+		width: 85%;
+	}
+
+	.EmpDetails{
+		margin-top: -30px;
+		min-height: 10vh;
+		display: flex; 
+	}
+
+	.Button {
+		margin-left: 60%; 
+		margin-bottom: 60px;
+		width: 15%;
+		height: 10%;
+		float: right;
+	} 

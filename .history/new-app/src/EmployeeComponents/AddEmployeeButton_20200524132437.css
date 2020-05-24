@@ -1,0 +1,31 @@
+.AddButton{
+    text-align: left;
+    width: 83%;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: -70px;
+}
+
+.AddNewEmployee{
+    border: 1px solid #000000;
+    text-align: left;
+    width: 87%;
+    height: 50px;
+    margin: 0 auto;
+
+}
+.ui button primary{
+    border: 1px solid #000000; 
+    text-align: left;
+    width: 87%;
+    height: 50px;
+    margin: 0 auto;
+    /* margin-left: 77%; */
+}
+
+.AddEmpModalButton{
+  
+    height: 8%;
+    margin: 0 auto;
+    /* margin-left: 77%; */
+}
