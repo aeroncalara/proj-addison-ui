@@ -50,12 +50,12 @@
 
   
 
-  .Edi {
+  .Edit {
     border-block-end-color: black;
     /* margin-top: 2%;
     
     /* height: 10%; */
-    margin-right: 2%;
+    margin-right: 2% !important;
     margin-top: 4%;
     float: right;
     color: #111111;

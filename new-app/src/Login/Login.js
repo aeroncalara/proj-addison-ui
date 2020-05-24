@@ -6,6 +6,9 @@ import ForgotPassword from './ForgotPassword';
 import axios from 'axios';
 import { addison_api_url } from '../Utilities/config';
 
+import { Mutation } from "react-apollo";
+import gql from 'graphql-tag';
+
 
 
 
@@ -53,7 +56,7 @@ export default class Login extends Component {
 				}
 			}
 		`
-
+		
 		await axios({
 			url: addison_api_url,
 			method: `post`,
@@ -79,65 +82,43 @@ export default class Login extends Component {
 		this.setState({blogPost: copy_array});
 	}
       
-    render() {
+  render() {
         return (
-          
             <div className='main'>
-             
-               <div  className='LoginContainer'>
-            	
-						<div className="left-box">
-						<span class="left-text">
-							
-							RP Innotech
-						<br/>
-						<br/>
-						<br/>
-							Attendance And Payroll
-						
-						</span>
-								
-										
-						</div>
-						
-							<div className="right-box">
-
-							<span className="signinwith">Welcome</span>
-								
-								<label className="field a-field a-field_a1">
-
-									<input className="field__input a-field__input" name="username" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
-
-									<span className="a-field__label-wrap">
-										<span className="a-field__label">User name</span>
+              <div  className='LoginContainer'>
+								<div className="left-box">
+									<span class="left-text">
+										RP Innotech
+										<br/>
+										<br/>
+										<br/>
+										Attendance And Payroll
 									</span>
-
-								</label>
-						
-
-								<label className="field a-field a-field_a2">
-									
-									<input class="field__input a-field__input" name="password" type={this.state.type} onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
-
-									<span className="a-field__label-wrap">
-										<span className="a-field__label">Password</span>
-									</span>
-
-								</label>
-
-
-								<div className='showpassword' >
-
-                                    	<Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide password' : 'Show password'} </Label>
-
-                                </div>
-
-								{/* <button className="ui.color1.button" color="teal" onClick={this.signIn}>Login</button>   */}
-
-								<button class="ui color1 button" fluid size="large" onClick={this.signIn}>Login</button>   
-								
-                            </div>
-				</div>
+								</div>
+								<div className="right-box">
+									<span className="signinwith">Welcome</span>
+										<div>
+											<label className="field a-field a-field_a1">
+												<input className="field__input a-field__input" name="username" placeholder="Username" onChange={this.handleChange} value={this.state.username}/>
+												<span className="a-field__label-wrap">
+													<span className="a-field__label">User name</span>
+												</span>
+											</label>
+											<label className="field a-field a-field_a2">
+												<input class="field__input a-field__input" name="password" type={this.state.type} onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
+												<span className="a-field__label-wrap">
+													<span className="a-field__label">Password</span>
+												</span>
+											</label>
+											<div className='showpassword' >
+												<Label className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide password' : 'Show password'} </Label>
+											</div>
+											<button class="ui color1 button" fluid size="large" onClick={this.signIn}>
+												Login
+											</button>   
+										</div>
+              	</div>
+							</div>
             </div>
         )
     }

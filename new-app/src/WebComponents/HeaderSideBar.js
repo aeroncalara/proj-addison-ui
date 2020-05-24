@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './HeaderTry.css';
 import { NavLink, Route, Switch} from 'react-router-dom'
 
+import { VerticalSidebar } from '../app/components/home/VerticalSidebar'
+
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
@@ -54,74 +56,6 @@ const options = [
 	{ key: 'log-out', text: 'Log Out', icon: 'sign out' },
 ]
 
-// SIDEBAR
-const VerticalSidebar = ({ animation, direction, visible }) => (
-
-	<Sidebar
-	as={Menu}
-	animation={animation}
-	direction={direction}
-	icon='labeled'
-	inverted    
-	vertical
-	
-	visible={visible}
-	width='thin'
-	>
-
-		<List animated verticalAlign='middle' selection >
-{/* 
-			<List.Item>			
-				<NavLink activeClassName="active" to="/main/employees/">
-					<Menu.Item>	
-						<i className="home icon"/>
-						Home
-					</Menu.Item>
-				</NavLink>
-			</List.Item> */}
-					
-			<List.Item>
-				<NavLink exact activeClassName="active" to="/main/employees/">
-					<Menu.Item>
-					<i className="users icon"/>
-						Employee List			
-					</Menu.Item>
-				</NavLink>
-			</List.Item>
-
-			<List.Item>
-				<NavLink activeClassName="active" to="/main/timelogs/">
-					<Menu.Item>
-						<i className="clock icon" />
-						Hours Rendered
-				
-					</Menu.Item>
-				</NavLink>
-			</List.Item>
-
-			<List.Item>
-				<NavLink activeClassName="active" to="/main/payroll/">
-					<Menu.Item>
-					<i className="money bill alternate outline icon"/>
-					Payroll	
-					</Menu.Item>
-				</NavLink>
-			</List.Item>
-
-		</List>
-
-	
-	</Sidebar>
-)
-
-	// VerticalSidebar.propTypes = {
-	// animation: PropTypes.string,
-	// direction: PropTypes.string,
-	// visible: PropTypes.bool,
-	// }
-
-	
-
 export default class HeaderSideBar extends Component {
 
 
@@ -133,6 +67,7 @@ export default class HeaderSideBar extends Component {
 			dimmed: false,
 			visible: false,
 			open: false,
+			menu: Menu
 		}
 
 		this.signOut = this.signOut.bind(this);
@@ -202,27 +137,19 @@ export default class HeaderSideBar extends Component {
 			<div>
 				<Menu inverted style={{height:50}}>
 					<Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')}>
-
 						<Icon name='bars' />RP INNOTECH
-						
 					</Menu.Item>
-
-					{/* ADMINTOP */}
 					<Menu.Item  position='right' style={{right:95 }}>
-
 						<Button secondary onClick={this.closeConfigShow(true, false)}> Sign-out </Button>
-
 							<Modal
 							open={open}
 							closeOnEscape={closeOnEscape}
 							closeOnDimmerClick={closeOnDimmerClick}
 							onClose={this.close}
 							basic>
-						
 								<Modal.Content >
 									<p>Are you sure you want to sign out?</p>
 								</Modal.Content>
-
 								<Modal.Actions>
 									<Button onClick={this.close} basic color='red' inverted>
 										<Icon name='remove' /> No
@@ -231,18 +158,14 @@ export default class HeaderSideBar extends Component {
 										<Icon name='checkmark' /> Yes
 									</Button>
 								</Modal.Actions>
-
 							</Modal>
-
 					</Menu.Item>
 				</Menu>
-
 				<Sidebar.Pushable as={Segment} style={{height: '90vh', bottom:18 }} >
-
 					{vertical ? null : (
-					<VerticalSidebar animation={animation} direction={direction} visible={visible} />
+					<VerticalSidebar menu={ this.state.menu } animation={animation} direction={direction} visible={visible} />
 					)}
-
+					{console.log(this.state.menu)}  
 					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
 						<Switch>
 							<Route path="/main/employees/" component={EmployeeMain} />
@@ -253,9 +176,7 @@ export default class HeaderSideBar extends Component {
 							<Route path="/main/addAddminComponent/" exact component={AddAdminComponent} />
 						</Switch>
 					</Sidebar.Pusher>
-
 				</Sidebar.Pushable>
-				
 			</div>
 		)
 	}

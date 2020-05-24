@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
+    "apollo-client": "^2.6.10",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-semantic-toasts": "^0.5.1",
