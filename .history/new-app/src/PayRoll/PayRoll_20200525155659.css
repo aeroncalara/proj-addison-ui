@@ -2,7 +2,9 @@
 
 .body{
 	align-content: center;
-	
+	align-content: center;
+	justify-content: space-around;
+	display: flex;
 }
 
 	.payroll_button_div{
@@ -12,7 +14,6 @@
 
 
 	.payroll_buttons{
-	margin-top: 5%;
 	align-content: center;
 	justify-content: space-around;
 	display: flex;
@@ -27,11 +28,10 @@
 		float: left;
 	}
 	
-	.hrbottom {
-		align-content: center;
-		justify-content: center;
-		margin-left: 7%;
-		width:86%;
+	.hr {
+		width: 100%;
+	
+		
 	}
 
 

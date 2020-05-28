@@ -117,7 +117,7 @@ export default class PayRoll extends Component {
 		]
 
 		return (
-			<div className="body">
+			<div className='body'>
 
 					<div center className="payroll_buttons">
 						<div>
@@ -165,8 +165,8 @@ export default class PayRoll extends Component {
 
 					</div>
 			
-				<div className="hrbottom">
-					<hr />
+				<div>
+					<hr className="hr"/>
 				</div>
 
 				{

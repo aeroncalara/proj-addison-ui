@@ -117,17 +117,15 @@ export default class PayRoll extends Component {
 		]
 
 		return (
-			<div className="body">
+			<div className='body'>
 
+				<div className="payroll_button_div">
 					<div center className="payroll_buttons">
-						<div>
 
 						<h2>PayRoll</h2>
-						</div>
-					
-						<div>
+
 						<Button primary onClick={this.closeConfigShow(true, false)}> Create Payroll </Button>
-						</div>
+
 						<Modal
 							open={open}
 							closeOnEscape={closeOnEscape}
@@ -164,9 +162,10 @@ export default class PayRoll extends Component {
 						</Modal>
 
 					</div>
-			
-				<div className="hrbottom">
-					<hr />
+				</div>
+
+				<div>
+					<hr className="hr"/>
 				</div>
 
 				{

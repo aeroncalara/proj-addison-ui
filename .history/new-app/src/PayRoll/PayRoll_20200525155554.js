@@ -165,8 +165,8 @@ export default class PayRoll extends Component {
 
 					</div>
 			
-				<div className="hrbottom">
-					<hr />
+				<div>
+					<hr className="hr"/>
 				</div>
 
 				{

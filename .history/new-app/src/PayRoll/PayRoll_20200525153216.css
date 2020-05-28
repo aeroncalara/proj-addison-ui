@@ -1,9 +1,9 @@
-
-
-.body{
-	align-content: center;
-	
-}
+	.payroll_head{
+		min-height: 10vh;
+		display: flex;
+		width: 100%;
+		flex: auto,
+	}
 
 	.payroll_button_div{
 		justify-content: space-evenly;
@@ -12,10 +12,8 @@
 
 
 	.payroll_buttons{
-	margin-top: 5%;
-	align-content: center;
-	justify-content: space-around;
-	display: flex;
+		max-width: 100%;
+		margin-left: 75%;
 	}
 
 	.payTitle {
@@ -27,13 +25,20 @@
 		float: left;
 	}
 	
-	.hrbottom {
-		align-content: center;
-		justify-content: center;
-		margin-left: 7%;
-		width:86%;
+	.hr {
+		width: 100%;
+		border: 0;
+		height: 2px;
+		background: #333;
+		background-image: linear-gradient(to right, #ccc, #333, #ccc);
 	}
 
+	.searchpayroll { 
+		margin-top: 2%;
+		margin-bottom: 3%;
+		margin-left:100%;
+		border-width: 1px;
+	} 
 
 	.payTable{
 		width: 85%; 
@@ -44,6 +49,11 @@
 		width: 85%;
 	}
 
+	.EmpDetails{
+		margin-top: -30px;
+		min-height: 10vh;
+		display: flex; 
+	}
 
 	.Button {
 		margin-left: 60%; 

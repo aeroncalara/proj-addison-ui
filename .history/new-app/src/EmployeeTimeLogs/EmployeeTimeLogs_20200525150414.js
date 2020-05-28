@@ -106,7 +106,9 @@ export default class PayRoll extends Component {
 					</div>
 				</div>
 
-			
+				<div>
+					<hr className="hr"/>
+				</div>
 
 				<div className="payrollbutton">
 					{/* <Button primary onClick={this.generateAttendanceReport}>EXPORT TO PDF</Button> */}
