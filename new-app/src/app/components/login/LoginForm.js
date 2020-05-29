@@ -36,15 +36,24 @@ export default class LoginForm extends Component {
 					const { success, message, data } = result.data.data.signIn;
 					alert(message)
 					if(success){
-						this.setData(data);
-						this.props.history.push("/main/employees");
+						this.setData(data)
+						this.redirectLogin(data.role)
 					} 
 				})
 	}
 
-	setData = ({ hash, logged_in }) => {
+	redirectLogin = (role) => {
+		if (role === "admin") {
+			this.props.history.push("/main/employees");
+		} else {
+			this.props.history.push("/utility/StaffProfile");
+		}
+	}
+
+	setData = ({ hash, logged_in, role }) => {
 		localStorage.setItem("hash", hash);
 		localStorage.setItem("logged_in", logged_in);
+		localStorage.setItem("role", role);
 	}
 
 	handleEditingDone = (key) => {

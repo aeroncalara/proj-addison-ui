@@ -14,6 +14,7 @@ export const user = {
 						data{
 							hash
 							logged_in
+							role
 						}
 					}
 				}

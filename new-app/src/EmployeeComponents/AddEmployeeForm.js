@@ -39,6 +39,7 @@ class AddEmployeeForm extends Component {
 			description:'', 
 			salary:0,
 			open: false,
+			role: ''
 		}
 
 		this.addEmployee = this.addEmployee.bind(this);
@@ -109,13 +110,20 @@ class AddEmployeeForm extends Component {
 		hdmf: '',
 
 		title:'',
+		role:'',
 		description:'',
 		salary:0,
 		});
 	}
 
 	handleChange = (e, type) => {
+		console.log(e.target.value)
 		this.setState({[type]: e.target.value})
+	}
+
+	handleDropdown = (e, { value }) => {
+		console.log(value)
+		this.setState({role: value})
 	}
 
 	addEmployee = async () => {
@@ -143,6 +151,7 @@ class AddEmployeeForm extends Component {
 							}
 						]
 					}
+					role: "${this.state.role}"
 					sss: "${this.state.sss}"
 					tin: "${this.state.tin}"
 					philhealth: "${this.state.philhealth}"
@@ -181,8 +190,8 @@ class AddEmployeeForm extends Component {
 		const { open, closeOnEscape, closeOnDimmerClick } = this.state;
 		
 		const options = [
-            { key: 1, text: 'Admin', value: 1 },
-            { key: 2, text: 'Staff', value: 2 },
+            { key: 1, text: 'Admin', value: 'admin' },
+            { key: 2, text: 'Staff', value: 'staff' },
           ]
 
 		return (
@@ -288,7 +297,7 @@ class AddEmployeeForm extends Component {
 							<br/><br/>
 
 								<Form.Group widths="equal">
-									<Dropdown selection options={options} placeholder='Choose a Position' />
+									<Dropdown selection options={options} placeholder='Choose a role' onChange={this.handleDropdown} value={this.state.role}/>
 
 									<Form.Input label='Position' placeholder='Position'  onChange={(e) => this.handleChange(e, 'title')}
 									value={this.state.title}/>
