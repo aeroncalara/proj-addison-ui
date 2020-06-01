@@ -17,6 +17,9 @@ import {addison_api_url} from '../Utilities/config';
 
 export default class HeaderSideBar extends Component {
 
+
+
+
 	constructor(props){
 		super(props);
 		this.state = {
@@ -89,16 +92,38 @@ export default class HeaderSideBar extends Component {
 
 					</Menu.Item>
 
-					<Menu.Item position='right' >
-						<ChangePassword/>
+					<Menu.Item position='right' onClick={this.show('mini',false)}>
+						<Icon name='setting' />
+					<div>
+						<Modal size={size} open={open} onClose={this.close}>
+							
+							<Modal.Content >
+							ChangePassword
+							</Modal.Content>
+
+							<Modal.Actions>
+								<Button negative>No</Button>
+								
+								<Button
+								positive
+								icon='checkmark'
+								labelPosition='right'
+								content='Yes'
+								/>
+         					</Modal.Actions>
+
+						</Modal>
+						</div>
         			</Menu.Item>
 
-					{/* ADMINTOP */}
-					<Menu.Item  onClick={this.closeConfigShow(true, false)}>
-						<Icon name='log out' />
-						Log-out
 
-					<Modal
+					{/* ADMINTOP */}
+					<Menu.Item  position='right' style={{right:95 }}>
+
+						<Button secondary onClick={this.closeConfigShow(true, false)}>	<Icon name='log out' /> Log-out </Button>
+					
+				
+					{/* <Modal
 						open={open}
 						closeOnEscape={closeOnEscape}
 						closeOnDimmerClick={closeOnDimmerClick}
@@ -117,7 +142,7 @@ export default class HeaderSideBar extends Component {
 								<Icon name='checkmark' /> Yes
 							</Button>
 						</Modal.Actions>
-					</Modal>
+					</Modal> */}
 
 					</Menu.Item>
 				</Menu>

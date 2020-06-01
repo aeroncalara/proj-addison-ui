@@ -8,7 +8,7 @@ import {Image, Header, Icon, Menu, Segment, Sidebar, List, Button, Modal
 import { NavLink, Route, Switch} from 'react-router-dom'
 
 import ViewStaffProfile from './ViewStaffProfile';
-import ChangePassword from '../ChangePassword/ChangePassword';
+import ChangePassword from '../ChangePassword';
 
 
 import axios from 'axios';
@@ -16,6 +16,9 @@ import {addison_api_url} from '../Utilities/config';
 
 
 export default class HeaderSideBar extends Component {
+
+
+
 
 	constructor(props){
 		super(props);
@@ -89,15 +92,37 @@ export default class HeaderSideBar extends Component {
 
 					</Menu.Item>
 
-					<Menu.Item position='right' >
-						<ChangePassword/>
+					<Menu.Item position='right' onClick={this.show('mini',false)}>
+						<Icon name='setting' />
+
+						<Modal size={size} open={open} onClose={this.close}>
+							
+							<Modal.Content >
+								<ChangePassword></ChangePassword>
+							</Modal.Content>
+
+							<Modal.Actions>
+								<Button negative>No</Button>
+								
+								<Button
+								positive
+								icon='checkmark'
+								labelPosition='right'
+								content='Yes'
+								/>
+         					</Modal.Actions>
+
+						</Modal>
+
         			</Menu.Item>
 
-					{/* ADMINTOP */}
-					<Menu.Item  onClick={this.closeConfigShow(true, false)}>
-						<Icon name='log out' />
-						Log-out
 
+					{/* ADMINTOP */}
+					<Menu.Item  position='right' style={{right:95 }}>
+
+						<Button secondary onClick={this.closeConfigShow(true, false)}>	<Icon name='log out' /> Log-out </Button>
+					
+				
 					<Modal
 						open={open}
 						closeOnEscape={closeOnEscape}

@@ -8,7 +8,6 @@ import {Image, Header, Icon, Menu, Segment, Sidebar, List, Button, Modal
 import { NavLink, Route, Switch} from 'react-router-dom'
 
 import ViewStaffProfile from './ViewStaffProfile';
-import ChangePassword from '../ChangePassword/ChangePassword';
 
 
 import axios from 'axios';
@@ -16,6 +15,7 @@ import {addison_api_url} from '../Utilities/config';
 
 
 export default class HeaderSideBar extends Component {
+
 
 	constructor(props){
 		super(props);
@@ -41,8 +41,6 @@ export default class HeaderSideBar extends Component {
 	closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
         this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
 	}
-
-	show = (size) => () => this.setState({ size, open: true})
 
 	close = () => this.setState({ open: false })
 
@@ -78,8 +76,8 @@ export default class HeaderSideBar extends Component {
 
 
 	render() {
-		const { open, closeOnEscape, closeOnDimmerClick, size } = this.state
-	
+		const { open, closeOnEscape, closeOnDimmerClick } = this.state
+		
 		return (
 			<div>
 				<Menu inverted style={{height:50}}>
@@ -89,15 +87,40 @@ export default class HeaderSideBar extends Component {
 
 					</Menu.Item>
 
-					<Menu.Item position='right' >
-						<ChangePassword/>
+					<Menu.Item position='right' onClick={this.handleItemClick}>
+						<Icon name='setting' />
+
+						<Modal
+							open={open}
+							closeOnEscape={closeOnEscape}
+							closeOnDimmerClick={closeOnDimmerClick}
+							onClose={this.close}
+							basic>
+							
+							<Modal.Content >
+								<p>Are you sure you want to sign out?</p>
+							</Modal.Content>
+
+							<Modal.Actions>
+								<Button onClick={this.close} basic color='red' inverted>
+									<Icon name='remove' /> No
+								</Button>
+								<Button onClick={this.signOut} color='green' inverted>
+									<Icon name='checkmark' /> Yes
+								</Button>
+							</Modal.Actions>
+							
+						</Modal>
+
         			</Menu.Item>
 
-					{/* ADMINTOP */}
-					<Menu.Item  onClick={this.closeConfigShow(true, false)}>
-						<Icon name='log out' />
-						Log-out
 
+					{/* ADMINTOP */}
+					<Menu.Item  position='right' style={{right:95 }}>
+
+						<Button secondary onClick={this.closeConfigShow(true, false)}>	<Icon name='log out' /> Log-out </Button>
+					
+				
 					<Modal
 						open={open}
 						closeOnEscape={closeOnEscape}

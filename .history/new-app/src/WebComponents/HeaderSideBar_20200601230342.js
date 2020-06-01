@@ -197,13 +197,15 @@ export default class HeaderSideBar extends Component {
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
 					
-					<Menu.Item position='right'>
-						<ChangePassword />
-        			</Menu.Item>
+					
 
-					<Menu.Item  onClick={this.handleItemClick}>
+					<Menu.Item position='right' onClick={this.handleItemClick}>
 						<Icon name='user' />
 						My Profile
+        			</Menu.Item>
+
+					<Menu.Item >
+						<ChangePassword/>
         			</Menu.Item>
 
 					{/* ADMINTOP */}

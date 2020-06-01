@@ -7,7 +7,7 @@ import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
 
-import ChangePassword from '../ChangePassword/ChangePassword';
+
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 
@@ -195,13 +195,10 @@ export default class HeaderSideBar extends Component {
 					<Menu.Item style={{width:152 }} onClick={this.handleAnimationChange('push')}>
 
 						<Icon name='bars' />RP INNOTECH
+						
 					</Menu.Item>
 					
-					<Menu.Item position='right'>
-						<ChangePassword />
-        			</Menu.Item>
-
-					<Menu.Item  onClick={this.handleItemClick}>
+					<Menu.Item position='right' onClick={this.handleItemClick}>
 						<Icon name='user' />
 						My Profile
         			</Menu.Item>
@@ -218,6 +215,7 @@ export default class HeaderSideBar extends Component {
 							closeOnDimmerClick={closeOnDimmerClick}
 							onClose={this.close}
 							basic>
+								 <Header icon='log out' content='Log Out' />
 						
 								<Modal.Content >
 									<p>Are you sure you want to sign out?</p>
@@ -245,7 +243,7 @@ export default class HeaderSideBar extends Component {
 
 					<Sidebar.Pusher dimmed={visible} style={{height: '90vh'}}>
 						<Switch>
-							<Route path="/main/employees/" component={EmployeeMain} />
+							<Route path="/main/employee/" component={EmployeeMain} />
 							<Route path="/main/employee/id/:id" component={EmployeeDetails} />
 							<Route path="/main/timelogs/" component={EmployeeTimeLogs} />
 							<Route path="/main/payroll/" exact component={PayRoll} />

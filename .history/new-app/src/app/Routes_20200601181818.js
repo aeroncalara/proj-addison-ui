@@ -7,6 +7,7 @@ import Home from './pages/home/Home';
 import EmployeeLounge from '../EmployeeTimeLogs/EmployeeLounge'
 import StaffNav from '../StaffComponent/StaffNav'
 import AddAdminComponent from '../SuperAddminComponent/AddAdminComponent'
+import EmployeeMain from './components/employee/EmployeeMain';
 
 const checkAuthentication = () => {
 	let logged_in = localStorage.getItem("logged_in")
@@ -50,9 +51,13 @@ export default class Routes extends Component {
 					<Route path="/signin/" exact component={ Login } />
 					{/* <AuthRoute path="/main/" exact component={ HeaderSideBar } />
 					<AuthRoute path="/main/employees/" exact component={ HeaderSideBar } /> */}
-					<AdminAuthRoute path="/main/" exact component={ Home } />
-					<AdminAuthRoute path="/main/employees/" exact component={ HeaderSideBar } />
-					<AdminAuthRoute path="/main/employee/id/:id" exact component ={ Home } />
+					{/* <AdminAuthRoute path="/main/" exact component={ Home } />
+					<AdminAuthRoute path="/main/employees/" exact component={ Home } />
+					<AdminAuthRoute path="/main/employee/id/:id" exact component ={ Home } /> */
+					}
+					<AdminAuthRoute path="/main/" exact component={ EmployeeMain } />
+					<AdminAuthRoute path="/main/employees/" exact component={ EmployeeMain} />
+					<AdminAuthRoute path="/main/employee/id/:id" exact component ={ EmployeeMain } />
 					<AdminAuthRoute path="/main/timelogs/" exact component={ HeaderSideBar } />
 					<AdminAuthRoute path="/main/payroll/" exact component={ HeaderSideBar } />
 					<AdminAuthRoute path="/main/addEmployee/" exact component={ HeaderSideBar } />

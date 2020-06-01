@@ -7,7 +7,7 @@ import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import axios from 'axios';
 import {addison_api_url} from '../Utilities/config';
 
-import ChangePassword from '../ChangePassword/ChangePassword';
+
 import EmployeeDetails from '../EmployeeComponents/EmployeeDetails';
 import AddEmployeeForm from '../EmployeeComponents/AddEmployeeForm';
 
@@ -197,13 +197,17 @@ export default class HeaderSideBar extends Component {
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
 					
-					<Menu.Item position='right'>
-						<ChangePassword />
+					<Menu.Item position='right' >
+						<ChangePassword/>
         			</Menu.Item>
 
-					<Menu.Item  onClick={this.handleItemClick}>
+					<Menu.Item position='right' onClick={this.handleItemClick}>
 						<Icon name='user' />
 						My Profile
+        			</Menu.Item>
+
+					<Menu.Item position='right' onClick={this.handleItemClick}>
+						<Icon name='setting' />
         			</Menu.Item>
 
 					{/* ADMINTOP */}

@@ -51,7 +51,7 @@ export default class Routes extends Component {
 					{/* <AuthRoute path="/main/" exact component={ HeaderSideBar } />
 					<AuthRoute path="/main/employees/" exact component={ HeaderSideBar } /> */}
 					<AdminAuthRoute path="/main/" exact component={ Home } />
-					<AdminAuthRoute path="/main/employees/" exact component={ HeaderSideBar } />
+					<AdminAuthRoute path="/main/employees/" exact component={ Home } />
 					<AdminAuthRoute path="/main/employee/id/:id" exact component ={ Home } />
 					<AdminAuthRoute path="/main/timelogs/" exact component={ HeaderSideBar } />
 					<AdminAuthRoute path="/main/payroll/" exact component={ HeaderSideBar } />

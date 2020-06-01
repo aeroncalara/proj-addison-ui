@@ -90,14 +90,15 @@ export default class HeaderSideBar extends Component {
 					</Menu.Item>
 
 					<Menu.Item position='right' >
-						<ChangePassword/>
+						<ChangePassword></ChangePassword>
         			</Menu.Item>
 
 					{/* ADMINTOP */}
-					<Menu.Item  onClick={this.closeConfigShow(true, false)}>
-						<Icon name='log out' />
-						Log-out
+					<Menu.Item  position='right' style={{right:95 }}>
 
+						<Button secondary onClick={this.closeConfigShow(true, false)}>	<Icon name='log out' /> Log-out </Button>
+					
+				
 					<Modal
 						open={open}
 						closeOnEscape={closeOnEscape}
