@@ -31,7 +31,6 @@ export default class Home extends Component {
 			direction: 'left',
 			dimmed: false,
 			visible: false,
-      open: false,
       activeItem: 'home',
 		}
 	}

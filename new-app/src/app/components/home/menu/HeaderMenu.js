@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'semantic-ui-react'
-import { signOut, user } from '../../../api/user'
+import { user } from '../../../api/user'
 
 import {
 	Icon,
@@ -13,13 +13,17 @@ export default class HeaderMenu extends Component {
 		this.state = {
       open: false,
       closeOnEscape: null,
-      closeOnDimmerClick: null
-    }
+			closeOnDimmerClick: null,
+		}
+
+		this.closeModal = this.closeModal.bind(this)
   }
   
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true, test: false })
   }
+
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   signOutUser = async ( ) => {
     let username = localStorage.getItem("hash");
@@ -28,34 +32,46 @@ export default class HeaderMenu extends Component {
       	alert(message)
       	if(success){
       		localStorage.clear();
-      		this.close()
+      		this.closeModal()
       		this.props.history.push("/signin");
       	}
       })
   }
-
-	close = () => this.setState({ open: false })
-
+	
+	closeModal = () => {
+		this.setState(prevState => ({
+			test: true,
+			open: false
+		}))
+		console.log('test')
+	}
+	
   render() {
     return (
         <Menu inverted style={{height:50}}>
 					<Menu.Item style={{width:152 }} onClick={ this.props.handleAnimationChange }>
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
-					<Menu.Item  position='right' style={{ right:95 }}>
-						<Button secondary onClick={ this.closeConfigShow(true, false) }> Sign-out </Button>
+					<Menu.Item position='right' onClick={this.handleItemClick}>
+					<Icon name='user' />
+						My Profile
+        	</Menu.Item>
+					<Menu.Item >
+						<Button onClick={ this.closeConfigShow(true, false) } inverte>
+							<Icon name='log out' /> Logout
+						</Button>
 							<Modal
                 open={ this.state.open }
                 closeOnEscape={ this.state.closeOnEscape }
                 closeOnDimmerClick={ this.state.closeOnDimmerClick }
-                onClose={ this.close }
+                onClose={ this.closeModal }
                 basic
               >
 								<Modal.Content >
 									<p>Are you sure you want to sign out?</p>
 								</Modal.Content>
 								<Modal.Actions>
-									<Button onClick={ this.close } basic color='red' inverted>
+									<Button onClick={ this.closeModal } basic color='red' inverted>
 										<Icon name='remove' /> No
 									</Button>
 									<Button onClick={ this.signOutUser } color='green' inverted>
