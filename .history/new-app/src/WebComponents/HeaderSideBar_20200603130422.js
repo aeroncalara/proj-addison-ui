@@ -198,7 +198,7 @@ export default class HeaderSideBar extends Component {
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
 					
-					<Menu.Menu position='right' style={{width:152 }}>
+					<Menu.Menu position='right'>
 					<Dropdown item text='Admin'>
             			<Dropdown.Menu>
 
@@ -206,15 +206,15 @@ export default class HeaderSideBar extends Component {
 							<ChangePassword />
 						</Dropdown.Item>
 
-						<Dropdown.Item onClick={this.handleItemClick}>
-							{/* <Button  onClick={this.handleItemClick}> */}
+						<Dropdown.Item>
+							<Button  onClick={this.handleItemClick}>
 								<Icon name='user' />
 									My Profile
-							{/* </Button> */}
+							</Button>
 						</Dropdown.Item>
 
-					<Dropdown.Item onClick={this.closeConfigShow(true, false)} > 
-					{/* <Button onClick={this.closeConfigShow(true, false)} /> */}
+					<Dropdown.Item>
+					<Button onClick={this.closeConfigShow(true, false)} />
 						<Icon name='log out' />
 						{/* <Button secondary onClick={this.closeConfigShow(true, false)}>  </Button> */}
 						Log-out

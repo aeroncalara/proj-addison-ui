@@ -527,17 +527,17 @@ const panes = [
 		</Tab.Pane>
 	},
 
-	// {menuItem: 'Incentives', render: () => 
-	// 	<Tab.Pane>
-	// 		<Incentives item={incentives} employee_id={employee._id}/>
-	// 	</Tab.Pane> 
-	// },
+	{menuItem: 'Incentives', render: () => 
+		<Tab.Pane>
+			<Incentives item={incentives} employee_id={employee._id}/>
+		</Tab.Pane> 
+	},
 	
-	// {menuItem: 'Deduction', render: () => 
-	// 	<Tab.Pane>
-	// 		<Deduction item={deductions} employee_id={employee._id}/>
-	// 	</Tab.Pane> 
-	// },
+	{menuItem: 'Deduction', render: () => 
+		<Tab.Pane>
+			<Deduction item={deductions} employee_id={employee._id}/>
+		</Tab.Pane> 
+	},
 
 	{menuItem: this.newMethod(), render: () => 
 		<Tab.Pane>
@@ -595,7 +595,6 @@ const panes = [
 
 				{/* EmployeeOptions */}
 				<div className="Edit">
-				
 					{
 						this.state.isEdit?
 
@@ -606,11 +605,7 @@ const panes = [
 								
 								<List.Item>
 									<Button negative onClick={this.handleCancel}> Cancel</Button>
-								</List.Item>	
-								
-								<List.Item>
-									<ResetPassword></ResetPassword>
-								</List.Item>									
+								</List.Item>								
 							</List>
 						:
 
@@ -624,9 +619,7 @@ const panes = [
 							</List.Item>
 						</List>			
 					}
-					
 				</div>
-			
 			</div>
 			
 				{/* EMployee contents */}

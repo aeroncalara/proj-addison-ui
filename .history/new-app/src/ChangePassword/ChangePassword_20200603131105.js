@@ -13,11 +13,11 @@
 		return (
 		<div>
 		
-			<p onClick={this.show('mini')} > 
+			<Label onClick={this.show('mini')} > 
 			<Icon name="setting"/>
 				Change Password
 				
-			</p>
+			</Label>
 			
 	
 			<Modal size={size} open={open} onClose={this.close}>

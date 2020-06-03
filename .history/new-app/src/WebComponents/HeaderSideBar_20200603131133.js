@@ -202,15 +202,17 @@ export default class HeaderSideBar extends Component {
 					<Dropdown item text='Admin'>
             			<Dropdown.Menu>
 
-						 <Dropdown.Item>	
-							<ChangePassword />
-						</Dropdown.Item>
+						
 
 						<Dropdown.Item onClick={this.handleItemClick}>
 							{/* <Button  onClick={this.handleItemClick}> */}
 								<Icon name='user' />
 									My Profile
 							{/* </Button> */}
+						</Dropdown.Item>
+
+						<Dropdown.Item>	
+							<ChangePassword />
 						</Dropdown.Item>
 
 					<Dropdown.Item onClick={this.closeConfigShow(true, false)} > 

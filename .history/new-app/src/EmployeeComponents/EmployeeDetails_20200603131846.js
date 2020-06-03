@@ -607,7 +607,6 @@ const panes = [
 								<List.Item>
 									<Button negative onClick={this.handleCancel}> Cancel</Button>
 								</List.Item>	
-								
 								<List.Item>
 									<ResetPassword></ResetPassword>
 								</List.Item>									

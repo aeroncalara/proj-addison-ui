@@ -198,23 +198,23 @@ export default class HeaderSideBar extends Component {
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
 					
-					<Menu.Menu position='right' style={{width:152 }}>
-					<Dropdown item text='Admin'>
+					<Menu.Menu position='right'>
+					<Dropdown item text='Language'>
             			<Dropdown.Menu>
 
 						 <Dropdown.Item>	
 							<ChangePassword />
 						</Dropdown.Item>
+					<Dropdown.Item>
+						<Button  onClick={this.handleItemClick}>
+							<Icon name='user' />
+							My Profile
+						</Button>
+					</Dropdown.Item>
 
-						<Dropdown.Item onClick={this.handleItemClick}>
-							{/* <Button  onClick={this.handleItemClick}> */}
-								<Icon name='user' />
-									My Profile
-							{/* </Button> */}
-						</Dropdown.Item>
-
-					<Dropdown.Item onClick={this.closeConfigShow(true, false)} > 
-					{/* <Button onClick={this.closeConfigShow(true, false)} /> */}
+				
+					<Dropdown.Item>
+					<Button onClick={this.closeConfigShow(true, false)} />
 						<Icon name='log out' />
 						{/* <Button secondary onClick={this.closeConfigShow(true, false)}>  </Button> */}
 						Log-out

@@ -1,5 +1,5 @@
 	import React, { Component } from 'react'
-	import { Button, Modal, Icon, Form ,Grid, Label} from 'semantic-ui-react'
+	import { Button, Modal, Icon, Form ,Grid} from 'semantic-ui-react'
 
 	class ChangePassword extends Component {
 	state = { open: false }
@@ -13,11 +13,9 @@
 		return (
 		<div>
 		
-			<p onClick={this.show('mini')} > 
-			<Icon name="setting"/>
-				Change Password
-				
-			</p>
+			<Button onClick={this.show('mini')} > 
+				<Icon name="setting"/>
+			</Button>
 			
 	
 			<Modal size={size} open={open} onClose={this.close}>

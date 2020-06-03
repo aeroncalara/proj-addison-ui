@@ -595,7 +595,6 @@ const panes = [
 
 				{/* EmployeeOptions */}
 				<div className="Edit">
-				
 					{
 						this.state.isEdit?
 
@@ -606,11 +605,7 @@ const panes = [
 								
 								<List.Item>
 									<Button negative onClick={this.handleCancel}> Cancel</Button>
-								</List.Item>	
-								
-								<List.Item>
-									<ResetPassword></ResetPassword>
-								</List.Item>									
+								</List.Item>								
 							</List>
 						:
 
@@ -624,7 +619,7 @@ const panes = [
 							</List.Item>
 						</List>			
 					}
-					
+					<ResetPassword/>
 				</div>
 			
 			</div>

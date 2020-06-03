@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import './HeaderTry.css';
-import { NavLink, Route, Switch,} from 'react-router-dom'
+import { NavLink, Route, Switch} from 'react-router-dom'
 
 import EmployeeMain from '../EmployeeComponents/EmployeeMain';
 import axios from 'axios';
@@ -25,7 +25,6 @@ import {
 	Menu,
 	Segment,
 	Sidebar,
-	Dropdown
 } from 'semantic-ui-react'
 import AddAdminComponent from '../SuperAddminComponent/AddAdminComponent';
 
@@ -198,24 +197,18 @@ export default class HeaderSideBar extends Component {
 						<Icon name='bars' />RP INNOTECH
 					</Menu.Item>
 					
-					<Menu.Menu position='right' style={{width:152 }}>
-					<Dropdown item text='Admin'>
-            			<Dropdown.Menu>
+					<Menu.Item position='right'>
+						<ChangePassword />
+        			</Menu.Item>
 
-						 <Dropdown.Item>	
-							<ChangePassword />
-						</Dropdown.Item>
+					<Menu.Item  onClick={this.handleItemClick}>
+						<Icon name='user' />
+						My Profile
+        			</Menu.Item>
 
-						<Dropdown.Item onClick={this.handleItemClick}>
-							{/* <Button  onClick={this.handleItemClick}> */}
-								<Icon name='user' />
-									My Profile
-							{/* </Button> */}
-						</Dropdown.Item>
-
-					<Dropdown.Item onClick={this.closeConfigShow(true, false)} > 
-					{/* <Button onClick={this.closeConfigShow(true, false)} /> */}
-						<Icon name='log out' />
+					{/* ADMINTOP */}
+					<Menu.Item onClick={this.closeConfigShow(true, false)} >
+					<Icon name='log out' />
 						{/* <Button secondary onClick={this.closeConfigShow(true, false)}>  </Button> */}
 						Log-out
 
@@ -240,10 +233,8 @@ export default class HeaderSideBar extends Component {
 								</Modal.Actions>
 
 							</Modal>
-							</Dropdown.Item>
-							</Dropdown.Menu>
-          				</Dropdown>
-					</Menu.Menu>
+
+					</Menu.Item>
 				</Menu>
 
 				<Sidebar.Pushable as={Segment} style={{height: '90vh', bottom:18 }} >
