@@ -95,84 +95,84 @@ render() {
 export default EmployeeGrid;
 
 
-// import React, { Component } from 'react'
-// import { useState, useEffect } from 'react';
-// import {Button ,Header, Segment ,List, Grid} from 'semantic-ui-react';
-// import './calendar.css';
+import React, { Component } from 'react'
+import { useState, useEffect } from 'react';
+import {Button ,Header, Segment ,List, Grid} from 'semantic-ui-react';
+import './calendar.css';
 
  
 
-// export function CalendarTypeTimelogs() {
+export function CalendarTypeTimelogs() {
 
-//   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-//   const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-//   const DAYS_OF_THE_WEEK = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-//   const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const DAYS_LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const DAYS_OF_THE_WEEK = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-//   const today = new Date();
-//   const [date, setDate] = useState(today);
-//   const [day, setDay] = useState(date.getDate());
-//   const [month, setMonth] = useState(date.getMonth());
-//   const [year, setYear] = useState(date.getFullYear());
-//   const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
-
-  
-//   useEffect(() => {
-//     setDay(date.getDate());
-//     setMonth(date.getMonth());
-//     setYear(date.getFullYear());
-//     setStartDay(getStartDayOfMonth(date));
-//   }, [date]);
-
-//   function getStartDayOfMonth(date: Date) {
-//     return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-//   }
-
-//   function isLeapYear(year: Number) {
-//     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-//   }
-
-//   const days = isLeapYear ? DAYS_LEAP : DAYS;
+  const today = new Date();
+  const [date, setDate] = useState(today);
+  const [day, setDay] = useState(date.getDate());
+  const [month, setMonth] = useState(date.getMonth());
+  const [year, setYear] = useState(date.getFullYear());
+  const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
 
   
-//   return (
-//     <div className = "Main_container">
-// 	  <div className="Header"> 
-//         <Button className = "button" onClick={() => setDate(new Date(year, month - 1, day))}> Prev </Button>
-//         <div>
-//           	{MONTHS[month]} {year}
-//         </div>
-//         <Button onClick={() => setDate(new Date(year, month + 1, day))}>Next</Button>
-//       </div>
+  useEffect(() => {
+    setDay(date.getDate());
+    setMonth(date.getMonth());
+    setYear(date.getFullYear());
+    setStartDay(getStartDayOfMonth(date));
+  }, [date]);
 
-//       <div className="Body">
-//         {DAYS_OF_THE_WEEK.map(d => (
-//           <div className =" Day" key={d}>
-//             <strong>{d}</strong>
-//           </div>
-//         ))}
-//         {Array(days[month] + (startDay - 1))
-//           .fill(null)
-//           .map((_, index) => {
-//             const d = index - (startDay - 2);
-//             return (
+  function getStartDayOfMonth(date: Date) {
+    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+  }
 
-//               <div className = "Day"
-//                 key={index}
-//                 isToday={d === today.getDate()}
-//                 isSelected={d === day}
-//                 onClick={() => setDate(new Date(year, month, d))}
-//               >
-//                 {d > 0 ? d : ''}
-//               </div>
+  function isLeapYear(year: Number) {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  }
 
-//             );
-//           })}
-//       </div>
-//     </div>
-//   );
-// }
-// export default CalendarTypeTimelogs;
+  const days = isLeapYear ? DAYS_LEAP : DAYS;
+
+  
+  return (
+    <div className = "Main_container">
+	  <div className="Header"> 
+        <Button className = "button" onClick={() => setDate(new Date(year, month - 1, day))}> Prev </Button>
+        <div>
+          	{MONTHS[month]} {year}
+        </div>
+        <Button onClick={() => setDate(new Date(year, month + 1, day))}>Next</Button>
+      </div>
+
+      <div className="Body">
+        {DAYS_OF_THE_WEEK.map(d => (
+          <div className =" Day" key={d}>
+            <strong>{d}</strong>
+          </div>
+        ))}
+        {Array(days[month] + (startDay - 1))
+          .fill(null)
+          .map((_, index) => {
+            const d = index - (startDay - 2);
+            return (
+
+              <div className = "Day"
+                key={index}
+                isToday={d === today.getDate()}
+                isSelected={d === day}
+                onClick={() => setDate(new Date(year, month, d))}
+              >
+                {d > 0 ? d : ''}
+              </div>
+
+            );
+          })}
+      </div>
+    </div>
+  );
+}
+export default CalendarTypeTimelogs;
 
 
 
