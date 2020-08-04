@@ -1,0 +1,46 @@
+
+/* .Main_container{
+ width: 10%;
+ height: 25%;
+} */
+
+.Attendance_table{
+    /* border: 1px solid #e3f1ef; */
+    margin: 0 auto;
+    width: 100%;
+    max-height: 450px;
+    overflow-x: scroll;
+    /* background-color: #8eb4b4; */
+}
+
+.Pagination{
+    position: fixed;
+}
+
+.workSched{
+    font-style: italic;
+    width: 200px;
+    background-color: blueviolet;
+}
+.date{
+    width: 100px;
+    background-color: blueviolet;
+}
+
+.workTime{
+    font-style: italic;
+    width: 200px;
+   
+}
+
+.workhrs{
+  
+    font-variant: bold;
+    width: 200px;
+
+}
+.TimeIN{
+    font-variant: bold;
+    width: 200px;
+    align-content: center;
+}

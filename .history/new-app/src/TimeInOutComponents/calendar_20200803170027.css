@@ -1,0 +1,12 @@
+
+/* .Main_container{
+ width: 10%;
+ height: 25%;
+} */
+
+.Attendance_table{
+    overflow-x: scroll;
+    max-height: 390px;
+	width: 150%; 
+}
+
