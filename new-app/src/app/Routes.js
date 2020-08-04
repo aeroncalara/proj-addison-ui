@@ -32,7 +32,7 @@ const AuthRoute = ({component: Component, ...rest}) => (
 const AdminAuthRoute = ({component: Component, ...rest}) => (
 	<Route {...rest} render = { props => 
 			{
-				if (checkAuthentication() && checkRole("admin")) {
+				if (checkAuthentication() && (checkRole("admin") || checkRole("super")))  {
 						return (<Component {...props} />)
 				}	
 				return (<Redirect to={{pathname: '/signin/'}} />)

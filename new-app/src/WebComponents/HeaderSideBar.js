@@ -188,8 +188,8 @@ export default class HeaderSideBar extends Component {
 	render() {
 		const { animation, direction, visible, open, closeOnEscape, closeOnDimmerClick } = this.state
 		const vertical = direction === 'bottom' || direction === 'top'
-	
-		// const { activeItem } = this.state
+		let role = localStorage.getItem('role')
+		console.log(role);
 		return (
 			<div>
 				<Menu inverted style={{height:50}}>
@@ -201,18 +201,20 @@ export default class HeaderSideBar extends Component {
 					<Menu.Menu position='right' style={{width:152 }}>
 					<Dropdown item text='Admin'>
             			<Dropdown.Menu>
-
-						 <Dropdown.Item>	
-							<ChangePassword />
-						</Dropdown.Item>
-
-						<Dropdown.Item onClick={this.handleItemClick}>
-							{/* <Button  onClick={this.handleItemClick}> */}
+						{ 
+							role !== 'super' ? (<Dropdown.Item>
+									<ChangePassword />
+								</Dropdown.Item>
+							) : null
+						}
+						{ 
+							role !== 'super' ? (<Dropdown.Item onClick={this.handleItemClick}>
 								<Icon name='user' />
 									My Profile
-							{/* </Button> */}
-						</Dropdown.Item>
+								</Dropdown.Item>
 
+							) : null
+						}
 					<Dropdown.Item onClick={this.closeConfigShow(true, false)} > 
 					{/* <Button onClick={this.closeConfigShow(true, false)} /> */}
 						<Icon name='log out' />

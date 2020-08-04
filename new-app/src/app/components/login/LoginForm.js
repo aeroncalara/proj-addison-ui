@@ -43,7 +43,7 @@ export default class LoginForm extends Component {
 	}
 
 	redirectLogin = (role) => {
-		if (role === "admin") {
+		if (role === "admin" || role === "super") {
 			this.props.history.push("/main/employees");
 		} else {
 			this.props.history.push("/utility/StaffProfile");

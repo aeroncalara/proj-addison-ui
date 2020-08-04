@@ -6,6 +6,9 @@
 
 	show = (size) => () => this.setState({ size, open: true })
 	close = () => this.setState({ open: false })
+	confirm = () => {
+		alert('test')
+	}
 
 	render() {
 		const { open, size } = this.state
@@ -42,11 +45,12 @@
 				</Modal.Content>
 
 			<Modal.Actions>
-				<Button size='small' negative onClick={this.close}>No</Button>
+				<Button size='small' negative onClick={ this.close }>No</Button>
 				<Button
 				positive
 				icon='checkmark'
 				labelPosition='right'
+				onClick={ this.confirm }
 				content='Yes'
 				/>
 			</Modal.Actions>
