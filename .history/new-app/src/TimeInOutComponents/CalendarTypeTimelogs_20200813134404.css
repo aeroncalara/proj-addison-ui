@@ -49,22 +49,18 @@
 }
 
 .Lunch{
-        font-style: italic;
+           font-style: italic;
         width: 200px;
         color: silver;
        
 }
 
 .schedules{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 10px;
-    height: 200px;
+    overflow-x: scroll;
+    width: 20px;
 }
 
 .Days{
-    font-style: normal;
-    align-content: center;
-    font-variant: bold;
+    font-style: italic;
 }
 

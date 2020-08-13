@@ -20,7 +20,7 @@ render() {
   const sessions_table = sessions.map((session, index) =>{
     return (
        
-				<Grid celled columns={1}  key={index} padded key={session._id} className="schedules">
+				<Grid celled columns={1}  key={index} padded key={session._id} >
 			
 			
 				<Grid.Row>
@@ -113,29 +113,6 @@ render() {
 					
                 </Grid.Row> 
             </Grid>
-            
-			
-	<Table>
-	
-
-    <Table.Footer>
-      	<Table.Row>
-     		<Table.HeaderCell colSpan="3">
-				<Menu floated="right" pagination>
-					<Menu.Item as="a" icon>
-						<Icon name="chevron left" />
-						Prev
-						</Menu.Item>
-					<Menu.Item as="a" icon>
-						Next
-						<Icon name="chevron right" />
-					</Menu.Item>
-          		</Menu>
-        	</Table.HeaderCell>
-    	</Table.Row>
-    </Table.Footer>
-  	</Table>
-			
         </div>
     );
 

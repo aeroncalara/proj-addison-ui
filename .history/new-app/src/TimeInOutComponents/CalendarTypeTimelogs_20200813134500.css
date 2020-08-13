@@ -56,15 +56,13 @@
 }
 
 .schedules{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 10px;
-    height: 200px;
+    overflow-x: scroll;
+    width: 20px;
 }
 
 .Days{
     font-style: normal;
-    align-content: center;
+    align-items: center;
     font-variant: bold;
 }
 

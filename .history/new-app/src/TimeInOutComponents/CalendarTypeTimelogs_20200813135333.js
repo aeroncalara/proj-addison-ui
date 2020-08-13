@@ -52,7 +52,7 @@ render() {
 								</List.Item>
 							</List>
 								 		
-							<List>
+							<List horizontal>
 								<List.Item className="TimeIN">
 									{session.time_in}
 								</List.Item>

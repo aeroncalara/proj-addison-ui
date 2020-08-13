@@ -30,7 +30,8 @@ class TimeLogs extends Component {
       )
     })
     
-   
+    //here
+
     return (
       <div className="TimeLogsTables">
         <table className="ui teal table celled">

@@ -46,25 +46,11 @@
     width: 200px;
     align-content: center;
     color: red;
-}
-
-.Lunch{
-        font-style: italic;
-        width: 200px;
-        color: silver;
-       
+    font-size: 0px;
+    width: 100px;
+    font-size: 12px;
 }
 
 .schedules{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 10px;
-    height: 200px;
+    overflow-x: scroll;
 }
-
-.Days{
-    font-style: normal;
-    align-content: center;
-    font-variant: bold;
-}
-

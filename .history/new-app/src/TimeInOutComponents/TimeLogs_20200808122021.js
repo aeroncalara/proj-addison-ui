@@ -30,7 +30,8 @@ class TimeLogs extends Component {
       )
     })
     
-   
+    //here
+
     return (
       <div className="TimeLogsTables">
         <table className="ui teal table celled">
@@ -38,7 +39,6 @@ class TimeLogs extends Component {
 			<thead>
 				<tr>
 					<th>Date</th>
-          <th>Day</th>
 					<th>Timed In</th>
 					<th>Timed Out</th>
 				</tr>

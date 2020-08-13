@@ -52,23 +52,15 @@ render() {
 								</List.Item>
 							</List>
 								 		
-							<List>
+							<List horizontal>
 								<List.Item className="TimeIN">
-									{session.time_in}
-								</List.Item>
-
-								<List.Item className="TimeIN">
-									to
-								</List.Item>
-
-								<List.Item className="TimeIN">
-								{session.time_out}
+									{session.time_in} - {session.time_out}
 								</List.Item>
 
 							</List>
 
 							<List horizontal>
-							
+								<hr/>
 								<List.Item className="Lunch">
 									Lunch: 1 (hrs)
 								</List.Item>
@@ -88,25 +80,25 @@ render() {
     return (
     
         <div className="Attendance_table">
-            <Grid columns={5} row={5} padded className="Days">
+            <Grid columns={5} row={5} padded>
 				<Grid.Row columns={5}>
 					<Grid.Column>
-						Monday
+						<Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
 					</Grid.Column>
 					<Grid.Column>
-						Tuesday
+						<Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
 					</Grid.Column>
 					<Grid.Column>
-						Wednesday
+						<Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
 					</Grid.Column>
 					<Grid.Column>
-						Thursday
+						<Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
 					</Grid.Column>
 					<Grid.Column>
-						Friday
+						<Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
 					</Grid.Column>
 				</Grid.Row>
-
+				
                 <Grid.Row>
 					 
 						{sessions_table}

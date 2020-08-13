@@ -20,7 +20,7 @@ render() {
   const sessions_table = sessions.map((session, index) =>{
     return (
        
-				<Grid celled columns={1}  key={index} padded key={session._id} className="schedules">
+				<Grid celled columns={1}  key={index} padded key={session._id} >
 			
 			
 				<Grid.Row>
@@ -29,7 +29,7 @@ render() {
 							<List verticalAlign='middle'>
 								<List.Item className="date">
 									<b>{session.date}</b>
-									
+									<b>{session.day}</b>
 										<hr/>
 								</List.Item>
 							</List>
@@ -52,27 +52,19 @@ render() {
 								</List.Item>
 							</List>
 								 		
-							<List>
-								<List.Item className="TimeIN">
+							<List verticalAlign="TimeIN">
+								<List.Item>
 									{session.time_in}
 								</List.Item>
 
-								<List.Item className="TimeIN">
+								<List.Item>
 									to
 								</List.Item>
-
-								<List.Item className="TimeIN">
-								{session.time_out}
+								
+								<List.Item>
+									
+									{session.time_out}
 								</List.Item>
-
-							</List>
-
-							<List horizontal>
-							
-								<List.Item className="Lunch">
-									Lunch: 1 (hrs)
-								</List.Item>
-
 							</List>
 					
 				  
@@ -81,6 +73,11 @@ render() {
 			</Grid.Row>
 			</Grid>
 			
+		
+
+				
+		
+    
     )
     }
     )
@@ -88,25 +85,8 @@ render() {
     return (
     
         <div className="Attendance_table">
-            <Grid columns={5} row={5} padded className="Days">
-				<Grid.Row columns={5}>
-					<Grid.Column>
-						Monday
-					</Grid.Column>
-					<Grid.Column>
-						Tuesday
-					</Grid.Column>
-					<Grid.Column>
-						Wednesday
-					</Grid.Column>
-					<Grid.Column>
-						Thursday
-					</Grid.Column>
-					<Grid.Column>
-						Friday
-					</Grid.Column>
-				</Grid.Row>
-
+        
+            <Grid columns={7} row={5} padded>
                 <Grid.Row>
 					 
 						{sessions_table}

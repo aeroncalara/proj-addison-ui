@@ -60,6 +60,7 @@
     overflow-x: hidden;
     width: 10px;
     height: 200px;
+    align-content: stretch;
 }
 
 .Days{

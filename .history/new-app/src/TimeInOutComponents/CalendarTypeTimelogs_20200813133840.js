@@ -52,23 +52,15 @@ render() {
 								</List.Item>
 							</List>
 								 		
-							<List>
+							<List horizontal>
 								<List.Item className="TimeIN">
-									{session.time_in}
-								</List.Item>
-
-								<List.Item className="TimeIN">
-									to
-								</List.Item>
-
-								<List.Item className="TimeIN">
-								{session.time_out}
+									{session.time_in} - {session.time_out}
 								</List.Item>
 
 							</List>
 
 							<List horizontal>
-							
+								<hr/>
 								<List.Item className="Lunch">
 									Lunch: 1 (hrs)
 								</List.Item>
@@ -88,25 +80,12 @@ render() {
     return (
     
         <div className="Attendance_table">
-            <Grid columns={5} row={5} padded className="Days">
-				<Grid.Row columns={5}>
-					<Grid.Column>
-						Monday
-					</Grid.Column>
-					<Grid.Column>
-						Tuesday
-					</Grid.Column>
-					<Grid.Column>
-						Wednesday
-					</Grid.Column>
-					<Grid.Column>
-						Thursday
-					</Grid.Column>
-					<Grid.Column>
-						Friday
-					</Grid.Column>
-				</Grid.Row>
-
+        	<Grid columns={5} row={5} padded>
+                <Grid.Row>
+					Monday
+                </Grid.Row> 
+            </Grid>
+            <Grid columns={5} row={5} padded>
                 <Grid.Row>
 					 
 						{sessions_table}

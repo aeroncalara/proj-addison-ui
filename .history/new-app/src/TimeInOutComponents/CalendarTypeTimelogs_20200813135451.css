@@ -56,10 +56,9 @@
 }
 
 .schedules{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 10px;
-    height: 200px;
+    overflow-x: scroll;
+    width: 20px;
+    height: 150px;
 }
 
 .Days{
