@@ -443,7 +443,7 @@ const panes = [
 
 							<Form.Group>
 								{this.state.isEdit?
-									<Form.Input name="date_of_birth" type="date" label='Birthdate' placeholder='Birthdate' width={3}  readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.date_of_birth}/>
+									<Form.Input name="date_of_birth" type="date" label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.date_of_birth}/>
 									:
 									<Form.Input name="date_of_birth" label='Birthdate' placeholder='Birthdate' width={2}  readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.date_of_birth}/>	
 								}
@@ -502,7 +502,7 @@ const panes = [
 
 	{menuItem: 'Position', render: () => 
 		<Tab.Pane>
-			<Form fluid='true' className="Position">
+			<Form fluid className="Position">
 
 				<div className='EmpDetails'>    
 					<div className ='desc'>
@@ -513,7 +513,7 @@ const panes = [
 
 				<Grid>
 					<Grid.Column width={11}>
-						<div raised = 'true'>
+						<div raised>
 							<div>
 								<Form.Group widths="equal">
 									<Form.Input name="title" label='Position' placeholder='Position' readOnly={this.state.isEdit?false:true} onChange={this.handleChange} value={this.state.title}/>

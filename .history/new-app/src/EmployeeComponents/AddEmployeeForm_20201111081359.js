@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Segment, Label, Dropdown }from 'semantic-ui-react'
 import Position from './Position'
 import './AddEmployeeForm.css';
-import EmployeeTable from './EmployeeTable';
 import axios from 'axios';
-
 
 import { addison_api_url } from '../Utilities/config';
 
@@ -42,6 +40,7 @@ class AddEmployeeForm extends Component {
 			salary:0,
 			open: false,
 			role: '',
+			firstNameError: ''
 		}
 
 		this.addEmployee = this.addEmployee.bind(this);
@@ -184,12 +183,9 @@ class AddEmployeeForm extends Component {
 			if(_id){
 				alert("Added employee succesfully!");
 				this.props.history.push("/main/employees")
+			}else{
+				alert("Something went wrong");
 			}
-			else{
-				alert("Complete all the forms!");
-			
-			}
-		
 		})
 		
 	}
@@ -215,9 +211,8 @@ class AddEmployeeForm extends Component {
 
 					<div className="button_group">
 						<Button.Group>
-							<Button primary onClick={this.handlesave}>Save Employee</Button>
-							<Button secondary onClick={this.handleCancel}>Cancel</Button>
-
+							<Button primary onClick={this.addEmployee}>Save Employee</Button>
+							<Button secondary>Cancel</Button>
 						</Button.Group>	
 					</div>
 
@@ -245,7 +240,10 @@ class AddEmployeeForm extends Component {
 
 									<Form.Input label='First name' placeholder='First name' onChange={(e) => this.handleChange(e, 'firstName')} 
 									value={this.state.firstName} />
-								
+									<div style={{ fontSize: 12, color: "red" }}>
+            							{this.state.firstNameError}
+          							</div>
+
 									<Form.Input label='Middle name' placeholder='Middle name'  onChange={(e) => this.handleChange(e, 'middleName')} 
 									value={this.state.middleName}/>
 

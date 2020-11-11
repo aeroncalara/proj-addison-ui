@@ -187,9 +187,11 @@ class AddEmployeeForm extends Component {
 			}
 			else{
 				alert("Complete all the forms!");
-			
+				this.AddEmployeeForm();
 			}
-		
+			// else{
+			// 	alert("Something went wrong");
+			// }
 		})
 		
 	}
@@ -215,9 +217,10 @@ class AddEmployeeForm extends Component {
 
 					<div className="button_group">
 						<Button.Group>
-							<Button primary onClick={this.handlesave}>Save Employee</Button>
+							<Button primary onClick={this._id}>Save Employee</Button>
 							<Button secondary onClick={this.handleCancel}>Cancel</Button>
-
+							
+							
 						</Button.Group>	
 					</div>
 

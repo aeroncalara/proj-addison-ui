@@ -341,7 +341,6 @@ const panes = [
 				<List.Item>
 					<Message info compact>
 						You've successfuly time out at 9:45am
-						
 					</Message>
 				</List.Item>
 
@@ -349,7 +348,7 @@ const panes = [
 		}
 		</div>
 	
-		console.log("ji");
+	
 	</div>
 
 	<div>
@@ -376,7 +375,6 @@ const panes = [
 		<tr>
 			<th>Payslip Date</th>
 			<th>Action</th>
-			
 		</tr>
 
 		<tr>
@@ -384,7 +382,7 @@ const panes = [
 			<th>
 	
 					
-			{/* <PayslipReport item={this.state.employee}/> */}
+			<PayslipReport item={this.state.employee}/>
 					
 					
 			</th>

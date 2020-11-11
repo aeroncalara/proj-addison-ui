@@ -341,7 +341,7 @@ const panes = [
 				<List.Item>
 					<Message info compact>
 						You've successfuly time out at 9:45am
-						
+						console.log("ji");
 					</Message>
 				</List.Item>
 
@@ -349,7 +349,7 @@ const panes = [
 		}
 		</div>
 	
-		console.log("ji");
+	
 	</div>
 
 	<div>

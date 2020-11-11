@@ -187,9 +187,11 @@ class AddEmployeeForm extends Component {
 			}
 			else{
 				alert("Complete all the forms!");
-			
+				this.handleCancel();
 			}
-		
+			// else{
+			// 	alert("Something went wrong");
+			// }
 		})
 		
 	}
@@ -215,8 +217,13 @@ class AddEmployeeForm extends Component {
 
 					<div className="button_group">
 						<Button.Group>
-							<Button primary onClick={this.handlesave}>Save Employee</Button>
+							<Button primary onClick={this.addEmployee}>Save Employee</Button>
 							<Button secondary onClick={this.handleCancel}>Cancel</Button>
+							if(Button ={this.handleCancel}){
+								alert("Adding is canceled")
+								
+							}
+							<EmployeeTable></EmployeeTable>
 
 						</Button.Group>	
 					</div>

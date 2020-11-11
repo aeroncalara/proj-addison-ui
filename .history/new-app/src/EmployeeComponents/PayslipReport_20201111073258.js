@@ -190,14 +190,10 @@ class PayslipReport extends Component {
 
         pdf.setFontSize("13");
         pdf.setFontStyle("bold");
-
-        // SSS value
         pdf.text(160 ,170, "---");
-          // PAG IBIG value 
         pdf.text(160 ,178, "---");
-
-          // PHILHEALTH value
         pdf.text(160 ,186, "---");
+
         pdf.line(15, 188, 185, 188, "closed");
 
         pdf.setFontSize("13");
@@ -206,42 +202,12 @@ class PayslipReport extends Component {
 
         pdf.setFontSize("13");
         pdf.setFontStyle("bold");
-
-        // totalBenefits value
         pdf.text(160 ,194, "---");
 
         pdf.setFontSize("13");
         pdf.setFontStyle("bold");
         pdf.text(15,206, "INCOME TAX");
         pdf.line(15, 208, 185, 208, "closed");
-
-        pdf.setFontSize(11);
-        pdf.text(15, 218, "Income tax ");
-        pdf.line(15, 221, 185, 221, "closed");
-
-        pdf.setFontSize("13");
-        pdf.setFontStyle("bold");
-
-        // income tax value
-        pdf.text(160 ,219, "---");
-
-        
-        pdf.setFontSize("13");
-        pdf.setFontStyle("bold");
-        pdf.text(15,230, "FINAL TOTAL");
-        pdf.line(15, 233, 185, 233, "closed");
-
-        pdf.setFontSize(11);
-        pdf.text(15, 240, "Final Total Earnings ");
-        pdf.line(15, 243, 185, 243, "closed");
-
-        pdf.setFontSize("13");
-        pdf.setFontStyle("bold");
-
-        pdf.text(160 ,243, "---");
-
-        
-
 
 
         

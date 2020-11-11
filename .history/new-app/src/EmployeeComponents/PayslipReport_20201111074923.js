@@ -238,7 +238,7 @@ class PayslipReport extends Component {
         pdf.setFontSize("13");
         pdf.setFontStyle("bold");
 
-        pdf.text(160 ,243, "---");
+        pdf.text(160 ,240, "---");
 
         
 

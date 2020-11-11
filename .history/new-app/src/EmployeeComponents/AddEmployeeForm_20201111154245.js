@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Segment, Label, Dropdown }from 'semantic-ui-react'
 import Position from './Position'
 import './AddEmployeeForm.css';
-import EmployeeTable from './EmployeeTable';
 import axios from 'axios';
-
 
 import { addison_api_url } from '../Utilities/config';
 
@@ -181,15 +179,42 @@ class AddEmployeeForm extends Component {
 			}
 		}).then(result =>{
 			const {_id} = result.data.data.addEmployee
-			if(_id){
-				alert("Added employee succesfully!");
-				this.props.history.push("/main/employees")
-			}
-			else{
-				alert("Complete all the forms!");
-			
-			}
-		
+			// if(_id){
+			// 	alert("Added employee succesfully!");
+			// 	this.props.history.push("/main/employees")
+			// }
+			// if(_id ={
+			// 	firstName: '',
+			// 	middleName: '',
+			// 	lastName: '',
+			// 	birthDate: '',
+	
+			// 	mobile_number: '',
+			// 	telephone_number: '',
+			// 	email_address: '',
+	
+			// 	number:'',
+			// 	street: '',
+			// 	town: '',
+			// 	city: '',
+			// 	country: '',
+	
+			// 	tin:'',
+			// 	sss:'',
+			// 	philhealth:'',
+			// 	hdmf: '',
+				
+			// 	title:'',
+			// 	description:'', 
+			// 	salary:0,
+			// 	open: false,
+			// 	role: '',
+			// }){
+			// 	alert("Complete all the forms!");
+			// }
+			// else{
+			// 	alert("Something went wrong");
+			// }
 		})
 		
 	}
@@ -215,9 +240,8 @@ class AddEmployeeForm extends Component {
 
 					<div className="button_group">
 						<Button.Group>
-							<Button primary onClick={this.handlesave}>Save Employee</Button>
-							<Button secondary onClick={this.handleCancel}>Cancel</Button>
-
+							<Button primary onClick={this.addEmployee}>Save Employee</Button>
+							<Button secondary>Cancel</Button>
 						</Button.Group>	
 					</div>
 

@@ -235,10 +235,11 @@ class PayslipReport extends Component {
         pdf.text(15, 240, "Final Total Earnings ");
         pdf.line(15, 243, 185, 243, "closed");
 
-        pdf.setFontSize("13");
-        pdf.setFontStyle("bold");
+        // pdf.setFontSize("13");
+        // pdf.setFontStyle("bold");
 
-        pdf.text(160 ,243, "---");
+       
+        // pdf.text(160 ,219, "---");
 
         
 
